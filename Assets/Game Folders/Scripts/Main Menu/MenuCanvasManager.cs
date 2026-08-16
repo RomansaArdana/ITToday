@@ -29,9 +29,6 @@ public class MenuCanvasManager : CanvasManager
             case GameState.Level:
                 SetPage(PageName.Level);
                 break;
-            case GameState.Car:
-                SetPage(PageName.Car);
-                break;
         }
     }
 }

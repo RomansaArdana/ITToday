@@ -14,7 +14,6 @@ public class MenuPage : Page
     private void Start()
     {
         b_play.onClick.AddListener(() => GameManager.Instance.ChangeState(GameState.Level));
-        b_car.onClick.AddListener(() => GameManager.Instance.ChangeState(GameState.Car));
         b_info.onClick.AddListener(() => GameManager.Instance.ChangeState(GameState.Info));
         b_setting.onClick.AddListener(() => GameManager.Instance.ChangeState(GameState.Setting));
         b_quit.onClick.AddListener(Quit);

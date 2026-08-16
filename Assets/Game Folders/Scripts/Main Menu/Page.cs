@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -20,6 +19,5 @@ public enum PageName
     Menu,
     Setting,
     Info,
-    Level,
-    Car,
+    Level
 }

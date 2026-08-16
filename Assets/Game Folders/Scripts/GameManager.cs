@@ -38,6 +38,5 @@ public enum GameState
     Menu,
     Setting,
     Info,
-    Level,
-    Car
+    Level
 }
