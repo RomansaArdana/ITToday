@@ -9,10 +9,10 @@ using System;
 public class SettingPage : Page
 {
     public Button b_home;
-    public TMP_Dropdown graphicsDropdown;
-    public TMP_Dropdown musicDropdown;
-    public Slider masterVol, musicVol, sfxVol;
-    public AudioMixer mainAudioMixer;
+    [SerializeField] private TMP_Dropdown graphicsDropdown;
+    [SerializeField] private TMP_Dropdown musicDropdown;
+    [SerializeField] private Slider masterVol, musicVol, sfxVol;
+    [SerializeField] private AudioMixer mainAudioMixer;
 
     private void Start()
     {
@@ -59,7 +59,7 @@ public class SettingPage : Page
     public void ChangeMusicVolume()
     {
         float volume = musicVol.value;
-        mainAudioMixer.SetFloat("MusicVol", MathF.Log10(volume)*20);
+        mainAudioMixer.SetFloat("MusicVol", MathF.Log10(volume) * 20);
         PlayerPrefs.SetFloat("musicVolume", volume);
     }
     public void ChangeSfxVolume()
@@ -78,6 +78,6 @@ public class SettingPage : Page
     public void OpenLink(string link)
     {
         Application.OpenURL(link);
-            Debug.Log("Open App");
+        Debug.Log("Open App");
     }
 }
