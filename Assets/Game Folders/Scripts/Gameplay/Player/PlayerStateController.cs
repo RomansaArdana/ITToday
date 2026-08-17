@@ -57,4 +57,22 @@ public class PlayerStateController : MonoBehaviour
             SetState(PlayerState.Idle);
         }
     }
+
+    public void EnterInteraction()
+    {
+        if (!CanInteract())
+        {
+            return;
+        }
+
+        SetState(PlayerState.Interact);
+    }
+
+    public void ExitInteraction()
+    {
+        if (CurrentState == PlayerState.Interact)
+        {
+            SetState(PlayerState.Idle);
+        }
+    }
 }
