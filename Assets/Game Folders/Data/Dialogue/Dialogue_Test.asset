@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6add052c21c43bf41bb51c0c0ab645c8, type: 3}
+  m_Name: Dialogue_Test
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSequenceSO
+  sequenceId: TEST_001
+  lines:
+  - speakerName: Inara
+    dialogueText: '"Ini adalah test dialogue."'
+    portrait: {fileID: 0}
+  - speakerName: Inara
+    dialogueText: '"Sistem dialogue The Day After berhasil."'
+    portrait: {fileID: 0}

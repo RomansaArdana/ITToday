@@ -20,4 +20,4 @@ MonoBehaviour:
   maxSanity: 100
   sanityRecoveryRate: 25
   sanityDrainRate: 5
-  interactionRange: 1.5
+  interactionRange: 1
