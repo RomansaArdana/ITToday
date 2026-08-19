@@ -25,6 +25,12 @@ public class PlayerStatsSO : ScriptableObject
     [SerializeField] private float sanityRecoveryRate = 25f;
     [SerializeField] private float sanityDrainRate = 5f;
 
+    [SerializeField, Range(0f, 1f)]
+    private float unstableSanityThreshold = 0.7f;
+
+    [SerializeField, Range(0f, 1f)]
+    private float criticalSanityThreshold = 0.3f;
+
     [Header("Interaction")]
     [SerializeField] private float interactionRange = 1.5f;
 
@@ -42,6 +48,9 @@ public class PlayerStatsSO : ScriptableObject
     public float MaxSanity => maxSanity;
     public float SanityRecoveryRate => sanityRecoveryRate;
     public float SanityDrainRate => sanityDrainRate;
+
+    public float UnstableSanityThreshold => unstableSanityThreshold;
+    public float CriticalSanityThreshold => criticalSanityThreshold;
 
     public float InteractionRange => interactionRange;
 }
