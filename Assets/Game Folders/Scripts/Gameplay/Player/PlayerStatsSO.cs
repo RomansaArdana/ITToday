@@ -20,6 +20,10 @@ public class PlayerStatsSO : ScriptableObject
     [SerializeField] private float hideTransitionDuration = 0.2f;
     [SerializeField] private float hideCooldown = 0.25f;
 
+    [SerializeField] private float crouchSpeedMultiplier = 0.5f;
+    [SerializeField] private float crouchStealthMultiplier = 0.5f;
+    [SerializeField] private float hideStealthMultiplier = 0f;
+
     [Header("Sanity")]
     [SerializeField] private float maxSanity = 100f;
     [SerializeField] private float sanityRecoveryRate = 25f;
@@ -44,6 +48,11 @@ public class PlayerStatsSO : ScriptableObject
 
     public float HideTransitionDuration => hideTransitionDuration;
     public float HideCooldown => hideCooldown;
+
+    public float CrouchStealthMultiplier => crouchStealthMultiplier;
+    public float HideStealthMultiplier => hideStealthMultiplier;
+
+    public float CrouchSpeedMultiplier => crouchSpeedMultiplier;
 
     public float MaxSanity => maxSanity;
     public float SanityRecoveryRate => sanityRecoveryRate;
