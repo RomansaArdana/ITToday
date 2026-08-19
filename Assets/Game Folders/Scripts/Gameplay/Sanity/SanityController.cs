@@ -6,7 +6,7 @@ public class SanityController : MonoBehaviour
     [SerializeField] private PlayerStatsSO stats;
 
     private float currentSanity;
-    private float debugTimer;
+    //private float debugTimer;
 
     private bool isDraining;
     private bool isRecovering;
@@ -49,7 +49,7 @@ public class SanityController : MonoBehaviour
 
         UpdateSanityOverTime();
 
-        DebugTesting();
+        /*DebugTesting();*/
     }
 
     private void UpdateSanityOverTime()
@@ -246,7 +246,7 @@ public class SanityController : MonoBehaviour
         );
     }
 
-    private void DebugTesting()
+    /*private void DebugTesting()
     {
         debugTimer += Time.deltaTime;
 
@@ -289,5 +289,5 @@ public class SanityController : MonoBehaviour
                 this
             );
         }
-    }
+    }*/
 }
