@@ -6,10 +6,12 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
     [SerializeField] private InputActionReference moveAction;
     [SerializeField] private InputActionReference interactAction;
     [SerializeField] private InputActionReference hideAction;
+    [SerializeField] private InputActionReference jumpAction;
 
     public Vector2 MoveInput { get; private set; }
     public bool InteractPressed { get; private set; }
     public bool HidePressed { get; private set; }
+    public bool JumpPressed { get; private set; }
 
     private void OnEnable()
     {
@@ -35,6 +37,7 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
         moveAction?.action.Enable();
         interactAction?.action.Enable();
         hideAction?.action.Enable();
+        jumpAction?.action.Enable();
     }
 
     private void DisableActions()
@@ -42,6 +45,7 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
         moveAction?.action.Disable();
         interactAction?.action.Disable();
         hideAction?.action.Disable();
+        jumpAction?.action.Disable();
     }
 
     private void SubscribeActions()
@@ -54,6 +58,11 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
         if (hideAction != null)
         {
             hideAction.action.performed += OnHidePerformed;
+        }
+
+        if (jumpAction != null)
+        {
+            jumpAction.action.performed += OnJumpPerformed;
         }
     }
 
@@ -68,6 +77,11 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
         {
             hideAction.action.performed -= OnHidePerformed;
         }
+
+        if (jumpAction != null)
+        {
+            jumpAction.action.performed -= OnJumpPerformed;
+        }
     }
 
     private void OnInteractPerformed(InputAction.CallbackContext context)
@@ -80,9 +94,15 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
         HidePressed = true;
     }
 
+    private void OnJumpPerformed(InputAction.CallbackContext context)
+    {
+        JumpPressed = true;
+    }
+
     private void LateUpdate()
     {
         InteractPressed = false;
         HidePressed = false;
+        JumpPressed = false;
     }
 }
