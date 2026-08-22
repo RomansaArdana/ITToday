@@ -49,8 +49,7 @@ public class PlayerStealth : MonoBehaviour
     {
         if (stats == null)
         {
-            PlayerController playerController =
-                GetComponent<PlayerController>();
+            PlayerController playerController = GetComponent<PlayerController>();
 
             if (playerController != null)
             {
@@ -143,9 +142,7 @@ public class PlayerStealth : MonoBehaviour
 
         IsHidden = true;
 
-        stateController.SetState(
-            PlayerState.Hide
-        );
+        stateController.SetState(PlayerState.Hide);
     }
 
     private void ExitHide()
@@ -154,16 +151,13 @@ public class PlayerStealth : MonoBehaviour
 
         if (stateController.CurrentState == PlayerState.Hide)
         {
-            stateController.SetState(
-                PlayerState.Idle
-            );
+            stateController.SetState(PlayerState.Idle);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        HideSpot hideSpot =
-            other.GetComponentInParent<HideSpot>();
+        HideSpot hideSpot = other.GetComponentInParent<HideSpot>();
 
         if (hideSpot == null)
         {
@@ -175,8 +169,7 @@ public class PlayerStealth : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        HideSpot hideSpot =
-            other.GetComponentInParent<HideSpot>();
+        HideSpot hideSpot = other.GetComponentInParent<HideSpot>();
 
         if (hideSpot == null)
         {
