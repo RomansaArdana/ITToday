@@ -11,6 +11,9 @@ public class EnemySanityDamage : MonoBehaviour
     [SerializeField] private float damageInterval = 1f;
     [SerializeField] private float damageDistance = 1f;
 
+    [Header("Debug")]
+    [SerializeField] private bool enableDebugLog = false;
+
     private float damageTimer;
 
     private void Awake()
@@ -91,8 +94,13 @@ public class EnemySanityDamage : MonoBehaviour
         float currentSanity =
             sanityController.CurrentSanity;
 
+        if (!enableDebugLog)
+        {
+            return;
+        }
+
         Debug.Log(
-            $"[ENEMY ATTACK] " +
+            $"[EnemySanityDamage] " +
             $"Sanity: {previousSanity:F1} → {currentSanity:F1} " +
             $"(-{damageAmount:F1})",
             this
