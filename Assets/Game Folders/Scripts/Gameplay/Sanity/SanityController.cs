@@ -5,8 +5,12 @@ public class SanityController : MonoBehaviour
 {
     [SerializeField] private PlayerStatsSO stats;
 
+    [Header("Debug")]
+    [SerializeField] private bool enableDebugLog = true;
+    [SerializeField] private float debugInterval = 1f;
+
     private float currentSanity;
-    //private float debugTimer;
+    private float debugTimer;
 
     private bool isDraining;
     private bool isRecovering;
@@ -38,18 +42,25 @@ public class SanityController : MonoBehaviour
         currentSanity = stats.MaxSanity;
 
         UpdateSanityLevel();
+
+        if (enableDebugLog)
+        {
+            Debug.Log(
+                $"[Sanity] Initialized: {currentSanity:F1}/{MaxSanity:F1} | Level: {CurrentLevel}",
+                this
+            );
+        }
     }
 
     private void Update()
     {
-        if (stats == null)
+        if (stats == null || IsDepleted)
         {
             return;
         }
 
         UpdateSanityOverTime();
-
-        /*DebugTesting();*/
+        UpdateDebugLog();
     }
 
     private void UpdateSanityOverTime()
@@ -69,6 +80,31 @@ public class SanityController : MonoBehaviour
                 stats.SanityRecoveryRate * Time.deltaTime
             );
         }
+    }
+
+    private void UpdateDebugLog()
+    {
+        if (!enableDebugLog)
+        {
+            return;
+        }
+
+        debugTimer += Time.deltaTime;
+
+        if (debugTimer < debugInterval)
+        {
+            return;
+        }
+
+        debugTimer = 0f;
+
+        Debug.Log(
+            $"[Sanity] {CurrentSanity:F1}/{MaxSanity:F1} | " +
+            $"Level: {CurrentLevel} | " +
+            $"Draining: {IsDraining} | " +
+            $"Recovering: {IsRecovering}",
+            this
+        );
     }
 
     private void UpdateSanityLevel()
@@ -104,33 +140,88 @@ public class SanityController : MonoBehaviour
             return;
         }
 
+        SanityLevel previousLevel = CurrentLevel;
+
         CurrentLevel = newLevel;
 
-        Debug.Log(
-            $"Sanity Level: {CurrentLevel}",
-            this
-        );
+        if (enableDebugLog)
+        {
+            Debug.Log(
+                $"[Sanity] Level: {previousLevel} → {CurrentLevel} | " +
+                $"Sanity: {CurrentSanity:F1}/{MaxSanity:F1}",
+                this
+            );
+        }
 
         OnSanityLevelChanged?.Invoke(CurrentLevel);
     }
 
+    private void HandleDepleted()
+    {
+        if (!IsDepleted)
+        {
+            return;
+        }
+
+        StopSanityChange();
+
+        if (enableDebugLog)
+        {
+            Debug.Log(
+                "[Sanity] DEPLETED → GAME OVER",
+                this
+            );
+        }
+
+        if (GameOverManager.Instance != null)
+        {
+            GameOverManager.Instance.TriggerGameOver();
+        }
+    }
+
     public void SetDrainActive(bool active)
     {
+        if (IsDepleted)
+        {
+            return;
+        }
+
         isDraining = active;
 
         if (active)
         {
             isRecovering = false;
         }
+
+        if (enableDebugLog)
+        {
+            Debug.Log(
+                $"[Sanity] Drain: {(active ? "ON" : "OFF")}",
+                this
+            );
+        }
     }
 
     public void SetRecoveryActive(bool active)
     {
+        if (IsDepleted)
+        {
+            return;
+        }
+
         isRecovering = active;
 
         if (active)
         {
             isDraining = false;
+        }
+
+        if (enableDebugLog)
+        {
+            Debug.Log(
+                $"[Sanity] Recovery: {(active ? "ON" : "OFF")}",
+                this
+            );
         }
     }
 
@@ -138,11 +229,19 @@ public class SanityController : MonoBehaviour
     {
         isDraining = false;
         isRecovering = false;
+
+        if (enableDebugLog)
+        {
+            Debug.Log(
+                "[Sanity] Sanity change stopped.",
+                this
+            );
+        }
     }
 
     public void DrainSanity(float amount)
     {
-        if (amount <= 0f)
+        if (amount <= 0f || IsDepleted)
         {
             return;
         }
@@ -165,11 +264,16 @@ public class SanityController : MonoBehaviour
             currentSanity,
             MaxSanity
         );
+
+        if (IsDepleted)
+        {
+            HandleDepleted();
+        }
     }
 
     public void RecoverSanity(float amount)
     {
-        if (amount <= 0f)
+        if (amount <= 0f || IsDepleted)
         {
             return;
         }
@@ -220,6 +324,11 @@ public class SanityController : MonoBehaviour
             currentSanity,
             MaxSanity
         );
+
+        if (IsDepleted)
+        {
+            HandleDepleted();
+        }
     }
 
     public void RestoreFullSanity()
@@ -244,50 +353,13 @@ public class SanityController : MonoBehaviour
             currentSanity,
             MaxSanity
         );
+
+        if (enableDebugLog)
+        {
+            Debug.Log(
+                $"[Sanity] Restored: {CurrentSanity:F1}/{MaxSanity:F1}",
+                this
+            );
+        }
     }
-
-    /*private void DebugTesting()
-    {
-        debugTimer += Time.deltaTime;
-
-        if (debugTimer >= 1f)
-        {
-            debugTimer = 0f;
-
-            Debug.Log(
-                $"Sanity: {CurrentSanity:F1}/{MaxSanity:F1} | Level: {CurrentLevel}",
-                this
-            );
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            SetDrainActive(true);
-
-            Debug.Log(
-                "Sanity Drain: ON",
-                this
-            );
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            SetRecoveryActive(true);
-
-            Debug.Log(
-                "Sanity Recovery: ON",
-                this
-            );
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            StopSanityChange();
-
-            Debug.Log(
-                "Sanity Change: STOP",
-                this
-            );
-        }
-    }*/
 }

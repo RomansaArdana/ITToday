@@ -6,7 +6,10 @@ public class PlayerDeath : MonoBehaviour
 
     public void Die()
     {
-        if (IsDead) return;
+        if (IsDead)
+        {
+            return;
+        }
 
         IsDead = true;
     }
