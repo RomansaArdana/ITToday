@@ -3637,6 +3637,7 @@ GameObject:
   - component: {fileID: 2130438956}
   - component: {fileID: 2130438958}
   - component: {fileID: 2130438959}
+  - component: {fileID: 2130438960}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Untagged
@@ -3815,6 +3816,23 @@ MonoBehaviour:
   arrivalDistance: 0.1
   searchMoveSpeed: 1.5
   searchPointCount: 4
+--- !u!114 &2130438960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130438949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ef5fbaba7b95bf41aac7f06e06891a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemySanityDamage
+  enemyController: {fileID: 2130438950}
+  sanityController: {fileID: 411383071}
+  damageAmount: 10
+  damageInterval: 1
+  damageDistance: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
