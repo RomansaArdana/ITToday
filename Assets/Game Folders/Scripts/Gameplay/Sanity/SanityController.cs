@@ -156,29 +156,6 @@ public class SanityController : MonoBehaviour
         OnSanityLevelChanged?.Invoke(CurrentLevel);
     }
 
-    private void HandleDepleted()
-    {
-        if (!IsDepleted)
-        {
-            return;
-        }
-
-        StopSanityChange();
-
-        if (enableDebugLog)
-        {
-            Debug.Log(
-                "[Sanity] DEPLETED → GAME OVER",
-                this
-            );
-        }
-
-        if (GameOverManager.Instance != null)
-        {
-            GameOverManager.Instance.TriggerGameOver();
-        }
-    }
-
     public void SetDrainActive(bool active)
     {
         if (IsDepleted)
@@ -265,9 +242,21 @@ public class SanityController : MonoBehaviour
             MaxSanity
         );
 
-        if (IsDepleted)
+        if (enableDebugLog)
         {
-            HandleDepleted();
+            Debug.Log(
+                $"[Sanity] Drain: {previousSanity:F1} → {currentSanity:F1} " +
+                $"(-{amount:F1})",
+                this
+            );
+        }
+
+        if (IsDepleted && enableDebugLog)
+        {
+            Debug.Log(
+                "[Sanity] DEPLETED → PlayerDeathHandler akan menangani kematian.",
+                this
+            );
         }
     }
 
@@ -325,9 +314,12 @@ public class SanityController : MonoBehaviour
             MaxSanity
         );
 
-        if (IsDepleted)
+        if (enableDebugLog)
         {
-            HandleDepleted();
+            Debug.Log(
+                $"[Sanity] Set: {previousSanity:F1} → {currentSanity:F1}",
+                this
+            );
         }
     }
 
@@ -342,10 +334,7 @@ public class SanityController : MonoBehaviour
 
         currentSanity = stats.MaxSanity;
 
-        if (Mathf.Approximately(previousSanity, currentSanity))
-        {
-            return;
-        }
+        debugTimer = 0f;
 
         UpdateSanityLevel();
 
@@ -357,7 +346,7 @@ public class SanityController : MonoBehaviour
         if (enableDebugLog)
         {
             Debug.Log(
-                $"[Sanity] Restored: {CurrentSanity:F1}/{MaxSanity:F1}",
+                $"[Sanity] Restored: {previousSanity:F1} → {CurrentSanity:F1}/{MaxSanity:F1}",
                 this
             );
         }

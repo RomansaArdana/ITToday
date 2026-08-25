@@ -1266,6 +1266,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SanityController
   stats: {fileID: 11400000, guid: 705077ee740eb824181fce50df262e85, type: 2}
+  enableDebugLog: 1
+  debugInterval: 1
 --- !u!114 &411383072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1296,6 +1298,7 @@ MonoBehaviour:
   playerDeath: {fileID: 411383076}
   playerRespawn: {fileID: 411383075}
   playerLife: {fileID: 411383074}
+  sanityController: {fileID: 411383071}
 --- !u!114 &411383074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3697,6 +3700,7 @@ GameObject:
   - component: {fileID: 2130438958}
   - component: {fileID: 2130438959}
   - component: {fileID: 2130438960}
+  - component: {fileID: 2130438961}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Untagged
@@ -3892,6 +3896,18 @@ MonoBehaviour:
   damageAmount: 10
   damageInterval: 1
   damageDistance: 1
+--- !u!114 &2130438961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130438949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f86c60d50015a8944be178a11f3f8518, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAttack
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

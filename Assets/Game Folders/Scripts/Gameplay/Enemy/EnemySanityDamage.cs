@@ -6,7 +6,7 @@ public class EnemySanityDamage : MonoBehaviour
     [SerializeField] private EnemyController enemyController;
     [SerializeField] private SanityController sanityController;
 
-    [Header("Sanity Damage")]
+    [Header("Damage")]
     [SerializeField] private float damageAmount = 10f;
     [SerializeField] private float damageInterval = 1f;
     [SerializeField] private float damageDistance = 1f;
@@ -15,12 +15,16 @@ public class EnemySanityDamage : MonoBehaviour
 
     private void Awake()
     {
-        enemyController ??= GetComponent<EnemyController>();
+        if (enemyController == null)
+        {
+            enemyController = GetComponent<EnemyController>();
+        }
     }
 
     private void Update()
     {
-        if (enemyController == null || !enemyController.HasTarget)
+        if (enemyController == null ||
+            !enemyController.HasTarget)
         {
             ResetTimer();
             return;
@@ -28,10 +32,17 @@ public class EnemySanityDamage : MonoBehaviour
 
         if (sanityController == null)
         {
-            sanityController = enemyController.PlayerTarget.GetComponent<SanityController>();
+            sanityController =
+                enemyController.PlayerTarget.GetComponent<SanityController>();
         }
 
         if (sanityController == null)
+        {
+            ResetTimer();
+            return;
+        }
+
+        if (sanityController.IsDepleted)
         {
             ResetTimer();
             return;
@@ -43,13 +54,21 @@ public class EnemySanityDamage : MonoBehaviour
             return;
         }
 
+        UpdateDamage();
+    }
+
+    private void UpdateDamage()
+    {
         damageTimer += Time.deltaTime;
 
-        if (damageTimer >= damageInterval)
+        if (damageTimer < damageInterval)
         {
-            ApplyDamage();
-            damageTimer = 0f;
+            return;
         }
+
+        damageTimer = 0f;
+
+        ApplyDamage();
     }
 
     private bool IsPlayerInDamageRange()
@@ -64,7 +83,20 @@ public class EnemySanityDamage : MonoBehaviour
 
     private void ApplyDamage()
     {
+        float previousSanity =
+            sanityController.CurrentSanity;
+
         sanityController.DrainSanity(damageAmount);
+
+        float currentSanity =
+            sanityController.CurrentSanity;
+
+        Debug.Log(
+            $"[ENEMY ATTACK] " +
+            $"Sanity: {previousSanity:F1} → {currentSanity:F1} " +
+            $"(-{damageAmount:F1})",
+            this
+        );
     }
 
     private void ResetTimer()
