@@ -8,7 +8,7 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
     [SerializeField] private InputActionReference hideAction;
     [SerializeField] private InputActionReference jumpAction;
     [SerializeField] private InputActionReference crouchAction;
-    [SerializeField] private InputActionReference attackAction; // tombol F
+    [SerializeField] private InputActionReference attackAction;
 
     public Vector2 MoveInput { get; private set; }
 
@@ -18,7 +18,7 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
 
     public bool HideHeld { get; private set; }
     public bool CrouchHeld { get; private set; }
-    public bool AttackHeld { get; private set; } // true selama F ditekan
+    public bool AttackHeld { get; private set; }
 
     private void OnEnable()
     {
@@ -93,7 +93,6 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
             crouchAction.action.canceled += OnCrouchCanceled;
         }
 
-        // subscribe attack: performed = tekan, canceled = lepas
         if (attackAction != null)
         {
             attackAction.action.performed += OnAttackPerformed;
@@ -165,12 +164,12 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
 
     private void OnAttackPerformed(InputAction.CallbackContext context)
     {
-        AttackHeld = true;  // F ditekan
+        AttackHeld = true;
     }
 
     private void OnAttackCanceled(InputAction.CallbackContext context)
     {
-        AttackHeld = false; // F dilepas
+        AttackHeld = false;
     }
 
     private void LateUpdate()
