@@ -8,6 +8,7 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
     [SerializeField] private InputActionReference hideAction;
     [SerializeField] private InputActionReference jumpAction;
     [SerializeField] private InputActionReference crouchAction;
+    [SerializeField] private InputActionReference attackAction; // tombol F
 
     public Vector2 MoveInput { get; private set; }
 
@@ -17,6 +18,7 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
 
     public bool HideHeld { get; private set; }
     public bool CrouchHeld { get; private set; }
+    public bool AttackHeld { get; private set; } // true selama F ditekan
 
     private void OnEnable()
     {
@@ -37,6 +39,7 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
 
         HideHeld = false;
         CrouchHeld = false;
+        AttackHeld = false;
     }
 
     private void Update()
@@ -53,6 +56,7 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
         hideAction?.action.Enable();
         jumpAction?.action.Enable();
         crouchAction?.action.Enable();
+        attackAction?.action.Enable();
     }
 
     private void DisableActions()
@@ -62,6 +66,7 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
         hideAction?.action.Disable();
         jumpAction?.action.Disable();
         crouchAction?.action.Disable();
+        attackAction?.action.Disable();
     }
 
     private void SubscribeActions()
@@ -87,6 +92,13 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
             crouchAction.action.performed += OnCrouchPerformed;
             crouchAction.action.canceled += OnCrouchCanceled;
         }
+
+        // subscribe attack: performed = tekan, canceled = lepas
+        if (attackAction != null)
+        {
+            attackAction.action.performed += OnAttackPerformed;
+            attackAction.action.canceled += OnAttackCanceled;
+        }
     }
 
     private void UnsubscribeActions()
@@ -111,6 +123,12 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
         {
             crouchAction.action.performed -= OnCrouchPerformed;
             crouchAction.action.canceled -= OnCrouchCanceled;
+        }
+
+        if (attackAction != null)
+        {
+            attackAction.action.performed -= OnAttackPerformed;
+            attackAction.action.canceled -= OnAttackCanceled;
         }
     }
 
@@ -143,6 +161,16 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
     private void OnCrouchCanceled(InputAction.CallbackContext context)
     {
         CrouchHeld = false;
+    }
+
+    private void OnAttackPerformed(InputAction.CallbackContext context)
+    {
+        AttackHeld = true;  // F ditekan
+    }
+
+    private void OnAttackCanceled(InputAction.CallbackContext context)
+    {
+        AttackHeld = false; // F dilepas
     }
 
     private void LateUpdate()
