@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D rb;
     private Vector2 currentVelocity;
+    private float dragMultiplier = 1f;
 
     private void Awake()
     {
@@ -54,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
             stateController.UpdateMovementState(input);
         }
 
-        float movementMultiplier = stealth != null ? stealth.MovementMultiplier : 1f;
+        float movementMultiplier = (stealth != null ? stealth.MovementMultiplier : 1f) * dragMultiplier;
 
         Vector2 targetVelocity = input * stats.MoveSpeed * movementMultiplier;
 
@@ -63,6 +64,11 @@ public class PlayerMovement : MonoBehaviour
         currentVelocity = Vector2.MoveTowards(currentVelocity, targetVelocity, accelerationRate * Time.fixedDeltaTime);
 
         rb.linearVelocity = currentVelocity;
+    }
+
+    public void SetDragMultiplier(float multiplier)
+    {
+        dragMultiplier = Mathf.Clamp(multiplier, 0.05f, 1f);
     }
 
     public void StopMovement()

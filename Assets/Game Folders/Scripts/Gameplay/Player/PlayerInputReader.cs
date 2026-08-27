@@ -16,9 +16,13 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
     public bool HidePressed { get; private set; }
     public bool JumpPressed { get; private set; }
 
+    public bool InteractHeld { get; private set; }
     public bool HideHeld { get; private set; }
     public bool CrouchHeld { get; private set; }
     public bool AttackHeld { get; private set; }
+
+    // Baca langsung dari action — lebih reliable dari callback untuk cek "sedang ditahan"
+    public bool IsInteractHeld => interactAction != null && interactAction.action.IsPressed();
 
     private void OnEnable()
     {
@@ -37,6 +41,7 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
         HidePressed = false;
         JumpPressed = false;
 
+        InteractHeld = false;
         HideHeld = false;
         CrouchHeld = false;
         AttackHeld = false;
@@ -74,6 +79,7 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
         if (interactAction != null)
         {
             interactAction.action.performed += OnInteractPerformed;
+            interactAction.action.canceled  += OnInteractCanceled;
         }
 
         if (hideAction != null)
@@ -105,6 +111,7 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
         if (interactAction != null)
         {
             interactAction.action.performed -= OnInteractPerformed;
+            interactAction.action.canceled  -= OnInteractCanceled;
         }
 
         if (hideAction != null)
@@ -134,6 +141,12 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
     private void OnInteractPerformed(InputAction.CallbackContext context)
     {
         InteractPressed = true;
+        InteractHeld = true;
+    }
+
+    private void OnInteractCanceled(InputAction.CallbackContext context)
+    {
+        InteractHeld = false;
     }
 
     private void OnHidePerformed(InputAction.CallbackContext context)
@@ -177,5 +190,6 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
         InteractPressed = false;
         HidePressed = false;
         JumpPressed = false;
+        // InteractHeld TIDAK di-reset di sini — di-reset saat tombol dilepas (OnInteractCanceled)
     }
 }
