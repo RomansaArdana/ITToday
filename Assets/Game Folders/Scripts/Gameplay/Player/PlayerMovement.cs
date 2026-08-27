@@ -8,9 +8,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private PlayerStateController stateController;
     [SerializeField] private PlayerStealth stealth;
 
+    [Header("Facing")]
+    [SerializeField] private bool facingRight = true;
+
     private Rigidbody2D rb;
     private Vector2 currentVelocity;
     private float dragMultiplier = 1f;
+
+    public bool IsFacingRight => facingRight;
+    public Vector2 FacingDirection =>
+        facingRight ? Vector2.right : Vector2.left;
 
     private void Awake()
     {
@@ -30,6 +37,8 @@ public class PlayerMovement : MonoBehaviour
         {
             stealth = GetComponent<PlayerStealth>();
         }
+
+        ApplyFacing();
     }
 
     private void FixedUpdate()
@@ -39,7 +48,8 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        if (stateController != null && !stateController.CanMove())
+        if (stateController != null &&
+            !stateController.CanMove())
         {
             StopMovement();
             return;
@@ -50,25 +60,82 @@ public class PlayerMovement : MonoBehaviour
             1f
         );
 
+        UpdateFacing(input);
+
         if (stateController != null)
         {
             stateController.UpdateMovementState(input);
         }
 
-        float movementMultiplier = (stealth != null ? stealth.MovementMultiplier : 1f) * dragMultiplier;
+        float movementMultiplier =
+            (stealth != null
+                ? stealth.MovementMultiplier
+                : 1f) *
+            dragMultiplier;
 
-        Vector2 targetVelocity = input * stats.MoveSpeed * movementMultiplier;
+        Vector2 targetVelocity =
+            input *
+            stats.MoveSpeed *
+            movementMultiplier;
 
-        float accelerationRate = input.sqrMagnitude > 0f ? stats.Acceleration : stats.Deceleration;
+        float accelerationRate =
+            input.sqrMagnitude > 0f
+                ? stats.Acceleration
+                : stats.Deceleration;
 
-        currentVelocity = Vector2.MoveTowards(currentVelocity, targetVelocity, accelerationRate * Time.fixedDeltaTime);
+        currentVelocity =
+            Vector2.MoveTowards(
+                currentVelocity,
+                targetVelocity,
+                accelerationRate *
+                Time.fixedDeltaTime
+            );
 
         rb.linearVelocity = currentVelocity;
     }
 
+    private void UpdateFacing(Vector2 input)
+    {
+        if (input.x > 0.01f)
+        {
+            SetFacingRight(true);
+        }
+        else if (input.x < -0.01f)
+        {
+            SetFacingRight(false);
+        }
+    }
+
+    private void SetFacingRight(bool value)
+    {
+        if (facingRight == value)
+        {
+            return;
+        }
+
+        facingRight = value;
+
+        ApplyFacing();
+    }
+
+    private void ApplyFacing()
+    {
+        Vector3 scale = transform.localScale;
+
+        scale.x =
+            Mathf.Abs(scale.x) *
+            (facingRight ? 1f : -1f);
+
+        transform.localScale = scale;
+    }
+
     public void SetDragMultiplier(float multiplier)
     {
-        dragMultiplier = Mathf.Clamp(multiplier, 0.05f, 1f);
+        dragMultiplier = Mathf.Clamp(
+            multiplier,
+            0.05f,
+            1f
+        );
     }
 
     public void StopMovement()

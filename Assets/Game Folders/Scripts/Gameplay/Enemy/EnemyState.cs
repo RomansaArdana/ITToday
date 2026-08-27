@@ -3,8 +3,11 @@ public enum EnemyState
     Idle,
     Patrol,
     Suspicious,
-    Chase,
     Search,
+    Chase,
+    Flee,
+    Cornered,
+    Vulnerable,
     Detected,
     Undetected,
     Dead

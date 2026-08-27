@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputReader : MonoBehaviour, IPlayerInput
 {
+    [Header("Input Actions")]
     [SerializeField] private InputActionReference moveAction;
     [SerializeField] private InputActionReference interactAction;
     [SerializeField] private InputActionReference hideAction;
@@ -15,14 +16,16 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
     public bool InteractPressed { get; private set; }
     public bool HidePressed { get; private set; }
     public bool JumpPressed { get; private set; }
+    public bool AttackPressed { get; private set; }
 
     public bool InteractHeld { get; private set; }
     public bool HideHeld { get; private set; }
     public bool CrouchHeld { get; private set; }
     public bool AttackHeld { get; private set; }
 
-    // Baca langsung dari action — lebih reliable dari callback untuk cek "sedang ditahan"
-    public bool IsInteractHeld => interactAction != null && interactAction.action.IsPressed();
+    public bool IsInteractHeld =>
+        interactAction != null &&
+        interactAction.action.IsPressed();
 
     private void OnEnable()
     {
@@ -35,23 +38,15 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
         UnsubscribeActions();
         DisableActions();
 
-        MoveInput = Vector2.zero;
-
-        InteractPressed = false;
-        HidePressed = false;
-        JumpPressed = false;
-
-        InteractHeld = false;
-        HideHeld = false;
-        CrouchHeld = false;
-        AttackHeld = false;
+        ResetInputState();
     }
 
     private void Update()
     {
-        MoveInput = moveAction != null
-            ? moveAction.action.ReadValue<Vector2>()
-            : Vector2.zero;
+        MoveInput =
+            moveAction != null
+                ? moveAction.action.ReadValue<Vector2>()
+                : Vector2.zero;
     }
 
     private void EnableActions()
@@ -79,7 +74,7 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
         if (interactAction != null)
         {
             interactAction.action.performed += OnInteractPerformed;
-            interactAction.action.canceled  += OnInteractCanceled;
+            interactAction.action.canceled += OnInteractCanceled;
         }
 
         if (hideAction != null)
@@ -111,7 +106,7 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
         if (interactAction != null)
         {
             interactAction.action.performed -= OnInteractPerformed;
-            interactAction.action.canceled  -= OnInteractCanceled;
+            interactAction.action.canceled -= OnInteractCanceled;
         }
 
         if (hideAction != null)
@@ -138,49 +133,59 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
         }
     }
 
-    private void OnInteractPerformed(InputAction.CallbackContext context)
+    private void OnInteractPerformed(
+        InputAction.CallbackContext context)
     {
         InteractPressed = true;
         InteractHeld = true;
     }
 
-    private void OnInteractCanceled(InputAction.CallbackContext context)
+    private void OnInteractCanceled(
+        InputAction.CallbackContext context)
     {
         InteractHeld = false;
     }
 
-    private void OnHidePerformed(InputAction.CallbackContext context)
+    private void OnHidePerformed(
+        InputAction.CallbackContext context)
     {
         HidePressed = true;
         HideHeld = true;
     }
 
-    private void OnHideCanceled(InputAction.CallbackContext context)
+    private void OnHideCanceled(
+        InputAction.CallbackContext context)
     {
         HideHeld = false;
     }
 
-    private void OnJumpPerformed(InputAction.CallbackContext context)
+    private void OnJumpPerformed(
+        InputAction.CallbackContext context)
     {
         JumpPressed = true;
     }
 
-    private void OnCrouchPerformed(InputAction.CallbackContext context)
+    private void OnCrouchPerformed(
+        InputAction.CallbackContext context)
     {
         CrouchHeld = true;
     }
 
-    private void OnCrouchCanceled(InputAction.CallbackContext context)
+    private void OnCrouchCanceled(
+        InputAction.CallbackContext context)
     {
         CrouchHeld = false;
     }
 
-    private void OnAttackPerformed(InputAction.CallbackContext context)
+    private void OnAttackPerformed(
+        InputAction.CallbackContext context)
     {
+        AttackPressed = true;
         AttackHeld = true;
     }
 
-    private void OnAttackCanceled(InputAction.CallbackContext context)
+    private void OnAttackCanceled(
+        InputAction.CallbackContext context)
     {
         AttackHeld = false;
     }
@@ -190,6 +195,21 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
         InteractPressed = false;
         HidePressed = false;
         JumpPressed = false;
-        // InteractHeld TIDAK di-reset di sini — di-reset saat tombol dilepas (OnInteractCanceled)
+        AttackPressed = false;
+    }
+
+    private void ResetInputState()
+    {
+        MoveInput = Vector2.zero;
+
+        InteractPressed = false;
+        HidePressed = false;
+        JumpPressed = false;
+        AttackPressed = false;
+
+        InteractHeld = false;
+        HideHeld = false;
+        CrouchHeld = false;
+        AttackHeld = false;
     }
 }

@@ -3,9 +3,10 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class EnemyPatrol : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] private EnemyController enemyController;
-    [SerializeField] private EnemyStateController stateController;
 
+    [Header("Patrol")]
     [SerializeField] private float patrolDistance = 2f;
     [SerializeField] private float arrivalDistance = 0.05f;
     [SerializeField] private float waitDuration = 1f;
@@ -24,15 +25,7 @@ public class EnemyPatrol : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
-        if (enemyController == null)
-        {
-            enemyController = GetComponent<EnemyController>();
-        }
-
-        if (stateController == null)
-        {
-            stateController = GetComponent<EnemyStateController>();
-        }
+        enemyController ??= GetComponent<EnemyController>();
 
         startPosition = rb.position;
 
@@ -42,14 +35,7 @@ public class EnemyPatrol : MonoBehaviour
     private void FixedUpdate()
     {
         if (enemyController == null ||
-            stateController == null ||
             enemyController.Stats == null)
-        {
-            StopPatrol();
-            return;
-        }
-
-        if (!stateController.IsUndetected)
         {
             StopPatrol();
             return;
@@ -69,7 +55,8 @@ public class EnemyPatrol : MonoBehaviour
         Vector2 currentPosition = rb.position;
         Vector2 direction = targetPosition - currentPosition;
 
-        if (direction.sqrMagnitude <= arrivalDistance * arrivalDistance)
+        if (direction.sqrMagnitude <=
+            arrivalDistance * arrivalDistance)
         {
             StopMovement();
 

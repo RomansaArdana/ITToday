@@ -6,6 +6,10 @@ using UnityEngine;
 )]
 public class EnemyStatsSO : ScriptableObject
 {
+    [Header("Identity")]
+    [SerializeField] private EnemyArchetype archetype =
+        EnemyArchetype.Red;
+
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 2f;
 
@@ -17,15 +21,42 @@ public class EnemyStatsSO : ScriptableObject
     [SerializeField] private float detectionThreshold = 1f;
 
     [Header("Detection State")]
-    [SerializeField] private float suspiciousThreshold = 0.35f;
+    [SerializeField, Range(0f, 1f)]
+    private float suspiciousThreshold = 0.35f;
 
-    public float MoveSpeed => moveSpeed;
+    [Header("Combat")]
+    [SerializeField] private float maxHealth = 1f;
 
-    public float DetectionRange => detectionRange;
-    public float DetectionAngle => detectionAngle;
-    public float DetectionSpeed => detectionSpeed;
-    public float DetectionDecaySpeed => detectionDecaySpeed;
-    public float DetectionThreshold => detectionThreshold;
+    [Header("Reward")]
+    [SerializeField] private float purificationSanityReward = 10f;
 
-    public float SuspiciousThreshold => suspiciousThreshold;
+    public EnemyArchetype Archetype =>
+        archetype;
+
+    public float MoveSpeed =>
+        moveSpeed;
+
+    public float DetectionRange =>
+        detectionRange;
+
+    public float DetectionAngle =>
+        detectionAngle;
+
+    public float DetectionSpeed =>
+        detectionSpeed;
+
+    public float DetectionDecaySpeed =>
+        detectionDecaySpeed;
+
+    public float DetectionThreshold =>
+        detectionThreshold;
+
+    public float SuspiciousThreshold =>
+        suspiciousThreshold;
+
+    public float MaxHealth =>
+        maxHealth;
+
+    public float PurificationSanityReward =>
+        purificationSanityReward;
 }

@@ -1,50 +1,190 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerLanternAttack : MonoBehaviour
 {
-    [Header("Lantern")]
+    [Header("References")]
     [SerializeField] private GameObject lanternObject;
 
+    [Header("Attack")]
+    [SerializeField] private float damageAmount = 1f;
+    [SerializeField] private float attackCooldown = 1f;
+    [SerializeField] private float attackRadius = 1.5f;
+    [SerializeField] private LayerMask enemyLayer;
+
+    [Header("Debug")]
+    [SerializeField] private bool enableDebugLog = true;
+    [SerializeField] private bool showAttackGizmo = true;
+
     private IPlayerInput input;
-    private float originalLocalX;
-    private bool lastFacingRight = true;
+
+    private float cooldownTimer;
 
     private void Awake()
     {
         input = GetComponent<IPlayerInput>();
 
         if (input == null)
-            Debug.LogError("[PlayerLanternAttack] IPlayerInput tidak ditemukan!");
+        {
+            Debug.LogError(
+                "[PlayerLanternAttack] IPlayerInput tidak ditemukan.",
+                this
+            );
+        }
 
         if (lanternObject != null)
         {
-            originalLocalX = lanternObject.transform.localPosition.x;
             lanternObject.SetActive(false);
         }
+
+        cooldownTimer = 0f;
     }
 
     private void Update()
     {
-        UpdateFacingDirection();
+        if (input == null)
+        {
+            return;
+        }
 
-        if (lanternObject != null)
-            lanternObject.SetActive(input.AttackHeld);
+        UpdateCooldown();
+        UpdateLanternVisual();
+
+        if (input.AttackPressed)
+        {
+            TryAttack();
+        }
     }
 
-    private void UpdateFacingDirection()
+    private void UpdateCooldown()
     {
-        float moveX = input.MoveInput.x;
+        if (cooldownTimer <= 0f)
+        {
+            return;
+        }
 
-        if (moveX > 0.01f)
-            lastFacingRight = true;
-        else if (moveX < -0.01f)
-            lastFacingRight = false;
+        cooldownTimer -= Time.deltaTime;
 
+        if (cooldownTimer < 0f)
+        {
+            cooldownTimer = 0f;
+        }
+    }
+
+    private void UpdateLanternVisual()
+    {
+        if (lanternObject == null)
+        {
+            return;
+        }
+
+        lanternObject.SetActive(
+            input.AttackHeld
+        );
+    }
+
+    private void TryAttack()
+    {
+        if (cooldownTimer > 0f)
+        {
+            if (enableDebugLog)
+            {
+                Debug.Log(
+                    $"[Lantern] Cooldown {cooldownTimer:F2}s",
+                    this
+                );
+            }
+
+            return;
+        }
+
+        FireLantern();
+
+        cooldownTimer =
+            Mathf.Max(
+                0f,
+                attackCooldown
+            );
+    }
+
+    private void FireLantern()
+    {
+        Vector2 attackOrigin =
+            GetAttackOrigin();
+
+        Collider2D[] hits =
+            Physics2D.OverlapCircleAll(
+                attackOrigin,
+                attackRadius,
+                enemyLayer
+            );
+
+        HashSet<EnemyLanternTarget> targets =
+            new HashSet<EnemyLanternTarget>();
+
+        int successfulHits = 0;
+
+        foreach (Collider2D hit in hits)
+        {
+            if (hit == null)
+            {
+                continue;
+            }
+
+            EnemyLanternTarget target =
+                hit.GetComponentInParent<EnemyLanternTarget>();
+
+            if (target == null)
+            {
+                continue;
+            }
+
+            if (!targets.Add(target))
+            {
+                continue;
+            }
+
+            if (target.TryReceiveLanternHit(
+                    damageAmount))
+            {
+                successfulHits++;
+            }
+        }
+
+        if (enableDebugLog)
+        {
+            Debug.Log(
+                $"[Lantern] Fire → {successfulHits} hit",
+                this
+            );
+        }
+    }
+
+    private Vector2 GetAttackOrigin()
+    {
         if (lanternObject != null)
         {
-            Vector3 localPos = lanternObject.transform.localPosition;
-            localPos.x = lastFacingRight ? Mathf.Abs(originalLocalX) : -Mathf.Abs(originalLocalX);
-            lanternObject.transform.localPosition = localPos;
+            return lanternObject.transform.position;
         }
+
+        return transform.position;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (!showAttackGizmo)
+        {
+            return;
+        }
+
+        Vector2 origin =
+            lanternObject != null
+                ? lanternObject.transform.position
+                : transform.position;
+
+        Gizmos.DrawWireSphere(
+            origin,
+            attackRadius
+        );
     }
 }

@@ -1,0 +1,6170 @@
+﻿=========================================
+File: AudioManager.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\AudioManager.cs
+=========================================
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement; 
+
+public class AudioManager : MonoBehaviour
+{
+    public static AudioManager Instance;
+
+    [Header("Audio Sources")]
+    [SerializeField] private AudioSource musicSource;
+    [SerializeField] private AudioSource sfxSource;
+
+    [Header("Music Clips")]
+    [SerializeField] private AudioClip music1;
+    [SerializeField] private AudioClip music2;
+
+    [Header("Scene Settings")]
+    [SerializeField] private string mainMenuSceneName = "Main Menu"; 
+
+    [Header("SFX Clips")]
+    [SerializeField] private AudioClip buttonClickSFX;
+
+    private int currentMusicChoice = 0;
+    private const string MUSIC_CHOICE_KEY = "MusicChoice";
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+            SetupSFXSource();
+
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        currentMusicChoice = PlayerPrefs.GetInt(MUSIC_CHOICE_KEY, 0);
+        PlaySelectedMusic();
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name != mainMenuSceneName)
+        {
+            StopMusic();
+        }
+        else if (!musicSource.isPlaying) 
+        {
+            PlaySelectedMusic();
+        }
+
+        SetupButtonSounds();
+    }
+
+    public void StopMusic()
+    {
+        if (musicSource != null)
+        {
+            musicSource.Stop();
+        }
+    }
+
+    private void SetupSFXSource()
+    {
+        if (sfxSource == null)
+        {
+            sfxSource = gameObject.AddComponent<AudioSource>();
+        }
+
+        sfxSource.playOnAwake = false;
+        sfxSource.loop = false;
+    }
+
+    public void ChangeMusicTrack(int musicChoice)
+    {
+        currentMusicChoice = musicChoice;
+        PlayerPrefs.SetInt(MUSIC_CHOICE_KEY, currentMusicChoice);
+        PlayerPrefs.Save();
+        PlaySelectedMusic();
+    }
+
+    private void PlaySelectedMusic()
+    {
+        if (musicSource == null) return;
+
+        musicSource.Stop();
+        musicSource.loop = true; 
+
+        switch (currentMusicChoice)
+        {
+            case 0:
+                musicSource.clip = music1;
+                break;
+            case 1:
+                musicSource.clip = music2;
+                break;
+        }
+
+        musicSource.Play();
+    }
+
+
+    public int GetCurrentMusicChoice()
+    {
+        return currentMusicChoice;
+    }
+
+    public void PlayButtonSFX()
+    {
+        if (buttonClickSFX != null && sfxSource != null)
+        {
+            sfxSource.PlayOneShot(buttonClickSFX);
+        }
+    }
+
+    public void SetupButtonSounds()
+    {
+        Button[] allButtons = FindObjectsOfType<Button>();
+        foreach (Button button in allButtons)
+        {
+            button.onClick.RemoveListener(PlayButtonSFX);
+            button.onClick.AddListener(PlayButtonSFX);
+        }
+    }
+}
+
+=========================================
+File: GameManager.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\GameManager.cs
+=========================================
+using System;
+using UnityEngine;
+
+public class GameManager : MonoBehaviour
+{
+    public static GameManager Instance { get; private set; }
+
+    [SerializeField]
+    private GameState currentState = GameState.Menu;
+
+    public GameState CurrentState => currentState;
+
+    public event Action<GameState> OnStateChanged;
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+
+        DontDestroyOnLoad(gameObject);
+    }
+
+    public void ChangeState(GameState newState)
+    {
+        if (currentState == newState)
+        {
+            return;
+        }
+
+        currentState = newState;
+
+        OnStateChanged?.Invoke(currentState);
+    }
+
+    public bool IsState(GameState state)
+    {
+        return currentState == state;
+    }
+}
+
+public enum GameState
+{
+    Menu,
+    Setting,
+    Info,
+    Level,
+    Gameplay,
+    Paused,
+    GameOver
+}
+
+=========================================
+File: GameOverManager.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\GameOverManager.cs
+=========================================
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class GameOverManager : MonoBehaviour
+{
+    public static GameOverManager Instance { get; private set; }
+
+    public bool IsGameOver { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+
+        Time.timeScale = 1f;
+    }
+
+    public void TriggerGameOver()
+    {
+        if (IsGameOver)
+        {
+            return;
+        }
+
+        IsGameOver = true;
+
+        Time.timeScale = 0f;
+
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.ChangeState(GameState.GameOver);
+        }
+    }
+
+    public void RestartGame(string sceneName)
+    {
+        Time.timeScale = 1f;
+        IsGameOver = false;
+
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.ChangeState(GameState.Gameplay);
+        }
+
+        SceneManager.LoadScene(sceneName);
+    }
+
+    public void LoadMainMenu(string sceneName)
+    {
+        Time.timeScale = 1f;
+        IsGameOver = false;
+
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.ChangeState(GameState.Menu);
+        }
+
+        SceneManager.LoadScene(sceneName);
+    }
+}
+
+=========================================
+File: GameOverUI.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\GameOverUI.cs
+=========================================
+using UnityEngine;
+
+public class GameOverUI : MonoBehaviour
+{
+    [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private string gameplaySceneName = "Gameplay";
+    [SerializeField] private string mainMenuSceneName = "MainMenu";
+
+    private void Awake()
+    {
+        if (gameOverPanel != null)
+            gameOverPanel.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (GameOverManager.Instance == null) return;
+
+        if (GameOverManager.Instance.IsGameOver && !gameOverPanel.activeSelf)
+            Show();
+    }
+
+    private void Show()
+    {
+        if (gameOverPanel != null)
+            gameOverPanel.SetActive(true);
+    }
+
+    public void Retry()
+    {
+        if (GameOverManager.Instance == null) return;
+
+        GameOverManager.Instance.RestartGame(gameplaySceneName);
+    }
+
+    public void MainMenu()
+    {
+        if (GameOverManager.Instance == null) return;
+
+        GameOverManager.Instance.LoadMainMenu(mainMenuSceneName);
+    }
+}
+
+=========================================
+File: GameplayStateInitializer.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\GameplayStateInitializer.cs
+=========================================
+using UnityEngine;
+
+public class GameplayStateInitializer : MonoBehaviour
+{
+    private void Start()
+    {
+        if (GameManager.Instance == null)
+        {
+            return;
+        }
+
+        GameManager.Instance.ChangeState(GameState.Gameplay);
+    }
+}
+
+=========================================
+File: Checkpoint.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Checkpoint\Checkpoint.cs
+=========================================
+using UnityEngine;
+
+public class Checkpoint : MonoBehaviour
+{
+    [SerializeField] private CheckpointManager checkpointManager;
+    [SerializeField] private Transform spawnPoint;
+
+    private void Awake()
+    {
+        if (checkpointManager == null)
+        {
+            checkpointManager = FindFirstObjectByType<CheckpointManager>();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (checkpointManager == null)
+        {
+            return;
+        }
+
+        if (!other.CompareTag("Player"))
+        {
+            return;
+        }
+
+        Vector3 checkpointPosition = spawnPoint != null
+            ? spawnPoint.position
+            : transform.position;
+
+        checkpointManager.SetCheckpoint(checkpointPosition);
+    }
+}
+
+=========================================
+File: CheckpointManager.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Checkpoint\CheckpointManager.cs
+=========================================
+using UnityEngine;
+
+public class CheckpointManager : MonoBehaviour
+{
+    private Vector3 lastCheckpointPosition;
+
+    public Vector3 LastCheckpointPosition => lastCheckpointPosition;
+
+    public bool HasCheckpoint { get; private set; }
+
+    public void SetCheckpoint(Vector3 position)
+    {
+        lastCheckpointPosition = position;
+        HasCheckpoint = true;
+
+        Debug.Log(
+            $"Checkpoint saved at: {lastCheckpointPosition}",
+            this
+        );
+    }
+
+    public void ClearCheckpoint()
+    {
+        lastCheckpointPosition = Vector3.zero;
+        HasCheckpoint = false;
+    }
+}
+
+=========================================
+File: HideSpot.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Checkpoint\HideSpot.cs
+=========================================
+using UnityEngine;
+
+public class HideSpot : MonoBehaviour
+{
+    [SerializeField] private Transform hidePoint;
+
+    private bool playerInside;
+
+    public bool CanHide => playerInside;
+    public Transform HidePoint => hidePoint;
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!other.CompareTag("Player"))
+        {
+            return;
+        }
+
+        playerInside = true;
+
+        Debug.Log("Player entered Hide Spot.", this);
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (!other.CompareTag("Player"))
+        {
+            return;
+        }
+
+        playerInside = false;
+
+        Debug.Log("Player exited Hide Spot.", this);
+    }
+}
+
+=========================================
+File: Oasis.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Checkpoint\Oasis.cs
+=========================================
+using UnityEngine;
+
+public class Oasis : MonoBehaviour
+{
+    [SerializeField] private SanityController sanityController;
+
+    public bool IsPlayerInside { get; private set; }
+
+    private void Awake()
+    {
+        if (sanityController == null)
+        {
+            sanityController = FindFirstObjectByType<SanityController>();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!other.CompareTag("Player"))
+        {
+            return;
+        }
+
+        IsPlayerInside = true;
+
+        if (sanityController != null)
+        {
+            sanityController.SetRecoveryActive(true);
+        }
+
+        Debug.Log(
+            "Player entered Oasis. Sanity recovery active.",
+            this
+        );
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (!other.CompareTag("Player"))
+        {
+            return;
+        }
+
+        IsPlayerInside = false;
+
+        if (sanityController != null)
+        {
+            sanityController.StopSanityChange();
+        }
+
+        Debug.Log(
+            "Player exited Oasis. Sanity recovery stopped.",
+            this
+        );
+    }
+}
+
+=========================================
+File: DialogueCharacterSO.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Dialogue\DialogueCharacterSO.cs
+=========================================
+using UnityEngine;
+
+[CreateAssetMenu(
+    fileName = "DialogueCharacter",
+    menuName = "The Day After/Dialogue/Character"
+)]
+public class DialogueCharacterSO : ScriptableObject
+{
+    [Header("Identity")]
+    [SerializeField] private string characterId;
+    [SerializeField] private string displayName;
+
+    [Header("Visual")]
+    [SerializeField] private Sprite defaultPortrait;
+
+    public string CharacterId => characterId;
+    public string DisplayName => displayName;
+    public Sprite DefaultPortrait => defaultPortrait;
+}
+
+=========================================
+File: DialogueCondition.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Dialogue\DialogueCondition.cs
+=========================================
+using UnityEngine;
+
+[System.Serializable]
+public class DialogueCondition
+{
+    public enum ConditionType
+    {
+        None,
+        StoryFlag,
+        Chapter
+    }
+
+    public enum Comparison
+    {
+        IsTrue,
+        IsFalse
+    }
+
+    [Header("Condition")]
+    [SerializeField] private ConditionType type = ConditionType.None;
+
+    [Header("Story Flag")]
+    [SerializeField] private string storyFlag;
+    [SerializeField] private Comparison comparison = Comparison.IsTrue;
+
+    [Header("Chapter")]
+    [SerializeField] private int requiredChapter = 1;
+
+    public bool IsMet()
+    {
+        bool result;
+
+        switch (type)
+        {
+            case ConditionType.None:
+                result = true;
+                break;
+
+            case ConditionType.StoryFlag:
+                result = CheckStoryFlag();
+                break;
+
+            case ConditionType.Chapter:
+                result = CheckChapter();
+                break;
+
+            default:
+                result = false;
+                break;
+        }
+
+        DialogueManager.DebugLog(
+            $"[DialogueCondition] Type: {type} â†’ Result: {result}"
+        );
+
+        return result;
+    }
+
+    private bool CheckStoryFlag()
+    {
+        if (StoryManager.Instance == null)
+        {
+            DialogueManager.DebugWarning(
+                "[DialogueCondition] StoryManager tidak ditemukan."
+            );
+
+            return false;
+        }
+
+        if (string.IsNullOrWhiteSpace(storyFlag))
+        {
+            DialogueManager.DebugWarning(
+                "[DialogueCondition] Story Flag kosong."
+            );
+
+            return false;
+        }
+
+        bool flagValue =
+            StoryManager.Instance.HasFlag(storyFlag);
+
+        bool result = comparison switch
+        {
+            Comparison.IsTrue => flagValue,
+            Comparison.IsFalse => !flagValue,
+            _ => false
+        };
+
+        DialogueManager.DebugLog(
+            $"[DialogueCondition] Story Flag \"{storyFlag}\" = {flagValue} | Comparison: {comparison} | Result: {result}"
+        );
+
+        return result;
+    }
+
+    private bool CheckChapter()
+    {
+        if (StoryManager.Instance == null)
+        {
+            DialogueManager.DebugWarning(
+                "[DialogueCondition] StoryManager tidak ditemukan."
+            );
+
+            return false;
+        }
+
+        int currentChapter =
+            StoryManager.Instance.CurrentChapter;
+
+        bool result =
+            currentChapter >= requiredChapter;
+
+        DialogueManager.DebugLog(
+            $"[DialogueCondition] Chapter sekarang: {currentChapter} | Required: {requiredChapter} | Result: {result}"
+        );
+
+        return result;
+    }
+}
+
+=========================================
+File: DialogueEvent.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Dialogue\DialogueEvent.cs
+=========================================
+using UnityEngine;
+
+[System.Serializable]
+public class DialogueEvent
+{
+    public enum EventType
+    {
+        SetStoryFlag,
+        RemoveStoryFlag,
+        ChangeChapter
+    }
+
+    [Header("Event")]
+    [SerializeField] private EventType type = EventType.SetStoryFlag;
+
+    [Header("Story Flag")]
+    [SerializeField] private string storyFlag;
+
+    [Header("Chapter")]
+    [SerializeField] private int chapter = 1;
+
+    public void Execute()
+    {
+        DialogueManager.DebugLog(
+            $"[DialogueEvent] Execute â†’ Type: {type}"
+        );
+
+        if (StoryManager.Instance == null)
+        {
+            DialogueManager.DebugWarning(
+                "[DialogueEvent] Gagal dijalankan â†’ StoryManager tidak ditemukan."
+            );
+
+            return;
+        }
+
+        switch (type)
+        {
+            case EventType.SetStoryFlag:
+
+                StoryManager.Instance.SetFlag(storyFlag);
+
+                DialogueManager.DebugLog(
+                    $"[DialogueEvent] Set Story Flag â†’ \"{storyFlag}\""
+                );
+
+                break;
+
+            case EventType.RemoveStoryFlag:
+
+                StoryManager.Instance.RemoveFlag(storyFlag);
+
+                DialogueManager.DebugLog(
+                    $"[DialogueEvent] Remove Story Flag â†’ \"{storyFlag}\""
+                );
+
+                break;
+
+            case EventType.ChangeChapter:
+
+                StoryManager.Instance.ChangeChapter(chapter);
+
+                DialogueManager.DebugLog(
+                    $"[DialogueEvent] Change Chapter â†’ {chapter}"
+                );
+
+                break;
+        }
+    }
+}
+
+=========================================
+File: DialogueInteractable.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Dialogue\DialogueInteractable.cs
+=========================================
+using UnityEngine;
+
+public class DialogueInteractable : InteractableBase
+{
+    [SerializeField] private DialogueSequenceSO dialogueSequence;
+
+    public override void Interact(GameObject interactor)
+    {
+        if (dialogueSequence == null)
+        {
+            return;
+        }
+
+        DialogueManager.Instance?.StartDialogue(
+            dialogueSequence,
+            interactor
+        );
+    }
+}
+
+=========================================
+File: DialogueManager.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Dialogue\DialogueManager.cs
+=========================================
+using UnityEngine;
+
+public class DialogueManager : MonoBehaviour
+{
+    public static DialogueManager Instance { get; private set; }
+
+    [Header("References")]
+    [SerializeField] private DialogueUI dialogueUI;
+
+    [Header("Debug")]
+    [SerializeField] private bool enableDebugLogs = true;
+
+    private DialogueSequenceSO currentSequence;
+    private GameObject currentInteractor;
+
+    private int currentNodeIndex;
+    private bool isDialogueActive;
+
+    public bool IsDialogueActive => isDialogueActive;
+
+    public static bool DebugLogsEnabled =>
+        Instance != null && Instance.enableDebugLogs;
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+
+        DebugLog("[DialogueManager] Initialized.");
+    }
+
+    public void StartDialogue(
+        DialogueSequenceSO sequence,
+        GameObject interactor
+    )
+    {
+        DebugLog("[DialogueManager] StartDialogue dipanggil.");
+
+        if (isDialogueActive)
+        {
+            DebugLog(
+                "[DialogueManager] Dialogue masih aktif â†’ StartDialogue dibatalkan."
+            );
+
+            return;
+        }
+
+        if (sequence == null)
+        {
+            Debug.LogWarning(
+                "[DialogueManager] StartDialogue gagal â†’ Sequence null."
+            );
+
+            return;
+        }
+
+        if (sequence.Nodes == null || sequence.Nodes.Count == 0)
+        {
+            Debug.LogWarning(
+                $"[DialogueManager] StartDialogue gagal â†’ Sequence \"{sequence.SequenceId}\" tidak memiliki Node."
+            );
+
+            return;
+        }
+
+        currentSequence = sequence;
+        currentInteractor = interactor;
+        currentNodeIndex = 0;
+        isDialogueActive = true;
+
+        DebugLog(
+            $"[DialogueManager] Dialogue dimulai â†’ Sequence: \"{sequence.SequenceId}\" | Total Nodes: {sequence.Nodes.Count}"
+        );
+
+        ShowCurrentNode();
+    }
+
+    public void ContinueDialogue()
+    {
+        if (!isDialogueActive)
+        {
+            DebugLog(
+                "[DialogueManager] ContinueDialogue dipanggil tetapi dialogue tidak aktif."
+            );
+
+            return;
+        }
+
+        DebugLog(
+            $"[DialogueManager] Continue â†’ Current Node Index: {currentNodeIndex}"
+        );
+
+        ExecuteCurrentNodeEvents();
+
+        currentNodeIndex++;
+
+        DebugLog(
+            $"[DialogueManager] Pindah ke Node Index: {currentNodeIndex}"
+        );
+
+        ShowCurrentNode();
+    }
+
+    private void ShowCurrentNode()
+    {
+        if (!isDialogueActive)
+        {
+            return;
+        }
+
+        if (currentSequence == null)
+        {
+            DebugLog(
+                "[DialogueManager] Current Sequence null â†’ EndDialogue."
+            );
+
+            EndDialogue();
+            return;
+        }
+
+        if (dialogueUI == null)
+        {
+            Debug.LogWarning(
+                "[DialogueManager] Dialogue UI belum di-assign."
+            );
+
+            EndDialogue();
+            return;
+        }
+
+        DebugLog(
+            $"[DialogueManager] Mencari Node mulai dari index {currentNodeIndex}..."
+        );
+
+        while (currentNodeIndex < currentSequence.Nodes.Count)
+        {
+            DialogueNode node =
+                currentSequence.Nodes[currentNodeIndex];
+
+            if (node == null)
+            {
+                DebugLog(
+                    $"[DialogueManager] Node {currentNodeIndex} null â†’ Skip."
+                );
+
+                currentNodeIndex++;
+                continue;
+            }
+
+            DebugLog(
+                $"[DialogueManager] Checking Node {currentNodeIndex} â†’ \"{node.DialogueText}\""
+            );
+
+            bool conditionMet = node.IsConditionMet();
+
+            if (!conditionMet)
+            {
+                DebugLog(
+                    $"[DialogueManager] Node {currentNodeIndex} Condition FALSE â†’ Skip."
+                );
+
+                currentNodeIndex++;
+                continue;
+            }
+
+            DebugLog(
+                $"[DialogueManager] Node {currentNodeIndex} Condition TRUE â†’ Show."
+            );
+
+            dialogueUI.ShowNode(node);
+            return;
+        }
+
+        DebugLog(
+            "[DialogueManager] Tidak ada Node berikutnya â†’ Dialogue selesai."
+        );
+
+        EndDialogue();
+    }
+
+    private void ExecuteCurrentNodeEvents()
+    {
+        if (currentSequence == null)
+        {
+            return;
+        }
+
+        if (currentNodeIndex < 0 ||
+            currentNodeIndex >= currentSequence.Nodes.Count)
+        {
+            return;
+        }
+
+        DialogueNode node =
+            currentSequence.Nodes[currentNodeIndex];
+
+        if (node == null)
+        {
+            return;
+        }
+
+        DebugLog(
+            $"[DialogueManager] Execute Events â†’ Node {currentNodeIndex}"
+        );
+
+        node.ExecuteEvents();
+    }
+
+    private void EndDialogue()
+    {
+        DialogueSequenceSO finishedSequence = currentSequence;
+        GameObject finishedInteractor = currentInteractor;
+
+        DebugLog(
+            $"[DialogueManager] EndDialogue â†’ Sequence: \"{finishedSequence?.SequenceId}\""
+        );
+
+        isDialogueActive = false;
+
+        if (dialogueUI != null)
+        {
+            dialogueUI.Hide();
+        }
+
+        currentSequence = null;
+        currentInteractor = null;
+        currentNodeIndex = 0;
+
+        if (finishedSequence != null)
+        {
+            DebugLog(
+                $"[DialogueManager] Menjalankan Completion Events â†’ \"{finishedSequence.SequenceId}\""
+            );
+
+            finishedSequence.ExecuteCompletionEvents();
+        }
+
+        if (finishedInteractor != null)
+        {
+            PlayerStateController stateController =
+                finishedInteractor.GetComponent<PlayerStateController>();
+
+            if (stateController != null)
+            {
+                DebugLog(
+                    "[DialogueManager] ExitInteraction dipanggil."
+                );
+
+                stateController.ExitInteraction();
+            }
+        }
+
+        DebugLog(
+            "[DialogueManager] Dialogue benar-benar selesai."
+        );
+    }
+
+    public static void DebugLog(string message)
+    {
+        if (!DebugLogsEnabled)
+        {
+            return;
+        }
+
+        Debug.Log(message);
+    }
+
+    public static void DebugWarning(string message)
+    {
+        if (!DebugLogsEnabled)
+        {
+            return;
+        }
+
+        Debug.LogWarning(message);
+    }
+}
+
+=========================================
+File: DialogueNode.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Dialogue\DialogueNode.cs
+=========================================
+using System.Collections.Generic;
+using UnityEngine;
+
+[System.Serializable]
+public class DialogueNode
+{
+    [Header("Dialogue")]
+    [SerializeField] private DialogueCharacterSO speaker;
+
+    [TextArea(3, 6)]
+    [SerializeField] private string dialogueText;
+
+    [Header("Condition")]
+    [SerializeField] private DialogueCondition condition =
+        new DialogueCondition();
+
+    [Header("Node Events")]
+    [SerializeField] private List<DialogueEvent> events = new();
+
+    public DialogueCharacterSO Speaker => speaker;
+    public string DialogueText => dialogueText;
+    public DialogueCondition Condition => condition;
+    public IReadOnlyList<DialogueEvent> Events => events;
+
+    public bool IsConditionMet()
+    {
+        if (condition == null)
+        {
+            DialogueManager.DebugLog(
+                $"[DialogueNode] \"{dialogueText}\" â†’ Tidak memiliki Condition â†’ TRUE"
+            );
+
+            return true;
+        }
+
+        bool result = condition.IsMet();
+
+        DialogueManager.DebugLog(
+            $"[DialogueNode] Condition Check â†’ \"{dialogueText}\" â†’ {result}"
+        );
+
+        return result;
+    }
+
+    public void ExecuteEvents()
+    {
+        if (events == null || events.Count == 0)
+        {
+            DialogueManager.DebugLog(
+                $"[DialogueNode] Tidak ada Node Event â†’ \"{dialogueText}\""
+            );
+
+            return;
+        }
+
+        DialogueManager.DebugLog(
+            $"[DialogueNode] Execute {events.Count} Event(s) â†’ \"{dialogueText}\""
+        );
+
+        foreach (DialogueEvent dialogueEvent in events)
+        {
+            if (dialogueEvent == null)
+            {
+                DialogueManager.DebugWarning(
+                    $"[DialogueNode] Ada Event kosong â†’ \"{dialogueText}\""
+                );
+
+                continue;
+            }
+
+            dialogueEvent.Execute();
+        }
+    }
+}
+
+=========================================
+File: DialogueSequenceSO.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Dialogue\DialogueSequenceSO.cs
+=========================================
+using System.Collections.Generic;
+using UnityEngine;
+
+[CreateAssetMenu(
+    fileName = "DialogueSequence",
+    menuName = "The Day After/Dialogue/Dialogue Sequence"
+)]
+public class DialogueSequenceSO : ScriptableObject
+{
+    [Header("Sequence")]
+    [SerializeField] private string sequenceId;
+
+    [Header("Dialogue Nodes")]
+    [SerializeField] private List<DialogueNode> nodes = new();
+
+    [Header("Completion Events")]
+    [SerializeField] private List<DialogueEvent> completionEvents = new();
+
+    public string SequenceId => sequenceId;
+
+    public IReadOnlyList<DialogueNode> Nodes => nodes;
+
+    public void ExecuteCompletionEvents()
+    {
+        if (completionEvents == null ||
+            completionEvents.Count == 0)
+        {
+            DialogueManager.DebugLog(
+                $"[DialogueSequence] Sequence \"{sequenceId}\" tidak memiliki Completion Event."
+            );
+
+            return;
+        }
+
+        DialogueManager.DebugLog(
+            $"[DialogueSequence] Menjalankan {completionEvents.Count} Completion Event â†’ \"{sequenceId}\""
+        );
+
+        foreach (DialogueEvent dialogueEvent in completionEvents)
+        {
+            if (dialogueEvent == null)
+            {
+                DialogueManager.DebugWarning(
+                    $"[DialogueSequence] Ada Completion Event kosong â†’ \"{sequenceId}\""
+                );
+
+                continue;
+            }
+
+            dialogueEvent.Execute();
+        }
+    }
+}
+
+=========================================
+File: DialogueUI.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Dialogue\DialogueUI.cs
+=========================================
+using System.Collections;
+using TMPro;
+using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
+
+public class DialogueUI : MonoBehaviour
+{
+    [Header("UI References")]
+    [SerializeField] private GameObject dialoguePanel;
+    [SerializeField] private TMP_Text speakerText;
+    [SerializeField] private TMP_Text dialogueText;
+    [SerializeField] private Image portraitImage;
+
+    [Header("Typewriter Settings")]
+    [SerializeField] private bool useTypewriter = true;
+    [SerializeField] private float characterDelay = 0.03f;
+
+    private Coroutine typewriterCoroutine;
+    private bool isTyping;
+
+    public bool IsVisible =>
+        dialoguePanel != null && dialoguePanel.activeSelf;
+
+    public bool IsTyping => isTyping;
+
+    private void Awake()
+    {
+        Hide();
+    }
+
+    private void Update()
+    {
+        if (!IsVisible)
+        {
+            return;
+        }
+
+        if (!WasContinuePressed())
+        {
+            return;
+        }
+
+        HandleContinueInput();
+    }
+
+    private void HandleContinueInput()
+    {
+        if (isTyping)
+        {
+            CompleteTyping();
+            return;
+        }
+
+        DialogueManager.Instance?.ContinueDialogue();
+    }
+
+    private bool WasContinuePressed()
+    {
+        if (Mouse.current != null &&
+            Mouse.current.leftButton.wasPressedThisFrame)
+        {
+            return true;
+        }
+
+        if (Keyboard.current != null)
+        {
+            if (Keyboard.current.spaceKey.wasPressedThisFrame)
+            {
+                return true;
+            }
+
+            if (Keyboard.current.enterKey.wasPressedThisFrame)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public void ShowNode(DialogueNode node)
+    {
+        if (node == null)
+        {
+            return;
+        }
+
+        StopTypewriter();
+
+        if (dialoguePanel != null)
+        {
+            dialoguePanel.SetActive(true);
+        }
+
+        DialogueCharacterSO character = node.Speaker;
+
+        UpdateSpeaker(character);
+        UpdatePortrait(character);
+
+        if (dialogueText == null)
+        {
+            return;
+        }
+
+        if (!useTypewriter)
+        {
+            dialogueText.text = node.DialogueText;
+            dialogueText.maxVisibleCharacters = int.MaxValue;
+            isTyping = false;
+            return;
+        }
+
+        StartTypewriter(node.DialogueText);
+    }
+
+    private void UpdateSpeaker(DialogueCharacterSO character)
+    {
+        if (speakerText == null)
+        {
+            return;
+        }
+
+        if (character != null)
+        {
+            speakerText.text = character.DisplayName;
+        }
+        else
+        {
+            speakerText.text = string.Empty;
+        }
+    }
+
+    private void UpdatePortrait(DialogueCharacterSO character)
+    {
+        if (portraitImage == null)
+        {
+            return;
+        }
+
+        Sprite portrait = null;
+
+        if (character != null)
+        {
+            portrait = character.DefaultPortrait;
+        }
+
+        portraitImage.sprite = portrait;
+        portraitImage.enabled = portrait != null;
+    }
+
+    private void StartTypewriter(string text)
+    {
+        if (dialogueText == null)
+        {
+            return;
+        }
+
+        if (string.IsNullOrEmpty(text))
+        {
+            dialogueText.text = string.Empty;
+            dialogueText.maxVisibleCharacters = int.MaxValue;
+            isTyping = false;
+            return;
+        }
+
+        typewriterCoroutine = StartCoroutine(TypewriterRoutine(text));
+    }
+
+    private IEnumerator TypewriterRoutine(string text)
+    {
+        isTyping = true;
+
+        dialogueText.text = text;
+        dialogueText.maxVisibleCharacters = 0;
+
+        yield return null;
+
+        int characterCount = dialogueText.textInfo.characterCount;
+
+        for (int i = 0; i <= characterCount; i++)
+        {
+            dialogueText.maxVisibleCharacters = i;
+
+            if (i < characterCount)
+            {
+                yield return new WaitForSeconds(characterDelay);
+            }
+        }
+
+        dialogueText.maxVisibleCharacters = int.MaxValue;
+
+        isTyping = false;
+        typewriterCoroutine = null;
+    }
+
+    private void CompleteTyping()
+    {
+        if (!isTyping)
+        {
+            return;
+        }
+
+        if (typewriterCoroutine != null)
+        {
+            StopCoroutine(typewriterCoroutine);
+        }
+
+        typewriterCoroutine = null;
+
+        if (dialogueText != null)
+        {
+            dialogueText.maxVisibleCharacters = int.MaxValue;
+        }
+
+        isTyping = false;
+    }
+
+    private void StopTypewriter()
+    {
+        if (typewriterCoroutine != null)
+        {
+            StopCoroutine(typewriterCoroutine);
+        }
+
+        typewriterCoroutine = null;
+        isTyping = false;
+
+        if (dialogueText != null)
+        {
+            dialogueText.maxVisibleCharacters = int.MaxValue;
+        }
+    }
+
+    public void Hide()
+    {
+        StopTypewriter();
+
+        if (dialoguePanel != null)
+        {
+            dialoguePanel.SetActive(false);
+        }
+    }
+}
+
+=========================================
+File: NPCDialogue.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Dialogue\NPCDialogue.cs
+=========================================
+using System.Collections.Generic;
+using UnityEngine;
+
+public class NPCDialogue : InteractableBase
+{
+    [Header("Dialogue")]
+    [SerializeField] private List<NPCDialogueEntry> dialogues = new();
+
+    [Header("Debug")]
+    [SerializeField] private bool enableDebugLog = false;
+
+    public override void Interact(GameObject interactor)
+    {
+        if (DialogueManager.Instance == null)
+        {
+            LogWarning("DialogueManager tidak ditemukan.");
+            return;
+        }
+
+        if (DialogueManager.Instance.IsDialogueActive)
+        {
+            Log("Interaction ditolak â†’ Dialogue sedang aktif.");
+            return;
+        }
+
+        Log($"Interact diterima â†’ NPC: {gameObject.name}");
+
+        DialogueSequenceSO sequence = GetAvailableDialogue();
+
+        if (sequence == null)
+        {
+            Log($"Tidak ada dialogue yang tersedia â†’ NPC: {gameObject.name}");
+            return;
+        }
+
+        Log(
+            $"Sequence terpilih â†’ \"{sequence.SequenceId}\" | NPC â†’ {gameObject.name}"
+        );
+
+        DialogueManager.Instance.StartDialogue(
+            sequence,
+            interactor
+        );
+    }
+
+    private DialogueSequenceSO GetAvailableDialogue()
+    {
+        if (dialogues == null || dialogues.Count == 0)
+        {
+            Log("Dialogue list kosong.");
+            return null;
+        }
+
+        Log($"Mengecek {dialogues.Count} dialogue entry...");
+
+        for (int i = 0; i < dialogues.Count; i++)
+        {
+            NPCDialogueEntry entry = dialogues[i];
+
+            if (entry == null)
+            {
+                Log($"Entry {i} kosong â†’ Skip.");
+                continue;
+            }
+
+            if (entry.Sequence == null)
+            {
+                Log($"Entry {i} tidak memiliki Sequence â†’ Skip.");
+                continue;
+            }
+
+            Log(
+                $"Checking Entry {i} â†’ \"{entry.Sequence.SequenceId}\""
+            );
+
+            if (!entry.IsAvailable())
+            {
+                Log(
+                    $"Entry {i} tidak tersedia â†’ \"{entry.Sequence.SequenceId}\""
+                );
+
+                continue;
+            }
+
+            Log(
+                $"Entry {i} tersedia â†’ \"{entry.Sequence.SequenceId}\""
+            );
+
+            return entry.Sequence;
+        }
+
+        return null;
+    }
+
+    private void Log(string message)
+    {
+        if (!enableDebugLog)
+        {
+            return;
+        }
+
+        Debug.Log(
+            $"[NPCDialogue] {message}",
+            this
+        );
+    }
+
+    private void LogWarning(string message)
+    {
+        if (!enableDebugLog)
+        {
+            return;
+        }
+
+        Debug.LogWarning(
+            $"[NPCDialogue] {message}",
+            this
+        );
+    }
+}
+
+=========================================
+File: NPCDialogueEntry.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Dialogue\NPCDialogueEntry.cs
+=========================================
+using UnityEngine;
+
+[System.Serializable]
+public class NPCDialogueEntry
+{
+    [Header("Dialogue")]
+    [SerializeField] private DialogueSequenceSO sequence;
+
+    [Header("Condition")]
+    [SerializeField] private DialogueCondition condition =
+        new DialogueCondition();
+
+    public DialogueSequenceSO Sequence => sequence;
+
+    public bool IsAvailable()
+    {
+        if (sequence == null)
+        {
+            return false;
+        }
+
+        if (condition == null)
+        {
+            return true;
+        }
+
+        return condition.IsMet();
+    }
+}
+
+=========================================
+File: EnemyAttack.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Enemy\EnemyAttack.cs
+=========================================
+using UnityEngine;
+
+public class EnemyAttack : MonoBehaviour
+{
+    /*
+    [Header("References")]
+    [SerializeField] private EnemyController enemyController;
+
+    [Header("Attack")]
+    [SerializeField] private float attackDistance = 0.8f;
+    [SerializeField] private float attackCooldown = 1f;
+
+    private float attackTimer;
+
+    private void Awake()
+    {
+        if (enemyController == null)
+        {
+            enemyController = GetComponent<EnemyController>();
+        }
+    }
+
+    private void Update()
+    {
+        if (enemyController == null ||
+            !enemyController.HasTarget)
+        {
+            return;
+        }
+
+        attackTimer -= Time.deltaTime;
+
+        if (attackTimer > 0f)
+        {
+            return;
+        }
+
+        if (!IsPlayerInAttackRange())
+        {
+            return;
+        }
+
+        Attack();
+    }
+
+    private bool IsPlayerInAttackRange()
+    {
+        float distance = Vector2.Distance(
+            transform.position,
+            enemyController.PlayerTarget.position
+        );
+
+        return distance <= attackDistance;
+    }
+
+    private void Attack()
+    {
+        PlayerDeathHandler deathHandler =
+            enemyController.PlayerTarget.GetComponent<PlayerDeathHandler>();
+
+        if (deathHandler == null)
+        {
+            return;
+        }
+
+        deathHandler.HandleDeath();
+
+        attackTimer = attackCooldown;
+    }*/
+}
+
+=========================================
+File: EnemyBehaviourController.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Enemy\EnemyBehaviourController.cs
+=========================================
+using UnityEngine;
+
+public class EnemyBehaviourController : MonoBehaviour
+{
+    [Header("References")]
+    [SerializeField] private EnemyStateController stateController;
+    [SerializeField] private EnemyDetection detection;
+    [SerializeField] private EnemyPatrol patrol;
+    [SerializeField] private EnemySearch search;
+    [SerializeField] private EnemyChase chase;
+
+    private EnemyDetectionState previousDetectionState;
+
+    private void Awake()
+    {
+        stateController ??= GetComponent<EnemyStateController>();
+        detection ??= GetComponent<EnemyDetection>();
+        patrol ??= GetComponent<EnemyPatrol>();
+        search ??= GetComponent<EnemySearch>();
+        chase ??= GetComponent<EnemyChase>();
+    }
+
+    private void Start()
+    {
+        if (detection == null)
+        {
+            return;
+        }
+
+        previousDetectionState =
+            detection.CurrentState;
+
+        UpdateBehaviour(previousDetectionState);
+    }
+
+    private void Update()
+    {
+        if (detection == null ||
+            stateController == null)
+        {
+            return;
+        }
+
+        if (stateController.IsDead)
+        {
+            return;
+        }
+
+        EnemyDetectionState currentDetectionState =
+            detection.CurrentState;
+
+        if (currentDetectionState ==
+            previousDetectionState)
+        {
+            return;
+        }
+
+        previousDetectionState =
+            currentDetectionState;
+
+        UpdateBehaviour(currentDetectionState);
+    }
+
+    private void UpdateBehaviour(
+        EnemyDetectionState detectionState)
+    {
+        if (stateController.IsDead)
+        {
+            return;
+        }
+
+        StopAllBehaviours();
+
+        switch (detectionState)
+        {
+            case EnemyDetectionState.Undetected:
+                EnablePatrol();
+                break;
+
+            case EnemyDetectionState.Suspicious:
+                EnableSearch();
+                break;
+
+            case EnemyDetectionState.Detected:
+                EnableChase();
+                break;
+        }
+    }
+
+    private void EnablePatrol()
+    {
+        stateController.SetState(
+            EnemyState.Patrol
+        );
+
+        if (patrol == null)
+        {
+            return;
+        }
+
+        patrol.enabled = true;
+    }
+
+    private void EnableSearch()
+    {
+        stateController.SetState(
+            EnemyState.Search
+        );
+
+        if (search == null)
+        {
+            return;
+        }
+
+        search.enabled = true;
+    }
+
+    private void EnableChase()
+    {
+        stateController.SetState(
+            EnemyState.Chase
+        );
+
+        if (chase == null)
+        {
+            return;
+        }
+
+        chase.enabled = true;
+    }
+
+    private void StopAllBehaviours()
+    {
+        if (patrol != null)
+        {
+            patrol.StopPatrol();
+            patrol.enabled = false;
+        }
+
+        if (search != null)
+        {
+            search.StopSearch();
+            search.enabled = false;
+        }
+
+        if (chase != null)
+        {
+            chase.StopChase();
+            chase.enabled = false;
+        }
+    }
+}
+
+=========================================
+File: EnemyChase.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Enemy\EnemyChase.cs
+=========================================
+using UnityEngine;
+
+[RequireComponent(typeof(Rigidbody2D))]
+public class EnemyChase : MonoBehaviour
+{
+    [SerializeField] private EnemyController enemyController;
+    [SerializeField] private EnemyDetection detection;
+
+    private Rigidbody2D rb;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+
+        if (enemyController == null)
+        {
+            enemyController = GetComponent<EnemyController>();
+        }
+
+        if (detection == null)
+        {
+            detection = GetComponent<EnemyDetection>();
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (enemyController == null ||
+            detection == null ||
+            enemyController.Stats == null)
+        {
+            StopChase();
+            return;
+        }
+
+        if (detection.CurrentState != EnemyDetectionState.Detected)
+        {
+            StopChase();
+            return;
+        }
+
+        if (!enemyController.HasTarget)
+        {
+            StopChase();
+            return;
+        }
+
+        ChaseTarget();
+    }
+
+    private void ChaseTarget()
+    {
+        Vector2 currentPosition = rb.position;
+        Vector2 targetPosition =
+            enemyController.PlayerTarget.position;
+
+        Vector2 direction =
+            targetPosition - currentPosition;
+
+        if (direction.sqrMagnitude <= 0.001f)
+        {
+            StopChase();
+            return;
+        }
+
+        direction.Normalize();
+
+        float speed = enemyController.Stats.MoveSpeed;
+
+        rb.linearVelocity = direction * speed;
+
+        UpdateFacingDirection(direction);
+    }
+
+    private void UpdateFacingDirection(Vector2 direction)
+    {
+        if (Mathf.Abs(direction.x) < 0.01f)
+        {
+            return;
+        }
+
+        Vector3 scale = transform.localScale;
+
+        scale.x =
+            Mathf.Abs(scale.x) *
+            Mathf.Sign(direction.x);
+
+        transform.localScale = scale;
+    }
+
+    public void StopChase()
+    {
+        if (rb == null)
+        {
+            return;
+        }
+
+        rb.linearVelocity = Vector2.zero;
+    }
+}
+
+=========================================
+File: EnemyController.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Enemy\EnemyController.cs
+=========================================
+using UnityEngine;
+
+public class EnemyController : MonoBehaviour
+{
+    [SerializeField] private EnemyStatsSO stats;
+    [SerializeField] private Transform playerTarget;
+
+    public EnemyStatsSO Stats => stats;
+    public Transform PlayerTarget => playerTarget;
+
+    public Vector2 FacingDirection => transform.right;
+
+    public bool HasTarget => playerTarget != null;
+
+    private void Awake()
+    {
+        if (playerTarget == null)
+        {
+            GameObject player =
+                GameObject.FindGameObjectWithTag("Player");
+
+            if (player != null)
+            {
+                playerTarget = player.transform;
+            }
+        }
+
+        if (stats == null)
+        {
+            Debug.LogError(
+                "EnemyController: EnemyStatsSO belum di-assign.",
+                this
+            );
+        }
+
+        if (playerTarget == null)
+        {
+            Debug.LogWarning(
+                "EnemyController: Player target tidak ditemukan.",
+                this
+            );
+        }
+    }
+
+    public void SetFacingDirection(Vector2 direction)
+    {
+        if (direction.sqrMagnitude <= 0.001f)
+        {
+            return;
+        }
+
+        direction.Normalize();
+
+        float angle =
+            Mathf.Atan2(direction.y, direction.x) *
+            Mathf.Rad2Deg;
+
+        transform.rotation =
+            Quaternion.Euler(0f, 0f, angle);
+    }
+}
+
+=========================================
+File: EnemyDetection.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Enemy\EnemyDetection.cs
+=========================================
+using UnityEngine;
+
+public class EnemyDetection : MonoBehaviour
+{
+    [Header("References")]
+    [SerializeField] private EnemyController enemyController;
+    [SerializeField] private LayerMask obstacleLayer;
+    [SerializeField] private PlayerStealth playerStealth;
+
+    private Transform playerTarget;
+
+    public bool IsPlayerInRange { get; private set; }
+    public bool IsPlayerInVision { get; private set; }
+    public bool HasLineOfSight { get; private set; }
+
+    public float DistanceToPlayer { get; private set; }
+    public float StealthMultiplier { get; private set; } = 1f;
+    public float DetectionStrength { get; private set; }
+    public float DetectionProgress { get; private set; }
+
+    public bool IsDetected { get; private set; }
+    public EnemyDetectionState CurrentState { get; private set; }
+    public Vector2 LastKnownPlayerPosition { get; private set; }
+
+    private void Awake()
+    {
+        if (enemyController == null) enemyController = GetComponent<EnemyController>();
+
+        CurrentState = EnemyDetectionState.Undetected;
+        LastKnownPlayerPosition = transform.position;
+    }
+
+    private void Update()
+    {
+        if (enemyController == null || enemyController.Stats == null) return;
+
+        playerTarget = enemyController.PlayerTarget;
+
+        if (playerTarget == null)
+        {
+            ResetDetection();
+            return;
+        }
+
+        CachePlayerStealth();
+        UpdateStealthState();
+        UpdateDetection();
+        UpdateDetectionProgress();
+        UpdateDetectionState();
+    }
+
+    private void CachePlayerStealth()
+    {
+        if (playerStealth == null)
+            playerStealth = playerTarget.GetComponent<PlayerStealth>();
+    }
+
+    private void UpdateStealthState()
+    {
+        StealthMultiplier = playerStealth != null
+            ? playerStealth.StealthMultiplier
+            : 1f;
+    }
+
+    private void UpdateDetection()
+    {
+        DistanceToPlayer = Vector2.Distance(transform.position, playerTarget.position);
+
+        float detectionRange = enemyController.Stats.DetectionRange;
+
+        IsPlayerInRange = DistanceToPlayer <= detectionRange;
+        IsPlayerInVision = false;
+        HasLineOfSight = false;
+        DetectionStrength = 0f;
+
+        if (!IsPlayerInRange) return;
+
+        IsPlayerInVision = CheckVisionAngle();
+
+        if (!IsPlayerInVision) return;
+
+        HasLineOfSight = CheckLineOfSight();
+
+        if (!HasLineOfSight) return;
+
+        LastKnownPlayerPosition = playerTarget.position;
+        DetectionStrength = Mathf.Clamp01(StealthMultiplier);
+    }
+
+    private void UpdateDetectionProgress()
+    {
+        float detectionSpeed = enemyController.Stats.DetectionSpeed;
+        float decaySpeed = enemyController.Stats.DetectionDecaySpeed;
+        float threshold = enemyController.Stats.DetectionThreshold;
+
+        bool canDetectPlayer =
+            IsPlayerInRange &&
+            IsPlayerInVision &&
+            HasLineOfSight &&
+            DetectionStrength > 0f;
+
+        DetectionProgress += canDetectPlayer
+            ? detectionSpeed * DetectionStrength * Time.deltaTime
+            : -decaySpeed * Time.deltaTime;
+
+        DetectionProgress = Mathf.Clamp(DetectionProgress, 0f, threshold);
+        IsDetected = DetectionProgress >= threshold;
+    }
+
+    private void UpdateDetectionState()
+    {
+        float threshold = enemyController.Stats.DetectionThreshold;
+        float suspiciousThreshold = threshold * enemyController.Stats.SuspiciousThreshold;
+
+        EnemyDetectionState newState = DetectionProgress >= threshold
+            ? EnemyDetectionState.Detected
+            : DetectionProgress >= suspiciousThreshold
+                ? EnemyDetectionState.Suspicious
+                : EnemyDetectionState.Undetected;
+
+        if (CurrentState == newState) return;
+
+        CurrentState = newState;
+    }
+
+    private bool CheckVisionAngle()
+    {
+        Vector2 directionToPlayer =
+            (playerTarget.position - transform.position).normalized;
+
+        float angle = Vector2.Angle(
+            enemyController.FacingDirection,
+            directionToPlayer
+        );
+
+        return angle <= enemyController.Stats.DetectionAngle * 0.5f;
+    }
+
+    private bool CheckLineOfSight()
+    {
+        Vector2 direction =
+            (playerTarget.position - transform.position).normalized;
+
+        RaycastHit2D hit = Physics2D.Raycast(
+            transform.position,
+            direction,
+            DistanceToPlayer,
+            obstacleLayer
+        );
+
+        return hit.collider == null;
+    }
+
+    private void ResetDetection()
+    {
+        IsPlayerInRange = false;
+        IsPlayerInVision = false;
+        HasLineOfSight = false;
+        DistanceToPlayer = Mathf.Infinity;
+
+        StealthMultiplier = 1f;
+        DetectionStrength = 0f;
+        DetectionProgress = 0f;
+
+        IsDetected = false;
+        CurrentState = EnemyDetectionState.Undetected;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (enemyController == null || enemyController.Stats == null) return;
+
+        Gizmos.DrawWireSphere(
+            transform.position,
+            enemyController.Stats.DetectionRange
+        );
+
+        Gizmos.DrawSphere(
+            LastKnownPlayerPosition,
+            0.15f
+        );
+
+        Gizmos.DrawLine(
+            transform.position,
+            LastKnownPlayerPosition
+        );
+    }
+}
+
+=========================================
+File: EnemyDetectionState.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Enemy\EnemyDetectionState.cs
+=========================================
+public enum EnemyDetectionState
+{
+    Undetected,
+    Suspicious,
+    Detected
+}
+
+=========================================
+File: EnemyPatrol.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Enemy\EnemyPatrol.cs
+=========================================
+using UnityEngine;
+
+[RequireComponent(typeof(Rigidbody2D))]
+public class EnemyPatrol : MonoBehaviour
+{
+    [Header("References")]
+    [SerializeField] private EnemyController enemyController;
+
+    [Header("Patrol")]
+    [SerializeField] private float patrolDistance = 2f;
+    [SerializeField] private float arrivalDistance = 0.05f;
+    [SerializeField] private float waitDuration = 1f;
+
+    private Rigidbody2D rb;
+
+    private Vector2 startPosition;
+    private Vector2 targetPosition;
+
+    private int patrolDirection = 1;
+    private float waitTimer;
+
+    private bool isWaiting;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+
+        enemyController ??= GetComponent<EnemyController>();
+
+        startPosition = rb.position;
+
+        SetNextPatrolTarget();
+    }
+
+    private void FixedUpdate()
+    {
+        if (enemyController == null ||
+            enemyController.Stats == null)
+        {
+            StopPatrol();
+            return;
+        }
+
+        UpdatePatrol();
+    }
+
+    private void UpdatePatrol()
+    {
+        if (isWaiting)
+        {
+            UpdateWait();
+            return;
+        }
+
+        Vector2 currentPosition = rb.position;
+        Vector2 direction = targetPosition - currentPosition;
+
+        if (direction.sqrMagnitude <=
+            arrivalDistance * arrivalDistance)
+        {
+            StopMovement();
+
+            isWaiting = true;
+            waitTimer = 0f;
+
+            return;
+        }
+
+        direction.Normalize();
+
+        float speed = enemyController.Stats.MoveSpeed;
+
+        rb.linearVelocity = direction * speed;
+
+        UpdateFacingDirection(direction);
+    }
+
+    private void UpdateWait()
+    {
+        StopMovement();
+
+        waitTimer += Time.fixedDeltaTime;
+
+        if (waitTimer < waitDuration)
+        {
+            return;
+        }
+
+        patrolDirection *= -1;
+
+        SetNextPatrolTarget();
+
+        isWaiting = false;
+        waitTimer = 0f;
+    }
+
+    private void SetNextPatrolTarget()
+    {
+        targetPosition =
+            startPosition +
+            Vector2.right *
+            patrolDistance *
+            patrolDirection;
+    }
+
+    private void UpdateFacingDirection(Vector2 direction)
+    {
+        if (Mathf.Abs(direction.x) < 0.01f)
+        {
+            return;
+        }
+
+        Vector3 scale = transform.localScale;
+
+        scale.x =
+            Mathf.Abs(scale.x) *
+            Mathf.Sign(direction.x);
+
+        transform.localScale = scale;
+    }
+
+    private void StopMovement()
+    {
+        rb.linearVelocity = Vector2.zero;
+    }
+
+    public void StopPatrol()
+    {
+        isWaiting = false;
+        waitTimer = 0f;
+
+        StopMovement();
+    }
+}
+
+=========================================
+File: EnemySanityDamage.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Enemy\EnemySanityDamage.cs
+=========================================
+using UnityEngine;
+
+public class EnemySanityDamage : MonoBehaviour
+{
+    [Header("References")]
+    [SerializeField] private EnemyController enemyController;
+    [SerializeField] private SanityController sanityController;
+
+    [Header("Damage")]
+    [SerializeField] private float damageAmount = 10f;
+    [SerializeField] private float damageInterval = 1f;
+    [SerializeField] private float damageDistance = 1f;
+
+    [Header("Debug")]
+    [SerializeField] private bool enableDebugLog = false;
+
+    private float damageTimer;
+
+    private void Awake()
+    {
+        if (enemyController == null)
+        {
+            enemyController = GetComponent<EnemyController>();
+        }
+    }
+
+    private void Update()
+    {
+        if (enemyController == null ||
+            !enemyController.HasTarget)
+        {
+            ResetTimer();
+            return;
+        }
+
+        if (sanityController == null)
+        {
+            sanityController =
+                enemyController.PlayerTarget.GetComponent<SanityController>();
+        }
+
+        if (sanityController == null)
+        {
+            ResetTimer();
+            return;
+        }
+
+        if (sanityController.IsDepleted)
+        {
+            ResetTimer();
+            return;
+        }
+
+        if (!IsPlayerInDamageRange())
+        {
+            ResetTimer();
+            return;
+        }
+
+        UpdateDamage();
+    }
+
+    private void UpdateDamage()
+    {
+        damageTimer += Time.deltaTime;
+
+        if (damageTimer < damageInterval)
+        {
+            return;
+        }
+
+        damageTimer = 0f;
+
+        ApplyDamage();
+    }
+
+    private bool IsPlayerInDamageRange()
+    {
+        float distance = Vector2.Distance(
+            transform.position,
+            enemyController.PlayerTarget.position
+        );
+
+        return distance <= damageDistance;
+    }
+
+    private void ApplyDamage()
+    {
+        float previousSanity =
+            sanityController.CurrentSanity;
+
+        sanityController.DrainSanity(damageAmount);
+
+        float currentSanity =
+            sanityController.CurrentSanity;
+
+        if (!enableDebugLog)
+        {
+            return;
+        }
+
+        Debug.Log(
+            $"[EnemySanityDamage] " +
+            $"Sanity: {previousSanity:F1} â†’ {currentSanity:F1} " +
+            $"(-{damageAmount:F1})",
+            this
+        );
+    }
+
+    private void ResetTimer()
+    {
+        damageTimer = 0f;
+    }
+}
+
+=========================================
+File: EnemySearch.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Enemy\EnemySearch.cs
+=========================================
+using UnityEngine;
+
+[RequireComponent(typeof(Rigidbody2D))]
+public class EnemySearch : MonoBehaviour
+{
+    [Header("References")]
+    [SerializeField] private EnemyController enemyController;
+    [SerializeField] private EnemyDetection detection;
+
+    [Header("Investigation")]
+    [SerializeField] private float investigateDelay = 1f;
+
+    [Header("Search")]
+    [SerializeField] private float searchRadius = 1.5f;
+    [SerializeField] private float searchDuration = 5f;
+    [SerializeField] private float arrivalDistance = 0.1f;
+    [SerializeField] private float searchMoveSpeed = 1.5f;
+    [SerializeField] private int searchPointCount = 4;
+
+    private Rigidbody2D rb;
+
+    private bool isSearching;
+    private bool isInvestigating;
+
+    private float investigateTimer;
+    private float searchTimer;
+
+    private int currentSearchPoint;
+
+    private Vector2 searchCenter;
+    private Vector2 currentSearchTarget;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+
+        enemyController ??= GetComponent<EnemyController>();
+        detection ??= GetComponent<EnemyDetection>();
+    }
+
+    private void FixedUpdate()
+    {
+        if (!IsValid())
+        {
+            StopSearch();
+            return;
+        }
+
+        if (!isSearching)
+        {
+            BeginSearch();
+        }
+
+        if (isInvestigating)
+        {
+            UpdateInvestigation();
+        }
+        else
+        {
+            UpdateSearch();
+        }
+    }
+
+    private bool IsValid()
+    {
+        return enemyController != null &&
+               detection != null &&
+               enemyController.Stats != null;
+    }
+
+    private void BeginSearch()
+    {
+        isSearching = true;
+        isInvestigating = true;
+
+        investigateTimer = 0f;
+        searchTimer = 0f;
+        currentSearchPoint = 0;
+
+        searchCenter = detection.LastKnownPlayerPosition;
+        currentSearchTarget = searchCenter;
+
+        StopMovement();
+    }
+
+    private void UpdateInvestigation()
+    {
+        StopMovement();
+
+        investigateTimer += Time.fixedDeltaTime;
+
+        if (investigateTimer < investigateDelay)
+        {
+            return;
+        }
+
+        isInvestigating = false;
+        searchTimer = 0f;
+
+        SetNextSearchPoint();
+    }
+
+    private void UpdateSearch()
+    {
+        searchTimer += Time.fixedDeltaTime;
+
+        if (searchTimer >= searchDuration)
+        {
+            FinishSearch();
+            return;
+        }
+
+        if (HasReachedTarget())
+        {
+            SetNextSearchPoint();
+            return;
+        }
+
+        MoveTowardsTarget();
+    }
+
+    private bool HasReachedTarget()
+    {
+        return (rb.position - currentSearchTarget).sqrMagnitude <=
+               arrivalDistance * arrivalDistance;
+    }
+
+    private void SetNextSearchPoint()
+    {
+        currentSearchPoint++;
+
+        int pointCount = Mathf.Max(1, searchPointCount);
+
+        if (currentSearchPoint > pointCount)
+        {
+            currentSearchPoint = 1;
+        }
+
+        float angle =
+            360f / pointCount *
+            (currentSearchPoint - 1);
+
+        float radians =
+            angle * Mathf.Deg2Rad;
+
+        Vector2 offset =
+            new Vector2(
+                Mathf.Cos(radians),
+                Mathf.Sin(radians)
+            ) * searchRadius;
+
+        currentSearchTarget =
+            searchCenter + offset;
+    }
+
+    private void MoveTowardsTarget()
+    {
+        Vector2 direction =
+            currentSearchTarget - rb.position;
+
+        if (direction.sqrMagnitude <= 0.001f)
+        {
+            StopMovement();
+            return;
+        }
+
+        direction.Normalize();
+
+        rb.linearVelocity =
+            direction * searchMoveSpeed;
+
+        UpdateFacingDirection(direction);
+    }
+
+    private void FinishSearch()
+    {
+        StopSearch();
+    }
+
+    private void UpdateFacingDirection(Vector2 direction)
+    {
+        if (Mathf.Abs(direction.x) < 0.01f)
+        {
+            return;
+        }
+
+        Vector3 scale = transform.localScale;
+
+        scale.x =
+            Mathf.Abs(scale.x) *
+            Mathf.Sign(direction.x);
+
+        transform.localScale = scale;
+    }
+
+    private void StopMovement()
+    {
+        rb.linearVelocity = Vector2.zero;
+    }
+
+    public void StopSearch()
+    {
+        isSearching = false;
+        isInvestigating = false;
+
+        investigateTimer = 0f;
+        searchTimer = 0f;
+        currentSearchPoint = 0;
+
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (detection == null)
+        {
+            return;
+        }
+
+        Vector2 center =
+            detection.LastKnownPlayerPosition;
+
+        Gizmos.DrawWireSphere(
+            center,
+            searchRadius
+        );
+
+        Gizmos.DrawSphere(
+            center,
+            0.08f
+        );
+
+        Gizmos.DrawLine(
+            transform.position,
+            center
+        );
+
+        Gizmos.DrawSphere(
+            currentSearchTarget,
+            0.08f
+        );
+    }
+}
+
+=========================================
+File: EnemyState.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Enemy\EnemyState.cs
+=========================================
+public enum EnemyState
+{
+    Idle,
+    Patrol,
+    Suspicious,
+    Chase,
+    Search,
+    Detected,
+    Undetected,
+    Dead
+}
+
+=========================================
+File: EnemyStateController.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Enemy\EnemyStateController.cs
+=========================================
+using UnityEngine;
+
+public class EnemyStateController : MonoBehaviour
+{
+    [Header("State")]
+    [SerializeField] private EnemyState currentState =
+        EnemyState.Undetected;
+
+    public EnemyState CurrentState => currentState;
+
+    public bool IsIdle =>
+        currentState == EnemyState.Idle;
+
+    public bool IsPatrol =>
+        currentState == EnemyState.Patrol;
+
+    public bool IsSuspicious =>
+        currentState == EnemyState.Suspicious;
+
+    public bool IsSearch =>
+        currentState == EnemyState.Search;
+
+    public bool IsChase =>
+        currentState == EnemyState.Chase;
+
+    public bool IsDetected =>
+        currentState == EnemyState.Detected;
+
+    public bool IsUndetected =>
+        currentState == EnemyState.Undetected;
+
+    public bool IsDead =>
+        currentState == EnemyState.Dead;
+
+    public bool CanBehave =>
+        currentState != EnemyState.Dead;
+
+    public void SetState(EnemyState newState)
+    {
+        if (currentState == newState)
+        {
+            return;
+        }
+
+        if (currentState == EnemyState.Dead)
+        {
+            return;
+        }
+
+        EnemyState previousState = currentState;
+
+        currentState = newState;
+
+        OnStateChanged(
+            previousState,
+            newState
+        );
+    }
+
+    private void OnStateChanged(
+        EnemyState previousState,
+        EnemyState newState)
+    {
+        // State transition hook.
+        // Akan digunakan untuk combat/death/animation nanti.
+    }
+}
+
+=========================================
+File: EnemyStatsSO.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Enemy\EnemyStatsSO.cs
+=========================================
+using UnityEngine;
+
+[CreateAssetMenu(
+    fileName = "EnemyStats_Default",
+    menuName = "The Day After/Enemy/Enemy Stats"
+)]
+public class EnemyStatsSO : ScriptableObject
+{
+    [Header("Movement")]
+    [SerializeField] private float moveSpeed = 2f;
+
+    [Header("Detection")]
+    [SerializeField] private float detectionRange = 6f;
+    [SerializeField] private float detectionAngle = 90f;
+    [SerializeField] private float detectionSpeed = 1f;
+    [SerializeField] private float detectionDecaySpeed = 1f;
+    [SerializeField] private float detectionThreshold = 1f;
+
+    [Header("Detection State")]
+    [SerializeField] private float suspiciousThreshold = 0.35f;
+
+    public float MoveSpeed => moveSpeed;
+
+    public float DetectionRange => detectionRange;
+    public float DetectionAngle => detectionAngle;
+    public float DetectionSpeed => detectionSpeed;
+    public float DetectionDecaySpeed => detectionDecaySpeed;
+    public float DetectionThreshold => detectionThreshold;
+
+    public float SuspiciousThreshold => suspiciousThreshold;
+}
+
+=========================================
+File: InteractableBase.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Interaction\InteractableBase.cs
+=========================================
+using UnityEngine;
+
+public abstract class InteractableBase : MonoBehaviour, IInteractable
+{
+    [SerializeField] private bool interactionEnabled = true;
+
+    public bool IsInteractionEnabled => interactionEnabled;
+
+    public virtual bool CanInteract(GameObject interactor)
+    {
+        return interactionEnabled && interactor != null;
+    }
+
+    public abstract void Interact(GameObject interactor);
+
+    public virtual void SetInteractionEnabled(bool enabled)
+    {
+        interactionEnabled = enabled;
+    }
+}
+
+=========================================
+File: NPCInteractable.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Interaction\NPCInteractable.cs
+=========================================
+
+
+=========================================
+File: ObjectInteractable.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Interaction\ObjectInteractable.cs
+=========================================
+using UnityEngine;
+
+public class ObjectInteractable : InteractableBase
+{
+    [SerializeField] private string objectName = "Object";
+
+    public override void Interact(GameObject interactor)
+    {
+        Debug.Log($"{objectName} interacted by {interactor.name}");
+
+        PlayerStateController stateController =
+            interactor.GetComponent<PlayerStateController>();
+
+        stateController?.ExitInteraction();
+    }
+}
+
+=========================================
+File: IDamageable.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Interfaces\IDamageable.cs
+=========================================
+public interface IDamageable
+{
+    bool IsAlive { get; }
+    void TakeDamage(float amount);
+}
+
+=========================================
+File: IHideable.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Interfaces\IHideable.cs
+=========================================
+using UnityEngine;
+
+public interface IHideable
+{
+    bool CanHide(GameObject player);
+    Transform GetHidePoint();
+    void EnterHide(GameObject player);
+    void ExitHide(GameObject player);
+}
+
+=========================================
+File: IInteractable.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Interfaces\IInteractable.cs
+=========================================
+using UnityEngine;
+
+public interface IInteractable
+{
+    bool CanInteract(GameObject interactor);
+    void Interact(GameObject interactor);
+}
+
+=========================================
+File: IPlayerInput.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Interfaces\IPlayerInput.cs
+=========================================
+using UnityEngine;
+
+public interface IPlayerInput
+{
+    Vector2 MoveInput { get; }
+
+    bool InteractPressed { get; }
+
+    bool HidePressed { get; }
+
+    bool JumpPressed { get; }
+
+    bool AttackHeld { get; }
+}
+
+=========================================
+File: IRespawnable.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Interfaces\IRespawnable.cs
+=========================================
+using UnityEngine;
+
+public interface IRespawnable
+{
+    void Respawn(Vector3 position);
+}
+
+=========================================
+File: ISanity.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Interfaces\ISanity.cs
+=========================================
+public interface ISanity
+{
+    float CurrentSanity { get; }
+    float MaxSanity { get; }
+    bool IsDepleted { get; }
+
+    void Drain(float amount);
+    void Restore(float amount);
+    void RestoreFull();
+}
+
+=========================================
+File: PlayerAnimator.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Player\PlayerAnimator.cs
+=========================================
+
+
+=========================================
+File: PlayerController.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Player\PlayerController.cs
+=========================================
+using UnityEngine;
+
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(PlayerInputReader))]
+[RequireComponent(typeof(PlayerMovement))]
+[RequireComponent(typeof(PlayerStateController))]
+public class PlayerController : MonoBehaviour
+{
+    [SerializeField] private PlayerStatsSO stats;
+
+    private PlayerInputReader inputReader;
+    private PlayerMovement movement;
+    private PlayerStateController stateController;
+
+    public PlayerStatsSO Stats => stats;
+    public IPlayerInput Input => inputReader;
+    public PlayerState State => stateController.CurrentState;
+
+    private void Awake()
+    {
+        inputReader = GetComponent<PlayerInputReader>();
+        movement = GetComponent<PlayerMovement>();
+        stateController = GetComponent<PlayerStateController>();
+    }
+
+    public void SetMovementEnabled(bool enabled)
+    {
+        if (!enabled)
+        {
+            movement.StopMovement();
+        }
+    }
+}
+
+=========================================
+File: PlayerDeath.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Player\PlayerDeath.cs
+=========================================
+using UnityEngine;
+
+public class PlayerDeath : MonoBehaviour
+{
+    public bool IsDead { get; private set; }
+
+    public void Die()
+    {
+        if (IsDead)
+        {
+            return;
+        }
+
+        IsDead = true;
+    }
+
+    public void Revive()
+    {
+        IsDead = false;
+    }
+}
+
+=========================================
+File: PlayerDeathHandler.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Player\PlayerDeathHandler.cs
+=========================================
+using UnityEngine;
+
+public class PlayerDeathHandler : MonoBehaviour
+{
+    [Header("References")]
+    [SerializeField] private PlayerDeath playerDeath;
+    [SerializeField] private PlayerRespawn playerRespawn;
+    [SerializeField] private PlayerLife playerLife;
+    [SerializeField] private SanityController sanityController;
+
+    private void Awake()
+    {
+        if (playerDeath == null)
+        {
+            playerDeath = GetComponent<PlayerDeath>();
+        }
+
+        if (playerRespawn == null)
+        {
+            playerRespawn = GetComponent<PlayerRespawn>();
+        }
+
+        if (playerLife == null)
+        {
+            playerLife = GetComponent<PlayerLife>();
+        }
+
+        if (sanityController == null)
+        {
+            sanityController = GetComponent<SanityController>();
+        }
+    }
+
+    private void Update()
+    {
+        if (GameOverManager.Instance != null &&
+            GameOverManager.Instance.IsGameOver)
+        {
+            return;
+        }
+
+        // DEBUG DEATH
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            HandleDeath();
+            return;
+        }
+
+        // SANITY DEPLETED
+        if (sanityController != null &&
+            sanityController.IsDepleted)
+        {
+            HandleDeath();
+        }
+    }
+
+    public void HandleDeath()
+    {
+        if (playerDeath == null ||
+            playerLife == null ||
+            playerDeath.IsDead)
+        {
+            return;
+        }
+
+        bool canRespawn = playerLife.ConsumeAttempt();
+
+        Debug.Log(
+            $"[Player Death] Attempt tersisa: {playerLife.Attempts}",
+            this
+        );
+
+        playerDeath.Die();
+
+        if (!canRespawn)
+        {
+            Debug.Log(
+                "[Player Death] Attempt habis â†’ GAME OVER",
+                this
+            );
+
+            GameOver();
+            return;
+        }
+
+        Debug.Log(
+            "[Player Death] Masih ada attempt â†’ RESPAWN",
+            this
+        );
+
+        Respawn();
+    }
+
+    private void Respawn()
+    {
+        if (playerRespawn == null)
+        {
+            return;
+        }
+
+        playerRespawn.Respawn();
+
+        if (sanityController != null)
+        {
+            sanityController.RestoreFullSanity();
+        }
+
+        playerDeath.Revive();
+
+        Debug.Log(
+            $"[Player Respawn] Berhasil respawn | Attempt tersisa: {playerLife.Attempts}",
+            this
+        );
+    }
+
+    private void GameOver()
+    {
+        if (GameOverManager.Instance == null)
+        {
+            Debug.LogWarning(
+                "[Player Death] GameOverManager tidak ditemukan.",
+                this
+            );
+
+            return;
+        }
+
+        GameOverManager.Instance.TriggerGameOver();
+    }
+}
+
+=========================================
+File: PlayerInputReader.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Player\PlayerInputReader.cs
+=========================================
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class PlayerInputReader : MonoBehaviour, IPlayerInput
+{
+    [SerializeField] private InputActionReference moveAction;
+    [SerializeField] private InputActionReference interactAction;
+    [SerializeField] private InputActionReference hideAction;
+    [SerializeField] private InputActionReference jumpAction;
+    [SerializeField] private InputActionReference crouchAction;
+    [SerializeField] private InputActionReference attackAction;
+
+    public Vector2 MoveInput { get; private set; }
+
+    public bool InteractPressed { get; private set; }
+    public bool HidePressed { get; private set; }
+    public bool JumpPressed { get; private set; }
+
+    public bool InteractHeld { get; private set; }
+    public bool HideHeld { get; private set; }
+    public bool CrouchHeld { get; private set; }
+    public bool AttackHeld { get; private set; }
+
+    // Baca langsung dari action â€” lebih reliable dari callback untuk cek "sedang ditahan"
+    public bool IsInteractHeld => interactAction != null && interactAction.action.IsPressed();
+
+    private void OnEnable()
+    {
+        EnableActions();
+        SubscribeActions();
+    }
+
+    private void OnDisable()
+    {
+        UnsubscribeActions();
+        DisableActions();
+
+        MoveInput = Vector2.zero;
+
+        InteractPressed = false;
+        HidePressed = false;
+        JumpPressed = false;
+
+        InteractHeld = false;
+        HideHeld = false;
+        CrouchHeld = false;
+        AttackHeld = false;
+    }
+
+    private void Update()
+    {
+        MoveInput = moveAction != null
+            ? moveAction.action.ReadValue<Vector2>()
+            : Vector2.zero;
+    }
+
+    private void EnableActions()
+    {
+        moveAction?.action.Enable();
+        interactAction?.action.Enable();
+        hideAction?.action.Enable();
+        jumpAction?.action.Enable();
+        crouchAction?.action.Enable();
+        attackAction?.action.Enable();
+    }
+
+    private void DisableActions()
+    {
+        moveAction?.action.Disable();
+        interactAction?.action.Disable();
+        hideAction?.action.Disable();
+        jumpAction?.action.Disable();
+        crouchAction?.action.Disable();
+        attackAction?.action.Disable();
+    }
+
+    private void SubscribeActions()
+    {
+        if (interactAction != null)
+        {
+            interactAction.action.performed += OnInteractPerformed;
+            interactAction.action.canceled  += OnInteractCanceled;
+        }
+
+        if (hideAction != null)
+        {
+            hideAction.action.performed += OnHidePerformed;
+            hideAction.action.canceled += OnHideCanceled;
+        }
+
+        if (jumpAction != null)
+        {
+            jumpAction.action.performed += OnJumpPerformed;
+        }
+
+        if (crouchAction != null)
+        {
+            crouchAction.action.performed += OnCrouchPerformed;
+            crouchAction.action.canceled += OnCrouchCanceled;
+        }
+
+        if (attackAction != null)
+        {
+            attackAction.action.performed += OnAttackPerformed;
+            attackAction.action.canceled += OnAttackCanceled;
+        }
+    }
+
+    private void UnsubscribeActions()
+    {
+        if (interactAction != null)
+        {
+            interactAction.action.performed -= OnInteractPerformed;
+            interactAction.action.canceled  -= OnInteractCanceled;
+        }
+
+        if (hideAction != null)
+        {
+            hideAction.action.performed -= OnHidePerformed;
+            hideAction.action.canceled -= OnHideCanceled;
+        }
+
+        if (jumpAction != null)
+        {
+            jumpAction.action.performed -= OnJumpPerformed;
+        }
+
+        if (crouchAction != null)
+        {
+            crouchAction.action.performed -= OnCrouchPerformed;
+            crouchAction.action.canceled -= OnCrouchCanceled;
+        }
+
+        if (attackAction != null)
+        {
+            attackAction.action.performed -= OnAttackPerformed;
+            attackAction.action.canceled -= OnAttackCanceled;
+        }
+    }
+
+    private void OnInteractPerformed(InputAction.CallbackContext context)
+    {
+        InteractPressed = true;
+        InteractHeld = true;
+    }
+
+    private void OnInteractCanceled(InputAction.CallbackContext context)
+    {
+        InteractHeld = false;
+    }
+
+    private void OnHidePerformed(InputAction.CallbackContext context)
+    {
+        HidePressed = true;
+        HideHeld = true;
+    }
+
+    private void OnHideCanceled(InputAction.CallbackContext context)
+    {
+        HideHeld = false;
+    }
+
+    private void OnJumpPerformed(InputAction.CallbackContext context)
+    {
+        JumpPressed = true;
+    }
+
+    private void OnCrouchPerformed(InputAction.CallbackContext context)
+    {
+        CrouchHeld = true;
+    }
+
+    private void OnCrouchCanceled(InputAction.CallbackContext context)
+    {
+        CrouchHeld = false;
+    }
+
+    private void OnAttackPerformed(InputAction.CallbackContext context)
+    {
+        AttackHeld = true;
+    }
+
+    private void OnAttackCanceled(InputAction.CallbackContext context)
+    {
+        AttackHeld = false;
+    }
+
+    private void LateUpdate()
+    {
+        InteractPressed = false;
+        HidePressed = false;
+        JumpPressed = false;
+        // InteractHeld TIDAK di-reset di sini â€” di-reset saat tombol dilepas (OnInteractCanceled)
+    }
+}
+
+=========================================
+File: PlayerInteraction.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Player\PlayerInteraction.cs
+=========================================
+using UnityEngine;
+
+public class PlayerInteraction : MonoBehaviour
+{
+    [SerializeField] private PlayerStatsSO stats;
+    [SerializeField] private PlayerInputReader inputReader;
+    [SerializeField] private PlayerStateController stateController;
+    [SerializeField] private LayerMask interactableLayer;
+
+    private IInteractable currentInteractable;
+
+    public IInteractable CurrentInteractable => currentInteractable;
+
+    private void Awake()
+    {
+        if (inputReader == null)
+        {
+            inputReader = GetComponent<PlayerInputReader>();
+        }
+
+        if (stateController == null)
+        {
+            stateController = GetComponent<PlayerStateController>();
+        }
+    }
+
+    private void Update()
+    {
+        DetectInteractable();
+
+        if (inputReader == null)
+        {
+            return;
+        }
+
+        if (inputReader.InteractPressed)
+        {
+            TryInteract();
+        }
+    }
+
+    private void DetectInteractable()
+    {
+        currentInteractable = null;
+
+        if (stats == null)
+        {
+            return;
+        }
+
+        if (stateController != null && !stateController.CanInteract())
+        {
+            return;
+        }
+
+        Collider2D[] results = Physics2D.OverlapCircleAll(
+            transform.position,
+            stats.InteractionRange,
+            interactableLayer
+        );
+
+        float closestDistance = float.MaxValue;
+
+        foreach (Collider2D result in results)
+        {
+            IInteractable interactable = result.GetComponentInParent<IInteractable>();
+
+            if (interactable == null)
+            {
+                continue;
+            }
+
+            if (!interactable.CanInteract(gameObject))
+            {
+                continue;
+            }
+
+            float distance = Vector2.Distance(
+                transform.position,
+                result.transform.position
+            );
+
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                currentInteractable = interactable;
+            }
+        }
+    }
+
+    private void TryInteract()
+    {
+        if (currentInteractable == null)
+        {
+            return;
+        }
+
+        if (!currentInteractable.CanInteract(gameObject))
+        {
+            return;
+        }
+
+        stateController?.EnterInteraction();
+
+        currentInteractable.Interact(gameObject);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (stats == null)
+        {
+            return;
+        }
+
+        Gizmos.DrawWireSphere(
+            transform.position,
+            stats.InteractionRange
+        );
+    }
+}
+
+=========================================
+File: PlayerJump.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Player\PlayerJump.cs
+=========================================
+using UnityEngine;
+
+public class PlayerJump : MonoBehaviour
+{
+    [SerializeField] private PlayerStatsSO stats;
+    [SerializeField] private PlayerInputReader inputReader;
+    [SerializeField] private PlayerStateController stateController;
+    [SerializeField] private Transform visual;
+
+    private Vector3 visualStartPosition;
+
+    private bool isJumping;
+    private float jumpTimer;
+    private float cooldownTimer;
+
+    public bool IsJumping => isJumping;
+
+    private void Awake()
+    {
+        if (inputReader == null)
+        {
+            inputReader = GetComponent<PlayerInputReader>();
+        }
+
+        if (stateController == null)
+        {
+            stateController = GetComponent<PlayerStateController>();
+        }
+
+        if (visual != null)
+        {
+            visualStartPosition = visual.localPosition;
+        }
+    }
+
+    private void Update()
+    {
+        if (stats == null || inputReader == null || visual == null)
+        {
+            return;
+        }
+
+        UpdateCooldown();
+
+        if (!isJumping)
+        {
+            TryStartJump();
+            return;
+        }
+
+        UpdateJump();
+    }
+
+    private void TryStartJump()
+    {
+        if (!inputReader.JumpPressed)
+        {
+            return;
+        }
+
+        if (cooldownTimer > 0f)
+        {
+            return;
+        }
+
+        if (stateController != null && !stateController.CanMove())
+        {
+            return;
+        }
+
+        StartJump();
+    }
+
+    private void StartJump()
+    {
+        isJumping = true;
+        jumpTimer = 0f;
+    }
+
+    private void UpdateJump()
+    {
+        jumpTimer += Time.deltaTime;
+
+        float normalizedTime = jumpTimer / stats.JumpDuration;
+        normalizedTime = Mathf.Clamp01(normalizedTime);
+
+        float height = Mathf.Sin(normalizedTime * Mathf.PI)
+                       * stats.JumpHeight;
+
+        Vector3 position = visualStartPosition;
+        position.y += height;
+
+        visual.localPosition = position;
+
+        if (normalizedTime >= 1f)
+        {
+            FinishJump();
+        }
+    }
+
+    private void FinishJump()
+    {
+        isJumping = false;
+        jumpTimer = 0f;
+        cooldownTimer = stats.JumpCooldown;
+
+        visual.localPosition = visualStartPosition;
+    }
+
+    private void UpdateCooldown()
+    {
+        if (cooldownTimer <= 0f)
+        {
+            return;
+        }
+
+        cooldownTimer -= Time.deltaTime;
+    }
+}
+
+=========================================
+File: PlayerLanternAttack.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Player\PlayerLanternAttack.cs
+=========================================
+using UnityEngine;
+
+public class PlayerLanternAttack : MonoBehaviour
+{
+    [Header("Lantern")]
+    [SerializeField] private GameObject lanternObject;
+
+    private IPlayerInput input;
+    private float originalLocalX;
+    private bool lastFacingRight = true;
+
+    private void Awake()
+    {
+        input = GetComponent<IPlayerInput>();
+
+        if (input == null)
+            Debug.LogError("[PlayerLanternAttack] IPlayerInput tidak ditemukan!");
+
+        if (lanternObject != null)
+        {
+            originalLocalX = lanternObject.transform.localPosition.x;
+            lanternObject.SetActive(false);
+        }
+    }
+
+    private void Update()
+    {
+        UpdateFacingDirection();
+
+        if (lanternObject != null)
+            lanternObject.SetActive(input.AttackHeld);
+    }
+
+    private void UpdateFacingDirection()
+    {
+        float moveX = input.MoveInput.x;
+
+        if (moveX > 0.01f)
+            lastFacingRight = true;
+        else if (moveX < -0.01f)
+            lastFacingRight = false;
+
+        if (lanternObject != null)
+        {
+            Vector3 localPos = lanternObject.transform.localPosition;
+            localPos.x = lastFacingRight ? Mathf.Abs(originalLocalX) : -Mathf.Abs(originalLocalX);
+            lanternObject.transform.localPosition = localPos;
+        }
+    }
+}
+
+
+=========================================
+File: PlayerLife.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Player\PlayerLife.cs
+=========================================
+using UnityEngine;
+
+public class PlayerLife : MonoBehaviour
+{
+    [SerializeField] private int startingAttempts = 3;
+
+    public int Attempts { get; private set; }
+
+    private void Awake()
+    {
+        Attempts = startingAttempts;
+    }
+
+    public bool ConsumeAttempt()
+    {
+        if (Attempts <= 0) return false;
+
+        Attempts--;
+
+        return Attempts > 0;
+    }
+
+    public void ResetAttempts()
+    {
+        Attempts = startingAttempts;
+    }
+}
+
+=========================================
+File: PlayerMovement.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Player\PlayerMovement.cs
+=========================================
+using UnityEngine;
+
+[RequireComponent(typeof(Rigidbody2D))]
+public class PlayerMovement : MonoBehaviour
+{
+    [SerializeField] private PlayerStatsSO stats;
+    [SerializeField] private PlayerInputReader inputReader;
+    [SerializeField] private PlayerStateController stateController;
+    [SerializeField] private PlayerStealth stealth;
+
+    private Rigidbody2D rb;
+    private Vector2 currentVelocity;
+    private float dragMultiplier = 1f;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+
+        if (inputReader == null)
+        {
+            inputReader = GetComponent<PlayerInputReader>();
+        }
+
+        if (stateController == null)
+        {
+            stateController = GetComponent<PlayerStateController>();
+        }
+
+        if (stealth == null)
+        {
+            stealth = GetComponent<PlayerStealth>();
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (stats == null || inputReader == null)
+        {
+            return;
+        }
+
+        if (stateController != null && !stateController.CanMove())
+        {
+            StopMovement();
+            return;
+        }
+
+        Vector2 input = Vector2.ClampMagnitude(
+            inputReader.MoveInput,
+            1f
+        );
+
+        if (stateController != null)
+        {
+            stateController.UpdateMovementState(input);
+        }
+
+        float movementMultiplier = (stealth != null ? stealth.MovementMultiplier : 1f) * dragMultiplier;
+
+        Vector2 targetVelocity = input * stats.MoveSpeed * movementMultiplier;
+
+        float accelerationRate = input.sqrMagnitude > 0f ? stats.Acceleration : stats.Deceleration;
+
+        currentVelocity = Vector2.MoveTowards(currentVelocity, targetVelocity, accelerationRate * Time.fixedDeltaTime);
+
+        rb.linearVelocity = currentVelocity;
+    }
+
+    public void SetDragMultiplier(float multiplier)
+    {
+        dragMultiplier = Mathf.Clamp(multiplier, 0.05f, 1f);
+    }
+
+    public void StopMovement()
+    {
+        currentVelocity = Vector2.zero;
+        rb.linearVelocity = Vector2.zero;
+    }
+}
+
+=========================================
+File: PlayerRespawn.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Player\PlayerRespawn.cs
+=========================================
+using UnityEngine;
+
+public class PlayerRespawn : MonoBehaviour
+{
+    [SerializeField] private Transform respawnPoint;
+    [SerializeField] private PlayerDeath playerDeath;
+
+    private Rigidbody2D rb;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+
+        if (playerDeath == null)
+            playerDeath = GetComponent<PlayerDeath>();
+    }
+
+    public void Respawn()
+    {
+        if (respawnPoint == null || playerDeath == null) return;
+
+        transform.position = respawnPoint.position;
+
+        if (rb != null)
+            rb.linearVelocity = Vector2.zero;
+
+        playerDeath.Revive();
+    }
+}
+
+=========================================
+File: PlayerState.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Player\PlayerState.cs
+=========================================
+public enum PlayerState
+{
+    Idle,
+    Walk,
+    Hide,
+    Interact,
+    Dead
+}
+
+=========================================
+File: PlayerStateController.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Player\PlayerStateController.cs
+=========================================
+using UnityEngine;
+
+public class PlayerStateController : MonoBehaviour
+{
+    [SerializeField] private PlayerState currentState = PlayerState.Idle;
+    [SerializeField] private SanityController sanityController;
+
+    public PlayerState CurrentState => currentState;
+
+    public bool IsSanityDepleted =>
+        sanityController != null &&
+        sanityController.IsDepleted;
+
+    public bool IsMovementLocked =>
+        currentState == PlayerState.Interact ||
+        currentState == PlayerState.Hide ||
+        currentState == PlayerState.Dead ||
+        IsSanityDepleted;
+
+    public bool IsAlive =>
+        currentState != PlayerState.Dead;
+
+    private void Awake()
+    {
+        if (sanityController == null)
+            sanityController = GetComponent<SanityController>();
+    }
+
+    public void SetState(PlayerState newState)
+    {
+        if (currentState == newState)
+            return;
+
+        currentState = newState;
+    }
+
+    public bool CanMove()
+    {
+        return !IsMovementLocked;
+    }
+
+    public bool CanInteract()
+    {
+        return currentState != PlayerState.Dead &&
+               currentState != PlayerState.Hide &&
+               !IsSanityDepleted;
+    }
+
+    public bool CanHide()
+    {
+        return currentState != PlayerState.Dead &&
+               currentState != PlayerState.Interact &&
+               !IsSanityDepleted;
+    }
+
+    public void UpdateMovementState(Vector2 movementInput)
+    {
+        if (IsMovementLocked)
+            return;
+
+        if (movementInput.sqrMagnitude > 0.01f)
+            SetState(PlayerState.Walk);
+        else
+            SetState(PlayerState.Idle);
+    }
+
+    public void EnterInteraction()
+    {
+        if (!CanInteract())
+            return;
+
+        SetState(PlayerState.Interact);
+    }
+
+    public void ExitInteraction()
+    {
+        if (CurrentState == PlayerState.Interact)
+            SetState(PlayerState.Idle);
+    }
+}
+
+=========================================
+File: PlayerStatsSO.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Player\PlayerStatsSO.cs
+=========================================
+using UnityEngine;
+
+[CreateAssetMenu(
+    fileName = "PlayerStats_Inara",
+    menuName = "The Day After/Player/Player Stats"
+)]
+public class PlayerStatsSO : ScriptableObject
+{
+    [Header("Movement")]
+    [SerializeField] private float moveSpeed = 4f;
+    [SerializeField] private float acceleration = 20f;
+    [SerializeField] private float deceleration = 25f;
+
+    [Header("Jump")]
+    [SerializeField] private float jumpHeight = 0.75f;
+    [SerializeField] private float jumpDuration = 0.5f;
+    [SerializeField] private float jumpCooldown = 0.1f;
+
+    [Header("Stealth")]
+    [SerializeField] private float hideTransitionDuration = 0.2f;
+    [SerializeField] private float hideCooldown = 0.25f;
+
+    [SerializeField] private float crouchSpeedMultiplier = 0.5f;
+    [SerializeField] private float crouchStealthMultiplier = 0.5f;
+    [SerializeField] private float hideStealthMultiplier = 0f;
+
+    [Header("Sanity")]
+    [SerializeField] private float maxSanity = 100f;
+    [SerializeField] private float sanityRecoveryRate = 25f;
+    [SerializeField] private float sanityDrainRate = 5f;
+
+    [SerializeField, Range(0f, 1f)]
+    private float unstableSanityThreshold = 0.7f;
+
+    [SerializeField, Range(0f, 1f)]
+    private float criticalSanityThreshold = 0.3f;
+
+    [Header("Interaction")]
+    [SerializeField] private float interactionRange = 1.5f;
+
+    public float MoveSpeed => moveSpeed;
+    public float Acceleration => acceleration;
+    public float Deceleration => deceleration;
+
+    public float JumpHeight => jumpHeight;
+    public float JumpDuration => jumpDuration;
+    public float JumpCooldown => jumpCooldown;
+
+    public float HideTransitionDuration => hideTransitionDuration;
+    public float HideCooldown => hideCooldown;
+
+    public float CrouchStealthMultiplier => crouchStealthMultiplier;
+    public float HideStealthMultiplier => hideStealthMultiplier;
+
+    public float CrouchSpeedMultiplier => crouchSpeedMultiplier;
+
+    public float MaxSanity => maxSanity;
+    public float SanityRecoveryRate => sanityRecoveryRate;
+    public float SanityDrainRate => sanityDrainRate;
+
+    public float UnstableSanityThreshold => unstableSanityThreshold;
+    public float CriticalSanityThreshold => criticalSanityThreshold;
+
+    public float InteractionRange => interactionRange;
+}
+
+=========================================
+File: PlayerStealth.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Player\PlayerStealth.cs
+=========================================
+using UnityEngine;
+
+public class PlayerStealth : MonoBehaviour
+{
+    [SerializeField] private PlayerStatsSO stats;
+    [SerializeField] private PlayerInputReader inputReader;
+    [SerializeField] private PlayerStateController stateController;
+
+    private HideSpot currentHideSpot;
+
+    public bool IsCrouching { get; private set; }
+    public bool IsHidden { get; private set; }
+
+    public HideSpot CurrentHideSpot => currentHideSpot;
+
+    public bool CanHideAtCurrentSpot =>
+        currentHideSpot != null &&
+        currentHideSpot.CanHide;
+
+    public float MovementMultiplier =>
+        IsCrouching && stats != null
+            ? stats.CrouchSpeedMultiplier
+            : 1f;
+
+    public float StealthMultiplier
+    {
+        get
+        {
+            if (stats == null)
+            {
+                return 1f;
+            }
+
+            if (IsHidden)
+            {
+                return stats.HideStealthMultiplier;
+            }
+
+            if (IsCrouching)
+            {
+                return stats.CrouchStealthMultiplier;
+            }
+
+            return 1f;
+        }
+    }
+
+    private void Awake()
+    {
+        if (stats == null)
+        {
+            PlayerController playerController = GetComponent<PlayerController>();
+
+            if (playerController != null)
+            {
+                stats = playerController.Stats;
+            }
+        }
+
+        if (inputReader == null)
+        {
+            inputReader = GetComponent<PlayerInputReader>();
+        }
+
+        if (stateController == null)
+        {
+            stateController = GetComponent<PlayerStateController>();
+        }
+    }
+
+    private void Update()
+    {
+        if (inputReader == null || stateController == null)
+        {
+            return;
+        }
+
+        UpdateCrouch();
+        UpdateHide();
+    }
+
+    private void UpdateCrouch()
+    {
+        if (IsHidden)
+        {
+            return;
+        }
+
+        IsCrouching = inputReader.CrouchHeld;
+    }
+
+    private void UpdateHide()
+    {
+        if (IsHidden)
+        {
+            if (!inputReader.HideHeld)
+            {
+                ExitHide();
+            }
+
+            return;
+        }
+
+        if (!inputReader.HideHeld)
+        {
+            return;
+        }
+
+        if (!IsCrouching)
+        {
+            return;
+        }
+
+        if (!CanHideAtCurrentSpot)
+        {
+            return;
+        }
+
+        if (!stateController.CanHide())
+        {
+            return;
+        }
+
+        EnterHide();
+    }
+
+    private void EnterHide()
+    {
+        if (currentHideSpot == null)
+        {
+            return;
+        }
+
+        Transform hidePoint = currentHideSpot.HidePoint;
+
+        if (hidePoint == null)
+        {
+            return;
+        }
+
+        transform.position = hidePoint.position;
+
+        IsHidden = true;
+
+        stateController.SetState(PlayerState.Hide);
+    }
+
+    private void ExitHide()
+    {
+        IsHidden = false;
+
+        if (stateController.CurrentState == PlayerState.Hide)
+        {
+            stateController.SetState(PlayerState.Idle);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        HideSpot hideSpot = other.GetComponentInParent<HideSpot>();
+
+        if (hideSpot == null)
+        {
+            return;
+        }
+
+        currentHideSpot = hideSpot;
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        HideSpot hideSpot = other.GetComponentInParent<HideSpot>();
+
+        if (hideSpot == null)
+        {
+            return;
+        }
+
+        if (currentHideSpot == hideSpot)
+        {
+            currentHideSpot = null;
+        }
+    }
+}
+
+=========================================
+File: DraggableObject.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Puzzle\DraggableObject.cs
+=========================================
+using UnityEngine;
+
+/// <summary>
+/// Pasang script ini di meja (objek 'E').
+/// Meja TIDAK bisa disenggol/didorong oleh physics (Kinematic by default).
+/// Player harus TAHAN tombol Interact â†’ meja mengikuti player.
+/// Lepas tombol â†’ meja berhenti di tempat.
+///
+/// Setup:
+/// 1. Rigidbody2D â†’ Body Type: Kinematic, Freeze Rotation Z
+/// 2. BoxCollider2D
+/// 3. Layer: PuzzleObstacle
+/// 4. Assign playerInputReader di Inspector (atau otomatis dari Player GameObject)
+/// </summary>
+[RequireComponent(typeof(Rigidbody2D))]
+public class DraggableObject : InteractableBase
+{
+    [Header("References")]
+    [SerializeField] private PlayerInputReader playerInputReader;
+
+    [Header("Drag Settings")]
+    [Tooltip("Multiplier kecepatan player saat menarik/mendorong meja (misal 0.5 = 50% kecepatan normal)")]
+    [SerializeField, Range(0.1f, 1f)] private float dragSpeedMultiplier = 0.5f;
+    [Tooltip("Penyesuaian offset jarak tempel (misal: -0.1 jika ingin sprite meja sedikit overlap/lebih masuk ke player)")]
+    [SerializeField] private float snapOffsetAdjustment = 0f;
+    [Tooltip("Jika true, meja hanya bisa digeser di sumbu X saja")]
+    [SerializeField] private bool lockYAxis = true;
+
+    private Rigidbody2D rb;
+    private Collider2D[] objectColliders;
+    private Collider2D[] holderColliders;
+    private PlayerMovement playerMovement;
+    private bool isBeingDragged = false;
+    private GameObject currentHolder;
+    private Vector2 dragOffset;
+    private float lockedY;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        objectColliders = GetComponentsInChildren<Collider2D>();
+        lockedY = transform.position.y;
+
+        // Kinematic by default: tidak bisa disenggol / didorong physics
+        rb.bodyType = RigidbodyType2D.Kinematic;
+        rb.gravityScale = 0f;
+    }
+
+    private void OnDisable()
+    {
+        if (isBeingDragged)
+        {
+            ReleaseDrag();
+        }
+    }
+
+    private void Update()
+    {
+        if (!isBeingDragged || currentHolder == null)
+            return;
+
+        bool held = playerInputReader != null && (playerInputReader.InteractHeld || playerInputReader.IsInteractHeld);
+
+        // Lepas meja jika tombol E sudah tidak ditahan
+        if (!held)
+        {
+            ReleaseDrag();
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (!isBeingDragged || currentHolder == null)
+            return;
+
+        // Target posisi selalu menempel rapat persis di sisi player
+        Vector2 targetPos = (Vector2)currentHolder.transform.position + dragOffset;
+
+        if (lockYAxis)
+            targetPos.y = lockedY;
+
+        // MovePosition langsung tanpa lerp agar meja tidak tertinggal / tidak berjarak saat player bergerak
+        rb.MovePosition(targetPos);
+    }
+
+    public override void Interact(GameObject interactor)
+    {
+        // Dipanggil saat tombol Interact pertama kali ditekan (pressed)
+        if (isBeingDragged)
+            return;
+
+        // Cari PlayerInputReader dari interactor jika belum di-assign
+        if (playerInputReader == null)
+            playerInputReader = interactor.GetComponent<PlayerInputReader>();
+
+        if (playerInputReader == null)
+        {
+            Debug.LogError("[DraggableObject] PlayerInputReader tidak ditemukan! Assign manual di Inspector.");
+            return;
+        }
+
+        StartDrag(interactor);
+    }
+
+    private void StartDrag(GameObject holder)
+    {
+        isBeingDragged = true;
+        currentHolder = holder;
+        lockedY = transform.position.y;
+        rb.linearVelocity = Vector2.zero;
+
+        // Ambil collider dan nonaktifkan tabrakan fisik player & meja selama di-drag
+        holderColliders = holder.GetComponentsInChildren<Collider2D>();
+        SetIgnoreCollisionWithHolder(true);
+
+        // Tentukan sisi meja relatif terhadap player (+1 = kanan, -1 = kiri)
+        float side = (transform.position.x >= holder.transform.position.x) ? 1f : -1f;
+
+        // Cari collider fisik utama (non-trigger) dari player dan meja
+        Collider2D playerCol = GetMainPhysicalCollider(holderColliders);
+        Collider2D deskCol = GetMainPhysicalCollider(objectColliders);
+
+        float calculatedOffsetX = 0f;
+
+        if (playerCol != null && deskCol != null)
+        {
+            if (side > 0)
+            {
+                // Meja di sebelah kanan player: tempelkan ujung kiri collider meja ke ujung kanan collider player
+                float playerRightDist = playerCol.bounds.max.x - holder.transform.position.x;
+                float deskLeftDist = transform.position.x - deskCol.bounds.min.x;
+                calculatedOffsetX = playerRightDist + deskLeftDist + snapOffsetAdjustment;
+            }
+            else
+            {
+                // Meja di sebelah kiri player: tempelkan ujung kanan collider meja ke ujung kiri collider player
+                float playerLeftDist = holder.transform.position.x - playerCol.bounds.min.x;
+                float deskRightDist = deskCol.bounds.max.x - transform.position.x;
+                calculatedOffsetX = -(playerLeftDist + deskRightDist + snapOffsetAdjustment);
+            }
+        }
+        else
+        {
+            // Fallback jika tidak ada collider
+            calculatedOffsetX = side * 1.0f;
+        }
+
+        dragOffset = new Vector2(calculatedOffsetX, 0f);
+
+        // Langsung posisikan meja menempel rapat seketika
+        Vector2 startTargetPos = (Vector2)holder.transform.position + dragOffset;
+        if (lockYAxis)
+            startTargetPos.y = lockedY;
+
+        rb.position = startTargetPos;
+        transform.position = startTargetPos;
+
+        // Kurangi kecepatan gerak player saat memegang meja (simulasi berat meja)
+        playerMovement = holder.GetComponent<PlayerMovement>();
+        playerMovement?.SetDragMultiplier(dragSpeedMultiplier);
+
+        // Langsung keluar dari state Interact agar player tetap bisa bergerak bebas
+        PlayerStateController stateController = holder.GetComponent<PlayerStateController>();
+        stateController?.ExitInteraction();
+
+        Debug.Log($"[DraggableObject] Mulai memegang {gameObject.name} (Offset X: {calculatedOffsetX})");
+    }
+
+    private Collider2D GetMainPhysicalCollider(Collider2D[] cols)
+    {
+        if (cols == null || cols.Length == 0)
+            return null;
+
+        // Prioritaskan collider yang BUKAN trigger
+        foreach (var col in cols)
+        {
+            if (col != null && !col.isTrigger)
+                return col;
+        }
+
+        return cols[0];
+    }
+
+    private void ReleaseDrag()
+    {
+        if (!isBeingDragged)
+            return;
+
+        isBeingDragged = false;
+
+        // Kembalikan kecepatan gerak normal player
+        playerMovement?.SetDragMultiplier(1f);
+        playerMovement = null;
+
+        // Aktifkan kembali tabrakan fisik antara meja dan player
+        SetIgnoreCollisionWithHolder(false);
+
+        PlayerStateController stateController = currentHolder?.GetComponent<PlayerStateController>();
+        stateController?.ExitInteraction();
+
+        currentHolder = null;
+        holderColliders = null;
+
+        Debug.Log($"[DraggableObject] Meja dilepas di posisi {transform.position}");
+    }
+
+    private void SetIgnoreCollisionWithHolder(bool ignore)
+    {
+        if (objectColliders == null || holderColliders == null)
+            return;
+
+        foreach (var objCol in objectColliders)
+        {
+            if (objCol == null) continue;
+            foreach (var hCol in holderColliders)
+            {
+                if (hCol == null) continue;
+                Physics2D.IgnoreCollision(objCol, hCol, ignore);
+            }
+        }
+    }
+
+    public bool IsBeingDragged => isBeingDragged;
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = isBeingDragged ? Color.green : Color.cyan;
+        Gizmos.DrawWireCube(transform.position, Vector3.one * 0.2f);
+    }
+}
+
+
+
+
+=========================================
+File: FlickeringLight.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Puzzle\FlickeringLight.cs
+=========================================
+using UnityEngine;
+using UnityEngine.Rendering.Universal; // Untuk Light2D (URP)
+
+/// <summary>
+/// Pasang script ini di GameObject lampu berkedip.
+/// Menganimasikan intensitas Light2D dengan efek flicker realistis.
+///
+/// Setup:
+/// 1. Tambahkan komponen Light2D (URP) di GameObject yang sama
+/// 2. Atur MinIntensity, MaxIntensity, FlickerSpeed sesuai kebutuhan
+///
+/// Catatan: Jika tidak pakai URP Light2D, ganti Light2D dengan SpriteRenderer
+/// dan animasikan alpha/color-nya.
+/// </summary>
+public class FlickeringLight : MonoBehaviour
+{
+    [Header("Light Reference")]
+    [SerializeField] private Light2D light2D;
+
+    [Header("Flicker Settings")]
+    [SerializeField] private float minIntensity = 0.6f;
+    [SerializeField] private float maxIntensity = 1.4f;
+    [SerializeField] private float flickerSpeed = 8f;
+    [Tooltip("Seberapa acak flicker-nya (0 = smooth sine, 1 = sangat random)")]
+    [SerializeField, Range(0f, 1f)] private float randomness = 0.4f;
+
+    private float noiseOffset;
+    private float baseIntensity;
+
+    private void Awake()
+    {
+        if (light2D == null)
+            light2D = GetComponent<Light2D>();
+
+        // Random offset agar setiap lampu berbeda phase-nya
+        noiseOffset = Random.Range(0f, 100f);
+
+        if (light2D != null)
+            baseIntensity = light2D.intensity;
+    }
+
+    private void Update()
+    {
+        if (light2D == null)
+            return;
+
+        // Gabungkan sine wave + perlin noise untuk efek flicker alami
+        float sineWave = Mathf.Sin(Time.time * flickerSpeed + noiseOffset);
+        float perlinNoise = Mathf.PerlinNoise(Time.time * flickerSpeed * 0.5f + noiseOffset, 0f);
+
+        float blended = Mathf.Lerp(sineWave * 0.5f + 0.5f, perlinNoise, randomness);
+        light2D.intensity = Mathf.Lerp(minIntensity, maxIntensity, blended);
+    }
+
+    /// <summary>
+    /// Posisi dunia dari lampu ini (digunakan oleh ShadowRaycastChecker)
+    /// </summary>
+    public Vector2 LightPosition => transform.position;
+}
+
+
+=========================================
+File: Lever.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Puzzle\Lever.cs
+=========================================
+using System.Collections;
+using UnityEngine;
+
+/// <summary>
+/// Script untuk Tuas (Lever) dengan sistem TAHAN (HOLD) 'E':
+/// 1. Player harus MENAHAN tombol 'E' untuk menarik tuas secara perlahan.
+/// 2. Jika tombol 'E' dilepas sebelum tuas mentok, tuas akan kembali/mental ke posisi awal.
+/// 3. Setelah tuas ditarik sampai MENTOK (full), tuas terkunci dan lemari otomatis terangkat ke atas.
+/// </summary>
+public class Lever : InteractableBase
+{
+    [Header("Hold & Pull Settings")]
+    [Tooltip("Waktu (detik) yang dibutuhkan untuk menahan 'E' sampai tuas mentok penuh")]
+    [SerializeField] private float pullDuration = 1.5f;
+    [Tooltip("Kecepatan tuas kembali ke posisi awal jika tombol dilepas sebelum mentok")]
+    [SerializeField] private float resetSpeed = 3f;
+
+    [Header("Lever Visual Settings")]
+    [Tooltip("Transform gagang tuas yang akan diputar")]
+    [SerializeField] private Transform leverHandle;
+    [Tooltip("Sudut rotasi Z tuas saat aktif/mentok (misal: -35 derajat ke kiri)")]
+    [SerializeField] private float activeAngleZ = -35f;
+
+    [Header("Pulley & Cabinet Settings")]
+    [Tooltip("Transform lemari atau tumpukan rintangan yang akan diangkat")]
+    [SerializeField] private Transform cabinetTransform;
+    [Tooltip("Seberapa tinggi lemari diangkat ke atas (satuan Unity unit)")]
+    [SerializeField] private float liftHeight = 3.5f;
+    [Tooltip("Durasi waktu yang dibutuhkan lemari untuk terangkat penuh (detik)")]
+    [SerializeField] private float liftDuration = 2.0f;
+    [Tooltip("Kurva pergerakan pengangkatan lemari")]
+    [SerializeField] private AnimationCurve liftCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
+
+    private bool isActivated = false;
+    private bool isBeingPulled = false;
+    private float pullProgress = 0f;
+    private float initialAngleZ;
+    private Vector3 initialCabinetPos;
+    private PlayerInputReader currentInputReader;
+    private PlayerStateController currentStateController;
+
+    private void Awake()
+    {
+        if (leverHandle != null)
+            initialAngleZ = leverHandle.localEulerAngles.z;
+
+        // Normalisasi sudut jika di atas 180 derajat
+        if (initialAngleZ > 180f)
+            initialAngleZ -= 360f;
+
+        if (cabinetTransform != null)
+            initialCabinetPos = cabinetTransform.position;
+    }
+
+    private void Update()
+    {
+        if (isActivated)
+            return;
+
+        if (isBeingPulled)
+        {
+            // Cek apakah tombol E masih ditahan
+            bool isHolding = currentInputReader != null &&
+                             (currentInputReader.InteractHeld || currentInputReader.IsInteractHeld);
+
+            if (isHolding)
+            {
+                // Tambah progress tarikan tuas
+                pullProgress += Time.deltaTime / Mathf.Max(pullDuration, 0.1f);
+                UpdateLeverRotation(pullProgress);
+
+                // Jika sudah mentok penuh (100%)
+                if (pullProgress >= 1f)
+                {
+                    CompleteLeverActivation();
+                }
+            }
+            else
+            {
+                // Player melepas tombol sebelum mentok
+                CancelPull();
+            }
+        }
+        else if (pullProgress > 0f)
+        {
+            // Tuas perlahan kembali ke posisi awal (mental balik)
+            pullProgress -= Time.deltaTime * resetSpeed;
+            pullProgress = Mathf.Max(pullProgress, 0f);
+            UpdateLeverRotation(pullProgress);
+        }
+    }
+
+    public override void Interact(GameObject interactor)
+    {
+        if (isActivated || isBeingPulled)
+            return;
+
+        currentInputReader = interactor.GetComponent<PlayerInputReader>();
+        currentStateController = interactor.GetComponent<PlayerStateController>();
+
+        if (currentInputReader == null)
+        {
+            Debug.LogError("[Lever] PlayerInputReader tidak ditemukan pada " + interactor.name);
+            return;
+        }
+
+        isBeingPulled = true;
+    }
+
+    private void CancelPull()
+    {
+        isBeingPulled = false;
+        currentStateController?.ExitInteraction();
+        currentInputReader = null;
+        currentStateController = null;
+    }
+
+    private void CompleteLeverActivation()
+    {
+        isActivated = true;
+        isBeingPulled = false;
+        pullProgress = 1f;
+        UpdateLeverRotation(1f);
+
+        SetInteractionEnabled(false); // Kunci tuas agar tidak bisa diinteraksi lagi
+
+        // Lepas state interaksi player agar player bebas bergerak kembali
+        currentStateController?.ExitInteraction();
+        currentInputReader = null;
+        currentStateController = null;
+
+        // Mulai pengangkatan lemari
+        StartCoroutine(LiftCabinetRoutine());
+    }
+
+    private void UpdateLeverRotation(float progress)
+    {
+        if (leverHandle == null)
+            return;
+
+        float clampedProgress = Mathf.Clamp01(progress);
+        float currentAngle = Mathf.Lerp(initialAngleZ, activeAngleZ, clampedProgress);
+        leverHandle.localRotation = Quaternion.Euler(0, 0, currentAngle);
+    }
+
+    private IEnumerator LiftCabinetRoutine()
+    {
+        // Delay singkat setelah tuas mentok
+        yield return new WaitForSeconds(0.2f);
+
+        if (cabinetTransform != null)
+        {
+            Vector3 startPos = cabinetTransform.position;
+            Vector3 targetPos = initialCabinetPos + new Vector3(0, liftHeight, 0);
+
+            float timer = 0f;
+            while (timer < liftDuration)
+            {
+                timer += Time.deltaTime;
+                float progress = Mathf.Clamp01(timer / liftDuration);
+                float curvedProgress = liftCurve.Evaluate(progress);
+
+                cabinetTransform.position = Vector3.Lerp(startPos, targetPos, curvedProgress);
+                yield return null;
+            }
+
+            cabinetTransform.position = targetPos;
+        }
+
+        Debug.Log("[Lever] Tuas telah mentok! Lemari selesai diangkat.");
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (cabinetTransform != null)
+        {
+            Gizmos.color = Color.yellow;
+            Vector3 target = cabinetTransform.position + new Vector3(0, liftHeight, 0);
+            Gizmos.DrawLine(cabinetTransform.position, target);
+            Gizmos.DrawWireCube(target, Vector3.one * 0.5f);
+        }
+    }
+}
+
+
+=========================================
+File: ShadowRaycastChecker.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Puzzle\ShadowRaycastChecker.cs
+=========================================
+using System;
+using UnityEngine;
+
+/// <summary>
+/// Pasang script ini di GameObject lampu (bersamaan dengan FlickeringLight).
+/// Cast ray dari lampu ke tulisan "KENAPA?".
+/// Jika meja menghalangi ray â†’ mulai hitung durasi â†’ fire event OnShadowConfirmed.
+///
+/// Setup:
+/// 1. Buat Layer baru: "PuzzleObstacle" â†’ assign ke meja
+/// 2. Buat Layer baru: "PuzzleTarget"   â†’ assign ke collider di tulisan "KENAPA?"
+/// 3. Assign wallTextTransform ke Transform tulisan "KENAPA?"
+/// 4. Atur obstacleLayer dan targetLayer di Inspector
+/// 5. Atur confirmDuration (berapa detik shadow harus stabil sebelum trigger)
+/// </summary>
+public class ShadowRaycastChecker : MonoBehaviour
+{
+    [Header("References")]
+    [Tooltip("Transform posisi tulisan 'KENAPA?' di dinding")]
+    [SerializeField] private Transform wallTextTransform;
+
+    [Header("Layer Settings")]
+    [Tooltip("Layer yang dipakai meja (PuzzleObstacle)")]
+    [SerializeField] private LayerMask obstacleLayer;
+    [Tooltip("Layer yang dipakai collider tulisan KENAPA? (PuzzleTarget)")]
+    [SerializeField] private LayerMask targetLayer;
+
+    [Header("Puzzle Settings")]
+    [Tooltip("Berapa detik bayangan harus stabil sebelum puzzle selesai")]
+    [SerializeField] private float confirmDuration = 1.5f;
+
+    [Header("Debug")]
+    [SerializeField] private bool showDebugGizmos = true;
+
+    // â”€â”€ Events â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    /// <summary>Dipanggil saat bayangan berhasil menutupi tulisan selama confirmDuration.</summary>
+    public event Action OnShadowConfirmed;
+    /// <summary>Dipanggil setiap frame â€” true jika bayangan sedang aktif.</summary>
+    public event Action<bool> OnShadowStateChanged;
+
+    // â”€â”€ State â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    private bool isShadowActive = false;
+    private bool puzzleSolved = false;
+    private float shadowTimer = 0f;
+
+    // Untuk gizmo drawing
+    private bool lastHitObstacle = false;
+    private Vector2 lastRayEnd;
+
+    public bool IsShadowActive => isShadowActive;
+    public bool IsPuzzleSolved => puzzleSolved;
+    public float ShadowProgress => confirmDuration > 0 ? shadowTimer / confirmDuration : 0f;
+
+    private void Update()
+    {
+        if (puzzleSolved || wallTextTransform == null)
+            return;
+
+        CheckShadow();
+    }
+
+    private void CheckShadow()
+    {
+        Vector2 origin = transform.position;
+        Vector2 target = wallTextTransform.position;
+        Vector2 direction = (target - origin).normalized;
+        float distance = Vector2.Distance(origin, target);
+
+        // LayerMask gabungan: cek obstacle DAN target
+        LayerMask combinedMask = obstacleLayer | targetLayer;
+
+        RaycastHit2D hit = Physics2D.Raycast(origin, direction, distance, combinedMask);
+
+        bool shadowDetected = false;
+
+        if (hit.collider != null)
+        {
+            // Jika ray mengenai obstacle (meja) terlebih dahulu â†’ bayangan aktif
+            int hitLayer = hit.collider.gameObject.layer;
+            shadowDetected = ((1 << hitLayer) & obstacleLayer) != 0;
+            lastRayEnd = hit.point;
+        }
+        else
+        {
+            // Ray tidak mengenai apapun
+            lastRayEnd = target;
+        }
+
+        lastHitObstacle = shadowDetected;
+
+        // Deteksi perubahan state
+        if (shadowDetected != isShadowActive)
+        {
+            isShadowActive = shadowDetected;
+            OnShadowStateChanged?.Invoke(isShadowActive);
+
+            if (!isShadowActive)
+                shadowTimer = 0f; // Reset timer jika shadow hilang
+        }
+
+        // Hitung timer konfirmasi
+        if (isShadowActive)
+        {
+            shadowTimer += Time.deltaTime;
+
+            if (shadowTimer >= confirmDuration)
+            {
+                ConfirmPuzzle();
+            }
+        }
+    }
+
+    private void ConfirmPuzzle()
+    {
+        if (puzzleSolved)
+            return;
+
+        puzzleSolved = true;
+        Debug.Log("[ShadowRaycastChecker] Puzzle selesai! Bayangan menutupi tulisan.");
+        OnShadowConfirmed?.Invoke();
+    }
+
+    /// <summary>Reset puzzle ke kondisi awal (misal setelah checkpoint)</summary>
+    public void ResetPuzzle()
+    {
+        puzzleSolved = false;
+        isShadowActive = false;
+        shadowTimer = 0f;
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (!showDebugGizmos || wallTextTransform == null)
+            return;
+
+        // Gambar ray di Scene view
+        // Hijau = shadow aktif (meja menghalangi), Merah = tidak terblokir
+        Gizmos.color = lastHitObstacle ? Color.green : Color.red;
+        Gizmos.DrawLine(transform.position, lastRayEnd);
+
+        // Titik asal (lampu)
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, 0.15f);
+
+        // Titik target (tulisan)
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireSphere(wallTextTransform.position, 0.2f);
+
+        // Progress bar shadow timer (tampil di dekat lampu)
+        if (Application.isPlaying && isShadowActive && !puzzleSolved)
+        {
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawLine(
+                (Vector2)transform.position + Vector2.down * 0.3f,
+                (Vector2)transform.position + Vector2.down * 0.3f + Vector2.right * ShadowProgress
+            );
+        }
+    }
+}
+
+
+=========================================
+File: ThornsDestroyer.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Puzzle\ThornsDestroyer.cs
+=========================================
+using System;
+using System.Collections;
+using UnityEngine;
+
+/// <summary>
+/// Pasang script ini di GameObject sulur berduri.
+/// - Memberikan damage (drain sanity) ke player saat menyentuh sulur
+/// - Subscribe ke ShadowRaycastChecker.OnShadowConfirmed â†’ jalankan animasi hancur
+///
+/// Setup:
+/// 1. Assign shadowChecker di Inspector
+/// 2. BoxCollider2D â†’ Is Trigger: âœ…
+/// 3. Tag player harus "Player"
+/// </summary>
+public class ThornsDestroyer : MonoBehaviour
+{
+    [Header("References")]
+    [SerializeField] private ShadowRaycastChecker shadowChecker;
+
+    [Header("Damage Settings")]
+    [Tooltip("Sanity yang dikurangi per detik saat player menyentuh sulur")]
+    [SerializeField] private float sanityDamagePerSecond = 20f;
+
+    [Header("Destroy Settings")]
+    [Tooltip("Durasi animasi hancur dalam detik")]
+    [SerializeField] private float destroyDuration = 1.2f;
+    [Tooltip("Nama trigger Animator (kosongkan jika tidak pakai Animator)")]
+    [SerializeField] private string animatorTriggerName = "Destroy";
+
+    // â”€â”€ Events â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    public event Action OnThornsDestroyed;
+
+    // â”€â”€ Components â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    private Collider2D[] colliders;
+    private SpriteRenderer[] renderers;
+    private Animator animator;
+    private bool isDestroying = false;
+
+    // â”€â”€ Damage State â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    private SanityController playerSanity;
+    private bool isPlayerTouching = false;
+
+    private void Awake()
+    {
+        colliders = GetComponentsInChildren<Collider2D>();
+        renderers = GetComponentsInChildren<SpriteRenderer>();
+        animator = GetComponent<Animator>();
+    }
+
+    private void OnEnable()
+    {
+        if (shadowChecker != null)
+            shadowChecker.OnShadowConfirmed += HandleShadowConfirmed;
+    }
+
+    private void OnDisable()
+    {
+        if (shadowChecker != null)
+            shadowChecker.OnShadowConfirmed -= HandleShadowConfirmed;
+    }
+
+    private void Update()
+    {
+        // Drain sanity terus-menerus selama player menyentuh sulur
+        if (isPlayerTouching && playerSanity != null && !isDestroying)
+        {
+            playerSanity.DrainSanity(sanityDamagePerSecond * Time.deltaTime);
+        }
+    }
+
+    // â”€â”€ Trigger Damage â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (isDestroying) return;
+        if (!other.CompareTag("Player")) return;
+
+        playerSanity = other.GetComponentInParent<SanityController>();
+        isPlayerTouching = true;
+
+        Debug.Log("[ThornsDestroyer] Player menyentuh sulur! Sanity drain dimulai.");
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (!other.CompareTag("Player")) return;
+
+        isPlayerTouching = false;
+        playerSanity = null;
+
+        Debug.Log("[ThornsDestroyer] Player keluar dari sulur. Sanity drain berhenti.");
+    }
+
+    // â”€â”€ Shadow Puzzle â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+
+    private void HandleShadowConfirmed()
+    {
+        if (isDestroying) return;
+
+        Debug.Log("[ThornsDestroyer] Sulur berduri mulai hancur!");
+        StartCoroutine(DestroySequence());
+    }
+
+    private IEnumerator DestroySequence()
+    {
+        isDestroying = true;
+        isPlayerTouching = false;
+
+        // Nonaktifkan collider segera agar tidak berbahaya lagi
+        foreach (Collider2D col in colliders)
+            col.enabled = false;
+
+        if (animator != null && !string.IsNullOrEmpty(animatorTriggerName))
+        {
+            animator.SetTrigger(animatorTriggerName);
+            yield return new WaitForSeconds(destroyDuration);
+        }
+        else
+        {
+            yield return StartCoroutine(ScaleDownAndFade());
+        }
+
+        OnThornsDestroyed?.Invoke();
+        Debug.Log("[ThornsDestroyer] Sulur hancur sepenuhnya.");
+        gameObject.SetActive(false);
+    }
+
+    private IEnumerator ScaleDownAndFade()
+    {
+        Vector3 originalScale = transform.localScale;
+        Color[] originalColors = new Color[renderers.Length];
+
+        for (int i = 0; i < renderers.Length; i++)
+            originalColors[i] = renderers[i].color;
+
+        float elapsed = 0f;
+
+        while (elapsed < destroyDuration)
+        {
+            elapsed += Time.deltaTime;
+            float t = elapsed / destroyDuration;
+
+            transform.localScale = Vector3.Lerp(originalScale, Vector3.zero, t);
+
+            for (int i = 0; i < renderers.Length; i++)
+            {
+                Color c = originalColors[i];
+                c.a = Mathf.Lerp(1f, 0f, t);
+                renderers[i].color = c;
+            }
+
+            yield return null;
+        }
+    }
+
+    public void ResetThorns()
+    {
+        StopAllCoroutines();
+        isDestroying = false;
+        isPlayerTouching = false;
+        playerSanity = null;
+        gameObject.SetActive(true);
+        transform.localScale = Vector3.one;
+
+        foreach (Collider2D col in colliders)
+            col.enabled = true;
+
+        foreach (SpriteRenderer sr in renderers)
+        {
+            Color c = sr.color;
+            c.a = 1f;
+            sr.color = c;
+        }
+    }
+}
+
+
+
+=========================================
+File: SanityBarUI.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Sanity\SanityBarUI.cs
+=========================================
+using UnityEngine;
+using UnityEngine.UI;
+
+public class SanityBarUI : MonoBehaviour
+{
+    [Header("References")]
+    [SerializeField] private SanityController sanityController;
+    [SerializeField] private Image mainFill;
+
+    [Header("Smooth")]
+    [SerializeField] private float smoothSpeed = 8f;
+
+    [Header("Sanity Colors")]
+    [SerializeField] private Color healthyColor = new Color(0.25f, 0.9f, 0.35f);
+    [SerializeField] private Color unstableColor = new Color(1f, 0.75f, 0.2f);
+    [SerializeField] private Color criticalColor = new Color(1f, 0.25f, 0.2f);
+    [SerializeField] private Color depletedColor = new Color(0.25f, 0.1f, 0.1f);
+
+    [Header("Color Smooth")]
+    [SerializeField] private float colorSmoothSpeed = 8f;
+
+    private float targetFillAmount;
+    private float currentFillAmount;
+
+    private Color targetColor;
+
+    private void Awake()
+    {
+        if (sanityController == null)
+        {
+            sanityController =
+                FindFirstObjectByType<SanityController>();
+        }
+
+        if (mainFill == null)
+        {
+            Debug.LogError(
+                "SanityBarUI: Main Fill belum di-assign.",
+                this
+            );
+        }
+    }
+
+    private void Start()
+    {
+        InitializeBar();
+    }
+
+    private void OnEnable()
+    {
+        if (sanityController == null)
+        {
+            return;
+        }
+
+        sanityController.OnSanityChanged += HandleSanityChanged;
+        sanityController.OnSanityLevelChanged += HandleSanityLevelChanged;
+    }
+
+    private void OnDisable()
+    {
+        if (sanityController == null)
+        {
+            return;
+        }
+
+        sanityController.OnSanityChanged -= HandleSanityChanged;
+        sanityController.OnSanityLevelChanged -= HandleSanityLevelChanged;
+    }
+
+    private void InitializeBar()
+    {
+        if (sanityController == null)
+        {
+            Debug.LogError(
+                "SanityBarUI: SanityController tidak ditemukan.",
+                this
+            );
+
+            return;
+        }
+
+        if (mainFill == null)
+        {
+            return;
+        }
+
+        float maxSanity = sanityController.MaxSanity;
+
+        if (maxSanity <= 0f)
+        {
+            Debug.LogError(
+                "SanityBarUI: Max Sanity harus lebih dari 0.",
+                this
+            );
+
+            return;
+        }
+
+        targetFillAmount =
+            sanityController.CurrentSanity /
+            maxSanity;
+
+        currentFillAmount = targetFillAmount;
+
+        mainFill.fillAmount = currentFillAmount;
+
+        targetColor =
+            GetColorFromLevel(
+                sanityController.CurrentLevel
+            );
+
+        mainFill.color = targetColor;
+    }
+
+    private void Update()
+    {
+        if (mainFill == null)
+        {
+            return;
+        }
+
+        UpdateFill();
+        UpdateColor();
+    }
+
+    private void UpdateFill()
+    {
+        currentFillAmount = Mathf.Lerp(
+            currentFillAmount,
+            targetFillAmount,
+            smoothSpeed * Time.deltaTime
+        );
+
+        mainFill.fillAmount = currentFillAmount;
+    }
+
+    private void UpdateColor()
+    {
+        mainFill.color = Color.Lerp(
+            mainFill.color,
+            targetColor,
+            colorSmoothSpeed * Time.deltaTime
+        );
+    }
+
+    private void HandleSanityChanged(
+        float currentSanity,
+        float maxSanity)
+    {
+        if (maxSanity <= 0f)
+        {
+            return;
+        }
+
+        targetFillAmount =
+            Mathf.Clamp01(
+                currentSanity / maxSanity
+            );
+    }
+
+    private void HandleSanityLevelChanged(
+        SanityLevel newLevel)
+    {
+        targetColor =
+            GetColorFromLevel(newLevel);
+    }
+
+    private Color GetColorFromLevel(
+        SanityLevel level)
+    {
+        switch (level)
+        {
+            case SanityLevel.Healthy:
+                return healthyColor;
+
+            case SanityLevel.Unstable:
+                return unstableColor;
+
+            case SanityLevel.Critical:
+                return criticalColor;
+
+            case SanityLevel.Depleted:
+                return depletedColor;
+
+            default:
+                return healthyColor;
+        }
+    }
+}
+
+=========================================
+File: SanityController.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Sanity\SanityController.cs
+=========================================
+using System;
+using UnityEngine;
+
+public class SanityController : MonoBehaviour
+{
+    [SerializeField] private PlayerStatsSO stats;
+
+    [Header("Debug")]
+    [SerializeField] private bool enableDebugLog = true;
+    [SerializeField] private float debugInterval = 1f;
+
+    private float currentSanity;
+    private float debugTimer;
+
+    private bool isDraining;
+    private bool isRecovering;
+
+    public float CurrentSanity => currentSanity;
+    public float MaxSanity => stats != null ? stats.MaxSanity : 0f;
+
+    public SanityLevel CurrentLevel { get; private set; }
+
+    public bool IsDraining => isDraining;
+    public bool IsRecovering => isRecovering;
+    public bool IsDepleted => currentSanity <= 0f;
+
+    public event Action<float, float> OnSanityChanged;
+    public event Action<SanityLevel> OnSanityLevelChanged;
+
+    private void Awake()
+    {
+        if (stats == null)
+        {
+            Debug.LogError(
+                "SanityController: PlayerStatsSO belum di-assign.",
+                this
+            );
+
+            return;
+        }
+
+        currentSanity = stats.MaxSanity;
+
+        UpdateSanityLevel();
+
+        if (enableDebugLog)
+        {
+            Debug.Log(
+                $"[Sanity] Initialized: {currentSanity:F1}/{MaxSanity:F1} | Level: {CurrentLevel}",
+                this
+            );
+        }
+    }
+
+    private void Update()
+    {
+        if (stats == null || IsDepleted)
+        {
+            return;
+        }
+
+        UpdateSanityOverTime();
+        UpdateDebugLog();
+    }
+
+    private void UpdateSanityOverTime()
+    {
+        if (isDraining)
+        {
+            DrainSanity(
+                stats.SanityDrainRate * Time.deltaTime
+            );
+
+            return;
+        }
+
+        if (isRecovering)
+        {
+            RecoverSanity(
+                stats.SanityRecoveryRate * Time.deltaTime
+            );
+        }
+    }
+
+    private void UpdateDebugLog()
+    {
+        if (!enableDebugLog)
+        {
+            return;
+        }
+
+        debugTimer += Time.deltaTime;
+
+        if (debugTimer < debugInterval)
+        {
+            return;
+        }
+
+        debugTimer = 0f;
+
+        Debug.Log(
+            $"[Sanity] {CurrentSanity:F1}/{MaxSanity:F1} | " +
+            $"Level: {CurrentLevel} | " +
+            $"Draining: {IsDraining} | " +
+            $"Recovering: {IsRecovering}",
+            this
+        );
+    }
+
+    private void UpdateSanityLevel()
+    {
+        if (stats == null || stats.MaxSanity <= 0f)
+        {
+            return;
+        }
+
+        float sanityRatio = currentSanity / stats.MaxSanity;
+
+        SanityLevel newLevel;
+
+        if (currentSanity <= 0f)
+        {
+            newLevel = SanityLevel.Depleted;
+        }
+        else if (sanityRatio <= stats.CriticalSanityThreshold)
+        {
+            newLevel = SanityLevel.Critical;
+        }
+        else if (sanityRatio <= stats.UnstableSanityThreshold)
+        {
+            newLevel = SanityLevel.Unstable;
+        }
+        else
+        {
+            newLevel = SanityLevel.Healthy;
+        }
+
+        if (CurrentLevel == newLevel)
+        {
+            return;
+        }
+
+        SanityLevel previousLevel = CurrentLevel;
+
+        CurrentLevel = newLevel;
+
+        if (enableDebugLog)
+        {
+            Debug.Log(
+                $"[Sanity] Level: {previousLevel} â†’ {CurrentLevel} | " +
+                $"Sanity: {CurrentSanity:F1}/{MaxSanity:F1}",
+                this
+            );
+        }
+
+        OnSanityLevelChanged?.Invoke(CurrentLevel);
+    }
+
+    public void SetDrainActive(bool active)
+    {
+        if (IsDepleted)
+        {
+            return;
+        }
+
+        isDraining = active;
+
+        if (active)
+        {
+            isRecovering = false;
+        }
+
+        if (enableDebugLog)
+        {
+            Debug.Log(
+                $"[Sanity] Drain: {(active ? "ON" : "OFF")}",
+                this
+            );
+        }
+    }
+
+    public void SetRecoveryActive(bool active)
+    {
+        if (IsDepleted)
+        {
+            return;
+        }
+
+        isRecovering = active;
+
+        if (active)
+        {
+            isDraining = false;
+        }
+
+        if (enableDebugLog)
+        {
+            Debug.Log(
+                $"[Sanity] Recovery: {(active ? "ON" : "OFF")}",
+                this
+            );
+        }
+    }
+
+    public void StopSanityChange()
+    {
+        isDraining = false;
+        isRecovering = false;
+
+        if (enableDebugLog)
+        {
+            Debug.Log(
+                "[Sanity] Sanity change stopped.",
+                this
+            );
+        }
+    }
+
+    public void DrainSanity(float amount)
+    {
+        if (amount <= 0f || IsDepleted)
+        {
+            return;
+        }
+
+        float previousSanity = currentSanity;
+
+        currentSanity = Mathf.Max(
+            currentSanity - amount,
+            0f
+        );
+
+        if (Mathf.Approximately(previousSanity, currentSanity))
+        {
+            return;
+        }
+
+        UpdateSanityLevel();
+
+        OnSanityChanged?.Invoke(
+            currentSanity,
+            MaxSanity
+        );
+
+        if (enableDebugLog)
+        {
+            Debug.Log(
+                $"[Sanity] Drain: {previousSanity:F1} â†’ {currentSanity:F1} " +
+                $"(-{amount:F1})",
+                this
+            );
+        }
+
+        if (IsDepleted && enableDebugLog)
+        {
+            Debug.Log(
+                "[Sanity] DEPLETED â†’ PlayerDeathHandler akan menangani kematian.",
+                this
+            );
+        }
+    }
+
+    public void RecoverSanity(float amount)
+    {
+        if (amount <= 0f || IsDepleted)
+        {
+            return;
+        }
+
+        float previousSanity = currentSanity;
+
+        currentSanity = Mathf.Min(
+            currentSanity + amount,
+            stats.MaxSanity
+        );
+
+        if (Mathf.Approximately(previousSanity, currentSanity))
+        {
+            return;
+        }
+
+        UpdateSanityLevel();
+
+        OnSanityChanged?.Invoke(
+            currentSanity,
+            MaxSanity
+        );
+    }
+
+    public void SetSanity(float value)
+    {
+        if (stats == null)
+        {
+            return;
+        }
+
+        float previousSanity = currentSanity;
+
+        currentSanity = Mathf.Clamp(
+            value,
+            0f,
+            stats.MaxSanity
+        );
+
+        if (Mathf.Approximately(previousSanity, currentSanity))
+        {
+            return;
+        }
+
+        UpdateSanityLevel();
+
+        OnSanityChanged?.Invoke(
+            currentSanity,
+            MaxSanity
+        );
+
+        if (enableDebugLog)
+        {
+            Debug.Log(
+                $"[Sanity] Set: {previousSanity:F1} â†’ {currentSanity:F1}",
+                this
+            );
+        }
+    }
+
+    public void RestoreFullSanity()
+    {
+        if (stats == null)
+        {
+            return;
+        }
+
+        float previousSanity = currentSanity;
+
+        currentSanity = stats.MaxSanity;
+
+        debugTimer = 0f;
+
+        UpdateSanityLevel();
+
+        OnSanityChanged?.Invoke(
+            currentSanity,
+            MaxSanity
+        );
+
+        if (enableDebugLog)
+        {
+            Debug.Log(
+                $"[Sanity] Restored: {previousSanity:F1} â†’ {CurrentSanity:F1}/{MaxSanity:F1}",
+                this
+            );
+        }
+    }
+}
+
+=========================================
+File: SanityDebugListener.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Sanity\SanityDebugListener.cs
+=========================================
+using UnityEngine;
+
+public class SanityDebugListener : MonoBehaviour
+{
+    [SerializeField] private SanityController sanityController;
+
+    private void Awake()
+    {
+        if (sanityController == null)
+        {
+            sanityController = GetComponent<SanityController>();
+        }
+    }
+
+    private void OnEnable()
+    {
+        if (sanityController == null)
+        {
+            return;
+        }
+
+        sanityController.OnSanityChanged += HandleSanityChanged;
+        sanityController.OnSanityLevelChanged += HandleSanityLevelChanged;
+    }
+
+    private void OnDisable()
+    {
+        if (sanityController == null)
+        {
+            return;
+        }
+
+        sanityController.OnSanityChanged -= HandleSanityChanged;
+        sanityController.OnSanityLevelChanged -= HandleSanityLevelChanged;
+    }
+
+    private void HandleSanityChanged(float current, float max)
+    {
+        Debug.Log(
+            $"[EVENT] Sanity Changed: {current:F1}/{max:F1}",
+            this
+        );
+    }
+
+    private void HandleSanityLevelChanged(SanityLevel level)
+    {
+        Debug.Log(
+            $"[EVENT] Sanity Level Changed: {level}",
+            this
+        );
+    }
+}
+
+=========================================
+File: SanityLevel.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Sanity\SanityLevel.cs
+=========================================
+public enum SanityLevel
+{
+    Healthy,
+    Unstable,
+    Critical,
+    Depleted
+}
+
+=========================================
+File: SanityScreenEffect.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Sanity\SanityScreenEffect.cs
+=========================================
+using UnityEngine;
+using UnityEngine.UI;
+
+public class SanityScreenEffect : MonoBehaviour
+{
+    [Header("References")]
+    [SerializeField] private SanityController sanityController;
+    [SerializeField] private Image vignette;
+
+    [Header("Effect")]
+    [SerializeField] private float smoothSpeed = 5f;
+
+    [Header("Intensity")]
+    [SerializeField] private float unstableAlpha = 0.15f;
+    [SerializeField] private float criticalAlpha = 0.3f;
+    [SerializeField] private float depletedAlpha = 0.5f;
+
+    [Header("Colors")]
+    [SerializeField] private Color unstableColor =
+        new Color(1f, 0.65f, 0.1f);
+
+    [SerializeField] private Color criticalColor =
+        new Color(1f, 0.1f, 0.1f);
+
+    [SerializeField] private Color depletedColor =
+        new Color(0.2f, 0f, 0f);
+
+    private float targetAlpha;
+    private Color targetColor;
+
+    private void Awake()
+    {
+        if (sanityController == null)
+        {
+            sanityController =
+                FindFirstObjectByType<SanityController>();
+        }
+
+        if (vignette == null)
+        {
+            Debug.LogError(
+                "SanityScreenEffect: Vignette belum di-assign.",
+                this
+            );
+
+            return;
+        }
+
+        targetAlpha = 0f;
+        targetColor = Color.clear;
+
+        Color startColor = vignette.color;
+        startColor.a = 0f;
+
+        vignette.color = startColor;
+    }
+
+    private void OnEnable()
+    {
+        if (sanityController == null)
+        {
+            return;
+        }
+
+        sanityController.OnSanityLevelChanged +=
+            HandleSanityLevelChanged;
+    }
+
+    private void OnDisable()
+    {
+        if (sanityController == null)
+        {
+            return;
+        }
+
+        sanityController.OnSanityLevelChanged -=
+            HandleSanityLevelChanged;
+    }
+
+    private void Start()
+    {
+        if (sanityController == null)
+        {
+            return;
+        }
+
+        HandleSanityLevelChanged(
+            sanityController.CurrentLevel
+        );
+    }
+
+    private void Update()
+    {
+        if (vignette == null)
+        {
+            return;
+        }
+
+        Color currentColor = vignette.color;
+
+        currentColor = Color.Lerp(
+            currentColor,
+            targetColor,
+            smoothSpeed * Time.deltaTime
+        );
+
+        currentColor.a = Mathf.Lerp(
+            currentColor.a,
+            targetAlpha,
+            smoothSpeed * Time.deltaTime
+        );
+
+        vignette.color = currentColor;
+    }
+
+    private void HandleSanityLevelChanged(
+        SanityLevel level)
+    {
+        switch (level)
+        {
+            case SanityLevel.Healthy:
+
+                targetAlpha = 0f;
+                targetColor = Color.clear;
+
+                break;
+
+            case SanityLevel.Unstable:
+
+                targetAlpha = unstableAlpha;
+                targetColor = unstableColor;
+
+                break;
+
+            case SanityLevel.Critical:
+
+                targetAlpha = criticalAlpha;
+                targetColor = criticalColor;
+
+                break;
+
+            case SanityLevel.Depleted:
+
+                targetAlpha = depletedAlpha;
+                targetColor = depletedColor;
+
+                break;
+        }
+    }
+}
+
+=========================================
+File: StoryManager.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Gameplay\Story\StoryManager.cs
+=========================================
+using System.Collections.Generic;
+using UnityEngine;
+
+public class StoryManager : MonoBehaviour
+{
+    public static StoryManager Instance { get; private set; }
+
+    [Header("Chapter")]
+    [SerializeField] private int currentChapter = 1;
+
+    private readonly HashSet<string> storyFlags = new();
+
+    public int CurrentChapter => currentChapter;
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+    }
+
+    public bool HasFlag(string flag)
+    {
+        if (string.IsNullOrEmpty(flag))
+        {
+            return false;
+        }
+
+        return storyFlags.Contains(flag);
+    }
+
+    public void SetFlag(string flag)
+    {
+        if (string.IsNullOrEmpty(flag))
+        {
+            return;
+        }
+
+        storyFlags.Add(flag);
+    }
+
+    public void RemoveFlag(string flag)
+    {
+        if (string.IsNullOrEmpty(flag))
+        {
+            return;
+        }
+
+        storyFlags.Remove(flag);
+    }
+
+    public void ChangeChapter(int chapter)
+    {
+        if (chapter < 1)
+        {
+            return;
+        }
+
+        currentChapter = chapter;
+    }
+
+    public void ResetStory()
+    {
+        currentChapter = 1;
+        storyFlags.Clear();
+    }
+
+    [ContextMenu("Test Story Flag")]
+    private void TestStoryFlag()
+    {
+        SetFlag("Met_Garnet");
+
+        Debug.Log(
+            $"Met_Garnet: {HasFlag("Met_Garnet")}"
+        );
+    }
+}
+
+=========================================
+File: CanvasManager.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Main Menu\CanvasManager.cs
+=========================================
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class CanvasManager : MonoBehaviour
+{
+    public Page[] allPage;
+
+    protected void SetPage(PageName namaPage)
+    {
+        foreach(var p in allPage)
+        {
+            p.gameObject.SetActive(false);
+        }
+
+        //cari page yang dibutuhkan
+        Page findPage = Array.Find(allPage , p => p.nama == namaPage);
+        if (findPage != null)
+        {
+            findPage.gameObject.SetActive(true);
+        }
+    }
+}
+
+
+=========================================
+File: InfoPage.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Main Menu\InfoPage.cs
+=========================================
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class InfoPage : Page
+{
+    public Button b_home;
+
+    private void Start()
+    {
+        b_home.onClick.AddListener(() => GameManager.Instance.ChangeState(GameState.Menu));
+    }
+}
+
+
+=========================================
+File: LevelPage.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Main Menu\LevelPage.cs
+=========================================
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
+public class LevelPage : Page
+{
+    [SerializeField] private Button b_home;
+
+    [SerializeField] private Button b_level1;
+
+    [Header("Scene Names")]
+    [SerializeField] private string sceneLevel1;
+
+    private void Start()
+    {
+        b_home.onClick.AddListener(() => GameManager.Instance.ChangeState(GameState.Menu));
+
+        b_level1.onClick.AddListener(() => ChangeScene(sceneLevel1));
+    }
+
+    private void ChangeScene(string sceneName)
+    {
+        if (!string.IsNullOrEmpty(sceneName))
+        {
+            SceneManager.LoadScene(sceneName);
+        }
+    }
+}
+
+
+=========================================
+File: MenuCanvasManager.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Main Menu\MenuCanvasManager.cs
+=========================================
+using UnityEngine;
+
+public class MenuCanvasManager : CanvasManager
+{
+    private void Start()
+    {
+        if (GameManager.Instance == null)
+        {
+            return;
+        }
+
+        GameManager.Instance.OnStateChanged += Instance_OnStateChange;
+
+        Instance_OnStateChange(GameManager.Instance.CurrentState);
+    }
+
+    private void OnDisable()
+    {
+        if (GameManager.Instance == null)
+        {
+            return;
+        }
+
+        GameManager.Instance.OnStateChanged -= Instance_OnStateChange;
+    }
+
+    private void Instance_OnStateChange(GameState state)
+    {
+        switch (state)
+        {
+            case GameState.Menu:
+                SetPage(PageName.Menu);
+                break;
+
+            case GameState.Setting:
+                SetPage(PageName.Setting);
+                break;
+
+            case GameState.Info:
+                SetPage(PageName.Info);
+                break;
+
+            case GameState.Level:
+                SetPage(PageName.Level);
+                break;
+        }
+    }
+}
+
+=========================================
+File: MenuPage.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Main Menu\MenuPage.cs
+=========================================
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class MenuPage : Page
+{
+    public Button b_play;
+    public Button b_setting;
+    public Button b_info;
+    public Button b_quit;
+
+    private void Start()
+    {
+        b_play.onClick.AddListener(() => GameManager.Instance.ChangeState(GameState.Level));
+        b_info.onClick.AddListener(() => GameManager.Instance.ChangeState(GameState.Info));
+        b_setting.onClick.AddListener(() => GameManager.Instance.ChangeState(GameState.Setting));
+        b_quit.onClick.AddListener(Quit);
+    }
+
+    void Quit()
+    {
+        Application.Quit();
+        Debug.Log("Game akan keluar...");
+    }
+}
+
+
+=========================================
+File: Page.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Main Menu\Page.cs
+=========================================
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+public class Page : MonoBehaviour
+{
+    public PageName nama = PageName.Menu;
+
+    public void ChangeScene(string namaScene)
+    {
+        SceneManager.LoadScene(namaScene);
+    }
+}
+
+
+
+public enum PageName
+{
+    Menu,
+    Setting,
+    Info,
+    Level
+}
+
+=========================================
+File: SettingPage.cs
+Path: F:\Game Unity\ITToday\Assets\Game Folders\Scripts\Main Menu\SettingPage.cs
+=========================================
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using UnityEngine.Audio;
+using System;
+
+public class SettingPage : Page
+{
+    public Button b_home;
+    [SerializeField] private TMP_Dropdown graphicsDropdown;
+    [SerializeField] private TMP_Dropdown musicDropdown;
+    [SerializeField] private Slider masterVol, musicVol, sfxVol;
+    [SerializeField] private AudioMixer mainAudioMixer;
+
+    private void Start()
+    {
+        b_home.onClick.AddListener(() => GameManager.Instance.ChangeState(GameState.Menu));
+
+        SetupMusicDropdown();
+
+        musicDropdown.onValueChanged.AddListener(ChangeMusicTrack);
+
+        if (PlayerPrefs.HasKey("musicVolume"))
+        {
+            LoadVolume();
+        }
+        else
+        {
+            ChangeMusicVolume();
+        }
+    }
+
+    private void SetupMusicDropdown()
+    {
+        musicDropdown.ClearOptions();
+
+        List<string> musicOptions = new List<string> { "Music 1", "Music 2" };
+        musicDropdown.AddOptions(musicOptions);
+
+        musicDropdown.value = AudioManager.Instance.GetCurrentMusicChoice();
+    }
+
+    public void ChangeGraphicsQuality()
+    {
+        QualitySettings.SetQualityLevel(graphicsDropdown.value);
+    }
+
+    public void ChangeMusicTrack(int value)
+    {
+        AudioManager.Instance.ChangeMusicTrack(value);
+    }
+
+    public void ChangeMasterVolume()
+    {
+        mainAudioMixer.SetFloat("MasterVol", masterVol.value);
+    }
+    public void ChangeMusicVolume()
+    {
+        float volume = musicVol.value;
+        mainAudioMixer.SetFloat("MusicVol", MathF.Log10(volume) * 20);
+        PlayerPrefs.SetFloat("musicVolume", volume);
+    }
+    public void ChangeSfxVolume()
+    {
+        float volume = sfxVol.value;
+        mainAudioMixer.SetFloat("SfxVol", MathF.Log10(volume) * 20);
+    }
+
+    private void LoadVolume()
+    {
+        musicVol.value = PlayerPrefs.GetFloat("musicVolume");
+
+        ChangeMusicVolume();
+    }
+
+    public void OpenLink(string link)
+    {
+        Application.OpenURL(link);
+        Debug.Log("Open App");
+    }
+}
+
+

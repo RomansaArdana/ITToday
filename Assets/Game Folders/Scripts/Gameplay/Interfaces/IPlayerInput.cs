@@ -10,5 +10,7 @@ public interface IPlayerInput
 
     bool JumpPressed { get; }
 
+    bool AttackPressed { get; }
+
     bool AttackHeld { get; }
 }
