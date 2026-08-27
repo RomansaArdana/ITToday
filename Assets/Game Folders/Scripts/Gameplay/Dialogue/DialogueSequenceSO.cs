@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,24 +7,47 @@ using UnityEngine;
 )]
 public class DialogueSequenceSO : ScriptableObject
 {
+    [Header("Sequence")]
     [SerializeField] private string sequenceId;
-    [SerializeField] private List<DialogueLine> lines = new();
+
+    [Header("Dialogue Nodes")]
+    [SerializeField] private List<DialogueNode> nodes = new();
+
+    [Header("Completion Events")]
+    [SerializeField] private List<DialogueEvent> completionEvents = new();
 
     public string SequenceId => sequenceId;
-    public IReadOnlyList<DialogueLine> Lines => lines;
-}
 
-[Serializable]
-public class DialogueLine
-{
-    [SerializeField] private string speakerName;
+    public IReadOnlyList<DialogueNode> Nodes => nodes;
 
-    [TextArea(2, 5)]
-    [SerializeField] private string dialogueText;
+    public void ExecuteCompletionEvents()
+    {
+        if (completionEvents == null ||
+            completionEvents.Count == 0)
+        {
+            DialogueManager.DebugLog(
+                $"[DialogueSequence] Sequence \"{sequenceId}\" tidak memiliki Completion Event."
+            );
 
-    [SerializeField] private Sprite portrait;
+            return;
+        }
 
-    public string SpeakerName => speakerName;
-    public string DialogueText => dialogueText;
-    public Sprite Portrait => portrait;
+        DialogueManager.DebugLog(
+            $"[DialogueSequence] Menjalankan {completionEvents.Count} Completion Event → \"{sequenceId}\""
+        );
+
+        foreach (DialogueEvent dialogueEvent in completionEvents)
+        {
+            if (dialogueEvent == null)
+            {
+                DialogueManager.DebugWarning(
+                    $"[DialogueSequence] Ada Completion Event kosong → \"{sequenceId}\""
+                );
+
+                continue;
+            }
+
+            dialogueEvent.Execute();
+        }
+    }
 }

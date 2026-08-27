@@ -1,74 +1,244 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class DialogueUI : MonoBehaviour
 {
+    [Header("UI References")]
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private TMP_Text speakerText;
     [SerializeField] private TMP_Text dialogueText;
     [SerializeField] private Image portraitImage;
-    [SerializeField] private Button continueButton;
 
-    public bool IsVisible => dialoguePanel != null && dialoguePanel.activeSelf;
+    [Header("Typewriter Settings")]
+    [SerializeField] private bool useTypewriter = true;
+    [SerializeField] private float characterDelay = 0.03f;
+
+    private Coroutine typewriterCoroutine;
+    private bool isTyping;
+
+    public bool IsVisible =>
+        dialoguePanel != null && dialoguePanel.activeSelf;
+
+    public bool IsTyping => isTyping;
 
     private void Awake()
     {
         Hide();
-
-        if (continueButton != null)
-        {
-            continueButton.onClick.AddListener(OnContinueClicked);
-        }
     }
 
-    private void OnDestroy()
+    private void Update()
     {
-        if (continueButton != null)
-        {
-            continueButton.onClick.RemoveListener(OnContinueClicked);
-        }
-    }
-
-    public void ShowLine(DialogueLine line)
-    {
-        if (line == null)
+        if (!IsVisible)
         {
             return;
         }
+
+        if (!WasContinuePressed())
+        {
+            return;
+        }
+
+        HandleContinueInput();
+    }
+
+    private void HandleContinueInput()
+    {
+        if (isTyping)
+        {
+            CompleteTyping();
+            return;
+        }
+
+        DialogueManager.Instance?.ContinueDialogue();
+    }
+
+    private bool WasContinuePressed()
+    {
+        if (Mouse.current != null &&
+            Mouse.current.leftButton.wasPressedThisFrame)
+        {
+            return true;
+        }
+
+        if (Keyboard.current != null)
+        {
+            if (Keyboard.current.spaceKey.wasPressedThisFrame)
+            {
+                return true;
+            }
+
+            if (Keyboard.current.enterKey.wasPressedThisFrame)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public void ShowNode(DialogueNode node)
+    {
+        if (node == null)
+        {
+            return;
+        }
+
+        StopTypewriter();
 
         if (dialoguePanel != null)
         {
             dialoguePanel.SetActive(true);
         }
 
-        if (speakerText != null)
+        DialogueCharacterSO character = node.Speaker;
+
+        UpdateSpeaker(character);
+        UpdatePortrait(character);
+
+        if (dialogueText == null)
         {
-            speakerText.text = line.SpeakerName;
+            return;
         }
+
+        if (!useTypewriter)
+        {
+            dialogueText.text = node.DialogueText;
+            dialogueText.maxVisibleCharacters = int.MaxValue;
+            isTyping = false;
+            return;
+        }
+
+        StartTypewriter(node.DialogueText);
+    }
+
+    private void UpdateSpeaker(DialogueCharacterSO character)
+    {
+        if (speakerText == null)
+        {
+            return;
+        }
+
+        if (character != null)
+        {
+            speakerText.text = character.DisplayName;
+        }
+        else
+        {
+            speakerText.text = string.Empty;
+        }
+    }
+
+    private void UpdatePortrait(DialogueCharacterSO character)
+    {
+        if (portraitImage == null)
+        {
+            return;
+        }
+
+        Sprite portrait = null;
+
+        if (character != null)
+        {
+            portrait = character.DefaultPortrait;
+        }
+
+        portraitImage.sprite = portrait;
+        portraitImage.enabled = portrait != null;
+    }
+
+    private void StartTypewriter(string text)
+    {
+        if (dialogueText == null)
+        {
+            return;
+        }
+
+        if (string.IsNullOrEmpty(text))
+        {
+            dialogueText.text = string.Empty;
+            dialogueText.maxVisibleCharacters = int.MaxValue;
+            isTyping = false;
+            return;
+        }
+
+        typewriterCoroutine = StartCoroutine(TypewriterRoutine(text));
+    }
+
+    private IEnumerator TypewriterRoutine(string text)
+    {
+        isTyping = true;
+
+        dialogueText.text = text;
+        dialogueText.maxVisibleCharacters = 0;
+
+        yield return null;
+
+        int characterCount = dialogueText.textInfo.characterCount;
+
+        for (int i = 0; i <= characterCount; i++)
+        {
+            dialogueText.maxVisibleCharacters = i;
+
+            if (i < characterCount)
+            {
+                yield return new WaitForSeconds(characterDelay);
+            }
+        }
+
+        dialogueText.maxVisibleCharacters = int.MaxValue;
+
+        isTyping = false;
+        typewriterCoroutine = null;
+    }
+
+    private void CompleteTyping()
+    {
+        if (!isTyping)
+        {
+            return;
+        }
+
+        if (typewriterCoroutine != null)
+        {
+            StopCoroutine(typewriterCoroutine);
+        }
+
+        typewriterCoroutine = null;
 
         if (dialogueText != null)
         {
-            dialogueText.text = line.DialogueText;
+            dialogueText.maxVisibleCharacters = int.MaxValue;
         }
 
-        if (portraitImage != null)
+        isTyping = false;
+    }
+
+    private void StopTypewriter()
+    {
+        if (typewriterCoroutine != null)
         {
-            portraitImage.sprite = line.Portrait;
-            portraitImage.enabled = line.Portrait != null;
+            StopCoroutine(typewriterCoroutine);
+        }
+
+        typewriterCoroutine = null;
+        isTyping = false;
+
+        if (dialogueText != null)
+        {
+            dialogueText.maxVisibleCharacters = int.MaxValue;
         }
     }
 
     public void Hide()
     {
+        StopTypewriter();
+
         if (dialoguePanel != null)
         {
             dialoguePanel.SetActive(false);
         }
-    }
-
-    private void OnContinueClicked()
-    {
-        DialogueManager.Instance?.ContinueDialogue();
     }
 }
