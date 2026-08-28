@@ -119,6 +119,16 @@ public class PlayerLanternAttack : MonoBehaviour
                 enemyLayer
             );
 
+        if (enableDebugLog)
+        {
+            Debug.Log(
+                $"[Lantern] Query → {hits.Length} collider(s) | " +
+                $"Origin={attackOrigin} | " +
+                $"Radius={attackRadius}",
+                this
+            );
+        }
+
         HashSet<EnemyLanternTarget> targets =
             new HashSet<EnemyLanternTarget>();
 
@@ -131,11 +141,27 @@ public class PlayerLanternAttack : MonoBehaviour
                 continue;
             }
 
+            if (enableDebugLog)
+            {
+                Debug.Log(
+                    $"[Lantern] Found → {hit.name} | Layer={LayerMask.LayerToName(hit.gameObject.layer)}",
+                    this
+                );
+            }
+
             EnemyLanternTarget target =
                 hit.GetComponentInParent<EnemyLanternTarget>();
 
             if (target == null)
             {
+                if (enableDebugLog)
+                {
+                    Debug.Log(
+                        $"[Lantern] No Target → {hit.name}",
+                        this
+                    );
+                }
+
                 continue;
             }
 
@@ -154,7 +180,7 @@ public class PlayerLanternAttack : MonoBehaviour
         if (enableDebugLog)
         {
             Debug.Log(
-                $"[Lantern] Fire → {successfulHits} hit",
+                $"[Lantern] Result → {successfulHits} hit",
                 this
             );
         }

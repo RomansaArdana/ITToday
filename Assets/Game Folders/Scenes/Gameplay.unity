@@ -3001,7 +3001,7 @@ Transform:
   m_GameObject: {fileID: 1154069729}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.87, y: 0, z: 0}
+  m_LocalPosition: {x: 3.03, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4980,6 +4980,11 @@ GameObject:
   - component: {fileID: 2130438968}
   - component: {fileID: 2130438970}
   - component: {fileID: 2130438969}
+  - component: {fileID: 2130438974}
+  - component: {fileID: 2130438973}
+  - component: {fileID: 2130438972}
+  - component: {fileID: 2130438971}
+  - component: {fileID: 2130438975}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Untagged
@@ -5084,7 +5089,12 @@ MonoBehaviour:
   chase: {fileID: 2130438958}
   flee: {fileID: 2130438967}
   cornerDetector: {fileID: 2130438968}
+  obstacleDetector: {fileID: 2130438974}
+  jump: {fileID: 2130438973}
+  lowGapDetector: {fileID: 2130438972}
+  crouch: {fileID: 2130438971}
   vulnerable: {fileID: 2130438970}
+  enableDebugLog: 0
 --- !u!50 &2130438957
 Rigidbody2D:
   serializedVersion: 5
@@ -5301,6 +5311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyFlee
   enemyController: {fileID: 2130438950}
+  crouch: {fileID: 0}
   fleeSpeedMultiplier: 1.25
   runRight: 1
 --- !u!114 &2130438968
@@ -5351,6 +5362,94 @@ MonoBehaviour:
   stateController: {fileID: 2130438953}
   rb: {fileID: 2130438957}
   reactionDelay: 0.15
+--- !u!114 &2130438971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130438949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd8dddbf6a3bc494d810a8821e44380d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyCrouch
+  stateController: {fileID: 2130438953}
+  rb: {fileID: 2130438957}
+  crouchSpeedMultiplier: 0.75
+--- !u!114 &2130438972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130438949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c97677d7c6ee7bc4ebf8ebf4028c4935, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyLowGapDetector
+  flee: {fileID: 2130438967}
+  crouch: {fileID: 2130438971}
+  sensorOrigin: {fileID: 2616357}
+  lowGapLayer:
+    serializedVersion: 2
+    m_Bits: 4096
+  detectionDistance: 0.6
+  showDebugGizmo: 1
+--- !u!114 &2130438973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130438949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57c22b7712b5fd84ba01ce4ad4656442, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyJump
+  stateController: {fileID: 2130438953}
+  obstacleDetector: {fileID: 2130438974}
+  jumpForce: 6
+  jumpCooldown: 0.7
+  enableDebugLog: 1
+--- !u!114 &2130438974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130438949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f3006a5c2883534ea1e7ef3c790d643, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyObstacleDetector
+  flee: {fileID: 2130438967}
+  sensorOrigin: {fileID: 2616357}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 4096
+  detectionDistance: 0.6
+  obstacleHeight: 0.5
+  showDebugGizmo: 1
+--- !u!114 &2130438975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130438949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ef89f475fa22de4cbf38cd319d3c2eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyLanternTarget
+  enemyController: {fileID: 2130438950}
+  enemyHealth: {fileID: 2130438962}
+  stateController: {fileID: 2130438953}
+  enableDebugLog: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
