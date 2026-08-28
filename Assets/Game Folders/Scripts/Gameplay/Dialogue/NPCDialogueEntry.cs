@@ -7,22 +7,14 @@ public class NPCDialogueEntry
     [SerializeField] private DialogueSequenceSO sequence;
 
     [Header("Condition")]
-    [SerializeField] private DialogueCondition condition =
-        new DialogueCondition();
+    [SerializeField] private DialogueCondition condition = new DialogueCondition();
 
     public DialogueSequenceSO Sequence => sequence;
 
     public bool IsAvailable()
     {
-        if (sequence == null)
-        {
-            return false;
-        }
-
-        if (condition == null)
-        {
-            return true;
-        }
+        if (sequence == null) return false;
+        if (condition == null) return true;
 
         return condition.IsMet();
     }

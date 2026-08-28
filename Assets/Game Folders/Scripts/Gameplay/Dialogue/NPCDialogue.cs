@@ -33,14 +33,9 @@ public class NPCDialogue : InteractableBase
             return;
         }
 
-        Log(
-            $"Sequence terpilih → \"{sequence.SequenceId}\" | NPC → {gameObject.name}"
-        );
+        Log($"Sequence terpilih → \"{sequence.SequenceId}\" | NPC → {gameObject.name}");
 
-        DialogueManager.Instance.StartDialogue(
-            sequence,
-            interactor
-        );
+        DialogueManager.Instance.StartDialogue(sequence, interactor);
     }
 
     private DialogueSequenceSO GetAvailableDialogue()
@@ -69,22 +64,15 @@ public class NPCDialogue : InteractableBase
                 continue;
             }
 
-            Log(
-                $"Checking Entry {i} → \"{entry.Sequence.SequenceId}\""
-            );
+            Log($"Checking Entry {i} → \"{entry.Sequence.SequenceId}\"");
 
             if (!entry.IsAvailable())
             {
-                Log(
-                    $"Entry {i} tidak tersedia → \"{entry.Sequence.SequenceId}\""
-                );
-
+                Log($"Entry {i} tidak tersedia → \"{entry.Sequence.SequenceId}\"");
                 continue;
             }
 
-            Log(
-                $"Entry {i} tersedia → \"{entry.Sequence.SequenceId}\""
-            );
+            Log($"Entry {i} tersedia → \"{entry.Sequence.SequenceId}\"");
 
             return entry.Sequence;
         }
@@ -94,27 +82,13 @@ public class NPCDialogue : InteractableBase
 
     private void Log(string message)
     {
-        if (!enableDebugLog)
-        {
-            return;
-        }
-
-        Debug.Log(
-            $"[NPCDialogue] {message}",
-            this
-        );
+        if (!enableDebugLog) return;
+        Debug.Log($"[NPCDialogue] {message}", this);
     }
 
     private void LogWarning(string message)
     {
-        if (!enableDebugLog)
-        {
-            return;
-        }
-
-        Debug.LogWarning(
-            $"[NPCDialogue] {message}",
-            this
-        );
+        if (!enableDebugLog) return;
+        Debug.LogWarning($"[NPCDialogue] {message}", this);
     }
 }

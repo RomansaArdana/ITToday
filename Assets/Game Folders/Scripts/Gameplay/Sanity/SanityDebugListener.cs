@@ -7,17 +7,12 @@ public class SanityDebugListener : MonoBehaviour
     private void Awake()
     {
         if (sanityController == null)
-        {
             sanityController = GetComponent<SanityController>();
-        }
     }
 
     private void OnEnable()
     {
-        if (sanityController == null)
-        {
-            return;
-        }
+        if (sanityController == null) return;
 
         sanityController.OnSanityChanged += HandleSanityChanged;
         sanityController.OnSanityLevelChanged += HandleSanityLevelChanged;
@@ -25,10 +20,7 @@ public class SanityDebugListener : MonoBehaviour
 
     private void OnDisable()
     {
-        if (sanityController == null)
-        {
-            return;
-        }
+        if (sanityController == null) return;
 
         sanityController.OnSanityChanged -= HandleSanityChanged;
         sanityController.OnSanityLevelChanged -= HandleSanityLevelChanged;
@@ -36,17 +28,11 @@ public class SanityDebugListener : MonoBehaviour
 
     private void HandleSanityChanged(float current, float max)
     {
-        Debug.Log(
-            $"[EVENT] Sanity Changed: {current:F1}/{max:F1}",
-            this
-        );
+        Debug.Log($"[EVENT] Sanity Changed: {current:F1}/{max:F1}", this);
     }
 
     private void HandleSanityLevelChanged(SanityLevel level)
     {
-        Debug.Log(
-            $"[EVENT] Sanity Level Changed: {level}",
-            this
-        );
+        Debug.Log($"[EVENT] Sanity Level Changed: {level}", this);
     }
 }

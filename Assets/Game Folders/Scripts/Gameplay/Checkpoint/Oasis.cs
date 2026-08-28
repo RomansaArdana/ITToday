@@ -9,48 +9,28 @@ public class Oasis : MonoBehaviour
     private void Awake()
     {
         if (sanityController == null)
-        {
             sanityController = FindFirstObjectByType<SanityController>();
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.CompareTag("Player"))
-        {
-            return;
-        }
+        if (!other.CompareTag("Player")) return;
 
         IsPlayerInside = true;
 
-        if (sanityController != null)
-        {
-            sanityController.SetRecoveryActive(true);
-        }
+        if (sanityController != null) sanityController.SetRecoveryActive(true);
 
-        Debug.Log(
-            "Player entered Oasis. Sanity recovery active.",
-            this
-        );
+        Debug.Log("Player entered Oasis. Sanity recovery active.", this);
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (!other.CompareTag("Player"))
-        {
-            return;
-        }
+        if (!other.CompareTag("Player")) return;
 
         IsPlayerInside = false;
 
-        if (sanityController != null)
-        {
-            sanityController.StopSanityChange();
-        }
+        if (sanityController != null) sanityController.StopSanityChange();
 
-        Debug.Log(
-            "Player exited Oasis. Sanity recovery stopped.",
-            this
-        );
+        Debug.Log("Player exited Oasis. Sanity recovery stopped.", this);
     }
 }

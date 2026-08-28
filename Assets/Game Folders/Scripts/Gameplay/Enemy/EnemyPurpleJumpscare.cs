@@ -20,138 +20,80 @@ public class EnemyPurpleJumpscare : MonoBehaviour
     [SerializeField] private bool enableDebugLog = true;
 
     private Coroutine flashRoutine;
-
     private GameObject flashObject;
 
     private void Awake()
     {
-        enemyHealth ??=
-            GetComponent<EnemyHealth>();
+        enemyHealth ??= GetComponent<EnemyHealth>();
 
         if (flashImage != null)
         {
-            flashObject =
-                flashImage.gameObject;
-
+            flashObject = flashImage.gameObject;
             SetFlashAlpha(0f);
-
             flashObject.SetActive(false);
         }
     }
 
     public void PlayJumpscare()
     {
-        if (enemyHealth != null &&
-            !enemyHealth.IsAlive)
-        {
-            return;
-        }
+        if (enemyHealth != null && !enemyHealth.IsAlive) return;
 
         PlayAudio();
         PlayFlash();
 
-        if (enableDebugLog)
-        {
-            Debug.Log(
-                "[Purple] JUMPSCARE FEEDBACK",
-                this
-            );
-        }
+        if (enableDebugLog) Debug.Log("[Purple] JUMPSCARE FEEDBACK", this);
     }
 
     private void PlayFlash()
     {
-        if (flashImage == null)
-        {
-            return;
-        }
+        if (flashImage == null) return;
 
-        if (flashRoutine != null)
-        {
-            StopCoroutine(flashRoutine);
-        }
+        if (flashRoutine != null) StopCoroutine(flashRoutine);
 
-        flashRoutine =
-            StartCoroutine(
-                FlashRoutine()
-            );
+        flashRoutine = StartCoroutine(FlashRoutine());
     }
 
     private IEnumerator FlashRoutine()
     {
-        if (flashObject != null)
-        {
-            flashObject.SetActive(true);
-        }
+        if (flashObject != null) flashObject.SetActive(true);
 
-        SetFlashAlpha(
-            flashAlpha
-        );
+        SetFlashAlpha(flashAlpha);
 
-        yield return new WaitForSeconds(
-            flashDuration
-        );
+        yield return new WaitForSeconds(flashDuration);
 
         SetFlashAlpha(0f);
 
-        if (flashObject != null)
-        {
-            flashObject.SetActive(false);
-        }
+        if (flashObject != null) flashObject.SetActive(false);
 
         flashRoutine = null;
     }
 
     private void PlayAudio()
     {
-        if (audioSource == null ||
-            jumpscareClip == null)
-        {
-            return;
-        }
-
-        audioSource.PlayOneShot(
-            jumpscareClip
-        );
+        if (audioSource == null || jumpscareClip == null) return;
+        audioSource.PlayOneShot(jumpscareClip);
     }
 
-    private void SetFlashAlpha(
-        float alpha)
+    private void SetFlashAlpha(float alpha)
     {
-        if (flashImage == null)
-        {
-            return;
-        }
+        if (flashImage == null) return;
 
-        Color color =
-            flashImage.color;
-
-        color.a =
-            Mathf.Clamp01(
-                alpha
-            );
-
-        flashImage.color =
-            color;
+        Color color = flashImage.color;
+        color.a = Mathf.Clamp01(alpha);
+        flashImage.color = color;
     }
 
     public void ForceHide()
     {
         if (flashRoutine != null)
         {
-            StopCoroutine(
-                flashRoutine
-            );
-
+            StopCoroutine(flashRoutine);
             flashRoutine = null;
         }
 
         SetFlashAlpha(0f);
 
-        if (flashObject != null)
-        {
-            flashObject.SetActive(false);
-        }
+        if (flashObject != null) flashObject.SetActive(false);
     }
 
     private void OnDisable()

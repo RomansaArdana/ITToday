@@ -6,22 +6,12 @@ public class EnemyHealthDebug : MonoBehaviour
 
     private void Awake()
     {
-        if (health == null)
-        {
-            health = GetComponent<EnemyHealth>();
-        }
+        if (health == null) health = GetComponent<EnemyHealth>();
     }
 
     private void Update()
     {
-        if (health == null)
-        {
-            return;
-        }
-
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            health.TakeDamage(1f);
-        }
+        if (health == null) return;
+        if (Input.GetKeyDown(KeyCode.J)) health.TakeDamage(1f);
     }
 }

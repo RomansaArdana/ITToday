@@ -10,9 +10,7 @@ public class PlayerRespawn : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-
-        if (playerDeath == null)
-            playerDeath = GetComponent<PlayerDeath>();
+        if (playerDeath == null) playerDeath = GetComponent<PlayerDeath>();
     }
 
     public void Respawn()
@@ -21,8 +19,7 @@ public class PlayerRespawn : MonoBehaviour
 
         transform.position = respawnPoint.position;
 
-        if (rb != null)
-            rb.linearVelocity = Vector2.zero;
+        if (rb != null) rb.linearVelocity = Vector2.zero;
 
         playerDeath.Revive();
     }

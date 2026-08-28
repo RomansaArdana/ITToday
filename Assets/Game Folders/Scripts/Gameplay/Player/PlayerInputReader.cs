@@ -25,9 +25,7 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
     public bool CrouchHeld { get; private set; }
     public bool AttackHeld { get; private set; }
 
-    public bool IsInteractHeld =>
-        interactAction != null &&
-        interactAction.action.IsPressed();
+    public bool IsInteractHeld => interactAction != null && interactAction.action.IsPressed();
 
     private void OnEnable()
     {
@@ -39,16 +37,12 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
     {
         UnsubscribeActions();
         DisableActions();
-
         ResetInputState();
     }
 
     private void Update()
     {
-        MoveInput =
-            moveAction != null
-                ? moveAction.action.ReadValue<Vector2>()
-                : Vector2.zero;
+        MoveInput = moveAction != null ? moveAction.action.ReadValue<Vector2>() : Vector2.zero;
     }
 
     private void EnableActions()
@@ -87,10 +81,7 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
             hideAction.action.canceled += OnHideCanceled;
         }
 
-        if (jumpAction != null)
-        {
-            jumpAction.action.performed += OnJumpPerformed;
-        }
+        if (jumpAction != null) jumpAction.action.performed += OnJumpPerformed;
 
         if (crouchAction != null)
         {
@@ -104,10 +95,7 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
             attackAction.action.canceled += OnAttackCanceled;
         }
 
-        if (cloakAction != null)
-        {
-            cloakAction.action.performed += OnCloakPerformed;
-        }
+        if (cloakAction != null) cloakAction.action.performed += OnCloakPerformed;
     }
 
     private void UnsubscribeActions()
@@ -124,10 +112,7 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
             hideAction.action.canceled -= OnHideCanceled;
         }
 
-        if (jumpAction != null)
-        {
-            jumpAction.action.performed -= OnJumpPerformed;
-        }
+        if (jumpAction != null) jumpAction.action.performed -= OnJumpPerformed;
 
         if (crouchAction != null)
         {
@@ -141,74 +126,24 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
             attackAction.action.canceled -= OnAttackCanceled;
         }
 
-        if (cloakAction != null)
-        {
-            cloakAction.action.performed -= OnCloakPerformed;
-        }
+        if (cloakAction != null) cloakAction.action.performed -= OnCloakPerformed;
     }
 
-    private void OnInteractPerformed(
-        InputAction.CallbackContext context)
-    {
-        InteractPressed = true;
-        InteractHeld = true;
-    }
+    private void OnInteractPerformed(InputAction.CallbackContext context) { InteractPressed = true; InteractHeld = true; }
+    private void OnInteractCanceled(InputAction.CallbackContext context) { InteractHeld = false; }
 
-    private void OnInteractCanceled(
-        InputAction.CallbackContext context)
-    {
-        InteractHeld = false;
-    }
+    private void OnHidePerformed(InputAction.CallbackContext context) { HidePressed = true; HideHeld = true; }
+    private void OnHideCanceled(InputAction.CallbackContext context) { HideHeld = false; }
 
-    private void OnHidePerformed(
-        InputAction.CallbackContext context)
-    {
-        HidePressed = true;
-        HideHeld = true;
-    }
+    private void OnJumpPerformed(InputAction.CallbackContext context) { JumpPressed = true; }
 
-    private void OnHideCanceled(
-        InputAction.CallbackContext context)
-    {
-        HideHeld = false;
-    }
+    private void OnCrouchPerformed(InputAction.CallbackContext context) { CrouchHeld = true; }
+    private void OnCrouchCanceled(InputAction.CallbackContext context) { CrouchHeld = false; }
 
-    private void OnJumpPerformed(
-        InputAction.CallbackContext context)
-    {
-        JumpPressed = true;
-    }
+    private void OnAttackPerformed(InputAction.CallbackContext context) { AttackPressed = true; AttackHeld = true; }
+    private void OnAttackCanceled(InputAction.CallbackContext context) { AttackHeld = false; }
 
-    private void OnCrouchPerformed(
-        InputAction.CallbackContext context)
-    {
-        CrouchHeld = true;
-    }
-
-    private void OnCrouchCanceled(
-        InputAction.CallbackContext context)
-    {
-        CrouchHeld = false;
-    }
-
-    private void OnAttackPerformed(
-        InputAction.CallbackContext context)
-    {
-        AttackPressed = true;
-        AttackHeld = true;
-    }
-
-    private void OnAttackCanceled(
-        InputAction.CallbackContext context)
-    {
-        AttackHeld = false;
-    }
-
-    private void OnCloakPerformed(
-        InputAction.CallbackContext context)
-    {
-        CloakPressed = true;
-    }
+    private void OnCloakPerformed(InputAction.CallbackContext context) { CloakPressed = true; }
 
     private void LateUpdate()
     {

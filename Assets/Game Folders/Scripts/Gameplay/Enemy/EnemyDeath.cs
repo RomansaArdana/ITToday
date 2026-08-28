@@ -31,35 +31,23 @@ public class EnemyDeath : MonoBehaviour
         behaviourController ??= GetComponent<EnemyBehaviourController>();
         rb ??= GetComponent<Rigidbody2D>();
 
-        colliders =
-            GetComponentsInChildren<Collider2D>(true);
-
-        spriteRenderers =
-            GetComponentsInChildren<SpriteRenderer>(true);
+        colliders = GetComponentsInChildren<Collider2D>(true);
+        spriteRenderers = GetComponentsInChildren<SpriteRenderer>(true);
     }
 
     private void OnEnable()
     {
-        if (health != null)
-        {
-            health.OnDeath += HandleDeath;
-        }
+        if (health != null) health.OnDeath += HandleDeath;
     }
 
     private void OnDisable()
     {
-        if (health != null)
-        {
-            health.OnDeath -= HandleDeath;
-        }
+        if (health != null) health.OnDeath -= HandleDeath;
     }
 
     private void HandleDeath()
     {
-        if (IsDead)
-        {
-            return;
-        }
+        if (IsDead) return;
 
         IsDead = true;
 
@@ -67,71 +55,37 @@ public class EnemyDeath : MonoBehaviour
         StopBehaviour();
         StopMovement();
 
-        if (disableCollidersOnDeath)
-        {
-            DisableColliders();
-        }
+        if (disableCollidersOnDeath) DisableColliders();
+        if (makeRigidbodyKinematicOnDeath) DisablePhysics();
 
-        if (makeRigidbodyKinematicOnDeath)
-        {
-            DisablePhysics();
-        }
+        if (fadeOutOnDeath) StartCoroutine(FadeOutAndCleanup());
+        else if (destroyAfterFade) Destroy(gameObject);
 
-        if (fadeOutOnDeath)
-        {
-            StartCoroutine(FadeOutAndCleanup());
-        }
-        else if (destroyAfterFade)
-        {
-            Destroy(gameObject);
-        }
-
-        Debug.Log(
-            $"[EnemyDeath] {gameObject.name} entered Dead state.",
-            this
-        );
+        Debug.Log($"[EnemyDeath] {gameObject.name} entered Dead state.", this);
     }
 
     private void SetDeadState()
     {
-        if (stateController == null)
-        {
-            return;
-        }
-
-        stateController.SetState(
-            EnemyState.Dead
-        );
+        if (stateController == null) return;
+        stateController.SetState(EnemyState.Dead);
     }
 
     private void StopBehaviour()
     {
-        if (behaviourController == null)
-        {
-            return;
-        }
-
+        if (behaviourController == null) return;
         behaviourController.StopAllBehaviours();
     }
 
     private void StopMovement()
     {
-        if (rb == null)
-        {
-            return;
-        }
-
+        if (rb == null) return;
         rb.linearVelocity = Vector2.zero;
         rb.angularVelocity = 0f;
     }
 
     private void DisablePhysics()
     {
-        if (rb == null)
-        {
-            return;
-        }
-
+        if (rb == null) return;
         rb.linearVelocity = Vector2.zero;
         rb.angularVelocity = 0f;
         rb.bodyType = RigidbodyType2D.Kinematic;
@@ -139,80 +93,46 @@ public class EnemyDeath : MonoBehaviour
 
     private void DisableColliders()
     {
-        if (colliders == null)
-        {
-            return;
-        }
+        if (colliders == null) return;
 
         foreach (Collider2D col in colliders)
         {
-            if (col != null)
-            {
-                col.enabled = false;
-            }
+            if (col != null) col.enabled = false;
         }
     }
 
     private IEnumerator FadeOutAndCleanup()
     {
-        float duration =
-            Mathf.Max(0f, fadeDuration);
+        float duration = Mathf.Max(0f, fadeDuration);
 
         if (duration <= 0f)
         {
             SetSpriteAlpha(0f);
-
-            if (destroyAfterFade)
-            {
-                Destroy(gameObject);
-            }
-
+            if (destroyAfterFade) Destroy(gameObject);
             yield break;
         }
 
         float elapsed = 0f;
-
-        float[] startAlpha =
-            new float[spriteRenderers.Length];
+        float[] startAlpha = new float[spriteRenderers.Length];
 
         for (int i = 0; i < spriteRenderers.Length; i++)
         {
-            if (spriteRenderers[i] != null)
-            {
-                startAlpha[i] =
-                    spriteRenderers[i].color.a;
-            }
+            if (spriteRenderers[i] != null) startAlpha[i] = spriteRenderers[i].color.a;
         }
 
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
 
-            float progress =
-                Mathf.Clamp01(
-                    elapsed / duration
-                );
-
-            float alpha =
-                Mathf.Lerp(
-                    1f,
-                    0f,
-                    progress
-                );
+            float progress = Mathf.Clamp01(elapsed / duration);
+            float alpha = Mathf.Lerp(1f, 0f, progress);
 
             for (int i = 0; i < spriteRenderers.Length; i++)
             {
-                if (spriteRenderers[i] == null)
-                {
-                    continue;
-                }
+                if (spriteRenderers[i] == null) continue;
 
-                Color color =
-                    spriteRenderers[i].color;
-
-                color.a =
-                    startAlpha[i] * alpha;
-
+                Color color = spriteRenderers[i].color;
+                color.a = startAlpha[i] * alpha;
                 spriteRenderers[i].color = color;
             }
 
@@ -221,27 +141,18 @@ public class EnemyDeath : MonoBehaviour
 
         SetSpriteAlpha(0f);
 
-        if (destroyAfterFade)
-        {
-            Destroy(gameObject);
-        }
+        if (destroyAfterFade) Destroy(gameObject);
     }
 
     private void SetSpriteAlpha(float alpha)
     {
-        if (spriteRenderers == null)
-        {
-            return;
-        }
+        if (spriteRenderers == null) return;
 
         alpha = Mathf.Clamp01(alpha);
 
         foreach (SpriteRenderer renderer in spriteRenderers)
         {
-            if (renderer == null)
-            {
-                continue;
-            }
+            if (renderer == null) continue;
 
             Color color = renderer.color;
             color.a = alpha;

@@ -21,10 +21,7 @@ public class EnemyLowGapDetector : MonoBehaviour
         flee ??= GetComponent<EnemyFlee>();
         crouch ??= GetComponent<EnemyCrouch>();
 
-        if (sensorOrigin == null)
-        {
-            sensorOrigin = transform;
-        }
+        if (sensorOrigin == null) sensorOrigin = transform;
     }
 
     private void Update()
@@ -36,62 +33,27 @@ public class EnemyLowGapDetector : MonoBehaviour
     {
         IsLowGapDetected = false;
 
-        if (flee == null ||
-            crouch == null)
-        {
-            return;
-        }
+        if (flee == null || crouch == null) return;
+        if (!flee.enabled) return;
 
-        if (!flee.enabled)
-        {
-            return;
-        }
+        Vector2 direction = flee.FleeDirection;
 
-        Vector2 direction =
-            flee.FleeDirection;
+        if (direction.sqrMagnitude <= 0.001f) return;
 
-        if (direction.sqrMagnitude <= 0.001f)
-        {
-            return;
-        }
+        RaycastHit2D hit = Physics2D.Raycast(sensorOrigin.position, direction, detectionDistance, lowGapLayer);
 
-        RaycastHit2D hit =
-            Physics2D.Raycast(
-                sensorOrigin.position,
-                direction,
-                detectionDistance,
-                lowGapLayer
-            );
-
-        if (hit.collider == null)
-        {
-            return;
-        }
+        if (hit.collider == null) return;
 
         IsLowGapDetected = true;
     }
 
     private void OnDrawGizmosSelected()
     {
-        if (!showDebugGizmo)
-        {
-            return;
-        }
+        if (!showDebugGizmo) return;
 
-        Vector2 origin =
-            sensorOrigin != null
-                ? sensorOrigin.position
-                : transform.position;
+        Vector2 origin = sensorOrigin != null ? sensorOrigin.position : transform.position;
+        Vector2 direction = flee != null ? flee.FleeDirection : Vector2.right;
 
-        Vector2 direction =
-            flee != null
-                ? flee.FleeDirection
-                : Vector2.right;
-
-        Gizmos.DrawLine(
-            origin,
-            origin +
-            direction * detectionDistance
-        );
+        Gizmos.DrawLine(origin, origin + direction * detectionDistance);
     }
 }

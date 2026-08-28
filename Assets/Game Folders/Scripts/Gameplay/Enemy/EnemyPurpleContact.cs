@@ -21,14 +21,9 @@ public class EnemyPurpleContact : MonoBehaviour
 
     private void Awake()
     {
-        enemyController ??=
-            GetComponent<EnemyController>();
-
-        enemyHealth ??=
-            GetComponent<EnemyHealth>();
-
-        jumpscare ??=
-            GetComponent<EnemyPurpleJumpscare>();
+        enemyController ??= GetComponent<EnemyController>();
+        enemyHealth ??= GetComponent<EnemyHealth>();
+        jumpscare ??= GetComponent<EnemyPurpleJumpscare>();
     }
 
     private void Update()
@@ -41,94 +36,41 @@ public class EnemyPurpleContact : MonoBehaviour
 
         cooldownTimer -= Time.deltaTime;
 
-        if (cooldownTimer < 0f)
-        {
-            cooldownTimer = 0f;
-        }
+        if (cooldownTimer < 0f) cooldownTimer = 0f;
     }
 
-    private void OnTriggerEnter2D(
-        Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.CompareTag(playerTag))
-        {
-            return;
-        }
-
-        TryDamagePlayer(
-            other.gameObject
-        );
+        if (!other.CompareTag(playerTag)) return;
+        TryDamagePlayer(other.gameObject);
     }
 
-    private void TryDamagePlayer(
-        GameObject player)
+    private void TryDamagePlayer(GameObject player)
     {
-        if (cooldownTimer > 0f)
-        {
-            return;
-        }
+        if (cooldownTimer > 0f) return;
+        if (enemyHealth != null && !enemyHealth.IsAlive) return;
 
-        if (enemyHealth != null &&
-            !enemyHealth.IsAlive)
-        {
-            return;
-        }
+        SanityController sanity = player.GetComponent<SanityController>();
 
-        SanityController sanity =
-            player.GetComponent<SanityController>();
+        if (sanity == null) sanity = player.GetComponentInParent<SanityController>();
 
         if (sanity == null)
         {
-            sanity =
-                player.GetComponentInParent<SanityController>();
-        }
-
-        if (sanity == null)
-        {
-            if (enableDebugLog)
-            {
-                Debug.LogWarning(
-                    "[Purple] SanityController tidak ditemukan pada Player.",
-                    this
-                );
-            }
-
+            if (enableDebugLog) Debug.LogWarning("[Purple] SanityController tidak ditemukan pada Player.", this);
             return;
         }
 
-        if (sanity.IsDepleted)
-        {
-            return;
-        }
+        if (sanity.IsDepleted) return;
 
-        float previousSanity =
-            sanity.CurrentSanity;
+        float previousSanity = sanity.CurrentSanity;
 
-        sanity.DrainSanity(
-            sanityDamage
-        );
+        sanity.DrainSanity(sanityDamage);
+        cooldownTimer = Mathf.Max(0f, contactCooldown);
 
-        cooldownTimer =
-            Mathf.Max(
-                0f,
-                contactCooldown
-            );
-
-        if (jumpscare != null)
-        {
-            jumpscare.PlayJumpscare();
-        }
+        if (jumpscare != null) jumpscare.PlayJumpscare();
 
         if (enableDebugLog)
-        {
-            Debug.Log(
-                $"[Purple] JUMPSCARE → " +
-                $"Sanity {previousSanity:F1} → " +
-                $"{sanity.CurrentSanity:F1} " +
-                $"(-{sanityDamage:F1})",
-                this
-            );
-        }
+            Debug.Log($"[Purple] JUMPSCARE → Sanity {previousSanity:F1} → {sanity.CurrentSanity:F1} (-{sanityDamage:F1})", this);
     }
 
     public void ResetCooldown()

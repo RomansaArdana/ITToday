@@ -41,14 +41,9 @@ public class EnemyDash : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
-        enemyController ??=
-            GetComponent<EnemyController>();
-
-        stateController ??=
-            GetComponent<EnemyStateController>();
-
-        chase ??=
-            GetComponent<EnemyChase>();
+        enemyController ??= GetComponent<EnemyController>();
+        stateController ??= GetComponent<EnemyStateController>();
+        chase ??= GetComponent<EnemyChase>();
     }
 
     private void Update()
@@ -66,12 +61,7 @@ public class EnemyDash : MonoBehaviour
             return;
         }
 
-        IsGrounded =
-            Physics2D.OverlapCircle(
-                groundCheck.position,
-                groundCheckRadius,
-                groundLayer
-            ) != null;
+        IsGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer) != null;
     }
 
     private void UpdateCooldowns()
@@ -79,37 +69,23 @@ public class EnemyDash : MonoBehaviour
         if (dashCooldownTimer > 0f)
         {
             dashCooldownTimer -= Time.deltaTime;
-
-            if (dashCooldownTimer < 0f)
-            {
-                dashCooldownTimer = 0f;
-            }
+            if (dashCooldownTimer < 0f) dashCooldownTimer = 0f;
         }
 
         if (evadeCooldownTimer > 0f)
         {
             evadeCooldownTimer -= Time.deltaTime;
-
-            if (evadeCooldownTimer < 0f)
-            {
-                evadeCooldownTimer = 0f;
-            }
+            if (evadeCooldownTimer < 0f) evadeCooldownTimer = 0f;
         }
     }
 
     private void UpdateEvade()
     {
-        if (!IsEvading)
-        {
-            return;
-        }
+        if (!IsEvading) return;
 
         evadeTimer -= Time.deltaTime;
 
-        if (evadeTimer > 0f)
-        {
-            return;
-        }
+        if (evadeTimer > 0f) return;
 
         EndEvade();
     }
@@ -120,24 +96,13 @@ public class EnemyDash : MonoBehaviour
 
     public bool TryDash()
     {
-        if (!CanDash())
-        {
-            return false;
-        }
+        if (!CanDash()) return false;
 
-        float direction =
-            GetAwayDirection();
+        float direction = GetAwayDirection();
 
-        ApplyDash(
-            direction,
-            dashForce
-        );
+        ApplyDash(direction, dashForce);
 
-        dashCooldownTimer =
-            Mathf.Max(
-                0f,
-                dashCooldown
-            );
+        dashCooldownTimer = Mathf.Max(0f, dashCooldown);
 
         LogAction("DASH");
 
@@ -146,55 +111,16 @@ public class EnemyDash : MonoBehaviour
 
     private bool CanDash()
     {
-        if (rb == null ||
-            enemyController == null ||
-            stateController == null)
-        {
-            return false;
-        }
+        if (rb == null || enemyController == null || stateController == null) return false;
+        if (IsEvading) return false;
+        if (enemyController.Stats == null) return false;
+        if (enemyController.Stats.Archetype != EnemyArchetype.Cyan) return false;
+        if (!stateController.IsChase) return false;
+        if (!enemyController.HasTarget) return false;
+        if (!IsGrounded) return false;
+        if (dashCooldownTimer > 0f) return false;
 
-        if (IsEvading)
-        {
-            return false;
-        }
-
-        if (enemyController.Stats == null)
-        {
-            return false;
-        }
-
-        if (enemyController.Stats.Archetype !=
-            EnemyArchetype.Cyan)
-        {
-            return false;
-        }
-
-        if (!stateController.IsChase)
-        {
-            return false;
-        }
-
-        if (!enemyController.HasTarget)
-        {
-            return false;
-        }
-
-        if (!IsGrounded)
-        {
-            return false;
-        }
-
-        if (dashCooldownTimer > 0f)
-        {
-            return false;
-        }
-
-        float distance =
-            Vector2.Distance(
-                transform.position,
-                enemyController.PlayerTarget.position
-            );
-
+        float distance = Vector2.Distance(transform.position, enemyController.PlayerTarget.position);
         return distance <= triggerDistance;
     }
 
@@ -204,32 +130,16 @@ public class EnemyDash : MonoBehaviour
 
     public bool TryEvade()
     {
-        if (!CanEvade())
-        {
-            return false;
-        }
+        if (!CanEvade()) return false;
 
         BeginEvade();
 
-        float direction =
-            GetAwayDirection();
+        float direction = GetAwayDirection();
 
-        ApplyDash(
-            direction,
-            evadeForce
-        );
+        ApplyDash(direction, evadeForce);
 
-        evadeCooldownTimer =
-            Mathf.Max(
-                0f,
-                evadeCooldown
-            );
-
-        evadeTimer =
-            Mathf.Max(
-                0.05f,
-                evadeDuration
-            );
+        evadeCooldownTimer = Mathf.Max(0f, evadeCooldown);
+        evadeTimer = Mathf.Max(0.05f, evadeDuration);
 
         LogAction("EVADE");
 
@@ -238,50 +148,19 @@ public class EnemyDash : MonoBehaviour
 
     private bool CanEvade()
     {
-        if (rb == null ||
-            enemyController == null)
-        {
-            return false;
-        }
-
-        if (enemyController.Stats == null)
-        {
-            return false;
-        }
-
-        if (enemyController.Stats.Archetype !=
-            EnemyArchetype.Cyan)
-        {
-            return false;
-        }
+        if (rb == null || enemyController == null) return false;
+        if (enemyController.Stats == null) return false;
+        if (enemyController.Stats.Archetype != EnemyArchetype.Cyan) return false;
 
         if (!enemyController.HasTarget)
         {
-            if (enableDebugLog)
-            {
-                Debug.Log(
-                    "[EnemyAI] CYAN EVADE FAILED → No Target",
-                    this
-                );
-            }
-
+            if (enableDebugLog) Debug.Log("[EnemyAI] CYAN EVADE FAILED → No Target", this);
             return false;
         }
 
-        if (!enemyHealthAlive())
-        {
-            return false;
-        }
-
-        if (evadeCooldownTimer > 0f)
-        {
-            return false;
-        }
-
-        if (IsEvading)
-        {
-            return false;
-        }
+        if (!EnemyHealthAlive()) return false;
+        if (evadeCooldownTimer > 0f) return false;
+        if (IsEvading) return false;
 
         return true;
     }
@@ -289,11 +168,7 @@ public class EnemyDash : MonoBehaviour
     private void BeginEvade()
     {
         IsEvading = true;
-
-        if (chase != null)
-        {
-            chase.enabled = false;
-        }
+        if (chase != null) chase.enabled = false;
     }
 
     private void EndEvade()
@@ -301,104 +176,53 @@ public class EnemyDash : MonoBehaviour
         IsEvading = false;
         evadeTimer = 0f;
 
-        if (chase != null &&
-            stateController != null &&
-            stateController.IsChase &&
-            !stateController.IsDead)
-        {
+        if (chase != null && stateController != null && stateController.IsChase && !stateController.IsDead)
             chase.enabled = true;
-        }
     }
 
-    private bool enemyHealthAlive()
+    private bool EnemyHealthAlive()
     {
-        EnemyHealth health =
-            GetComponent<EnemyHealth>();
-
-        if (health == null)
-        {
-            return true;
-        }
-
+        EnemyHealth health = GetComponent<EnemyHealth>();
+        if (health == null) return true;
         return health.IsAlive;
     }
 
     private float GetAwayDirection()
     {
-        if (enemyController == null ||
-            enemyController.PlayerTarget == null)
-        {
-            return 1f;
-        }
+        if (enemyController == null || enemyController.PlayerTarget == null) return 1f;
 
-        float playerX =
-            enemyController.PlayerTarget.position.x;
+        float playerX = enemyController.PlayerTarget.position.x;
+        float enemyX = transform.position.x;
 
-        float enemyX =
-            transform.position.x;
-
-        return enemyX < playerX
-            ? -1f
-            : 1f;
+        return enemyX < playerX ? -1f : 1f;
     }
 
-    private void ApplyDash(
-        float direction,
-        float force)
+    private void ApplyDash(float direction, float force)
     {
-        Vector2 velocity =
-            rb.linearVelocity;
-
+        Vector2 velocity = rb.linearVelocity;
         velocity.x = 0f;
+        rb.linearVelocity = velocity;
 
-        rb.linearVelocity =
-            velocity;
-
-        rb.AddForce(
-            Vector2.right *
-            direction *
-            force,
-            ForceMode2D.Impulse
-        );
+        rb.AddForce(Vector2.right * direction * force, ForceMode2D.Impulse);
 
         IsDashing = true;
-
         UpdateFacing(direction);
-
         IsDashing = false;
     }
 
-    private void UpdateFacing(
-        float direction)
+    private void UpdateFacing(float direction)
     {
-        if (Mathf.Abs(direction) < 0.01f)
-        {
-            return;
-        }
+        if (Mathf.Abs(direction) < 0.01f) return;
 
-        Vector3 scale =
-            transform.localScale;
-
-        scale.x =
-            Mathf.Abs(scale.x) *
-            Mathf.Sign(direction);
-
-        transform.localScale =
-            scale;
+        Vector3 scale = transform.localScale;
+        scale.x = Mathf.Abs(scale.x) * Mathf.Sign(direction);
+        transform.localScale = scale;
     }
 
-    private void LogAction(
-        string action)
+    private void LogAction(string action)
     {
-        if (!enableDebugLog)
-        {
-            return;
-        }
-
-        Debug.Log(
-            $"[EnemyAI] CYAN → {action}",
-            this
-        );
+        if (!enableDebugLog) return;
+        Debug.Log($"[EnemyAI] CYAN → {action}", this);
     }
 
     public void StopDash()
@@ -410,30 +234,15 @@ public class EnemyDash : MonoBehaviour
         evadeCooldownTimer = 0f;
         evadeTimer = 0f;
 
-        if (chase != null)
-        {
-            chase.enabled = false;
-        }
+        if (chase != null) chase.enabled = false;
     }
 
     private void OnDrawGizmosSelected()
     {
-        if (!showGizmo)
-        {
-            return;
-        }
+        if (!showGizmo) return;
 
-        Gizmos.DrawWireSphere(
-            transform.position,
-            triggerDistance
-        );
+        Gizmos.DrawWireSphere(transform.position, triggerDistance);
 
-        if (groundCheck != null)
-        {
-            Gizmos.DrawWireSphere(
-                groundCheck.position,
-                groundCheckRadius
-            );
-        }
+        if (groundCheck != null) Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
     }
 }

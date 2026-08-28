@@ -14,11 +14,7 @@ public class EnemyFlee : MonoBehaviour
     [SerializeField] private bool runRight = true;
 
     public bool IsFleeing { get; private set; }
-
-    public Vector2 FleeDirection =>
-        runRight
-            ? Vector2.right
-            : Vector2.left;
+    public Vector2 FleeDirection => runRight ? Vector2.right : Vector2.left;
 
     private Rigidbody2D rb;
 
@@ -26,18 +22,13 @@ public class EnemyFlee : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
-        enemyController ??=
-            GetComponent<EnemyController>();
-
-        crouch ??=
-            GetComponent<EnemyCrouch>();
+        enemyController ??= GetComponent<EnemyController>();
+        crouch ??= GetComponent<EnemyCrouch>();
     }
 
     private void FixedUpdate()
     {
-        if (enemyController == null ||
-            enemyController.Stats == null ||
-            !enemyController.HasTarget)
+        if (enemyController == null || enemyController.Stats == null || !enemyController.HasTarget)
         {
             StopFlee();
             return;
@@ -50,60 +41,30 @@ public class EnemyFlee : MonoBehaviour
     {
         IsFleeing = true;
 
-        float direction =
-            runRight ? 1f : -1f;
+        float direction = runRight ? 1f : -1f;
+        float speed = enemyController.Stats.MoveSpeed * fleeSpeedMultiplier;
 
-        float speed =
-            enemyController.Stats.MoveSpeed *
-            fleeSpeedMultiplier;
+        if (crouch != null && crouch.IsCrouching) speed *= crouch.CrouchSpeedMultiplier;
 
-        if (crouch != null &&
-            crouch.IsCrouching)
-        {
-            speed *= crouch.CrouchSpeedMultiplier;
-        }
-
-        rb.linearVelocity =
-            new Vector2(
-                direction * speed,
-                rb.linearVelocity.y
-            );
+        rb.linearVelocity = new Vector2(direction * speed, rb.linearVelocity.y);
 
         UpdateFacing(direction);
     }
 
-    private void UpdateFacing(
-        float direction)
+    private void UpdateFacing(float direction)
     {
-        if (Mathf.Abs(direction) < 0.01f)
-        {
-            return;
-        }
+        if (Mathf.Abs(direction) < 0.01f) return;
 
-        Vector3 scale =
-            transform.localScale;
-
-        scale.x =
-            Mathf.Abs(scale.x) *
-            Mathf.Sign(direction);
-
-        transform.localScale =
-            scale;
+        Vector3 scale = transform.localScale;
+        scale.x = Mathf.Abs(scale.x) * Mathf.Sign(direction);
+        transform.localScale = scale;
     }
 
     public void StopFlee()
     {
         IsFleeing = false;
 
-        if (rb == null)
-        {
-            return;
-        }
-
-        rb.linearVelocity =
-            new Vector2(
-                0f,
-                rb.linearVelocity.y
-            );
+        if (rb == null) return;
+        rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
     }
 }

@@ -13,51 +13,26 @@ public class PlayerInteraction : MonoBehaviour
 
     private void Awake()
     {
-        if (inputReader == null)
-        {
-            inputReader = GetComponent<PlayerInputReader>();
-        }
-
-        if (stateController == null)
-        {
-            stateController = GetComponent<PlayerStateController>();
-        }
+        if (inputReader == null) inputReader = GetComponent<PlayerInputReader>();
+        if (stateController == null) stateController = GetComponent<PlayerStateController>();
     }
 
     private void Update()
     {
         DetectInteractable();
 
-        if (inputReader == null)
-        {
-            return;
-        }
-
-        if (inputReader.InteractPressed)
-        {
-            TryInteract();
-        }
+        if (inputReader == null) return;
+        if (inputReader.InteractPressed) TryInteract();
     }
 
     private void DetectInteractable()
     {
         currentInteractable = null;
 
-        if (stats == null)
-        {
-            return;
-        }
+        if (stats == null) return;
+        if (stateController != null && !stateController.CanInteract()) return;
 
-        if (stateController != null && !stateController.CanInteract())
-        {
-            return;
-        }
-
-        Collider2D[] results = Physics2D.OverlapCircleAll(
-            transform.position,
-            stats.InteractionRange,
-            interactableLayer
-        );
+        Collider2D[] results = Physics2D.OverlapCircleAll(transform.position, stats.InteractionRange, interactableLayer);
 
         float closestDistance = float.MaxValue;
 
@@ -65,20 +40,10 @@ public class PlayerInteraction : MonoBehaviour
         {
             IInteractable interactable = result.GetComponentInParent<IInteractable>();
 
-            if (interactable == null)
-            {
-                continue;
-            }
+            if (interactable == null) continue;
+            if (!interactable.CanInteract(gameObject)) continue;
 
-            if (!interactable.CanInteract(gameObject))
-            {
-                continue;
-            }
-
-            float distance = Vector2.Distance(
-                transform.position,
-                result.transform.position
-            );
+            float distance = Vector2.Distance(transform.position, result.transform.position);
 
             if (distance < closestDistance)
             {
@@ -90,31 +55,16 @@ public class PlayerInteraction : MonoBehaviour
 
     private void TryInteract()
     {
-        if (currentInteractable == null)
-        {
-            return;
-        }
-
-        if (!currentInteractable.CanInteract(gameObject))
-        {
-            return;
-        }
+        if (currentInteractable == null) return;
+        if (!currentInteractable.CanInteract(gameObject)) return;
 
         stateController?.EnterInteraction();
-
         currentInteractable.Interact(gameObject);
     }
 
     private void OnDrawGizmosSelected()
     {
-        if (stats == null)
-        {
-            return;
-        }
-
-        Gizmos.DrawWireSphere(
-            transform.position,
-            stats.InteractionRange
-        );
+        if (stats == null) return;
+        Gizmos.DrawWireSphere(transform.position, stats.InteractionRange);
     }
 }

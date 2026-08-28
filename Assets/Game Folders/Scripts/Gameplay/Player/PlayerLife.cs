@@ -14,9 +14,7 @@ public class PlayerLife : MonoBehaviour
     public bool ConsumeAttempt()
     {
         if (Attempts <= 0) return false;
-
         Attempts--;
-
         return Attempts > 0;
     }
 

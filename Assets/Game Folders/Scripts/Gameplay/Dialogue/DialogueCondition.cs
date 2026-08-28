@@ -49,10 +49,7 @@ public class DialogueCondition
                 break;
         }
 
-        DialogueManager.DebugLog(
-            $"[DialogueCondition] Type: {type} → Result: {result}"
-        );
-
+        DialogueManager.DebugLog($"[DialogueCondition] Type: {type} → Result: {result}");
         return result;
     }
 
@@ -60,24 +57,17 @@ public class DialogueCondition
     {
         if (StoryManager.Instance == null)
         {
-            DialogueManager.DebugWarning(
-                "[DialogueCondition] StoryManager tidak ditemukan."
-            );
-
+            DialogueManager.DebugWarning("[DialogueCondition] StoryManager tidak ditemukan.");
             return false;
         }
 
         if (string.IsNullOrWhiteSpace(storyFlag))
         {
-            DialogueManager.DebugWarning(
-                "[DialogueCondition] Story Flag kosong."
-            );
-
+            DialogueManager.DebugWarning("[DialogueCondition] Story Flag kosong.");
             return false;
         }
 
-        bool flagValue =
-            StoryManager.Instance.HasFlag(storyFlag);
+        bool flagValue = StoryManager.Instance.HasFlag(storyFlag);
 
         bool result = comparison switch
         {
@@ -86,10 +76,7 @@ public class DialogueCondition
             _ => false
         };
 
-        DialogueManager.DebugLog(
-            $"[DialogueCondition] Story Flag \"{storyFlag}\" = {flagValue} | Comparison: {comparison} | Result: {result}"
-        );
-
+        DialogueManager.DebugLog($"[DialogueCondition] Story Flag \"{storyFlag}\" = {flagValue} | Comparison: {comparison} | Result: {result}");
         return result;
     }
 
@@ -97,23 +84,14 @@ public class DialogueCondition
     {
         if (StoryManager.Instance == null)
         {
-            DialogueManager.DebugWarning(
-                "[DialogueCondition] StoryManager tidak ditemukan."
-            );
-
+            DialogueManager.DebugWarning("[DialogueCondition] StoryManager tidak ditemukan.");
             return false;
         }
 
-        int currentChapter =
-            StoryManager.Instance.CurrentChapter;
+        int currentChapter = StoryManager.Instance.CurrentChapter;
+        bool result = currentChapter >= requiredChapter;
 
-        bool result =
-            currentChapter >= requiredChapter;
-
-        DialogueManager.DebugLog(
-            $"[DialogueCondition] Chapter sekarang: {currentChapter} | Required: {requiredChapter} | Result: {result}"
-        );
-
+        DialogueManager.DebugLog($"[DialogueCondition] Chapter sekarang: {currentChapter} | Required: {requiredChapter} | Result: {result}");
         return result;
     }
 }

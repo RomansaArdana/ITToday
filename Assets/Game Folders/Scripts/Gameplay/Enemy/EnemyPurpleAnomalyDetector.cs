@@ -15,16 +15,12 @@ public class EnemyPurpleAnomalyDetector : MonoBehaviour
 
     public bool IsPlayerInRange { get; private set; }
     public bool IsAnomalyDetected { get; private set; }
-
     public float DistanceToPlayer { get; private set; }
 
     private void Awake()
     {
-        enemyController ??=
-            GetComponent<EnemyController>();
-
-        enemyHealth ??=
-            GetComponent<EnemyHealth>();
+        enemyController ??= GetComponent<EnemyController>();
+        enemyHealth ??= GetComponent<EnemyHealth>();
     }
 
     private void Update()
@@ -40,99 +36,47 @@ public class EnemyPurpleAnomalyDetector : MonoBehaviour
 
     private bool IsValid()
     {
-        if (enemyController == null)
-        {
-            return false;
-        }
-
-        if (enemyController.Stats == null)
-        {
-            return false;
-        }
-
-        if (enemyController.Stats.Archetype !=
-            EnemyArchetype.Purple)
-        {
-            return false;
-        }
-
-        if (enemyHealth != null &&
-            !enemyHealth.IsAlive)
-        {
-            return false;
-        }
-
-        if (enemyController.PlayerTarget == null)
-        {
-            return false;
-        }
+        if (enemyController == null) return false;
+        if (enemyController.Stats == null) return false;
+        if (enemyController.Stats.Archetype != EnemyArchetype.Purple) return false;
+        if (enemyHealth != null && !enemyHealth.IsAlive) return false;
+        if (enemyController.PlayerTarget == null) return false;
 
         return true;
     }
 
     private void UpdateDetection()
     {
-        Transform playerTarget =
-            enemyController.PlayerTarget;
+        Transform playerTarget = enemyController.PlayerTarget;
 
-        DistanceToPlayer =
-            Vector2.Distance(
-                transform.position,
-                playerTarget.position
-            );
+        DistanceToPlayer = Vector2.Distance(transform.position, playerTarget.position);
 
-        bool newInRange =
-            DistanceToPlayer <= anomalyRadius;
-
-        bool newAnomalyDetected =
-            newInRange;
+        bool newInRange = DistanceToPlayer <= anomalyRadius;
+        bool newAnomalyDetected = newInRange;
 
         if (newInRange != IsPlayerInRange)
         {
-            IsPlayerInRange =
-                newInRange;
-
+            IsPlayerInRange = newInRange;
             LogRangeState();
         }
 
-        if (newAnomalyDetected !=
-            IsAnomalyDetected)
+        if (newAnomalyDetected != IsAnomalyDetected)
         {
-            IsAnomalyDetected =
-                newAnomalyDetected;
-
+            IsAnomalyDetected = newAnomalyDetected;
             LogAnomalyState();
         }
     }
 
     private void LogRangeState()
     {
-        if (!enableDebugLog)
-        {
-            return;
-        }
-
-        Debug.Log(
-            IsPlayerInRange
-                ? "[Purple] Player entered anomaly range."
-                : "[Purple] Player left anomaly range.",
-            this
-        );
+        if (!enableDebugLog) return;
+        Debug.Log(IsPlayerInRange ? "[Purple] Player entered anomaly range." : "[Purple] Player left anomaly range.", this);
     }
 
     private void LogAnomalyState()
     {
-        if (!enableDebugLog)
-        {
-            return;
-        }
-
-        Debug.Log(
-            IsAnomalyDetected
-                ? "[Purple] ANOMALY DETECTED"
-                : "[Purple] ANOMALY CLEARED",
-            this
-        );
+        if (!enableDebugLog) return;
+        Debug.Log(IsAnomalyDetected ? "[Purple] ANOMALY DETECTED" : "[Purple] ANOMALY CLEARED", this);
     }
 
     private void ResetDetection()
@@ -144,14 +88,7 @@ public class EnemyPurpleAnomalyDetector : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        if (!showGizmo)
-        {
-            return;
-        }
-
-        Gizmos.DrawWireSphere(
-            transform.position,
-            anomalyRadius
-        );
+        if (!showGizmo) return;
+        Gizmos.DrawWireSphere(transform.position, anomalyRadius);
     }
 }

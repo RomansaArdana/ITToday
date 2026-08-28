@@ -24,20 +24,14 @@ public class EnemyJump : MonoBehaviour
     private float jumpTimer;
 
     public bool IsGrounded { get; private set; }
-
-    public bool IsJumping =>
-        rb != null &&
-        Mathf.Abs(rb.linearVelocity.y) > 0.05f;
+    public bool IsJumping => rb != null && Mathf.Abs(rb.linearVelocity.y) > 0.05f;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
 
-        stateController ??=
-            GetComponent<EnemyStateController>();
-
-        obstacleDetector ??=
-            GetComponent<EnemyObstacleDetector>();
+        stateController ??= GetComponent<EnemyStateController>();
+        obstacleDetector ??= GetComponent<EnemyObstacleDetector>();
     }
 
     private void Update()
@@ -54,96 +48,42 @@ public class EnemyJump : MonoBehaviour
             return;
         }
 
-        IsGrounded =
-            Physics2D.OverlapCircle(
-                groundCheck.position,
-                groundCheckRadius,
-                groundLayer
-            ) != null;
+        IsGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer) != null;
     }
 
     private void UpdateCooldown()
     {
-        if (jumpTimer <= 0f)
-        {
-            return;
-        }
+        if (jumpTimer <= 0f) return;
 
         jumpTimer -= Time.deltaTime;
 
-        if (jumpTimer < 0f)
-        {
-            jumpTimer = 0f;
-        }
+        if (jumpTimer < 0f) jumpTimer = 0f;
     }
 
     public bool TryJump()
     {
-        if (rb == null)
-        {
-            return false;
-        }
+        if (rb == null) return false;
+        if (stateController == null || !stateController.IsFlee) return false;
+        if (!IsGrounded) return false;
+        if (obstacleDetector == null || !obstacleDetector.IsObstacleDetected) return false;
+        if (jumpTimer > 0f) return false;
 
-        if (stateController == null ||
-            !stateController.IsFlee)
-        {
-            return false;
-        }
-
-        if (!IsGrounded)
-        {
-            return false;
-        }
-
-        if (obstacleDetector == null ||
-            !obstacleDetector.IsObstacleDetected)
-        {
-            return false;
-        }
-
-        if (jumpTimer > 0f)
-        {
-            return false;
-        }
-
-        Vector2 velocity =
-            rb.linearVelocity;
-
+        Vector2 velocity = rb.linearVelocity;
         velocity.y = 0f;
+        rb.linearVelocity = velocity;
 
-        rb.linearVelocity =
-            velocity;
+        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
 
-        rb.AddForce(
-            Vector2.up * jumpForce,
-            ForceMode2D.Impulse
-        );
+        jumpTimer = jumpCooldown;
 
-        jumpTimer =
-            jumpCooldown;
-
-        if (enableDebugLog)
-        {
-            Debug.Log(
-                "[EnemyAI] RED → JUMP",
-                this
-            );
-        }
+        if (enableDebugLog) Debug.Log("[EnemyAI] RED → JUMP", this);
 
         return true;
     }
 
     private void OnDrawGizmosSelected()
     {
-        if (!showGroundGizmo ||
-            groundCheck == null)
-        {
-            return;
-        }
-
-        Gizmos.DrawWireSphere(
-            groundCheck.position,
-            groundCheckRadius
-        );
+        if (!showGroundGizmo || groundCheck == null) return;
+        Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
     }
 }

@@ -25,29 +25,17 @@ public class EnemyDetection : MonoBehaviour
 
     private void Awake()
     {
-        if (enemyController == null)
-        {
-            enemyController =
-                GetComponent<EnemyController>();
-        }
+        if (enemyController == null) enemyController = GetComponent<EnemyController>();
 
-        CurrentState =
-            EnemyDetectionState.Undetected;
-
-        LastKnownPlayerPosition =
-            transform.position;
+        CurrentState = EnemyDetectionState.Undetected;
+        LastKnownPlayerPosition = transform.position;
     }
 
     private void Update()
     {
-        if (enemyController == null ||
-            enemyController.Stats == null)
-        {
-            return;
-        }
+        if (enemyController == null || enemyController.Stats == null) return;
 
-        playerTarget =
-            enemyController.PlayerTarget;
+        playerTarget = enemyController.PlayerTarget;
 
         if (playerTarget == null)
         {
@@ -71,17 +59,12 @@ public class EnemyDetection : MonoBehaviour
 
     private void CachePlayerStealth()
     {
-        if (playerStealth == null)
-        {
-            playerStealth =
-                playerTarget.GetComponent<PlayerStealth>();
-        }
+        if (playerStealth == null) playerStealth = playerTarget.GetComponent<PlayerStealth>();
     }
 
     private bool IsPlayerCloaked()
     {
-        return playerStealth != null &&
-               playerStealth.IsCloaked;
+        return playerStealth != null && playerStealth.IsCloaked;
     }
 
     private void HandleCloakedPlayer()
@@ -90,172 +73,90 @@ public class EnemyDetection : MonoBehaviour
         IsPlayerInVision = false;
         HasLineOfSight = false;
 
-        DistanceToPlayer =
-            Vector2.Distance(
-                transform.position,
-                playerTarget.position
-            );
+        DistanceToPlayer = Vector2.Distance(transform.position, playerTarget.position);
 
         StealthMultiplier = 0f;
         DetectionStrength = 0f;
         DetectionProgress = 0f;
 
         IsDetected = false;
-        CurrentState =
-            EnemyDetectionState.Undetected;
+        CurrentState = EnemyDetectionState.Undetected;
     }
 
     private void UpdateStealthState()
     {
-        StealthMultiplier =
-            playerStealth != null
-                ? playerStealth.StealthMultiplier
-                : 1f;
+        StealthMultiplier = playerStealth != null ? playerStealth.StealthMultiplier : 1f;
     }
 
     private void UpdateDetection()
     {
-        DistanceToPlayer =
-            Vector2.Distance(
-                transform.position,
-                playerTarget.position
-            );
+        DistanceToPlayer = Vector2.Distance(transform.position, playerTarget.position);
 
-        float detectionRange =
-            enemyController.Stats.DetectionRange;
-
-        IsPlayerInRange =
-            DistanceToPlayer <= detectionRange;
+        float detectionRange = enemyController.Stats.DetectionRange;
+        IsPlayerInRange = DistanceToPlayer <= detectionRange;
 
         IsPlayerInVision = false;
         HasLineOfSight = false;
         DetectionStrength = 0f;
 
-        if (!IsPlayerInRange)
-        {
-            return;
-        }
+        if (!IsPlayerInRange) return;
 
-        IsPlayerInVision =
-            CheckVisionAngle();
+        IsPlayerInVision = CheckVisionAngle();
 
-        if (!IsPlayerInVision)
-        {
-            return;
-        }
+        if (!IsPlayerInVision) return;
 
-        HasLineOfSight =
-            CheckLineOfSight();
+        HasLineOfSight = CheckLineOfSight();
 
-        if (!HasLineOfSight)
-        {
-            return;
-        }
+        if (!HasLineOfSight) return;
 
-        LastKnownPlayerPosition =
-            playerTarget.position;
-
-        DetectionStrength =
-            Mathf.Clamp01(
-                StealthMultiplier
-            );
+        LastKnownPlayerPosition = playerTarget.position;
+        DetectionStrength = Mathf.Clamp01(StealthMultiplier);
     }
 
     private void UpdateDetectionProgress()
     {
-        float detectionSpeed =
-            enemyController.Stats.DetectionSpeed;
+        float detectionSpeed = enemyController.Stats.DetectionSpeed;
+        float decaySpeed = enemyController.Stats.DetectionDecaySpeed;
+        float threshold = enemyController.Stats.DetectionThreshold;
 
-        float decaySpeed =
-            enemyController.Stats.DetectionDecaySpeed;
+        bool canDetectPlayer = IsPlayerInRange && IsPlayerInVision && HasLineOfSight && DetectionStrength > 0f;
 
-        float threshold =
-            enemyController.Stats.DetectionThreshold;
+        DetectionProgress += canDetectPlayer
+            ? detectionSpeed * DetectionStrength * Time.deltaTime
+            : -decaySpeed * Time.deltaTime;
 
-        bool canDetectPlayer =
-            IsPlayerInRange &&
-            IsPlayerInVision &&
-            HasLineOfSight &&
-            DetectionStrength > 0f;
-
-        DetectionProgress +=
-            canDetectPlayer
-                ? detectionSpeed *
-                  DetectionStrength *
-                  Time.deltaTime
-                : -decaySpeed *
-                  Time.deltaTime;
-
-        DetectionProgress =
-            Mathf.Clamp(
-                DetectionProgress,
-                0f,
-                threshold
-            );
-
-        IsDetected =
-            DetectionProgress >= threshold;
+        DetectionProgress = Mathf.Clamp(DetectionProgress, 0f, threshold);
+        IsDetected = DetectionProgress >= threshold;
     }
 
     private void UpdateDetectionState()
     {
-        float threshold =
-            enemyController.Stats.DetectionThreshold;
+        float threshold = enemyController.Stats.DetectionThreshold;
+        float suspiciousThreshold = threshold * enemyController.Stats.SuspiciousThreshold;
 
-        float suspiciousThreshold =
-            threshold *
-            enemyController.Stats.SuspiciousThreshold;
+        EnemyDetectionState newState = DetectionProgress >= threshold
+            ? EnemyDetectionState.Detected
+            : DetectionProgress >= suspiciousThreshold
+                ? EnemyDetectionState.Suspicious
+                : EnemyDetectionState.Undetected;
 
-        EnemyDetectionState newState =
-            DetectionProgress >= threshold
-                ? EnemyDetectionState.Detected
-                : DetectionProgress >= suspiciousThreshold
-                    ? EnemyDetectionState.Suspicious
-                    : EnemyDetectionState.Undetected;
+        if (CurrentState == newState) return;
 
-        if (CurrentState == newState)
-        {
-            return;
-        }
-
-        CurrentState =
-            newState;
+        CurrentState = newState;
     }
 
     private bool CheckVisionAngle()
     {
-        Vector2 directionToPlayer =
-            (
-                playerTarget.position -
-                transform.position
-            ).normalized;
-
-        float angle =
-            Vector2.Angle(
-                enemyController.FacingDirection,
-                directionToPlayer
-            );
-
-        return angle <=
-               enemyController.Stats.DetectionAngle *
-               0.5f;
+        Vector2 directionToPlayer = (playerTarget.position - transform.position).normalized;
+        float angle = Vector2.Angle(enemyController.FacingDirection, directionToPlayer);
+        return angle <= enemyController.Stats.DetectionAngle * 0.5f;
     }
 
     private bool CheckLineOfSight()
     {
-        Vector2 direction =
-            (
-                playerTarget.position -
-                transform.position
-            ).normalized;
+        Vector2 direction = (playerTarget.position - transform.position).normalized;
 
-        RaycastHit2D hit =
-            Physics2D.Raycast(
-                transform.position,
-                direction,
-                DistanceToPlayer,
-                obstacleLayer
-            );
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, DistanceToPlayer, obstacleLayer);
 
         return hit.collider == null;
     }
@@ -266,16 +167,13 @@ public class EnemyDetection : MonoBehaviour
         IsPlayerInVision = false;
         HasLineOfSight = false;
 
-        DistanceToPlayer =
-            Mathf.Infinity;
+        DistanceToPlayer = Mathf.Infinity;
 
         StealthMultiplier = 1f;
         DetectionStrength = 0f;
         DetectionProgress = 0f;
 
         IsDetected = false;
-
-        CurrentState =
-            EnemyDetectionState.Undetected;
+        CurrentState = EnemyDetectionState.Undetected;
     }
 }

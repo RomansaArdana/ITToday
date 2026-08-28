@@ -24,19 +24,15 @@ public class EnemyPatrol : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
-        enemyController ??=
-            GetComponent<EnemyController>();
+        enemyController ??= GetComponent<EnemyController>();
 
-        startX =
-            rb.position.x;
-
+        startX = rb.position.x;
         SetNextPatrolTarget();
     }
 
     private void FixedUpdate()
     {
-        if (enemyController == null ||
-            enemyController.Stats == null)
+        if (enemyController == null || enemyController.Stats == null)
         {
             StopPatrol();
             return;
@@ -53,14 +49,10 @@ public class EnemyPatrol : MonoBehaviour
             return;
         }
 
-        float currentX =
-            rb.position.x;
+        float currentX = rb.position.x;
+        float difference = targetX - currentX;
 
-        float difference =
-            targetX - currentX;
-
-        if (Mathf.Abs(difference) <=
-            arrivalDistance)
+        if (Mathf.Abs(difference) <= arrivalDistance)
         {
             StopMovement();
 
@@ -70,17 +62,10 @@ public class EnemyPatrol : MonoBehaviour
             return;
         }
 
-        float direction =
-            Mathf.Sign(difference);
+        float direction = Mathf.Sign(difference);
+        float speed = enemyController.Stats.MoveSpeed;
 
-        float speed =
-            enemyController.Stats.MoveSpeed;
-
-        rb.linearVelocity =
-            new Vector2(
-                direction * speed,
-                rb.linearVelocity.y
-            );
+        rb.linearVelocity = new Vector2(direction * speed, rb.linearVelocity.y);
 
         UpdateFacingDirection(direction);
     }
@@ -89,13 +74,9 @@ public class EnemyPatrol : MonoBehaviour
     {
         StopMovement();
 
-        waitTimer +=
-            Time.fixedDeltaTime;
+        waitTimer += Time.fixedDeltaTime;
 
-        if (waitTimer < waitDuration)
-        {
-            return;
-        }
+        if (waitTimer < waitDuration) return;
 
         patrolDirection *= -1;
 
@@ -107,38 +88,21 @@ public class EnemyPatrol : MonoBehaviour
 
     private void SetNextPatrolTarget()
     {
-        targetX =
-            startX +
-            patrolDistance *
-            patrolDirection;
+        targetX = startX + patrolDistance * patrolDirection;
     }
 
-    private void UpdateFacingDirection(
-        float direction)
+    private void UpdateFacingDirection(float direction)
     {
-        if (Mathf.Abs(direction) < 0.01f)
-        {
-            return;
-        }
+        if (Mathf.Abs(direction) < 0.01f) return;
 
-        Vector3 scale =
-            transform.localScale;
-
-        scale.x =
-            Mathf.Abs(scale.x) *
-            Mathf.Sign(direction);
-
-        transform.localScale =
-            scale;
+        Vector3 scale = transform.localScale;
+        scale.x = Mathf.Abs(scale.x) * Mathf.Sign(direction);
+        transform.localScale = scale;
     }
 
     private void StopMovement()
     {
-        rb.linearVelocity =
-            new Vector2(
-                0f,
-                rb.linearVelocity.y
-            );
+        rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
     }
 
     public void StopPatrol()

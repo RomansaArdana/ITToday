@@ -8,9 +8,7 @@ public class ObjectInteractable : InteractableBase
     {
         Debug.Log($"{objectName} interacted by {interactor.name}");
 
-        PlayerStateController stateController =
-            interactor.GetComponent<PlayerStateController>();
-
+        PlayerStateController stateController = interactor.GetComponent<PlayerStateController>();
         stateController?.ExitInteraction();
     }
 }

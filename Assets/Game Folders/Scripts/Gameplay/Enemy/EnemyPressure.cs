@@ -20,16 +20,12 @@ public class EnemyPressure : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-
-        enemyController ??=
-            GetComponent<EnemyController>();
+        enemyController ??= GetComponent<EnemyController>();
     }
 
     private void FixedUpdate()
     {
-        if (enemyController == null ||
-            enemyController.Stats == null ||
-            !enemyController.HasTarget)
+        if (enemyController == null || enemyController.Stats == null || !enemyController.HasTarget)
         {
             StopPressure();
             return;
@@ -40,12 +36,8 @@ public class EnemyPressure : MonoBehaviour
 
     private void PressureTarget()
     {
-        float difference =
-            enemyController.PlayerTarget.position.x -
-            transform.position.x;
-
-        float distance =
-            Mathf.Abs(difference);
+        float difference = enemyController.PlayerTarget.position.x - transform.position.x;
+        float distance = Mathf.Abs(difference);
 
         if (distance <= stopDistance)
         {
@@ -53,75 +45,37 @@ public class EnemyPressure : MonoBehaviour
             return;
         }
 
-        float direction =
-            Mathf.Sign(difference);
+        float direction = Mathf.Sign(difference);
+        float speed = enemyController.Stats.MoveSpeed * pressureSpeedMultiplier;
 
-        float speed =
-            enemyController.Stats.MoveSpeed *
-            pressureSpeedMultiplier;
-
-        rb.linearVelocity =
-            new Vector2(
-                direction * speed,
-                rb.linearVelocity.y
-            );
+        rb.linearVelocity = new Vector2(direction * speed, rb.linearVelocity.y);
 
         UpdateFacing(direction);
 
         if (!IsPressuring)
         {
             IsPressuring = true;
-
-            if (enableDebugLog)
-            {
-                Debug.Log(
-                    "[EnemyAI] BLUE → PRESSURE",
-                    this
-                );
-            }
+            if (enableDebugLog) Debug.Log("[EnemyAI] BLUE → PRESSURE", this);
         }
     }
 
     private void UpdateFacing(float direction)
     {
-        if (Mathf.Abs(direction) <= 0.01f)
-        {
-            return;
-        }
+        if (Mathf.Abs(direction) <= 0.01f) return;
 
-        Vector3 scale =
-            transform.localScale;
-
-        scale.x =
-            Mathf.Abs(scale.x) *
-            Mathf.Sign(direction);
-
-        transform.localScale =
-            scale;
+        Vector3 scale = transform.localScale;
+        scale.x = Mathf.Abs(scale.x) * Mathf.Sign(direction);
+        transform.localScale = scale;
     }
 
     public void StopPressure()
     {
-        if (IsPressuring &&
-            enableDebugLog)
-        {
-            Debug.Log(
-                "[EnemyAI] BLUE → STOP",
-                this
-            );
-        }
+        if (IsPressuring && enableDebugLog) Debug.Log("[EnemyAI] BLUE → STOP", this);
 
         IsPressuring = false;
 
-        if (rb == null)
-        {
-            return;
-        }
+        if (rb == null) return;
 
-        rb.linearVelocity =
-            new Vector2(
-                0f,
-                rb.linearVelocity.y
-            );
+        rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
     }
 }

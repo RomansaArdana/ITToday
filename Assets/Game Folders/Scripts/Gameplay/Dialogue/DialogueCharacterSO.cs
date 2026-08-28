@@ -1,9 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(
-    fileName = "DialogueCharacter",
-    menuName = "The Day After/Dialogue/Character"
-)]
+[CreateAssetMenu(fileName = "DialogueCharacter", menuName = "The Day After/Dialogue/Character")]
 public class DialogueCharacterSO : ScriptableObject
 {
     [Header("Identity")]

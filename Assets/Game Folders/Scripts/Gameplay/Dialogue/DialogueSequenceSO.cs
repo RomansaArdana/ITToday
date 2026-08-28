@@ -1,10 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(
-    fileName = "DialogueSequence",
-    menuName = "The Day After/Dialogue/Dialogue Sequence"
-)]
+[CreateAssetMenu(fileName = "DialogueSequence", menuName = "The Day After/Dialogue/Dialogue Sequence")]
 public class DialogueSequenceSO : ScriptableObject
 {
     [Header("Sequence")]
@@ -17,33 +14,23 @@ public class DialogueSequenceSO : ScriptableObject
     [SerializeField] private List<DialogueEvent> completionEvents = new();
 
     public string SequenceId => sequenceId;
-
     public IReadOnlyList<DialogueNode> Nodes => nodes;
 
     public void ExecuteCompletionEvents()
     {
-        if (completionEvents == null ||
-            completionEvents.Count == 0)
+        if (completionEvents == null || completionEvents.Count == 0)
         {
-            DialogueManager.DebugLog(
-                $"[DialogueSequence] Sequence \"{sequenceId}\" tidak memiliki Completion Event."
-            );
-
+            DialogueManager.DebugLog($"[DialogueSequence] Sequence \"{sequenceId}\" tidak memiliki Completion Event.");
             return;
         }
 
-        DialogueManager.DebugLog(
-            $"[DialogueSequence] Menjalankan {completionEvents.Count} Completion Event → \"{sequenceId}\""
-        );
+        DialogueManager.DebugLog($"[DialogueSequence] Menjalankan {completionEvents.Count} Completion Event → \"{sequenceId}\"");
 
         foreach (DialogueEvent dialogueEvent in completionEvents)
         {
             if (dialogueEvent == null)
             {
-                DialogueManager.DebugWarning(
-                    $"[DialogueSequence] Ada Completion Event kosong → \"{sequenceId}\""
-                );
-
+                DialogueManager.DebugWarning($"[DialogueSequence] Ada Completion Event kosong → \"{sequenceId}\"");
                 continue;
             }
 

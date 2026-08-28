@@ -24,14 +24,9 @@ public class EnemyTeleport : MonoBehaviour
 
     private void Awake()
     {
-        enemyController ??=
-            GetComponent<EnemyController>();
-
-        stateController ??=
-            GetComponent<EnemyStateController>();
-
-        enemyHealth ??=
-            GetComponent<EnemyHealth>();
+        enemyController ??= GetComponent<EnemyController>();
+        stateController ??= GetComponent<EnemyStateController>();
+        enemyHealth ??= GetComponent<EnemyHealth>();
     }
 
     private void Update()
@@ -49,130 +44,59 @@ public class EnemyTeleport : MonoBehaviour
 
         cooldownTimer -= Time.deltaTime;
 
-        if (cooldownTimer < 0f)
-        {
-            cooldownTimer = 0f;
-        }
+        if (cooldownTimer < 0f) cooldownTimer = 0f;
     }
 
     public bool TryTeleport()
     {
-        if (!CanTeleport())
-        {
-            return false;
-        }
+        if (!CanTeleport()) return false;
 
-        Vector2 destination =
-            GetTeleportDestination();
+        Vector2 destination = GetTeleportDestination();
 
         if (!IsPositionSafe(destination))
         {
-            if (enableDebugLog)
-            {
-                Debug.Log(
-                    "[EnemyAI] CYAN TELEPORT FAILED → Blocked",
-                    this
-                );
-            }
-
+            if (enableDebugLog) Debug.Log("[EnemyAI] CYAN TELEPORT FAILED → Blocked", this);
             return false;
         }
 
-        transform.position =
-            destination;
+        transform.position = destination;
+        cooldownTimer = Mathf.Max(0f, teleportCooldown);
 
-        cooldownTimer =
-            Mathf.Max(
-                0f,
-                teleportCooldown
-            );
-
-        if (enableDebugLog)
-        {
-            Debug.Log(
-                "[EnemyAI] CYAN → TELEPORT",
-                this
-            );
-        }
+        if (enableDebugLog) Debug.Log("[EnemyAI] CYAN → TELEPORT", this);
 
         return true;
     }
 
     private bool CanTeleport()
     {
-        if (enemyController == null ||
-            enemyHealth == null)
-        {
-            return false;
-        }
-
-        if (enemyController.Stats == null)
-        {
-            return false;
-        }
-
-        if (enemyController.Stats.Archetype !=
-            EnemyArchetype.Cyan)
-        {
-            return false;
-        }
-
-        if (!enemyController.HasTarget)
-        {
-            return false;
-        }
-
-        if (!enemyHealth.IsAlive)
-        {
-            return false;
-        }
-
-        if (cooldownTimer > 0f)
-        {
-            return false;
-        }
+        if (enemyController == null || enemyHealth == null) return false;
+        if (enemyController.Stats == null) return false;
+        if (enemyController.Stats.Archetype != EnemyArchetype.Cyan) return false;
+        if (!enemyController.HasTarget) return false;
+        if (!enemyHealth.IsAlive) return false;
+        if (cooldownTimer > 0f) return false;
 
         return true;
     }
 
     private Vector2 GetTeleportDestination()
     {
-        Transform target =
-            enemyController.PlayerTarget;
+        Transform target = enemyController.PlayerTarget;
 
-        float enemyX =
-            transform.position.x;
+        float enemyX = transform.position.x;
+        float playerX = target.position.x;
 
-        float playerX =
-            target.position.x;
+        float direction = enemyX < playerX ? -1f : 1f;
 
-        float direction =
-            enemyX < playerX
-                ? -1f
-                : 1f;
-
-        Vector2 destination =
-            (Vector2)transform.position +
-            Vector2.right *
-            direction *
-            teleportDistance;
-
-        destination.y =
-            transform.position.y;
+        Vector2 destination = (Vector2)transform.position + Vector2.right * direction * teleportDistance;
+        destination.y = transform.position.y;
 
         return destination;
     }
 
-    private bool IsPositionSafe(
-        Vector2 position)
+    private bool IsPositionSafe(Vector2 position)
     {
-        Collider2D hit =
-            Physics2D.OverlapCircle(
-                position,
-                validationRadius,
-                blockingLayer
-            );
-
+        Collider2D hit = Physics2D.OverlapCircle(position, validationRadius, blockingLayer);
         return hit == null;
     }
 
@@ -183,31 +107,15 @@ public class EnemyTeleport : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        if (!showGizmo)
+        if (!showGizmo) return;
+
+        Gizmos.DrawWireSphere(transform.position, triggerDistance);
+
+        if (enemyController != null && enemyController.PlayerTarget != null)
         {
-            return;
-        }
-
-        Gizmos.DrawWireSphere(
-            transform.position,
-            triggerDistance
-        );
-
-        if (enemyController != null &&
-            enemyController.PlayerTarget != null)
-        {
-            Vector2 destination =
-                GetTeleportDestination();
-
-            Gizmos.DrawWireSphere(
-                destination,
-                validationRadius
-            );
-
-            Gizmos.DrawLine(
-                transform.position,
-                destination
-            );
+            Vector2 destination = GetTeleportDestination();
+            Gizmos.DrawWireSphere(destination, validationRadius);
+            Gizmos.DrawLine(transform.position, destination);
         }
     }
 }

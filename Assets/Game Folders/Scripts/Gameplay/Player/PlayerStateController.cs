@@ -7,9 +7,7 @@ public class PlayerStateController : MonoBehaviour
 
     public PlayerState CurrentState => currentState;
 
-    public bool IsSanityDepleted =>
-        sanityController != null &&
-        sanityController.IsDepleted;
+    public bool IsSanityDepleted => sanityController != null && sanityController.IsDepleted;
 
     public bool IsMovementLocked =>
         currentState == PlayerState.Interact ||
@@ -17,27 +15,20 @@ public class PlayerStateController : MonoBehaviour
         currentState == PlayerState.Dead ||
         IsSanityDepleted;
 
-    public bool IsAlive =>
-        currentState != PlayerState.Dead;
+    public bool IsAlive => currentState != PlayerState.Dead;
 
     private void Awake()
     {
-        if (sanityController == null)
-            sanityController = GetComponent<SanityController>();
+        if (sanityController == null) sanityController = GetComponent<SanityController>();
     }
 
     public void SetState(PlayerState newState)
     {
-        if (currentState == newState)
-            return;
-
+        if (currentState == newState) return;
         currentState = newState;
     }
 
-    public bool CanMove()
-    {
-        return !IsMovementLocked;
-    }
+    public bool CanMove() => !IsMovementLocked;
 
     public bool CanInteract()
     {
@@ -55,26 +46,20 @@ public class PlayerStateController : MonoBehaviour
 
     public void UpdateMovementState(Vector2 movementInput)
     {
-        if (IsMovementLocked)
-            return;
+        if (IsMovementLocked) return;
 
-        if (movementInput.sqrMagnitude > 0.01f)
-            SetState(PlayerState.Walk);
-        else
-            SetState(PlayerState.Idle);
+        if (movementInput.sqrMagnitude > 0.01f) SetState(PlayerState.Walk);
+        else SetState(PlayerState.Idle);
     }
 
     public void EnterInteraction()
     {
-        if (!CanInteract())
-            return;
-
+        if (!CanInteract()) return;
         SetState(PlayerState.Interact);
     }
 
     public void ExitInteraction()
     {
-        if (CurrentState == PlayerState.Interact)
-            SetState(PlayerState.Idle);
+        if (CurrentState == PlayerState.Interact) SetState(PlayerState.Idle);
     }
 }

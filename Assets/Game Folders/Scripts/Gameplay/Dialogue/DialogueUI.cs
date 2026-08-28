@@ -19,9 +19,7 @@ public class DialogueUI : MonoBehaviour
     private Coroutine typewriterCoroutine;
     private bool isTyping;
 
-    public bool IsVisible =>
-        dialoguePanel != null && dialoguePanel.activeSelf;
-
+    public bool IsVisible => dialoguePanel != null && dialoguePanel.activeSelf;
     public bool IsTyping => isTyping;
 
     private void Awake()
@@ -31,15 +29,8 @@ public class DialogueUI : MonoBehaviour
 
     private void Update()
     {
-        if (!IsVisible)
-        {
-            return;
-        }
-
-        if (!WasContinuePressed())
-        {
-            return;
-        }
+        if (!IsVisible) return;
+        if (!WasContinuePressed()) return;
 
         HandleContinueInput();
     }
@@ -57,23 +48,12 @@ public class DialogueUI : MonoBehaviour
 
     private bool WasContinuePressed()
     {
-        if (Mouse.current != null &&
-            Mouse.current.leftButton.wasPressedThisFrame)
-        {
-            return true;
-        }
+        if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame) return true;
 
         if (Keyboard.current != null)
         {
-            if (Keyboard.current.spaceKey.wasPressedThisFrame)
-            {
-                return true;
-            }
-
-            if (Keyboard.current.enterKey.wasPressedThisFrame)
-            {
-                return true;
-            }
+            if (Keyboard.current.spaceKey.wasPressedThisFrame) return true;
+            if (Keyboard.current.enterKey.wasPressedThisFrame) return true;
         }
 
         return false;
@@ -81,27 +61,18 @@ public class DialogueUI : MonoBehaviour
 
     public void ShowNode(DialogueNode node)
     {
-        if (node == null)
-        {
-            return;
-        }
+        if (node == null) return;
 
         StopTypewriter();
 
-        if (dialoguePanel != null)
-        {
-            dialoguePanel.SetActive(true);
-        }
+        if (dialoguePanel != null) dialoguePanel.SetActive(true);
 
         DialogueCharacterSO character = node.Speaker;
 
         UpdateSpeaker(character);
         UpdatePortrait(character);
 
-        if (dialogueText == null)
-        {
-            return;
-        }
+        if (dialogueText == null) return;
 
         if (!useTypewriter)
         {
@@ -116,34 +87,16 @@ public class DialogueUI : MonoBehaviour
 
     private void UpdateSpeaker(DialogueCharacterSO character)
     {
-        if (speakerText == null)
-        {
-            return;
-        }
+        if (speakerText == null) return;
 
-        if (character != null)
-        {
-            speakerText.text = character.DisplayName;
-        }
-        else
-        {
-            speakerText.text = string.Empty;
-        }
+        speakerText.text = character != null ? character.DisplayName : string.Empty;
     }
 
     private void UpdatePortrait(DialogueCharacterSO character)
     {
-        if (portraitImage == null)
-        {
-            return;
-        }
+        if (portraitImage == null) return;
 
-        Sprite portrait = null;
-
-        if (character != null)
-        {
-            portrait = character.DefaultPortrait;
-        }
+        Sprite portrait = character != null ? character.DefaultPortrait : null;
 
         portraitImage.sprite = portrait;
         portraitImage.enabled = portrait != null;
@@ -151,10 +104,7 @@ public class DialogueUI : MonoBehaviour
 
     private void StartTypewriter(string text)
     {
-        if (dialogueText == null)
-        {
-            return;
-        }
+        if (dialogueText == null) return;
 
         if (string.IsNullOrEmpty(text))
         {
@@ -182,10 +132,7 @@ public class DialogueUI : MonoBehaviour
         {
             dialogueText.maxVisibleCharacters = i;
 
-            if (i < characterCount)
-            {
-                yield return new WaitForSeconds(characterDelay);
-            }
+            if (i < characterCount) yield return new WaitForSeconds(characterDelay);
         }
 
         dialogueText.maxVisibleCharacters = int.MaxValue;
@@ -196,49 +143,31 @@ public class DialogueUI : MonoBehaviour
 
     private void CompleteTyping()
     {
-        if (!isTyping)
-        {
-            return;
-        }
+        if (!isTyping) return;
 
-        if (typewriterCoroutine != null)
-        {
-            StopCoroutine(typewriterCoroutine);
-        }
+        if (typewriterCoroutine != null) StopCoroutine(typewriterCoroutine);
 
         typewriterCoroutine = null;
 
-        if (dialogueText != null)
-        {
-            dialogueText.maxVisibleCharacters = int.MaxValue;
-        }
+        if (dialogueText != null) dialogueText.maxVisibleCharacters = int.MaxValue;
 
         isTyping = false;
     }
 
     private void StopTypewriter()
     {
-        if (typewriterCoroutine != null)
-        {
-            StopCoroutine(typewriterCoroutine);
-        }
+        if (typewriterCoroutine != null) StopCoroutine(typewriterCoroutine);
 
         typewriterCoroutine = null;
         isTyping = false;
 
-        if (dialogueText != null)
-        {
-            dialogueText.maxVisibleCharacters = int.MaxValue;
-        }
+        if (dialogueText != null) dialogueText.maxVisibleCharacters = int.MaxValue;
     }
 
     public void Hide()
     {
         StopTypewriter();
 
-        if (dialoguePanel != null)
-        {
-            dialoguePanel.SetActive(false);
-        }
+        if (dialoguePanel != null) dialoguePanel.SetActive(false);
     }
 }

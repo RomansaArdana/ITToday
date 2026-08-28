@@ -1,9 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(
-    fileName = "PlayerStats_Inara",
-    menuName = "The Day After/Player/Player Stats"
-)]
+[CreateAssetMenu(fileName = "PlayerStats_Inara", menuName = "The Day After/Player/Player Stats")]
 public class PlayerStatsSO : ScriptableObject
 {
     [Header("Movement")]
@@ -19,7 +16,6 @@ public class PlayerStatsSO : ScriptableObject
     [Header("Stealth")]
     [SerializeField] private float hideTransitionDuration = 0.2f;
     [SerializeField] private float hideCooldown = 0.25f;
-
     [SerializeField] private float crouchSpeedMultiplier = 0.5f;
     [SerializeField] private float crouchStealthMultiplier = 0.5f;
     [SerializeField] private float hideStealthMultiplier = 0f;
@@ -29,11 +25,8 @@ public class PlayerStatsSO : ScriptableObject
     [SerializeField] private float sanityRecoveryRate = 25f;
     [SerializeField] private float sanityDrainRate = 5f;
 
-    [SerializeField, Range(0f, 1f)]
-    private float unstableSanityThreshold = 0.7f;
-
-    [SerializeField, Range(0f, 1f)]
-    private float criticalSanityThreshold = 0.3f;
+    [SerializeField, Range(0f, 1f)] private float unstableSanityThreshold = 0.7f;
+    [SerializeField, Range(0f, 1f)] private float criticalSanityThreshold = 0.3f;
 
     [Header("Interaction")]
     [SerializeField] private float interactionRange = 1.5f;
@@ -51,7 +44,6 @@ public class PlayerStatsSO : ScriptableObject
 
     public float CrouchStealthMultiplier => crouchStealthMultiplier;
     public float HideStealthMultiplier => hideStealthMultiplier;
-
     public float CrouchSpeedMultiplier => crouchSpeedMultiplier;
 
     public float MaxSanity => maxSanity;

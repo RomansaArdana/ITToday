@@ -17,28 +17,14 @@ public class PlayerJump : MonoBehaviour
 
     private void Awake()
     {
-        if (inputReader == null)
-        {
-            inputReader = GetComponent<PlayerInputReader>();
-        }
-
-        if (stateController == null)
-        {
-            stateController = GetComponent<PlayerStateController>();
-        }
-
-        if (visual != null)
-        {
-            visualStartPosition = visual.localPosition;
-        }
+        if (inputReader == null) inputReader = GetComponent<PlayerInputReader>();
+        if (stateController == null) stateController = GetComponent<PlayerStateController>();
+        if (visual != null) visualStartPosition = visual.localPosition;
     }
 
     private void Update()
     {
-        if (stats == null || inputReader == null || visual == null)
-        {
-            return;
-        }
+        if (stats == null || inputReader == null || visual == null) return;
 
         UpdateCooldown();
 
@@ -53,20 +39,9 @@ public class PlayerJump : MonoBehaviour
 
     private void TryStartJump()
     {
-        if (!inputReader.JumpPressed)
-        {
-            return;
-        }
-
-        if (cooldownTimer > 0f)
-        {
-            return;
-        }
-
-        if (stateController != null && !stateController.CanMove())
-        {
-            return;
-        }
+        if (!inputReader.JumpPressed) return;
+        if (cooldownTimer > 0f) return;
+        if (stateController != null && !stateController.CanMove()) return;
 
         StartJump();
     }
@@ -81,21 +56,14 @@ public class PlayerJump : MonoBehaviour
     {
         jumpTimer += Time.deltaTime;
 
-        float normalizedTime = jumpTimer / stats.JumpDuration;
-        normalizedTime = Mathf.Clamp01(normalizedTime);
-
-        float height = Mathf.Sin(normalizedTime * Mathf.PI)
-                       * stats.JumpHeight;
+        float normalizedTime = Mathf.Clamp01(jumpTimer / stats.JumpDuration);
+        float height = Mathf.Sin(normalizedTime * Mathf.PI) * stats.JumpHeight;
 
         Vector3 position = visualStartPosition;
         position.y += height;
-
         visual.localPosition = position;
 
-        if (normalizedTime >= 1f)
-        {
-            FinishJump();
-        }
+        if (normalizedTime >= 1f) FinishJump();
     }
 
     private void FinishJump()
@@ -103,17 +71,12 @@ public class PlayerJump : MonoBehaviour
         isJumping = false;
         jumpTimer = 0f;
         cooldownTimer = stats.JumpCooldown;
-
         visual.localPosition = visualStartPosition;
     }
 
     private void UpdateCooldown()
     {
-        if (cooldownTimer <= 0f)
-        {
-            return;
-        }
-
+        if (cooldownTimer <= 0f) return;
         cooldownTimer -= Time.deltaTime;
     }
 }

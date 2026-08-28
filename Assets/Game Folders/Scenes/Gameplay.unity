@@ -4614,6 +4614,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_Purple
       objectReference: {fileID: 0}
+    - target: {fileID: 8394413401283783914, guid: f646eb6e3601adb49a00f2aec1e3a818, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9071958571269707417, guid: f646eb6e3601adb49a00f2aec1e3a818, type: 3}
       propertyPath: playerStealth
       value: 

@@ -37,9 +37,7 @@ public class EnemyBehaviourController : MonoBehaviour
     }
 
     [Header("Enemy Type")]
-    [SerializeField]
-    private EnemyArchetype archetype =
-        EnemyArchetype.Red;
+    [SerializeField] private EnemyArchetype archetype = EnemyArchetype.Red;
 
     [Header("Core References")]
     [SerializeField] private EnemyController enemyController;
@@ -52,47 +50,29 @@ public class EnemyBehaviourController : MonoBehaviour
     [SerializeField] private EnemyChase chase;
 
     [Header("Red")]
-    [SerializeField]
-    private RedBehaviourReferences red =
-        new RedBehaviourReferences();
+    [SerializeField] private RedBehaviourReferences red = new RedBehaviourReferences();
 
     [Header("Blue")]
-    [SerializeField]
-    private BlueBehaviourReferences blue =
-        new BlueBehaviourReferences();
+    [SerializeField] private BlueBehaviourReferences blue = new BlueBehaviourReferences();
 
     [Header("Cyan")]
-    [SerializeField]
-    private CyanBehaviourReferences cyan =
-        new CyanBehaviourReferences();
+    [SerializeField] private CyanBehaviourReferences cyan = new CyanBehaviourReferences();
 
     [Header("Debug")]
     [SerializeField] private bool enableDebugLog = true;
 
     private EnemyDetectionState previousDetectionState;
 
-    public EnemyArchetype Archetype =>
-        archetype;
+    public EnemyArchetype Archetype => archetype;
 
     private void Awake()
     {
-        enemyController ??=
-            GetComponent<EnemyController>();
-
-        stateController ??=
-            GetComponent<EnemyStateController>();
-
-        detection ??=
-            GetComponent<EnemyDetection>();
-
-        patrol ??=
-            GetComponent<EnemyPatrol>();
-
-        search ??=
-            GetComponent<EnemySearch>();
-
-        chase ??=
-            GetComponent<EnemyChase>();
+        enemyController ??= GetComponent<EnemyController>();
+        stateController ??= GetComponent<EnemyStateController>();
+        detection ??= GetComponent<EnemyDetection>();
+        patrol ??= GetComponent<EnemyPatrol>();
+        search ??= GetComponent<EnemySearch>();
+        chase ??= GetComponent<EnemyChase>();
 
         AutoAssignReferences();
     }
@@ -101,42 +81,21 @@ public class EnemyBehaviourController : MonoBehaviour
     {
         if (detection == null)
         {
-            Debug.LogError(
-                "[EnemyAI] Detection tidak ditemukan.",
-                this
-            );
-
+            Debug.LogError("[EnemyAI] Detection tidak ditemukan.", this);
             return;
         }
 
         ValidateArchetype();
 
-        previousDetectionState =
-            detection.CurrentState;
-
-        UpdateBehaviour(
-            previousDetectionState
-        );
+        previousDetectionState = detection.CurrentState;
+        UpdateBehaviour(previousDetectionState);
     }
 
     private void Update()
     {
-        if (stateController == null ||
-            detection == null)
-        {
-            return;
-        }
-
-        if (stateController.IsDead)
-        {
-            return;
-        }
-
-        if (stateController.IsCornered ||
-            stateController.IsVulnerable)
-        {
-            return;
-        }
+        if (stateController == null || detection == null) return;
+        if (stateController.IsDead) return;
+        if (stateController.IsCornered || stateController.IsVulnerable) return;
 
         switch (archetype)
         {
@@ -146,10 +105,7 @@ public class EnemyBehaviourController : MonoBehaviour
                 {
                     CheckRedCornered();
 
-                    if (stateController.IsCornered)
-                    {
-                        return;
-                    }
+                    if (stateController.IsCornered) return;
 
                     CheckRedObstacle();
                     CheckRedLowGap();
@@ -162,49 +118,30 @@ public class EnemyBehaviourController : MonoBehaviour
 
             case EnemyArchetype.Cyan:
 
-                if (stateController.IsChase)
-                {
-                    CheckCyanDash();
-                }
+                if (stateController.IsChase) CheckCyanDash();
 
                 break;
 
             case EnemyArchetype.Purple:
-                // Purple tidak memiliki
-                // movement behavior.
+                // Purple tidak memiliki movement behavior.
                 break;
         }
 
-        EnemyDetectionState currentDetectionState =
-            detection.CurrentState;
+        EnemyDetectionState currentDetectionState = detection.CurrentState;
 
-        if (currentDetectionState ==
-            previousDetectionState)
-        {
-            return;
-        }
+        if (currentDetectionState == previousDetectionState) return;
 
-        previousDetectionState =
-            currentDetectionState;
-
-        UpdateBehaviour(
-            currentDetectionState
-        );
+        previousDetectionState = currentDetectionState;
+        UpdateBehaviour(currentDetectionState);
     }
 
     // =========================================================
     // BEHAVIOUR FLOW
     // =========================================================
 
-    private void UpdateBehaviour(
-        EnemyDetectionState detectionState)
+    private void UpdateBehaviour(EnemyDetectionState detectionState)
     {
-        if (stateController.IsDead ||
-            stateController.IsCornered ||
-            stateController.IsVulnerable)
-        {
-            return;
-        }
+        if (stateController.IsDead || stateController.IsCornered || stateController.IsVulnerable) return;
 
         StopAllBehaviours();
 
@@ -224,17 +161,9 @@ public class EnemyBehaviourController : MonoBehaviour
 
         switch (detectionState)
         {
-            case EnemyDetectionState.Undetected:
-                EnablePatrol();
-                break;
-
-            case EnemyDetectionState.Suspicious:
-                EnableSearch();
-                break;
-
-            case EnemyDetectionState.Detected:
-                HandleDetected();
-                break;
+            case EnemyDetectionState.Undetected: EnablePatrol(); break;
+            case EnemyDetectionState.Suspicious: EnableSearch(); break;
+            case EnemyDetectionState.Detected: HandleDetected(); break;
         }
     }
 
@@ -242,21 +171,10 @@ public class EnemyBehaviourController : MonoBehaviour
     {
         switch (archetype)
         {
-            case EnemyArchetype.Red:
-                EnableRedFlee();
-                break;
-
-            case EnemyArchetype.Blue:
-                EnableBluePressure();
-                break;
-
-            case EnemyArchetype.Cyan:
-                EnableCyanChase();
-                break;
-
-            case EnemyArchetype.Purple:
-                EnablePurpleIdle();
-                break;
+            case EnemyArchetype.Red: EnableRedFlee(); break;
+            case EnemyArchetype.Blue: EnableBluePressure(); break;
+            case EnemyArchetype.Cyan: EnableCyanChase(); break;
+            case EnemyArchetype.Purple: EnablePurpleIdle(); break;
         }
     }
 
@@ -266,10 +184,7 @@ public class EnemyBehaviourController : MonoBehaviour
 
     private void EnablePurpleIdle()
     {
-        stateController.SetState(
-            EnemyState.Idle
-        );
-
+        stateController.SetState(EnemyState.Idle);
         LogState("IDLE");
     }
 
@@ -279,20 +194,12 @@ public class EnemyBehaviourController : MonoBehaviour
 
     private void EnableRedFlee()
     {
-        stateController.SetState(
-            EnemyState.Flee
-        );
-
+        stateController.SetState(EnemyState.Flee);
         LogState("FLEE");
 
-        if (red == null ||
-            red.flee == null)
+        if (red == null || red.flee == null)
         {
-            Debug.LogWarning(
-                "[EnemyAI] Red Flee tidak ditemukan.",
-                this
-            );
-
+            Debug.LogWarning("[EnemyAI] Red Flee tidak ditemukan.", this);
             return;
         }
 
@@ -301,16 +208,8 @@ public class EnemyBehaviourController : MonoBehaviour
 
     private void CheckRedCornered()
     {
-        if (red == null ||
-            red.cornerDetector == null)
-        {
-            return;
-        }
-
-        if (!red.cornerDetector.IsCornered)
-        {
-            return;
-        }
+        if (red == null || red.cornerDetector == null) return;
+        if (!red.cornerDetector.IsCornered) return;
 
         EnterRedCornered();
     }
@@ -318,62 +217,32 @@ public class EnemyBehaviourController : MonoBehaviour
     private void EnterRedCornered()
     {
         StopAllBehaviours();
-
-        stateController.SetState(
-            EnemyState.Cornered
-        );
-
+        stateController.SetState(EnemyState.Cornered);
         LogState("CORNERED");
-
         EnableRedVulnerable();
     }
 
     private void CheckRedObstacle()
     {
-        if (red == null ||
-            red.obstacleDetector == null ||
-            red.jump == null)
-        {
-            return;
-        }
-
-        if (!red.obstacleDetector.IsObstacleDetected)
-        {
-            return;
-        }
+        if (red == null || red.obstacleDetector == null || red.jump == null) return;
+        if (!red.obstacleDetector.IsObstacleDetected) return;
 
         red.jump.TryJump();
     }
 
     private void CheckRedLowGap()
     {
-        if (red == null ||
-            red.lowGapDetector == null ||
-            red.crouch == null)
-        {
-            return;
-        }
+        if (red == null || red.lowGapDetector == null || red.crouch == null) return;
 
-        if (red.lowGapDetector.IsLowGapDetected)
-        {
-            red.crouch.StartCrouch();
-        }
-        else
-        {
-            red.crouch.StopCrouch();
-        }
+        if (red.lowGapDetector.IsLowGapDetected) red.crouch.StartCrouch();
+        else red.crouch.StopCrouch();
     }
 
     private void EnableRedVulnerable()
     {
-        if (red == null ||
-            red.vulnerable == null)
+        if (red == null || red.vulnerable == null)
         {
-            Debug.LogWarning(
-                "[EnemyAI] Red Vulnerable tidak ditemukan.",
-                this
-            );
-
+            Debug.LogWarning("[EnemyAI] Red Vulnerable tidak ditemukan.", this);
             return;
         }
 
@@ -386,20 +255,12 @@ public class EnemyBehaviourController : MonoBehaviour
 
     private void EnableBluePressure()
     {
-        stateController.SetState(
-            EnemyState.Pressure
-        );
-
+        stateController.SetState(EnemyState.Pressure);
         LogState("PRESSURE");
 
-        if (blue == null ||
-            blue.pressure == null)
+        if (blue == null || blue.pressure == null)
         {
-            Debug.LogWarning(
-                "[EnemyAI] Blue Pressure tidak ditemukan.",
-                this
-            );
-
+            Debug.LogWarning("[EnemyAI] Blue Pressure tidak ditemukan.", this);
             return;
         }
 
@@ -412,20 +273,12 @@ public class EnemyBehaviourController : MonoBehaviour
 
     private void EnableCyanChase()
     {
-        stateController.SetState(
-            EnemyState.Chase
-        );
-
+        stateController.SetState(EnemyState.Chase);
         LogState("CHASE");
 
-        if (cyan == null ||
-            cyan.chase == null)
+        if (cyan == null || cyan.chase == null)
         {
-            Debug.LogWarning(
-                "[EnemyAI] Cyan Chase tidak ditemukan.",
-                this
-            );
-
+            Debug.LogWarning("[EnemyAI] Cyan Chase tidak ditemukan.", this);
             return;
         }
 
@@ -434,12 +287,7 @@ public class EnemyBehaviourController : MonoBehaviour
 
     private void CheckCyanDash()
     {
-        if (cyan == null ||
-            cyan.dash == null)
-        {
-            return;
-        }
-
+        if (cyan == null || cyan.dash == null) return;
         cyan.dash.TryDash();
     }
 
@@ -449,49 +297,28 @@ public class EnemyBehaviourController : MonoBehaviour
 
     private void EnablePatrol()
     {
-        stateController.SetState(
-            EnemyState.Patrol
-        );
-
+        stateController.SetState(EnemyState.Patrol);
         LogState("PATROL");
 
-        if (patrol == null)
-        {
-            return;
-        }
-
+        if (patrol == null) return;
         patrol.enabled = true;
     }
 
     private void EnableSearch()
     {
-        stateController.SetState(
-            EnemyState.Search
-        );
-
+        stateController.SetState(EnemyState.Search);
         LogState("SEARCH");
 
-        if (search == null)
-        {
-            return;
-        }
-
+        if (search == null) return;
         search.enabled = true;
     }
 
     private void EnableChase()
     {
-        stateController.SetState(
-            EnemyState.Chase
-        );
-
+        stateController.SetState(EnemyState.Chase);
         LogState("CHASE");
 
-        if (chase == null)
-        {
-            return;
-        }
-
+        if (chase == null) return;
         chase.enabled = true;
     }
 
@@ -501,68 +328,29 @@ public class EnemyBehaviourController : MonoBehaviour
 
     public void StopAllBehaviours()
     {
-        if (patrol != null)
-        {
-            patrol.StopPatrol();
-            patrol.enabled = false;
-        }
-
-        if (search != null)
-        {
-            search.StopSearch();
-            search.enabled = false;
-        }
-
-        if (chase != null)
-        {
-            chase.StopChase();
-            chase.enabled = false;
-        }
+        if (patrol != null) { patrol.StopPatrol(); patrol.enabled = false; }
+        if (search != null) { search.StopSearch(); search.enabled = false; }
+        if (chase != null) { chase.StopChase(); chase.enabled = false; }
 
         // RED
         if (red != null)
         {
-            if (red.flee != null)
-            {
-                red.flee.StopFlee();
-                red.flee.enabled = false;
-            }
-
-            if (red.vulnerable != null)
-            {
-                red.vulnerable.StopVulnerable();
-                red.vulnerable.enabled = false;
-            }
+            if (red.flee != null) { red.flee.StopFlee(); red.flee.enabled = false; }
+            if (red.vulnerable != null) { red.vulnerable.StopVulnerable(); red.vulnerable.enabled = false; }
         }
 
         // BLUE
         if (blue != null)
         {
-            if (blue.pressure != null)
-            {
-                blue.pressure.StopPressure();
-                blue.pressure.enabled = false;
-            }
+            if (blue.pressure != null) { blue.pressure.StopPressure(); blue.pressure.enabled = false; }
         }
 
         // CYAN
         if (cyan != null)
         {
-            if (cyan.chase != null)
-            {
-                cyan.chase.StopChase();
-                cyan.chase.enabled = false;
-            }
-
-            if (cyan.dash != null)
-            {
-                cyan.dash.StopDash();
-            }
-
-            if (cyan.teleport != null)
-            {
-                cyan.teleport.ResetCooldown();
-            }
+            if (cyan.chase != null) { cyan.chase.StopChase(); cyan.chase.enabled = false; }
+            if (cyan.dash != null) cyan.dash.StopDash();
+            if (cyan.teleport != null) cyan.teleport.ResetCooldown();
         }
     }
 
@@ -572,59 +360,26 @@ public class EnemyBehaviourController : MonoBehaviour
 
     private void AutoAssignReferences()
     {
-        if (red == null)
-        {
-            red =
-                new RedBehaviourReferences();
-        }
-
-        if (blue == null)
-        {
-            blue =
-                new BlueBehaviourReferences();
-        }
-
-        if (cyan == null)
-        {
-            cyan =
-                new CyanBehaviourReferences();
-        }
+        red ??= new RedBehaviourReferences();
+        blue ??= new BlueBehaviourReferences();
+        cyan ??= new CyanBehaviourReferences();
 
         // RED
-        red.flee ??=
-            GetComponent<EnemyFlee>();
-
-        red.cornerDetector ??=
-            GetComponent<EnemyCornerDetector>();
-
-        red.obstacleDetector ??=
-            GetComponent<EnemyObstacleDetector>();
-
-        red.jump ??=
-            GetComponent<EnemyJump>();
-
-        red.lowGapDetector ??=
-            GetComponent<EnemyLowGapDetector>();
-
-        red.crouch ??=
-            GetComponent<EnemyCrouch>();
-
-        red.vulnerable ??=
-            GetComponent<EnemyVulnerable>();
+        red.flee ??= GetComponent<EnemyFlee>();
+        red.cornerDetector ??= GetComponent<EnemyCornerDetector>();
+        red.obstacleDetector ??= GetComponent<EnemyObstacleDetector>();
+        red.jump ??= GetComponent<EnemyJump>();
+        red.lowGapDetector ??= GetComponent<EnemyLowGapDetector>();
+        red.crouch ??= GetComponent<EnemyCrouch>();
+        red.vulnerable ??= GetComponent<EnemyVulnerable>();
 
         // BLUE
-        blue.pressure ??=
-            GetComponent<EnemyPressure>();
+        blue.pressure ??= GetComponent<EnemyPressure>();
 
         // CYAN
-        cyan.chase ??=
-            GetComponent<EnemyChase>();
-
-        cyan.dash ??=
-            GetComponent<EnemyDash>();
-
-        cyan.teleport ??=
-            GetComponent<EnemyTeleport>();
+        cyan.chase ??= GetComponent<EnemyChase>();
+        cyan.dash ??= GetComponent<EnemyDash>();
+        cyan.teleport ??= GetComponent<EnemyTeleport>();
     }
 
     // =========================================================
@@ -633,24 +388,12 @@ public class EnemyBehaviourController : MonoBehaviour
 
     private void ValidateArchetype()
     {
-        if (enemyController == null ||
-            enemyController.Stats == null)
-        {
-            return;
-        }
+        if (enemyController == null || enemyController.Stats == null) return;
 
-        EnemyArchetype statsArchetype =
-            enemyController.Stats.Archetype;
+        EnemyArchetype statsArchetype = enemyController.Stats.Archetype;
 
         if (statsArchetype != archetype)
-        {
-            Debug.LogWarning(
-                $"[EnemyAI] Archetype mismatch. " +
-                $"Controller={archetype}, " +
-                $"Stats={statsArchetype}.",
-                this
-            );
-        }
+            Debug.LogWarning($"[EnemyAI] Archetype mismatch. Controller={archetype}, Stats={statsArchetype}.", this);
     }
 
     // =========================================================
@@ -659,15 +402,7 @@ public class EnemyBehaviourController : MonoBehaviour
 
     private void LogState(string state)
     {
-        if (!enableDebugLog)
-        {
-            return;
-        }
-
-        Debug.Log(
-            $"[EnemyAI] " +
-            $"{archetype.ToString().ToUpper()} → {state}",
-            this
-        );
+        if (!enableDebugLog) return;
+        Debug.Log($"[EnemyAI] {archetype.ToString().ToUpper()} → {state}", this);
     }
 }

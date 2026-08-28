@@ -8,35 +8,29 @@ public class GameOverUI : MonoBehaviour
 
     private void Awake()
     {
-        if (gameOverPanel != null)
-            gameOverPanel.SetActive(false);
+        if (gameOverPanel != null) gameOverPanel.SetActive(false);
     }
 
     private void Update()
     {
         if (GameOverManager.Instance == null) return;
-
-        if (GameOverManager.Instance.IsGameOver && !gameOverPanel.activeSelf)
-            Show();
+        if (GameOverManager.Instance.IsGameOver && !gameOverPanel.activeSelf) Show();
     }
 
     private void Show()
     {
-        if (gameOverPanel != null)
-            gameOverPanel.SetActive(true);
+        if (gameOverPanel != null) gameOverPanel.SetActive(true);
     }
 
     public void Retry()
     {
         if (GameOverManager.Instance == null) return;
-
         GameOverManager.Instance.RestartGame(gameplaySceneName);
     }
 
     public void MainMenu()
     {
         if (GameOverManager.Instance == null) return;
-
         GameOverManager.Instance.LoadMainMenu(mainMenuSceneName);
     }
 }

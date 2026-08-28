@@ -18,26 +18,19 @@ public class EnemySanityDamage : MonoBehaviour
 
     private void Awake()
     {
-        if (enemyController == null)
-        {
-            enemyController = GetComponent<EnemyController>();
-        }
+        if (enemyController == null) enemyController = GetComponent<EnemyController>();
     }
 
     private void Update()
     {
-        if (enemyController == null ||
-            !enemyController.HasTarget)
+        if (enemyController == null || !enemyController.HasTarget)
         {
             ResetTimer();
             return;
         }
 
         if (sanityController == null)
-        {
-            sanityController =
-                enemyController.PlayerTarget.GetComponent<SanityController>();
-        }
+            sanityController = enemyController.PlayerTarget.GetComponent<SanityController>();
 
         if (sanityController == null)
         {
@@ -64,10 +57,7 @@ public class EnemySanityDamage : MonoBehaviour
     {
         damageTimer += Time.deltaTime;
 
-        if (damageTimer < damageInterval)
-        {
-            return;
-        }
+        if (damageTimer < damageInterval) return;
 
         damageTimer = 0f;
 
@@ -76,35 +66,21 @@ public class EnemySanityDamage : MonoBehaviour
 
     private bool IsPlayerInDamageRange()
     {
-        float distance = Vector2.Distance(
-            transform.position,
-            enemyController.PlayerTarget.position
-        );
-
+        float distance = Vector2.Distance(transform.position, enemyController.PlayerTarget.position);
         return distance <= damageDistance;
     }
 
     private void ApplyDamage()
     {
-        float previousSanity =
-            sanityController.CurrentSanity;
+        float previousSanity = sanityController.CurrentSanity;
 
         sanityController.DrainSanity(damageAmount);
 
-        float currentSanity =
-            sanityController.CurrentSanity;
+        float currentSanity = sanityController.CurrentSanity;
 
-        if (!enableDebugLog)
-        {
-            return;
-        }
+        if (!enableDebugLog) return;
 
-        Debug.Log(
-            $"[EnemySanityDamage] " +
-            $"Sanity: {previousSanity:F1} → {currentSanity:F1} " +
-            $"(-{damageAmount:F1})",
-            this
-        );
+        Debug.Log($"[EnemySanityDamage] Sanity: {previousSanity:F1} → {currentSanity:F1} (-{damageAmount:F1})", this);
     }
 
     private void ResetTimer()

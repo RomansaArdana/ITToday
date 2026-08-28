@@ -11,8 +11,7 @@ public class DialogueNode
     [SerializeField] private string dialogueText;
 
     [Header("Condition")]
-    [SerializeField] private DialogueCondition condition =
-        new DialogueCondition();
+    [SerializeField] private DialogueCondition condition = new DialogueCondition();
 
     [Header("Node Events")]
     [SerializeField] private List<DialogueEvent> events = new();
@@ -26,19 +25,12 @@ public class DialogueNode
     {
         if (condition == null)
         {
-            DialogueManager.DebugLog(
-                $"[DialogueNode] \"{dialogueText}\" → Tidak memiliki Condition → TRUE"
-            );
-
+            DialogueManager.DebugLog($"[DialogueNode] \"{dialogueText}\" → Tidak memiliki Condition → TRUE");
             return true;
         }
 
         bool result = condition.IsMet();
-
-        DialogueManager.DebugLog(
-            $"[DialogueNode] Condition Check → \"{dialogueText}\" → {result}"
-        );
-
+        DialogueManager.DebugLog($"[DialogueNode] Condition Check → \"{dialogueText}\" → {result}");
         return result;
     }
 
@@ -46,25 +38,17 @@ public class DialogueNode
     {
         if (events == null || events.Count == 0)
         {
-            DialogueManager.DebugLog(
-                $"[DialogueNode] Tidak ada Node Event → \"{dialogueText}\""
-            );
-
+            DialogueManager.DebugLog($"[DialogueNode] Tidak ada Node Event → \"{dialogueText}\"");
             return;
         }
 
-        DialogueManager.DebugLog(
-            $"[DialogueNode] Execute {events.Count} Event(s) → \"{dialogueText}\""
-        );
+        DialogueManager.DebugLog($"[DialogueNode] Execute {events.Count} Event(s) → \"{dialogueText}\"");
 
         foreach (DialogueEvent dialogueEvent in events)
         {
             if (dialogueEvent == null)
             {
-                DialogueManager.DebugWarning(
-                    $"[DialogueNode] Ada Event kosong → \"{dialogueText}\""
-                );
-
+                DialogueManager.DebugWarning($"[DialogueNode] Ada Event kosong → \"{dialogueText}\"");
                 continue;
             }
 

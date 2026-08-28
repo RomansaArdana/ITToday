@@ -10,38 +10,24 @@ public class PlayerFacingController : MonoBehaviour
     [SerializeField] private bool facingRight = true;
 
     public bool IsFacingRight => facingRight;
-    public Vector2 FacingDirection =>
-        facingRight ? Vector2.right : Vector2.left;
+    public Vector2 FacingDirection => facingRight ? Vector2.right : Vector2.left;
 
     private void Awake()
     {
         if (visual == null)
         {
-            Transform visualChild =
-                transform.Find("Visual");
-
-            if (visualChild != null)
-            {
-                visual = visualChild;
-            }
+            Transform visualChild = transform.Find("Visual");
+            if (visualChild != null) visual = visualChild;
         }
 
-        if (inputReader == null)
-        {
-            inputReader =
-                GetComponent<PlayerInputReader>();
-        }
+        if (inputReader == null) inputReader = GetComponent<PlayerInputReader>();
 
         ApplyFacing();
     }
 
     private void Update()
     {
-        if (inputReader == null)
-        {
-            return;
-        }
-
+        if (inputReader == null) return;
         UpdateFacingDirection();
     }
 
@@ -49,41 +35,24 @@ public class PlayerFacingController : MonoBehaviour
     {
         float moveX = inputReader.MoveInput.x;
 
-        if (moveX > 0.01f)
-        {
-            SetFacingRight(true);
-        }
-        else if (moveX < -0.01f)
-        {
-            SetFacingRight(false);
-        }
+        if (moveX > 0.01f) SetFacingRight(true);
+        else if (moveX < -0.01f) SetFacingRight(false);
     }
 
     private void SetFacingRight(bool value)
     {
-        if (facingRight == value)
-        {
-            return;
-        }
+        if (facingRight == value) return;
 
         facingRight = value;
-
         ApplyFacing();
     }
 
     private void ApplyFacing()
     {
-        if (visual == null)
-        {
-            return;
-        }
+        if (visual == null) return;
 
         Vector3 scale = visual.localScale;
-
-        scale.x =
-            Mathf.Abs(scale.x) *
-            (facingRight ? 1f : -1f);
-
+        scale.x = Mathf.Abs(scale.x) * (facingRight ? 1f : -1f);
         visual.localScale = scale;
     }
 }

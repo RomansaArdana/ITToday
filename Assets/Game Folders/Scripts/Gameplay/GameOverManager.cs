@@ -16,25 +16,18 @@ public class GameOverManager : MonoBehaviour
         }
 
         Instance = this;
-
         Time.timeScale = 1f;
     }
 
     public void TriggerGameOver()
     {
-        if (IsGameOver)
-        {
-            return;
-        }
+        if (IsGameOver) return;
 
         IsGameOver = true;
-
         Time.timeScale = 0f;
 
         if (GameManager.Instance != null)
-        {
             GameManager.Instance.ChangeState(GameState.GameOver);
-        }
     }
 
     public void RestartGame(string sceneName)
@@ -43,9 +36,7 @@ public class GameOverManager : MonoBehaviour
         IsGameOver = false;
 
         if (GameManager.Instance != null)
-        {
             GameManager.Instance.ChangeState(GameState.Gameplay);
-        }
 
         SceneManager.LoadScene(sceneName);
     }
@@ -56,9 +47,7 @@ public class GameOverManager : MonoBehaviour
         IsGameOver = false;
 
         if (GameManager.Instance != null)
-        {
             GameManager.Instance.ChangeState(GameState.Menu);
-        }
 
         SceneManager.LoadScene(sceneName);
     }

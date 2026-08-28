@@ -34,11 +34,8 @@ public class EnemySearch : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
-        enemyController ??=
-            GetComponent<EnemyController>();
-
-        detection ??=
-            GetComponent<EnemyDetection>();
+        enemyController ??= GetComponent<EnemyController>();
+        detection ??= GetComponent<EnemyDetection>();
     }
 
     private void FixedUpdate()
@@ -49,26 +46,15 @@ public class EnemySearch : MonoBehaviour
             return;
         }
 
-        if (!isSearching)
-        {
-            BeginSearch();
-        }
+        if (!isSearching) BeginSearch();
 
-        if (isInvestigating)
-        {
-            UpdateInvestigation();
-        }
-        else
-        {
-            UpdateSearch();
-        }
+        if (isInvestigating) UpdateInvestigation();
+        else UpdateSearch();
     }
 
     private bool IsValid()
     {
-        return enemyController != null &&
-               detection != null &&
-               enemyController.Stats != null;
+        return enemyController != null && detection != null && enemyController.Stats != null;
     }
 
     private void BeginSearch()
@@ -80,11 +66,8 @@ public class EnemySearch : MonoBehaviour
         searchTimer = 0f;
         currentSearchPoint = 0;
 
-        searchCenter =
-            detection.LastKnownPlayerPosition;
-
-        currentSearchTarget =
-            searchCenter;
+        searchCenter = detection.LastKnownPlayerPosition;
+        currentSearchTarget = searchCenter;
 
         StopMovement();
     }
@@ -93,14 +76,9 @@ public class EnemySearch : MonoBehaviour
     {
         StopMovement();
 
-        investigateTimer +=
-            Time.fixedDeltaTime;
+        investigateTimer += Time.fixedDeltaTime;
 
-        if (investigateTimer <
-            investigateDelay)
-        {
-            return;
-        }
+        if (investigateTimer < investigateDelay) return;
 
         isInvestigating = false;
         searchTimer = 0f;
@@ -110,11 +88,9 @@ public class EnemySearch : MonoBehaviour
 
     private void UpdateSearch()
     {
-        searchTimer +=
-            Time.fixedDeltaTime;
+        searchTimer += Time.fixedDeltaTime;
 
-        if (searchTimer >=
-            searchDuration)
+        if (searchTimer >= searchDuration)
         {
             FinishSearch();
             return;
@@ -131,77 +107,41 @@ public class EnemySearch : MonoBehaviour
 
     private bool HasReachedTarget()
     {
-        float difference =
-            currentSearchTarget.x -
-            rb.position.x;
-
-        return Mathf.Abs(difference) <=
-               arrivalDistance;
+        float difference = currentSearchTarget.x - rb.position.x;
+        return Mathf.Abs(difference) <= arrivalDistance;
     }
 
     private void SetNextSearchPoint()
     {
         currentSearchPoint++;
 
-        int pointCount =
-            Mathf.Max(
-                1,
-                searchPointCount
-            );
+        int pointCount = Mathf.Max(1, searchPointCount);
 
-        if (currentSearchPoint >
-            pointCount)
-        {
-            currentSearchPoint = 1;
-        }
+        if (currentSearchPoint > pointCount) currentSearchPoint = 1;
 
-        float angle =
-            360f /
-            pointCount *
-            (currentSearchPoint - 1);
+        float angle = 360f / pointCount * (currentSearchPoint - 1);
+        float radians = angle * Mathf.Deg2Rad;
 
-        float radians =
-            angle *
-            Mathf.Deg2Rad;
+        Vector2 offset = new Vector2(Mathf.Cos(radians), Mathf.Sin(radians)) * searchRadius;
 
-        Vector2 offset =
-            new Vector2(
-                Mathf.Cos(radians),
-                Mathf.Sin(radians)
-            ) *
-            searchRadius;
-
-        currentSearchTarget =
-            searchCenter +
-            offset;
+        currentSearchTarget = searchCenter + offset;
     }
 
     private void MoveTowardsTarget()
     {
-        float difference =
-            currentSearchTarget.x -
-            rb.position.x;
+        float difference = currentSearchTarget.x - rb.position.x;
 
-        if (Mathf.Abs(difference) <=
-            arrivalDistance)
+        if (Mathf.Abs(difference) <= arrivalDistance)
         {
             StopMovement();
             return;
         }
 
-        float direction =
-            Mathf.Sign(difference);
+        float direction = Mathf.Sign(difference);
 
-        rb.linearVelocity =
-            new Vector2(
-                direction *
-                searchMoveSpeed,
-                rb.linearVelocity.y
-            );
+        rb.linearVelocity = new Vector2(direction * searchMoveSpeed, rb.linearVelocity.y);
 
-        UpdateFacingDirection(
-            direction
-        );
+        UpdateFacingDirection(direction);
     }
 
     private void FinishSearch()
@@ -209,32 +149,18 @@ public class EnemySearch : MonoBehaviour
         StopSearch();
     }
 
-    private void UpdateFacingDirection(
-        float direction)
+    private void UpdateFacingDirection(float direction)
     {
-        if (Mathf.Abs(direction) < 0.01f)
-        {
-            return;
-        }
+        if (Mathf.Abs(direction) < 0.01f) return;
 
-        Vector3 scale =
-            transform.localScale;
-
-        scale.x =
-            Mathf.Abs(scale.x) *
-            Mathf.Sign(direction);
-
-        transform.localScale =
-            scale;
+        Vector3 scale = transform.localScale;
+        scale.x = Mathf.Abs(scale.x) * Mathf.Sign(direction);
+        transform.localScale = scale;
     }
 
     private void StopMovement()
     {
-        rb.linearVelocity =
-            new Vector2(
-                0f,
-                rb.linearVelocity.y
-            );
+        rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
     }
 
     public void StopSearch()
@@ -246,40 +172,18 @@ public class EnemySearch : MonoBehaviour
         searchTimer = 0f;
         currentSearchPoint = 0;
 
-        if (rb != null)
-        {
-            StopMovement();
-        }
+        if (rb != null) StopMovement();
     }
 
     private void OnDrawGizmosSelected()
     {
-        if (detection == null)
-        {
-            return;
-        }
+        if (detection == null) return;
 
-        Vector2 center =
-            detection.LastKnownPlayerPosition;
+        Vector2 center = detection.LastKnownPlayerPosition;
 
-        Gizmos.DrawWireSphere(
-            center,
-            searchRadius
-        );
-
-        Gizmos.DrawSphere(
-            center,
-            0.08f
-        );
-
-        Gizmos.DrawLine(
-            transform.position,
-            center
-        );
-
-        Gizmos.DrawSphere(
-            currentSearchTarget,
-            0.08f
-        );
+        Gizmos.DrawWireSphere(center, searchRadius);
+        Gizmos.DrawSphere(center, 0.08f);
+        Gizmos.DrawLine(transform.position, center);
+        Gizmos.DrawSphere(currentSearchTarget, 0.08f);
     }
 }

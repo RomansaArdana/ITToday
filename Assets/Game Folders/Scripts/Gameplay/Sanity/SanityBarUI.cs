@@ -27,18 +27,10 @@ public class SanityBarUI : MonoBehaviour
     private void Awake()
     {
         if (sanityController == null)
-        {
-            sanityController =
-                FindFirstObjectByType<SanityController>();
-        }
+            sanityController = FindFirstObjectByType<SanityController>();
 
         if (mainFill == null)
-        {
-            Debug.LogError(
-                "SanityBarUI: Main Fill belum di-assign.",
-                this
-            );
-        }
+            Debug.LogError("SanityBarUI: Main Fill belum di-assign.", this);
     }
 
     private void Start()
@@ -48,10 +40,7 @@ public class SanityBarUI : MonoBehaviour
 
     private void OnEnable()
     {
-        if (sanityController == null)
-        {
-            return;
-        }
+        if (sanityController == null) return;
 
         sanityController.OnSanityChanged += HandleSanityChanged;
         sanityController.OnSanityLevelChanged += HandleSanityLevelChanged;
@@ -59,10 +48,7 @@ public class SanityBarUI : MonoBehaviour
 
     private void OnDisable()
     {
-        if (sanityController == null)
-        {
-            return;
-        }
+        if (sanityController == null) return;
 
         sanityController.OnSanityChanged -= HandleSanityChanged;
         sanityController.OnSanityLevelChanged -= HandleSanityLevelChanged;
@@ -72,53 +58,31 @@ public class SanityBarUI : MonoBehaviour
     {
         if (sanityController == null)
         {
-            Debug.LogError(
-                "SanityBarUI: SanityController tidak ditemukan.",
-                this
-            );
-
+            Debug.LogError("SanityBarUI: SanityController tidak ditemukan.", this);
             return;
         }
 
-        if (mainFill == null)
-        {
-            return;
-        }
+        if (mainFill == null) return;
 
         float maxSanity = sanityController.MaxSanity;
 
         if (maxSanity <= 0f)
         {
-            Debug.LogError(
-                "SanityBarUI: Max Sanity harus lebih dari 0.",
-                this
-            );
-
+            Debug.LogError("SanityBarUI: Max Sanity harus lebih dari 0.", this);
             return;
         }
 
-        targetFillAmount =
-            sanityController.CurrentSanity /
-            maxSanity;
-
+        targetFillAmount = sanityController.CurrentSanity / maxSanity;
         currentFillAmount = targetFillAmount;
-
         mainFill.fillAmount = currentFillAmount;
 
-        targetColor =
-            GetColorFromLevel(
-                sanityController.CurrentLevel
-            );
-
+        targetColor = GetColorFromLevel(sanityController.CurrentLevel);
         mainFill.color = targetColor;
     }
 
     private void Update()
     {
-        if (mainFill == null)
-        {
-            return;
-        }
+        if (mainFill == null) return;
 
         UpdateFill();
         UpdateColor();
@@ -126,65 +90,35 @@ public class SanityBarUI : MonoBehaviour
 
     private void UpdateFill()
     {
-        currentFillAmount = Mathf.Lerp(
-            currentFillAmount,
-            targetFillAmount,
-            smoothSpeed * Time.deltaTime
-        );
-
+        currentFillAmount = Mathf.Lerp(currentFillAmount, targetFillAmount, smoothSpeed * Time.deltaTime);
         mainFill.fillAmount = currentFillAmount;
     }
 
     private void UpdateColor()
     {
-        mainFill.color = Color.Lerp(
-            mainFill.color,
-            targetColor,
-            colorSmoothSpeed * Time.deltaTime
-        );
+        mainFill.color = Color.Lerp(mainFill.color, targetColor, colorSmoothSpeed * Time.deltaTime);
     }
 
-    private void HandleSanityChanged(
-        float currentSanity,
-        float maxSanity)
+    private void HandleSanityChanged(float currentSanity, float maxSanity)
     {
-        if (maxSanity <= 0f)
-        {
-            return;
-        }
-
-        targetFillAmount =
-            Mathf.Clamp01(
-                currentSanity / maxSanity
-            );
+        if (maxSanity <= 0f) return;
+        targetFillAmount = Mathf.Clamp01(currentSanity / maxSanity);
     }
 
-    private void HandleSanityLevelChanged(
-        SanityLevel newLevel)
+    private void HandleSanityLevelChanged(SanityLevel newLevel)
     {
-        targetColor =
-            GetColorFromLevel(newLevel);
+        targetColor = GetColorFromLevel(newLevel);
     }
 
-    private Color GetColorFromLevel(
-        SanityLevel level)
+    private Color GetColorFromLevel(SanityLevel level)
     {
         switch (level)
         {
-            case SanityLevel.Healthy:
-                return healthyColor;
-
-            case SanityLevel.Unstable:
-                return unstableColor;
-
-            case SanityLevel.Critical:
-                return criticalColor;
-
-            case SanityLevel.Depleted:
-                return depletedColor;
-
-            default:
-                return healthyColor;
+            case SanityLevel.Healthy: return healthyColor;
+            case SanityLevel.Unstable: return unstableColor;
+            case SanityLevel.Critical: return criticalColor;
+            case SanityLevel.Depleted: return depletedColor;
+            default: return healthyColor;
         }
     }
 }

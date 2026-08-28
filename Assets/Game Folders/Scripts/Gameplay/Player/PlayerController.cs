@@ -1,9 +1,5 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(PlayerInputReader))]
-[RequireComponent(typeof(PlayerMovement))]
-[RequireComponent(typeof(PlayerStateController))]
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private PlayerStatsSO stats;
@@ -25,9 +21,6 @@ public class PlayerController : MonoBehaviour
 
     public void SetMovementEnabled(bool enabled)
     {
-        if (!enabled)
-        {
-            movement.StopMovement();
-        }
+        if (!enabled) movement.StopMovement();
     }
 }

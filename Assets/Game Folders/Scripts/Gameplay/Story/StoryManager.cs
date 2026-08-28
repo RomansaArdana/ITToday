@@ -25,41 +25,25 @@ public class StoryManager : MonoBehaviour
 
     public bool HasFlag(string flag)
     {
-        if (string.IsNullOrEmpty(flag))
-        {
-            return false;
-        }
-
+        if (string.IsNullOrEmpty(flag)) return false;
         return storyFlags.Contains(flag);
     }
 
     public void SetFlag(string flag)
     {
-        if (string.IsNullOrEmpty(flag))
-        {
-            return;
-        }
-
+        if (string.IsNullOrEmpty(flag)) return;
         storyFlags.Add(flag);
     }
 
     public void RemoveFlag(string flag)
     {
-        if (string.IsNullOrEmpty(flag))
-        {
-            return;
-        }
-
+        if (string.IsNullOrEmpty(flag)) return;
         storyFlags.Remove(flag);
     }
 
     public void ChangeChapter(int chapter)
     {
-        if (chapter < 1)
-        {
-            return;
-        }
-
+        if (chapter < 1) return;
         currentChapter = chapter;
     }
 
@@ -73,9 +57,6 @@ public class StoryManager : MonoBehaviour
     private void TestStoryFlag()
     {
         SetFlag("Met_Garnet");
-
-        Debug.Log(
-            $"Met_Garnet: {HasFlag("Met_Garnet")}"
-        );
+        Debug.Log($"Met_Garnet: {HasFlag("Met_Garnet")}");
     }
 }

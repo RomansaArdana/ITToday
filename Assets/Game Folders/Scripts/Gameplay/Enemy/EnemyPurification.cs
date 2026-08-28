@@ -19,24 +19,17 @@ public class EnemyPurification : MonoBehaviour
     private void Awake()
     {
         health ??= GetComponent<EnemyHealth>();
-
         colliders = GetComponentsInChildren<Collider2D>();
     }
 
     private void OnEnable()
     {
-        if (health != null)
-        {
-            health.OnDeath += HandleHealthDepleted;
-        }
+        if (health != null) health.OnDeath += HandleHealthDepleted;
     }
 
     private void OnDisable()
     {
-        if (health != null)
-        {
-            health.OnDeath -= HandleHealthDepleted;
-        }
+        if (health != null) health.OnDeath -= HandleHealthDepleted;
     }
 
     private void HandleHealthDepleted()
@@ -46,39 +39,24 @@ public class EnemyPurification : MonoBehaviour
 
     public void Purify()
     {
-        if (IsPurified)
-        {
-            return;
-        }
+        if (IsPurified) return;
 
         IsPurified = true;
 
-        if (disableCollidersAfterPurification)
-        {
-            DisableColliders();
-        }
+        if (disableCollidersAfterPurification) DisableColliders();
 
         OnPurified?.Invoke();
 
-        Debug.Log(
-            $"[EnemyPurification] {gameObject.name} purified.",
-            this
-        );
+        Debug.Log($"[EnemyPurification] {gameObject.name} purified.", this);
     }
 
     private void DisableColliders()
     {
-        if (colliders == null)
-        {
-            return;
-        }
+        if (colliders == null) return;
 
         foreach (Collider2D col in colliders)
         {
-            if (col != null)
-            {
-                col.enabled = false;
-            }
+            if (col != null) col.enabled = false;
         }
     }
 }

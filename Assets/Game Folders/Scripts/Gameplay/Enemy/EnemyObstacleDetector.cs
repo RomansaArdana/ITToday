@@ -17,17 +17,12 @@ public class EnemyObstacleDetector : MonoBehaviour
     [SerializeField] private bool showDebugGizmo = true;
 
     public bool IsObstacleDetected { get; private set; }
-
     public RaycastHit2D CurrentHit { get; private set; }
 
     private void Awake()
     {
         flee ??= GetComponent<EnemyFlee>();
-
-        if (sensorOrigin == null)
-        {
-            sensorOrigin = transform;
-        }
+        if (sensorOrigin == null) sensorOrigin = transform;
     }
 
     private void Update()
@@ -40,77 +35,34 @@ public class EnemyObstacleDetector : MonoBehaviour
         IsObstacleDetected = false;
         CurrentHit = default;
 
-        if (flee == null)
-        {
-            return;
-        }
+        if (flee == null) return;
+        if (!flee.enabled) return;
 
-        if (!flee.enabled)
-        {
-            return;
-        }
+        Vector2 direction = flee.FleeDirection;
 
-        Vector2 direction =
-            flee.FleeDirection;
+        if (direction.sqrMagnitude <= 0.001f) return;
 
-        if (direction.sqrMagnitude <= 0.001f)
-        {
-            return;
-        }
+        Vector2 origin = sensorOrigin.position;
+        CurrentHit = Physics2D.Raycast(origin, direction, detectionDistance, obstacleLayer);
 
-        Vector2 origin =
-            sensorOrigin.position;
+        if (CurrentHit.collider == null) return;
 
-        CurrentHit =
-            Physics2D.Raycast(
-                origin,
-                direction,
-                detectionDistance,
-                obstacleLayer
-            );
+        float obstacleTop = CurrentHit.collider.bounds.max.y;
 
-        if (CurrentHit.collider == null)
-        {
-            return;
-        }
+        Collider2D ownCollider = GetComponent<Collider2D>();
+        float enemyBottom = ownCollider != null ? ownCollider.bounds.min.y : transform.position.y;
 
-        float obstacleTop =
-            CurrentHit.collider.bounds.max.y;
-
-        float enemyBottom =
-            GetComponent<Collider2D>() != null
-                ? GetComponent<Collider2D>()
-                    .bounds.min.y
-                : transform.position.y;
-
-        float height =
-            obstacleTop - enemyBottom;
-
-        IsObstacleDetected =
-            height <= obstacleHeight;
+        float height = obstacleTop - enemyBottom;
+        IsObstacleDetected = height <= obstacleHeight;
     }
 
     private void OnDrawGizmosSelected()
     {
-        if (!showDebugGizmo)
-        {
-            return;
-        }
+        if (!showDebugGizmo) return;
 
-        Vector2 origin =
-            sensorOrigin != null
-                ? sensorOrigin.position
-                : transform.position;
+        Vector2 origin = sensorOrigin != null ? sensorOrigin.position : transform.position;
+        Vector2 direction = flee != null ? flee.FleeDirection : Vector2.right;
 
-        Vector2 direction =
-            flee != null
-                ? flee.FleeDirection
-                : Vector2.right;
-
-        Gizmos.DrawLine(
-            origin,
-            origin +
-            direction * detectionDistance
-        );
+        Gizmos.DrawLine(origin, origin + direction * detectionDistance);
     }
 }

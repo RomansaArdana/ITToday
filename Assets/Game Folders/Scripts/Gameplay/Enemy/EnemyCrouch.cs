@@ -10,42 +10,25 @@ public class EnemyCrouch : MonoBehaviour
     [SerializeField] private float crouchSpeedMultiplier = 0.75f;
 
     public bool IsCrouching { get; private set; }
-
-    public float CrouchSpeedMultiplier =>
-        crouchSpeedMultiplier;
+    public float CrouchSpeedMultiplier => crouchSpeedMultiplier;
 
     private void Awake()
     {
-        stateController ??=
-            GetComponent<EnemyStateController>();
-
-        rb ??=
-            GetComponent<Rigidbody2D>();
+        stateController ??= GetComponent<EnemyStateController>();
+        rb ??= GetComponent<Rigidbody2D>();
     }
 
     public void StartCrouch()
     {
-        if (IsCrouching)
-        {
-            return;
-        }
-
-        if (stateController == null ||
-            !stateController.IsFlee)
-        {
-            return;
-        }
+        if (IsCrouching) return;
+        if (stateController == null || !stateController.IsFlee) return;
 
         IsCrouching = true;
     }
 
     public void StopCrouch()
     {
-        if (!IsCrouching)
-        {
-            return;
-        }
-
+        if (!IsCrouching) return;
         IsCrouching = false;
     }
 }

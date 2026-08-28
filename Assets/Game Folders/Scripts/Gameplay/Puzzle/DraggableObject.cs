@@ -228,5 +228,3 @@ public class DraggableObject : InteractableBase
         Gizmos.DrawWireCube(transform.position, Vector3.one * 0.2f);
     }
 }
-
-

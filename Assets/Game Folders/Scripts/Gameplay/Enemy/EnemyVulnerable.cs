@@ -15,11 +15,8 @@ public class EnemyVulnerable : MonoBehaviour
 
     private void Awake()
     {
-        stateController ??=
-            GetComponent<EnemyStateController>();
-
-        rb ??=
-            GetComponent<Rigidbody2D>();
+        stateController ??= GetComponent<EnemyStateController>();
+        rb ??= GetComponent<Rigidbody2D>();
     }
 
     private void OnEnable()
@@ -32,69 +29,39 @@ public class EnemyVulnerable : MonoBehaviour
 
     private void Update()
     {
-        if (stateController == null)
-        {
-            return;
-        }
-
-        if (stateController.IsDead)
-        {
-            return;
-        }
+        if (stateController == null) return;
+        if (stateController.IsDead) return;
 
         // Vulnerable hanya boleh dimulai
         // setelah enemy benar-benar Cornered.
-        if (!stateController.IsCornered &&
-            !stateController.IsVulnerable)
+        if (!stateController.IsCornered && !stateController.IsVulnerable)
         {
             StopMovement();
             return;
         }
 
-        if (stateController.IsVulnerable)
-        {
-            return;
-        }
+        if (stateController.IsVulnerable) return;
 
         reactionTimer += Time.deltaTime;
 
-        if (reactionTimer < reactionDelay)
-        {
-            return;
-        }
+        if (reactionTimer < reactionDelay) return;
 
         BecomeVulnerable();
     }
 
     private void BecomeVulnerable()
     {
-        if (IsVulnerable)
-        {
-            return;
-        }
-
-        if (stateController == null ||
-            !stateController.IsCornered)
-        {
-            return;
-        }
+        if (IsVulnerable) return;
+        if (stateController == null || !stateController.IsCornered) return;
 
         IsVulnerable = true;
-
-        stateController.SetState(
-            EnemyState.Vulnerable
-        );
-
+        stateController.SetState(EnemyState.Vulnerable);
         StopMovement();
     }
 
     private void StopMovement()
     {
-        if (rb == null)
-        {
-            return;
-        }
-
+        if (rb == null) return;
         rb.linearVelocity = Vector2.zero;
         rb.angularVelocity = 0f;
     }

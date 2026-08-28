@@ -6,14 +6,7 @@ public class DialogueInteractable : InteractableBase
 
     public override void Interact(GameObject interactor)
     {
-        if (dialogueSequence == null)
-        {
-            return;
-        }
-
-        DialogueManager.Instance?.StartDialogue(
-            dialogueSequence,
-            interactor
-        );
+        if (dialogueSequence == null) return;
+        DialogueManager.Instance?.StartDialogue(dialogueSequence, interactor);
     }
 }

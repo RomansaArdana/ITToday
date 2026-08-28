@@ -21,49 +21,29 @@ public class DialogueEvent
 
     public void Execute()
     {
-        DialogueManager.DebugLog(
-            $"[DialogueEvent] Execute → Type: {type}"
-        );
+        DialogueManager.DebugLog($"[DialogueEvent] Execute → Type: {type}");
 
         if (StoryManager.Instance == null)
         {
-            DialogueManager.DebugWarning(
-                "[DialogueEvent] Gagal dijalankan → StoryManager tidak ditemukan."
-            );
-
+            DialogueManager.DebugWarning("[DialogueEvent] Gagal dijalankan → StoryManager tidak ditemukan.");
             return;
         }
 
         switch (type)
         {
             case EventType.SetStoryFlag:
-
                 StoryManager.Instance.SetFlag(storyFlag);
-
-                DialogueManager.DebugLog(
-                    $"[DialogueEvent] Set Story Flag → \"{storyFlag}\""
-                );
-
+                DialogueManager.DebugLog($"[DialogueEvent] Set Story Flag → \"{storyFlag}\"");
                 break;
 
             case EventType.RemoveStoryFlag:
-
                 StoryManager.Instance.RemoveFlag(storyFlag);
-
-                DialogueManager.DebugLog(
-                    $"[DialogueEvent] Remove Story Flag → \"{storyFlag}\""
-                );
-
+                DialogueManager.DebugLog($"[DialogueEvent] Remove Story Flag → \"{storyFlag}\"");
                 break;
 
             case EventType.ChangeChapter:
-
                 StoryManager.Instance.ChangeChapter(chapter);
-
-                DialogueManager.DebugLog(
-                    $"[DialogueEvent] Change Chapter → {chapter}"
-                );
-
+                DialogueManager.DebugLog($"[DialogueEvent] Change Chapter → {chapter}");
                 break;
         }
     }

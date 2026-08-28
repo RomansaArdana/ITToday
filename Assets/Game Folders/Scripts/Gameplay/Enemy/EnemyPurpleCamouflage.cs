@@ -18,71 +18,38 @@ public class EnemyPurpleCamouflage : MonoBehaviour
 
     private void Awake()
     {
-        anomalyDetector ??=
-            GetComponent<EnemyPurpleAnomalyDetector>();
-
-        enemyHealth ??=
-            GetComponent<EnemyHealth>();
+        anomalyDetector ??= GetComponent<EnemyPurpleAnomalyDetector>();
+        enemyHealth ??= GetComponent<EnemyHealth>();
 
         if (bodyRenderer == null)
         {
-            Transform body =
-                transform.Find("Body");
-
-            if (body != null)
-            {
-                bodyRenderer =
-                    body.GetComponent<SpriteRenderer>();
-            }
+            Transform body = transform.Find("Body");
+            if (body != null) bodyRenderer = body.GetComponent<SpriteRenderer>();
         }
 
-        previousAnomalyState =
-            false;
-
+        previousAnomalyState = false;
         ApplyCamouflage(false);
     }
 
     private void Update()
     {
-        if (anomalyDetector == null ||
-            bodyRenderer == null)
-        {
-            return;
-        }
+        if (anomalyDetector == null || bodyRenderer == null) return;
+        if (enemyHealth != null && !enemyHealth.IsAlive) return;
 
-        if (enemyHealth != null &&
-            !enemyHealth.IsAlive)
-        {
-            return;
-        }
+        bool currentAnomalyState = anomalyDetector.IsAnomalyDetected;
 
-        bool currentAnomalyState =
-            anomalyDetector.IsAnomalyDetected;
+        if (currentAnomalyState == previousAnomalyState) return;
 
-        if (currentAnomalyState ==
-            previousAnomalyState)
-        {
-            return;
-        }
+        previousAnomalyState = currentAnomalyState;
 
-        previousAnomalyState =
-            currentAnomalyState;
-
-        ApplyCamouflage(
-            currentAnomalyState
-        );
+        ApplyCamouflage(currentAnomalyState);
     }
 
-    private void ApplyCamouflage(
-        bool anomalyDetected)
+    private void ApplyCamouflage(bool anomalyDetected)
     {
-        if (bodyRenderer == null)
-        {
-            return;
-        }
+        if (bodyRenderer == null) return;
 
-        if (hideWhenNotDetected &&
-            !anomalyDetected)
+        if (hideWhenNotDetected && !anomalyDetected)
         {
             bodyRenderer.enabled = false;
         }
@@ -90,38 +57,16 @@ public class EnemyPurpleCamouflage : MonoBehaviour
         {
             bodyRenderer.enabled = true;
 
-            Color color =
-                bodyRenderer.color;
-
-            color.a =
-                Mathf.Clamp01(
-                    revealedAlpha
-                );
-
-            bodyRenderer.color =
-                color;
+            Color color = bodyRenderer.color;
+            color.a = Mathf.Clamp01(revealedAlpha);
+            bodyRenderer.color = color;
         }
 
-        if (!enableDebugLog)
-        {
-            return;
-        }
+        if (!enableDebugLog) return;
 
-        Debug.Log(
-            anomalyDetected
-                ? "[Purple] CAMOUFLAGE REVEALED"
-                : "[Purple] CAMOUFLAGE HIDDEN",
-            this
-        );
+        Debug.Log(anomalyDetected ? "[Purple] CAMOUFLAGE REVEALED" : "[Purple] CAMOUFLAGE HIDDEN", this);
     }
 
-    public void ForceReveal()
-    {
-        ApplyCamouflage(true);
-    }
-
-    public void ForceHide()
-    {
-        ApplyCamouflage(false);
-    }
+    public void ForceReveal() => ApplyCamouflage(true);
+    public void ForceHide() => ApplyCamouflage(false);
 }
