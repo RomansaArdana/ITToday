@@ -424,7 +424,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -1394,7 +1394,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 708214938168839777, guid: d7908851bc0662c4daa348a2a27428f3, type: 3}
   m_PrefabInstance: {fileID: 1454062749080707457}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 886416615}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9fa8e2977fb66c499345565ebb508e6, type: 3}
@@ -1405,7 +1405,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2972334956866996514, guid: d7908851bc0662c4daa348a2a27428f3, type: 3}
   m_PrefabInstance: {fileID: 1454062749080707457}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 886416615}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dec1cee85c13f614f8afed5d2ebade74, type: 3}
@@ -2205,35 +2205,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!1 &886416615 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6633693710186657264, guid: d7908851bc0662c4daa348a2a27428f3, type: 3}
-  m_PrefabInstance: {fileID: 1454062749080707457}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &886416616
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 886416615}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed4fdb3c4e90ec84b833eb04c634c850, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerGroundCheck
-  playerCollider: {fileID: 886416617}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  checkDistance: 0.08
-  checkWidth: 0.85
-  showGizmo: 1
---- !u!61 &886416617 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 3788221116311127974, guid: d7908851bc0662c4daa348a2a27428f3, type: 3}
-  m_PrefabInstance: {fileID: 1454062749080707457}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &919315005
 GameObject:
   m_ObjectHideFlags: 0
@@ -2278,7 +2249,7 @@ GameObject:
   - component: {fileID: 921040681}
   - component: {fileID: 921040680}
   m_Layer: 5
-  m_Name: Vignette
+  m_Name: SanityEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2323,7 +2294,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b2daa860120ad054c9ac97242134d13b, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4320,14 +4291,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SanityScreenEffect
   sanityController: {fileID: 411383071}
-  vignette: {fileID: 921040680}
-  smoothSpeed: 5
-  unstableAlpha: 0.15
-  criticalAlpha: 0.3
-  depletedAlpha: 0.5
-  unstableColor: {r: 1, g: 0.65, b: 0.1, a: 1}
-  criticalColor: {r: 1, g: 0.1, b: 0.1, a: 1}
-  depletedColor: {r: 0.2, g: 0, b: 0, a: 1}
+  effectImage: {fileID: 921040680}
+  postProcessMaterial: {fileID: 0}
+  unstableSprite: {fileID: 21300000, guid: a878976ab6ecfb9408fcb16cef18beee, type: 3}
+  criticalSprite: {fileID: 21300000, guid: da6a4d19ca3520742a097a1d8de3e112, type: 3}
+  depletedSprite: {fileID: 21300000, guid: 99bb4f9602acbf545be3c28d69983b6f, type: 3}
+  unstableColor: {r: 1, g: 0.65, b: 0.15, a: 1}
+  unstableMinAlpha: 0.08
+  unstableMaxAlpha: 0.18
+  unstablePulseSpeed: 2
+  unstableGrayscale: 0.08
+  unstableBlur: 0.015
+  unstableDistortion: 0.02
+  unstableNoise: 0.015
+  criticalColor: {r: 1, g: 0.15, b: 0.1, a: 1}
+  criticalMinAlpha: 0.18
+  criticalMaxAlpha: 0.35
+  criticalPulseSpeed: 3.5
+  criticalGrayscale: 0.28
+  criticalBlur: 0.05
+  criticalDistortion: 0.055
+  criticalNoise: 0.04
+  depletedColor: {r: 0.25, g: 0, b: 0, a: 1}
+  depletedMinAlpha: 0.2
+  depletedMaxAlpha: 0.5
+  depletedPulseSpeed: 4.5
+  depletedGrayscale: 0.58
+  depletedBlur: 0.09
+  depletedDistortion: 0.09
+  depletedNoise: 0.07
+  colorSmoothSpeed: 8
+  alphaSmoothSpeed: 10
+  postProcessSmoothSpeed: 3
+  pulseSharpness: 0.35
+  pulseVariation: 0.12
+  grayscaleProperty: _Grayscale
+  blurProperty: _Blur
+  distortionProperty: _Distortion
+  noiseProperty: _Noise
+  enableDebugLog: 0
 --- !u!1 &2055652734
 GameObject:
   m_ObjectHideFlags: 0
@@ -4566,10 +4568,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5597169068426567719, guid: d7908851bc0662c4daa348a2a27428f3, type: 3}
-      propertyPath: enableDebugLog
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6633693710186657264, guid: d7908851bc0662c4daa348a2a27428f3, type: 3}
       propertyPath: m_Name
       value: Player
@@ -4578,33 +4576,10 @@ PrefabInstance:
       propertyPath: respawnPoint
       value: 
       objectReference: {fileID: 2094438190}
-    - target: {fileID: 6986759864793692561, guid: d7908851bc0662c4daa348a2a27428f3, type: 3}
-      propertyPath: jumpForce
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6986759864793692561, guid: d7908851bc0662c4daa348a2a27428f3, type: 3}
-      propertyPath: groundCheck
-      value: 
-      objectReference: {fileID: 886416616}
-    - target: {fileID: 6986759864793692561, guid: d7908851bc0662c4daa348a2a27428f3, type: 3}
-      propertyPath: enableDebugLog
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7021555490814750447, guid: d7908851bc0662c4daa348a2a27428f3, type: 3}
-      propertyPath: m_GravityScale
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8558263046549898525, guid: d7908851bc0662c4daa348a2a27428f3, type: 3}
-      propertyPath: enableDebugLog
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6633693710186657264, guid: d7908851bc0662c4daa348a2a27428f3, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 886416616}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7908851bc0662c4daa348a2a27428f3, type: 3}
 --- !u!1001 &1654109952971177411
 PrefabInstance:
@@ -4669,10 +4644,6 @@ PrefabInstance:
     - target: {fileID: 8394413401283783914, guid: f646eb6e3601adb49a00f2aec1e3a818, type: 3}
       propertyPath: m_Name
       value: Enemy_Purple
-      objectReference: {fileID: 0}
-    - target: {fileID: 8394413401283783914, guid: f646eb6e3601adb49a00f2aec1e3a818, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9071958571269707417, guid: f646eb6e3601adb49a00f2aec1e3a818, type: 3}
       propertyPath: playerStealth

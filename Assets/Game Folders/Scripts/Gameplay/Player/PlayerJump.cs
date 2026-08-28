@@ -9,16 +9,19 @@ public class PlayerJump : MonoBehaviour
     [SerializeField] private PlayerStateController stateController;
     [SerializeField] private PlayerGroundCheck groundCheck;
 
-    [Header("Jump")]
+    [Header("Jump Tuning")]
     [SerializeField] private float jumpForce = 6f;
+    [SerializeField] private float fallGravityMultiplier = 2.2f;
+    [SerializeField] private float minimumFallSpeed = 0.05f;
 
     [Header("Debug")]
     [SerializeField] private bool enableDebugLog = true;
 
     private Rigidbody2D rb;
+    private float baseGravityScale;
 
     public bool IsGrounded => groundCheck != null && groundCheck.IsGrounded;
-    public bool IsJumping => rb != null && Mathf.Abs(rb.linearVelocity.y) > 0.05f;
+    public bool IsJumping => rb != null && !IsGrounded && Mathf.Abs(rb.linearVelocity.y) > minimumFallSpeed;
 
     private void Awake()
     {
@@ -26,12 +29,19 @@ public class PlayerJump : MonoBehaviour
         if (inputReader == null) inputReader = GetComponent<PlayerInputReader>();
         if (stateController == null) stateController = GetComponent<PlayerStateController>();
         if (groundCheck == null) groundCheck = GetComponent<PlayerGroundCheck>();
+
+        baseGravityScale = rb.gravityScale;
     }
 
     private void Update()
     {
         if (inputReader == null || !inputReader.JumpPressed) return;
         TryJump();
+    }
+
+    private void FixedUpdate()
+    {
+        UpdateGravity();
     }
 
     private void TryJump()
@@ -45,5 +55,21 @@ public class PlayerJump : MonoBehaviour
         rb.linearVelocity = velocity;
 
         if (enableDebugLog) Debug.Log("[PlayerJump] JUMP", this);
+    }
+
+    private void UpdateGravity()
+    {
+        if (IsGrounded || rb.linearVelocity.y >= 0f)
+        {
+            rb.gravityScale = baseGravityScale;
+            return;
+        }
+
+        rb.gravityScale = baseGravityScale * fallGravityMultiplier;
+    }
+
+    public void ResetGravity()
+    {
+        rb.gravityScale = baseGravityScale;
     }
 }
