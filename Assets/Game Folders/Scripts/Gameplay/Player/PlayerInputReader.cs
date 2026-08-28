@@ -10,6 +10,7 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
     [SerializeField] private InputActionReference jumpAction;
     [SerializeField] private InputActionReference crouchAction;
     [SerializeField] private InputActionReference attackAction;
+    [SerializeField] private InputActionReference cloakAction;
 
     public Vector2 MoveInput { get; private set; }
 
@@ -17,6 +18,7 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
     public bool HidePressed { get; private set; }
     public bool JumpPressed { get; private set; }
     public bool AttackPressed { get; private set; }
+    public bool CloakPressed { get; private set; }
 
     public bool InteractHeld { get; private set; }
     public bool HideHeld { get; private set; }
@@ -57,6 +59,7 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
         jumpAction?.action.Enable();
         crouchAction?.action.Enable();
         attackAction?.action.Enable();
+        cloakAction?.action.Enable();
     }
 
     private void DisableActions()
@@ -67,6 +70,7 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
         jumpAction?.action.Disable();
         crouchAction?.action.Disable();
         attackAction?.action.Disable();
+        cloakAction?.action.Disable();
     }
 
     private void SubscribeActions()
@@ -99,6 +103,11 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
             attackAction.action.performed += OnAttackPerformed;
             attackAction.action.canceled += OnAttackCanceled;
         }
+
+        if (cloakAction != null)
+        {
+            cloakAction.action.performed += OnCloakPerformed;
+        }
     }
 
     private void UnsubscribeActions()
@@ -130,6 +139,11 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
         {
             attackAction.action.performed -= OnAttackPerformed;
             attackAction.action.canceled -= OnAttackCanceled;
+        }
+
+        if (cloakAction != null)
+        {
+            cloakAction.action.performed -= OnCloakPerformed;
         }
     }
 
@@ -190,12 +204,19 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
         AttackHeld = false;
     }
 
+    private void OnCloakPerformed(
+        InputAction.CallbackContext context)
+    {
+        CloakPressed = true;
+    }
+
     private void LateUpdate()
     {
         InteractPressed = false;
         HidePressed = false;
         JumpPressed = false;
         AttackPressed = false;
+        CloakPressed = false;
     }
 
     private void ResetInputState()
@@ -206,6 +227,7 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
         HidePressed = false;
         JumpPressed = false;
         AttackPressed = false;
+        CloakPressed = false;
 
         InteractHeld = false;
         HideHeld = false;

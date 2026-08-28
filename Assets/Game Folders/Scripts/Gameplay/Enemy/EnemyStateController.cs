@@ -3,7 +3,8 @@ using UnityEngine;
 public class EnemyStateController : MonoBehaviour
 {
     [Header("State")]
-    [SerializeField] private EnemyState currentState =
+    [SerializeField]
+    private EnemyState currentState =
         EnemyState.Undetected;
 
     public EnemyState CurrentState => currentState;
@@ -25,6 +26,9 @@ public class EnemyStateController : MonoBehaviour
 
     public bool IsFlee =>
         currentState == EnemyState.Flee;
+
+    public bool IsPressure =>
+        currentState == EnemyState.Pressure;
 
     public bool IsCornered =>
         currentState == EnemyState.Cornered;

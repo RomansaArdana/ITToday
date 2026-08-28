@@ -5,13 +5,19 @@ public class PlayerStealth : MonoBehaviour
     [SerializeField] private PlayerStatsSO stats;
     [SerializeField] private PlayerInputReader inputReader;
     [SerializeField] private PlayerStateController stateController;
+    [SerializeField] private PlayerCloakOfInvisibility cloak;
 
     private HideSpot currentHideSpot;
 
     public bool IsCrouching { get; private set; }
     public bool IsHidden { get; private set; }
 
-    public HideSpot CurrentHideSpot => currentHideSpot;
+    public bool IsCloaked =>
+        cloak != null &&
+        cloak.IsCloaked;
+
+    public HideSpot CurrentHideSpot =>
+        currentHideSpot;
 
     public bool CanHideAtCurrentSpot =>
         currentHideSpot != null &&
@@ -29,6 +35,11 @@ public class PlayerStealth : MonoBehaviour
             if (stats == null)
             {
                 return 1f;
+            }
+
+            if (IsCloaked)
+            {
+                return 0f;
             }
 
             if (IsHidden)
@@ -49,7 +60,8 @@ public class PlayerStealth : MonoBehaviour
     {
         if (stats == null)
         {
-            PlayerController playerController = GetComponent<PlayerController>();
+            PlayerController playerController =
+                GetComponent<PlayerController>();
 
             if (playerController != null)
             {
@@ -59,18 +71,27 @@ public class PlayerStealth : MonoBehaviour
 
         if (inputReader == null)
         {
-            inputReader = GetComponent<PlayerInputReader>();
+            inputReader =
+                GetComponent<PlayerInputReader>();
         }
 
         if (stateController == null)
         {
-            stateController = GetComponent<PlayerStateController>();
+            stateController =
+                GetComponent<PlayerStateController>();
+        }
+
+        if (cloak == null)
+        {
+            cloak =
+                GetComponent<PlayerCloakOfInvisibility>();
         }
     }
 
     private void Update()
     {
-        if (inputReader == null || stateController == null)
+        if (inputReader == null ||
+            stateController == null)
         {
             return;
         }
@@ -86,7 +107,8 @@ public class PlayerStealth : MonoBehaviour
             return;
         }
 
-        IsCrouching = inputReader.CrouchHeld;
+        IsCrouching =
+            inputReader.CrouchHeld;
     }
 
     private void UpdateHide()
@@ -131,33 +153,42 @@ public class PlayerStealth : MonoBehaviour
             return;
         }
 
-        Transform hidePoint = currentHideSpot.HidePoint;
+        Transform hidePoint =
+            currentHideSpot.HidePoint;
 
         if (hidePoint == null)
         {
             return;
         }
 
-        transform.position = hidePoint.position;
+        transform.position =
+            hidePoint.position;
 
         IsHidden = true;
 
-        stateController.SetState(PlayerState.Hide);
+        stateController.SetState(
+            PlayerState.Hide
+        );
     }
 
     private void ExitHide()
     {
         IsHidden = false;
 
-        if (stateController.CurrentState == PlayerState.Hide)
+        if (stateController.CurrentState ==
+            PlayerState.Hide)
         {
-            stateController.SetState(PlayerState.Idle);
+            stateController.SetState(
+                PlayerState.Idle
+            );
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(
+        Collider2D other)
     {
-        HideSpot hideSpot = other.GetComponentInParent<HideSpot>();
+        HideSpot hideSpot =
+            other.GetComponentInParent<HideSpot>();
 
         if (hideSpot == null)
         {
@@ -167,9 +198,11 @@ public class PlayerStealth : MonoBehaviour
         currentHideSpot = hideSpot;
     }
 
-    private void OnTriggerExit2D(Collider2D other)
+    private void OnTriggerExit2D(
+        Collider2D other)
     {
-        HideSpot hideSpot = other.GetComponentInParent<HideSpot>();
+        HideSpot hideSpot =
+            other.GetComponentInParent<HideSpot>();
 
         if (hideSpot == null)
         {

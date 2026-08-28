@@ -145,6 +145,15 @@ public partial class @TheDayAfterInputActions: IInputActionCollection2, IDisposa
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Cloak"",
+                    ""type"": ""Button"",
+                    ""id"": ""7285f378-e538-42d1-b541-ad6a0fc3aac5"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -257,6 +266,17 @@ public partial class @TheDayAfterInputActions: IInputActionCollection2, IDisposa
                     ""action"": ""Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""05bf832e-4692-4a5e-9ea3-59d517ddd369"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cloak"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -271,6 +291,7 @@ public partial class @TheDayAfterInputActions: IInputActionCollection2, IDisposa
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Crouch = m_Player.FindAction("Crouch", throwIfNotFound: true);
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
+        m_Player_Cloak = m_Player.FindAction("Cloak", throwIfNotFound: true);
     }
 
     ~@TheDayAfterInputActions()
@@ -357,6 +378,7 @@ public partial class @TheDayAfterInputActions: IInputActionCollection2, IDisposa
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Crouch;
     private readonly InputAction m_Player_Attack;
+    private readonly InputAction m_Player_Cloak;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -392,6 +414,10 @@ public partial class @TheDayAfterInputActions: IInputActionCollection2, IDisposa
         /// Provides access to the underlying input action "Player/Attack".
         /// </summary>
         public InputAction @Attack => m_Wrapper.m_Player_Attack;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Cloak".
+        /// </summary>
+        public InputAction @Cloak => m_Wrapper.m_Player_Cloak;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -436,6 +462,9 @@ public partial class @TheDayAfterInputActions: IInputActionCollection2, IDisposa
             @Attack.started += instance.OnAttack;
             @Attack.performed += instance.OnAttack;
             @Attack.canceled += instance.OnAttack;
+            @Cloak.started += instance.OnCloak;
+            @Cloak.performed += instance.OnCloak;
+            @Cloak.canceled += instance.OnCloak;
         }
 
         /// <summary>
@@ -465,6 +494,9 @@ public partial class @TheDayAfterInputActions: IInputActionCollection2, IDisposa
             @Attack.started -= instance.OnAttack;
             @Attack.performed -= instance.OnAttack;
             @Attack.canceled -= instance.OnAttack;
+            @Cloak.started -= instance.OnCloak;
+            @Cloak.performed -= instance.OnCloak;
+            @Cloak.canceled -= instance.OnCloak;
         }
 
         /// <summary>
@@ -547,5 +579,12 @@ public partial class @TheDayAfterInputActions: IInputActionCollection2, IDisposa
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnAttack(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Cloak" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnCloak(InputAction.CallbackContext context);
     }
 }

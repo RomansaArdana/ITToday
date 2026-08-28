@@ -12,15 +12,11 @@ public class EnemyChase : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
-        if (enemyController == null)
-        {
-            enemyController = GetComponent<EnemyController>();
-        }
+        enemyController ??=
+            GetComponent<EnemyController>();
 
-        if (detection == null)
-        {
-            detection = GetComponent<EnemyDetection>();
-        }
+        detection ??=
+            GetComponent<EnemyDetection>();
     }
 
     private void FixedUpdate()
@@ -33,7 +29,8 @@ public class EnemyChase : MonoBehaviour
             return;
         }
 
-        if (detection.CurrentState != EnemyDetectionState.Detected)
+        if (detection.CurrentState !=
+            EnemyDetectionState.Detected)
         {
             StopChase();
             return;
@@ -50,42 +47,52 @@ public class EnemyChase : MonoBehaviour
 
     private void ChaseTarget()
     {
-        Vector2 currentPosition = rb.position;
-        Vector2 targetPosition =
-            enemyController.PlayerTarget.position;
+        float difference =
+            enemyController.PlayerTarget.position.x -
+            transform.position.x;
 
-        Vector2 direction =
-            targetPosition - currentPosition;
-
-        if (direction.sqrMagnitude <= 0.001f)
+        if (Mathf.Abs(difference) <=
+            0.01f)
         {
             StopChase();
             return;
         }
 
-        direction.Normalize();
+        float direction =
+            Mathf.Sign(difference);
 
-        float speed = enemyController.Stats.MoveSpeed;
+        float speed =
+            enemyController.Stats.MoveSpeed;
 
-        rb.linearVelocity = direction * speed;
+        rb.linearVelocity =
+            new Vector2(
+                direction * speed,
+                rb.linearVelocity.y
+            );
 
-        UpdateFacingDirection(direction);
+        UpdateFacingDirection(
+            direction
+        );
     }
 
-    private void UpdateFacingDirection(Vector2 direction)
+    private void UpdateFacingDirection(
+        float direction)
     {
-        if (Mathf.Abs(direction.x) < 0.01f)
+        if (Mathf.Abs(direction) <
+            0.01f)
         {
             return;
         }
 
-        Vector3 scale = transform.localScale;
+        Vector3 scale =
+            transform.localScale;
 
         scale.x =
             Mathf.Abs(scale.x) *
-            Mathf.Sign(direction.x);
+            Mathf.Sign(direction);
 
-        transform.localScale = scale;
+        transform.localScale =
+            scale;
     }
 
     public void StopChase()
@@ -95,6 +102,10 @@ public class EnemyChase : MonoBehaviour
             return;
         }
 
-        rb.linearVelocity = Vector2.zero;
+        rb.linearVelocity =
+            new Vector2(
+                0f,
+                rb.linearVelocity.y
+            );
     }
 }

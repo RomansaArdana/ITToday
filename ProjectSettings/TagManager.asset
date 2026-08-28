@@ -8,7 +8,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - Player
@@ -17,9 +17,9 @@ TagManager:
   - Interactable
   - PuzzleObstacle
   - PuzzleTarget
+  - EnemyObstacle
+  - EnemyLowGap
   - EnemyCornerObstacle
-  - 
-  - 
   - 
   - 
   - 

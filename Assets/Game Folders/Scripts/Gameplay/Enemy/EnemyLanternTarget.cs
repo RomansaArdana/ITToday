@@ -9,6 +9,12 @@ public class EnemyLanternTarget : MonoBehaviour
     [SerializeField] private EnemyHealth enemyHealth;
     [SerializeField] private EnemyStateController stateController;
 
+    [Header("Cyan")]
+    [SerializeField] private EnemyDash enemyDash;
+
+    [Header("Purple")]
+    [SerializeField] private EnemyPurpleAnomalyDetector purpleAnomalyDetector;
+
     [Header("Debug")]
     [SerializeField] private bool enableDebugLog = true;
 
@@ -31,10 +37,17 @@ public class EnemyLanternTarget : MonoBehaviour
             switch (enemyController.Stats.Archetype)
             {
                 case EnemyArchetype.Red:
+
                     return stateController != null &&
                            stateController.IsVulnerable;
 
+                case EnemyArchetype.Purple:
+
+                    return purpleAnomalyDetector != null &&
+                           purpleAnomalyDetector.IsAnomalyDetected;
+
                 default:
+
                     return true;
             }
         }
@@ -50,9 +63,16 @@ public class EnemyLanternTarget : MonoBehaviour
 
         stateController ??=
             GetComponent<EnemyStateController>();
+
+        enemyDash ??=
+            GetComponent<EnemyDash>();
+
+        purpleAnomalyDetector ??=
+            GetComponent<EnemyPurpleAnomalyDetector>();
     }
 
-    public bool TryReceiveLanternHit(float damage)
+    public bool TryReceiveLanternHit(
+        float damage)
     {
         if (!CanBeHit)
         {
@@ -65,14 +85,18 @@ public class EnemyLanternTarget : MonoBehaviour
             return false;
         }
 
-        enemyHealth.TakeDamage(damage);
+        enemyHealth.TakeDamage(
+            damage
+        );
 
         if (enableDebugLog)
         {
             string archetype =
                 enemyController != null &&
                 enemyController.Stats != null
-                    ? enemyController.Stats.Archetype.ToString().ToUpper()
+                    ? enemyController.Stats.Archetype
+                        .ToString()
+                        .ToUpper()
                     : gameObject.name;
 
             Debug.Log(
@@ -81,7 +105,64 @@ public class EnemyLanternTarget : MonoBehaviour
             );
         }
 
+        HandleHitReaction();
+
         return true;
+    }
+
+    private void HandleHitReaction()
+    {
+        if (enemyController == null ||
+            enemyController.Stats == null)
+        {
+            return;
+        }
+
+        switch (enemyController.Stats.Archetype)
+        {
+            case EnemyArchetype.Cyan:
+
+                HandleCyanHitReaction();
+                break;
+
+            case EnemyArchetype.Purple:
+
+                HandlePurpleHitReaction();
+                break;
+        }
+    }
+
+    private void HandleCyanHitReaction()
+    {
+        if (enemyHealth == null ||
+            !enemyHealth.IsAlive)
+        {
+            return;
+        }
+
+        if (enemyDash == null)
+        {
+            return;
+        }
+
+        enemyDash.TryEvade();
+    }
+
+    private void HandlePurpleHitReaction()
+    {
+        if (enemyHealth == null ||
+            !enemyHealth.IsAlive)
+        {
+            return;
+        }
+
+        if (enableDebugLog)
+        {
+            Debug.Log(
+                "[Purple] PURIFIED",
+                this
+            );
+        }
     }
 
     private void LogRejectedHit()
@@ -97,15 +178,32 @@ public class EnemyLanternTarget : MonoBehaviour
             return;
         }
 
-        if (enemyController.Stats.Archetype ==
-            EnemyArchetype.Red &&
-            stateController != null &&
-            !stateController.IsVulnerable)
+        EnemyArchetype archetype =
+            enemyController.Stats.Archetype;
+
+        switch (archetype)
         {
-            Debug.Log(
-                "[Lantern] RED MISS",
-                this
-            );
+            case EnemyArchetype.Red:
+
+                if (stateController != null &&
+                    !stateController.IsVulnerable)
+                {
+                    Debug.Log(
+                        "[Lantern] RED MISS",
+                        this
+                    );
+                }
+
+                break;
+
+            case EnemyArchetype.Purple:
+
+                Debug.Log(
+                    "[Lantern] PURPLE HIDDEN",
+                    this
+                );
+
+                break;
         }
     }
 }

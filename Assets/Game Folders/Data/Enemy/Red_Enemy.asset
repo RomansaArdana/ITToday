@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 47f8fc187294b204f93afb8bd9c0838c, type: 3}
-  m_Name: EnemyStats_Default
+  m_Name: Red_Enemy
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStatsSO
-  moveSpeed: 2
+  archetype: 0
+  moveSpeed: 1
   detectionRange: 3
   detectionAngle: 90
   detectionSpeed: 1

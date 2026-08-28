@@ -6,6 +6,7 @@ public enum EnemyState
     Search,
     Chase,
     Flee,
+    Pressure,
     Cornered,
     Vulnerable,
     Detected,
