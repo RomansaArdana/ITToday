@@ -1,82 +1,49 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerJump : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] private PlayerStatsSO stats;
     [SerializeField] private PlayerInputReader inputReader;
     [SerializeField] private PlayerStateController stateController;
-    [SerializeField] private Transform visual;
+    [SerializeField] private PlayerGroundCheck groundCheck;
 
-    private Vector3 visualStartPosition;
+    [Header("Jump")]
+    [SerializeField] private float jumpForce = 6f;
 
-    private bool isJumping;
-    private float jumpTimer;
-    private float cooldownTimer;
+    [Header("Debug")]
+    [SerializeField] private bool enableDebugLog = true;
 
-    public bool IsJumping => isJumping;
+    private Rigidbody2D rb;
+
+    public bool IsGrounded => groundCheck != null && groundCheck.IsGrounded;
+    public bool IsJumping => rb != null && Mathf.Abs(rb.linearVelocity.y) > 0.05f;
 
     private void Awake()
     {
+        rb = GetComponent<Rigidbody2D>();
         if (inputReader == null) inputReader = GetComponent<PlayerInputReader>();
         if (stateController == null) stateController = GetComponent<PlayerStateController>();
-        if (visual != null) visualStartPosition = visual.localPosition;
+        if (groundCheck == null) groundCheck = GetComponent<PlayerGroundCheck>();
     }
 
     private void Update()
     {
-        if (stats == null || inputReader == null || visual == null) return;
-
-        UpdateCooldown();
-
-        if (!isJumping)
-        {
-            TryStartJump();
-            return;
-        }
-
-        UpdateJump();
+        if (inputReader == null || !inputReader.JumpPressed) return;
+        TryJump();
     }
 
-    private void TryStartJump()
+    private void TryJump()
     {
-        if (!inputReader.JumpPressed) return;
-        if (cooldownTimer > 0f) return;
+        if (rb == null) return;
         if (stateController != null && !stateController.CanMove()) return;
+        if (!IsGrounded) return;
 
-        StartJump();
-    }
+        Vector2 velocity = rb.linearVelocity;
+        velocity.y = jumpForce;
+        rb.linearVelocity = velocity;
 
-    private void StartJump()
-    {
-        isJumping = true;
-        jumpTimer = 0f;
-    }
-
-    private void UpdateJump()
-    {
-        jumpTimer += Time.deltaTime;
-
-        float normalizedTime = Mathf.Clamp01(jumpTimer / stats.JumpDuration);
-        float height = Mathf.Sin(normalizedTime * Mathf.PI) * stats.JumpHeight;
-
-        Vector3 position = visualStartPosition;
-        position.y += height;
-        visual.localPosition = position;
-
-        if (normalizedTime >= 1f) FinishJump();
-    }
-
-    private void FinishJump()
-    {
-        isJumping = false;
-        jumpTimer = 0f;
-        cooldownTimer = stats.JumpCooldown;
-        visual.localPosition = visualStartPosition;
-    }
-
-    private void UpdateCooldown()
-    {
-        if (cooldownTimer <= 0f) return;
-        cooldownTimer -= Time.deltaTime;
+        if (enableDebugLog) Debug.Log("[PlayerJump] JUMP", this);
     }
 }

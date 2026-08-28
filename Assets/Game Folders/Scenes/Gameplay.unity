@@ -1394,7 +1394,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 708214938168839777, guid: d7908851bc0662c4daa348a2a27428f3, type: 3}
   m_PrefabInstance: {fileID: 1454062749080707457}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 886416615}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9fa8e2977fb66c499345565ebb508e6, type: 3}
@@ -1405,7 +1405,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2972334956866996514, guid: d7908851bc0662c4daa348a2a27428f3, type: 3}
   m_PrefabInstance: {fileID: 1454062749080707457}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 886416615}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dec1cee85c13f614f8afed5d2ebade74, type: 3}
@@ -2205,6 +2205,35 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &886416615 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6633693710186657264, guid: d7908851bc0662c4daa348a2a27428f3, type: 3}
+  m_PrefabInstance: {fileID: 1454062749080707457}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &886416616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 886416615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed4fdb3c4e90ec84b833eb04c634c850, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerGroundCheck
+  playerCollider: {fileID: 886416617}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  checkDistance: 0.08
+  checkWidth: 0.85
+  showGizmo: 1
+--- !u!61 &886416617 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 3788221116311127974, guid: d7908851bc0662c4daa348a2a27428f3, type: 3}
+  m_PrefabInstance: {fileID: 1454062749080707457}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &919315005
 GameObject:
   m_ObjectHideFlags: 0
@@ -4537,6 +4566,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5597169068426567719, guid: d7908851bc0662c4daa348a2a27428f3, type: 3}
+      propertyPath: enableDebugLog
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6633693710186657264, guid: d7908851bc0662c4daa348a2a27428f3, type: 3}
       propertyPath: m_Name
       value: Player
@@ -4545,10 +4578,33 @@ PrefabInstance:
       propertyPath: respawnPoint
       value: 
       objectReference: {fileID: 2094438190}
+    - target: {fileID: 6986759864793692561, guid: d7908851bc0662c4daa348a2a27428f3, type: 3}
+      propertyPath: jumpForce
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6986759864793692561, guid: d7908851bc0662c4daa348a2a27428f3, type: 3}
+      propertyPath: groundCheck
+      value: 
+      objectReference: {fileID: 886416616}
+    - target: {fileID: 6986759864793692561, guid: d7908851bc0662c4daa348a2a27428f3, type: 3}
+      propertyPath: enableDebugLog
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7021555490814750447, guid: d7908851bc0662c4daa348a2a27428f3, type: 3}
+      propertyPath: m_GravityScale
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8558263046549898525, guid: d7908851bc0662c4daa348a2a27428f3, type: 3}
+      propertyPath: enableDebugLog
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6633693710186657264, guid: d7908851bc0662c4daa348a2a27428f3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 886416616}
   m_SourcePrefab: {fileID: 100100000, guid: d7908851bc0662c4daa348a2a27428f3, type: 3}
 --- !u!1001 &1654109952971177411
 PrefabInstance:

@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private bool facingRight = true;
 
     private Rigidbody2D rb;
-    private Vector2 currentVelocity;
+    private float currentVelocityX;
     private float dragMultiplier = 1f;
 
     public bool IsFacingRight => facingRight;
@@ -21,11 +21,9 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-
         if (inputReader == null) inputReader = GetComponent<PlayerInputReader>();
         if (stateController == null) stateController = GetComponent<PlayerStateController>();
         if (stealth == null) stealth = GetComponent<PlayerStealth>();
-
         ApplyFacing();
     }
 
@@ -39,26 +37,24 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        Vector2 input = Vector2.ClampMagnitude(inputReader.MoveInput, 1f);
+        float inputX = Mathf.Clamp(inputReader.MoveInput.x, -1f, 1f);
+        UpdateFacing(inputX);
 
-        UpdateFacing(input);
-
-        if (stateController != null) stateController.UpdateMovementState(input);
+        Vector2 movementInput = new Vector2(inputX, 0f);
+        if (stateController != null) stateController.UpdateMovementState(movementInput);
 
         float movementMultiplier = (stealth != null ? stealth.MovementMultiplier : 1f) * dragMultiplier;
-        Vector2 targetVelocity = input * stats.MoveSpeed * movementMultiplier;
+        float targetVelocityX = inputX * stats.MoveSpeed * movementMultiplier;
+        float accelerationRate = Mathf.Abs(inputX) > 0.01f ? stats.Acceleration : stats.Deceleration;
 
-        float accelerationRate = input.sqrMagnitude > 0f ? stats.Acceleration : stats.Deceleration;
-
-        currentVelocity = Vector2.MoveTowards(currentVelocity, targetVelocity, accelerationRate * Time.fixedDeltaTime);
-
-        rb.linearVelocity = currentVelocity;
+        currentVelocityX = Mathf.MoveTowards(currentVelocityX, targetVelocityX, accelerationRate * Time.fixedDeltaTime);
+        rb.linearVelocity = new Vector2(currentVelocityX, rb.linearVelocity.y);
     }
 
-    private void UpdateFacing(Vector2 input)
+    private void UpdateFacing(float inputX)
     {
-        if (input.x > 0.01f) SetFacingRight(true);
-        else if (input.x < -0.01f) SetFacingRight(false);
+        if (inputX > 0.01f) SetFacingRight(true);
+        else if (inputX < -0.01f) SetFacingRight(false);
     }
 
     private void SetFacingRight(bool value)
@@ -83,7 +79,9 @@ public class PlayerMovement : MonoBehaviour
 
     public void StopMovement()
     {
-        currentVelocity = Vector2.zero;
-        rb.linearVelocity = Vector2.zero;
+        currentVelocityX = 0f;
+
+        if (rb != null)
+            rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
     }
 }
