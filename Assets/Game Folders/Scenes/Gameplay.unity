@@ -4292,43 +4292,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SanityScreenEffect
   sanityController: {fileID: 411383071}
   effectImage: {fileID: 921040680}
-  postProcessMaterial: {fileID: 0}
+  postProcessMaterial: {fileID: 2100000, guid: 99a987388b27b194c8a00228b829d3d5, type: 2}
   unstableSprite: {fileID: 21300000, guid: a878976ab6ecfb9408fcb16cef18beee, type: 3}
   criticalSprite: {fileID: 21300000, guid: da6a4d19ca3520742a097a1d8de3e112, type: 3}
   depletedSprite: {fileID: 21300000, guid: 99bb4f9602acbf545be3c28d69983b6f, type: 3}
   unstableColor: {r: 1, g: 0.65, b: 0.15, a: 1}
   unstableMinAlpha: 0.08
   unstableMaxAlpha: 0.18
-  unstablePulseSpeed: 2
+  unstableBlur: 0.025
   unstableGrayscale: 0.08
-  unstableBlur: 0.015
+  unstablePulseStrength: 0.04
+  unstablePulseSpeed: 2
   unstableDistortion: 0.02
   unstableNoise: 0.015
+  unstableScanline: 0
+  unstableAlphaPulseSpeed: 0.4
   criticalColor: {r: 1, g: 0.15, b: 0.1, a: 1}
   criticalMinAlpha: 0.18
   criticalMaxAlpha: 0.35
-  criticalPulseSpeed: 3.5
-  criticalGrayscale: 0.28
   criticalBlur: 0.05
+  criticalGrayscale: 0.28
+  criticalPulseStrength: 0.1
+  criticalPulseSpeed: 2
   criticalDistortion: 0.055
   criticalNoise: 0.04
+  criticalScanline: 0.05
+  criticalAlphaPulseSpeed: 0.58
   depletedColor: {r: 0.25, g: 0, b: 0, a: 1}
   depletedMinAlpha: 0.2
   depletedMaxAlpha: 0.5
-  depletedPulseSpeed: 4.5
-  depletedGrayscale: 0.58
   depletedBlur: 0.09
+  depletedGrayscale: 0.58
+  depletedPulseStrength: 0.18
+  depletedPulseSpeed: 2
   depletedDistortion: 0.09
   depletedNoise: 0.07
+  depletedScanline: 0.22
+  depletedAlphaPulseSpeed: 0.72
   colorSmoothSpeed: 8
   alphaSmoothSpeed: 10
-  postProcessSmoothSpeed: 3
+  shaderSmoothSpeed: 2
   pulseSharpness: 0.35
   pulseVariation: 0.12
-  grayscaleProperty: _Grayscale
-  blurProperty: _Blur
-  distortionProperty: _Distortion
-  noiseProperty: _Noise
   enableDebugLog: 0
 --- !u!1 &2055652734
 GameObject:
