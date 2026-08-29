@@ -9,6 +9,7 @@ public class PlayerStatsSO : ScriptableObject
     [SerializeField] private float deceleration = 25f;
 
     [Header("Jump")]
+    [SerializeField] private float jumpForce = 6.5f;
     [SerializeField] private float jumpHeight = 0.75f;
     [SerializeField] private float jumpDuration = 0.5f;
     [SerializeField] private float jumpCooldown = 0.1f;
@@ -35,6 +36,7 @@ public class PlayerStatsSO : ScriptableObject
     public float Acceleration => acceleration;
     public float Deceleration => deceleration;
 
+    public float JumpForce => jumpForce;
     public float JumpHeight => jumpHeight;
     public float JumpDuration => jumpDuration;
     public float JumpCooldown => jumpCooldown;

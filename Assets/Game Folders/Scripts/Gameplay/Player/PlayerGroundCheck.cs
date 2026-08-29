@@ -6,8 +6,8 @@ public class PlayerGroundCheck : MonoBehaviour
     [SerializeField] private Collider2D playerCollider;
 
     [Header("Ground Check")]
-    [SerializeField] private LayerMask groundLayer;
-    [SerializeField] private float checkDistance = 0.08f;
+    [SerializeField] private LayerMask groundLayer = ~0;
+    [SerializeField] private float checkDistance = 0.12f;
     [SerializeField, Range(0.5f, 1f)] private float checkWidth = 0.85f;
 
     [Header("Debug")]
@@ -18,6 +18,7 @@ public class PlayerGroundCheck : MonoBehaviour
     private void Awake()
     {
         if (playerCollider == null) playerCollider = GetComponent<Collider2D>();
+        if (groundLayer.value == 0) groundLayer = ~0;
     }
 
     private void Update()
@@ -37,7 +38,21 @@ public class PlayerGroundCheck : MonoBehaviour
         Vector2 origin = new Vector2(bounds.center.x, bounds.min.y);
         Vector2 size = new Vector2(bounds.size.x * checkWidth, 0.05f);
 
-        IsGrounded = Physics2D.BoxCast(origin, size, 0f, Vector2.down, checkDistance, groundLayer).collider != null;
+        LayerMask mask = groundLayer.value == 0 ? ~0 : groundLayer;
+        RaycastHit2D[] hits = Physics2D.BoxCastAll(origin, size, 0f, Vector2.down, checkDistance, mask);
+
+        bool hitGround = false;
+        foreach (var hit in hits)
+        {
+            if (hit.collider == null) continue;
+            if (hit.collider.isTrigger) continue;
+            if (hit.collider.transform.root == transform.root) continue;
+
+            hitGround = true;
+            break;
+        }
+
+        IsGrounded = hitGround;
     }
 
     private void OnDrawGizmosSelected()
@@ -48,6 +63,7 @@ public class PlayerGroundCheck : MonoBehaviour
         Vector3 center = new Vector3(bounds.center.x, bounds.min.y - checkDistance * 0.5f, 0f);
         Vector3 size = new Vector3(bounds.size.x * checkWidth, 0.05f + checkDistance, 0f);
 
+        Gizmos.color = IsGrounded ? Color.green : Color.red;
         Gizmos.DrawWireCube(center, size);
     }
 }
