@@ -24,6 +24,8 @@ public class EnemyStatsSO : ScriptableObject
 
     [Header("Reward")]
     [SerializeField] private float purificationSanityReward = 10f;
+    [Tooltip("Jumlah Token yang diberikan ke InventoryManager saat musuh ini dimurnikan.")]
+    [SerializeField] private int tokenReward = 1;
 
     public EnemyArchetype Archetype => archetype;
     public float MoveSpeed => moveSpeed;
@@ -35,4 +37,5 @@ public class EnemyStatsSO : ScriptableObject
     public float SuspiciousThreshold => suspiciousThreshold;
     public float MaxHealth => maxHealth;
     public float PurificationSanityReward => purificationSanityReward;
+    public int TokenReward => tokenReward;
 }

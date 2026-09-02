@@ -159,7 +159,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2472150287959503671}
   - component: {fileID: 7021555490814750447}
-  - component: {fileID: 3788221116311127974}
+  - component: {fileID: 1728341337909066463}
   - component: {fileID: 4421272160843059528}
   - component: {fileID: 6724669451812886983}
   - component: {fileID: 3646885907657463267}
@@ -175,6 +175,7 @@ GameObject:
   - component: {fileID: 5597169068426567719}
   - component: {fileID: 8558263046549898525}
   - component: {fileID: 2488807359007838028}
+  - component: {fileID: 3550441425361031586}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -226,8 +227,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!61 &3788221116311127974
-BoxCollider2D:
+--- !u!70 &1728341337909066463
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -261,17 +262,8 @@ BoxCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.5, y: 1}
+  m_Direction: 0
 --- !u!114 &4421272160843059528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -372,6 +364,8 @@ MonoBehaviour:
   jumpForce: 10
   fallGravityMultiplier: 2.2
   minimumFallSpeed: 0.05
+  coyoteTime: 0.15
+  jumpBufferTime: 0.15
   enableDebugLog: 0
 --- !u!114 &708214938168839777
 MonoBehaviour:
@@ -404,6 +398,7 @@ MonoBehaviour:
   inputReader: {fileID: 4421272160843059528}
   stateController: {fileID: 3646885907657463267}
   cloak: {fileID: 8558263046549898525}
+  playerCrouch: {fileID: 0}
 --- !u!114 &60860603695014105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -509,12 +504,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed4fdb3c4e90ec84b833eb04c634c850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerGroundCheck
-  playerCollider: {fileID: 3788221116311127974}
+  playerCollider: {fileID: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
   checkDistance: 0.08
   checkWidth: 0.85
+  showGizmo: 1
+--- !u!114 &3550441425361031586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6633693710186657264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb3af713ac556ad4d89e676371ea5ecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerCrouch
+  inputReader: {fileID: 4421272160843059528}
+  stateController: {fileID: 3646885907657463267}
+  standingHeight: 2.61
+  standingOffsetY: 0.8
+  crouchHeight: 0.9
+  crouchOffsetY: 0.45
+  ceilingLayer:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  ceilingCheckMargin: 0.05
+  ceilingCheckWidth: 0.8
   showGizmo: 1
 --- !u!1 &6706159648604690603
 GameObject:

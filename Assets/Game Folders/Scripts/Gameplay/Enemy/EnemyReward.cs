@@ -71,5 +71,15 @@ public class EnemyReward : MonoBehaviour
 
         if (enableDebugLog)
             Debug.Log($"[EnemyReward] Purification reward: +{reward:F1} Sanity | {previousSanity:F1} → {currentSanity:F1}", this);
+
+        // Token reward → InventoryManager (single source of truth)
+        int tokenReward = enemyController.Stats.TokenReward;
+        if (tokenReward > 0 && InventoryManager.Instance != null)
+        {
+            InventoryManager.Instance.AddTokens(tokenReward);
+
+            if (enableDebugLog)
+                Debug.Log($"[EnemyReward] Token reward: +{tokenReward} | Total: {InventoryManager.Instance.TokenCount}", this);
+        }
     }
 }

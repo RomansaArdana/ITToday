@@ -1,15 +1,28 @@
 using UnityEngine;
 
+/// <summary>
+/// Menangani state stealth player: Crouch multiplier, Hide spot, dan Cloak.
+///
+/// IsCrouching dibaca dari PlayerCrouch (ground truth) — bukan dari inputReader.
+/// PlayerStealth bertanggung jawab atas: StealthMultiplier dan MovementMultiplier.
+/// PlayerCrouch bertanggung jawab atas: collider resize dan ceiling check.
+/// </summary>
 public class PlayerStealth : MonoBehaviour
 {
     [SerializeField] private PlayerStatsSO stats;
     [SerializeField] private PlayerInputReader inputReader;
     [SerializeField] private PlayerStateController stateController;
     [SerializeField] private PlayerCloakOfInvisibility cloak;
+    [SerializeField] private PlayerCrouch playerCrouch;
 
     private HideSpot currentHideSpot;
 
-    public bool IsCrouching { get; private set; }
+    /// <summary>
+    /// True jika Inara sedang dalam posisi crouch (collider mengecil).
+    /// Dibaca dari PlayerCrouch agar state ini sinkron dengan collider fisik.
+    /// </summary>
+    public bool IsCrouching => playerCrouch != null && playerCrouch.IsCrouching;
+
     public bool IsHidden { get; private set; }
 
     public bool IsCloaked => cloak != null && cloak.IsCloaked;
@@ -41,20 +54,14 @@ public class PlayerStealth : MonoBehaviour
         if (inputReader == null) inputReader = GetComponent<PlayerInputReader>();
         if (stateController == null) stateController = GetComponent<PlayerStateController>();
         if (cloak == null) cloak = GetComponent<PlayerCloakOfInvisibility>();
+        if (playerCrouch == null) playerCrouch = GetComponent<PlayerCrouch>();
     }
 
     private void Update()
     {
         if (inputReader == null || stateController == null) return;
 
-        UpdateCrouch();
         UpdateHide();
-    }
-
-    private void UpdateCrouch()
-    {
-        if (IsHidden) return;
-        IsCrouching = inputReader.CrouchHeld;
     }
 
     private void UpdateHide()
