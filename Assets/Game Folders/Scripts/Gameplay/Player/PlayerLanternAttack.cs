@@ -19,6 +19,7 @@ public class PlayerLanternAttack : MonoBehaviour
     private IPlayerInput input;
 
     private float cooldownTimer;
+    private float baseAttackRadius;
 
     private void Awake()
     {
@@ -30,6 +31,19 @@ public class PlayerLanternAttack : MonoBehaviour
         if (lanternObject != null) lanternObject.SetActive(false);
 
         cooldownTimer = 0f;
+        baseAttackRadius = attackRadius;
+    }
+
+    /// <summary>
+    /// Dipanggil oleh UpgradeManager saat Lantern AOE upgrade dibeli.
+    /// Menerima bonus total kumulatif (bukan delta) agar tidak menumpuk saat di-apply ulang.
+    /// </summary>
+    public void SetAttackRadiusBonus(float bonusRadius)
+    {
+        attackRadius = baseAttackRadius + bonusRadius;
+
+        if (enableDebugLog)
+            Debug.Log($"[PlayerLanternAttack] Attack radius: {baseAttackRadius:F2} + {bonusRadius:F2} = {attackRadius:F2}", this);
     }
 
     private void Update()

@@ -72,14 +72,14 @@ public class EnemyReward : MonoBehaviour
         if (enableDebugLog)
             Debug.Log($"[EnemyReward] Purification reward: +{reward:F1} Sanity | {previousSanity:F1} → {currentSanity:F1}", this);
 
-        // Token reward → InventoryManager (single source of truth)
+        // Token reward → TokenManager (single source of truth untuk currency)
         int tokenReward = enemyController.Stats.TokenReward;
-        if (tokenReward > 0 && InventoryManager.Instance != null)
+        if (tokenReward > 0 && TokenManager.Instance != null)
         {
-            InventoryManager.Instance.AddTokens(tokenReward);
+            TokenManager.Instance.AddTokens(tokenReward);
 
             if (enableDebugLog)
-                Debug.Log($"[EnemyReward] Token reward: +{tokenReward} | Total: {InventoryManager.Instance.TokenCount}", this);
+                Debug.Log($"[EnemyReward] Token reward: +{tokenReward} | Total: {TokenManager.Instance.CurrentTokens}", this);
         }
     }
 }

@@ -15,6 +15,7 @@ public class PlayerCloakOfInvisibility : MonoBehaviour
 
     private float durationTimer;
     private float cooldownTimer;
+    private float baseDuration;  // Cache nilai awal agar bonus upgrade tidak menumpuk
 
     public bool IsCloaked { get; private set; }
     public bool IsOnCooldown => cooldownTimer > 0f;
@@ -29,6 +30,17 @@ public class PlayerCloakOfInvisibility : MonoBehaviour
         IsCloaked = false;
         durationTimer = 0f;
         cooldownTimer = 0f;
+        baseDuration = duration;
+    }
+
+    /// <summary>
+    /// Dipanggil oleh UpgradeManager saat Cloak Duration upgrade dibeli.
+    /// Menerima bonus kumulatif total — bukan delta — agar aman di-apply ulang.
+    /// </summary>
+    public void SetDurationBonus(float bonusDuration)
+    {
+        duration = baseDuration + bonusDuration;
+        Debug.Log($"[Cloak] Duration: {baseDuration:F1}s + {bonusDuration:F1}s = {duration:F1}s", this);
     }
 
     private void Update()

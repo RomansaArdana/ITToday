@@ -11,12 +11,13 @@ public class SanityController : MonoBehaviour
 
     private float currentSanity;
     private float debugTimer;
+    private float maxSanityBonus;  // Runtime bonus dari upgrade — tidak mengubah PlayerStatsSO
 
     private bool isDraining;
     private bool isRecovering;
 
     public float CurrentSanity => currentSanity;
-    public float MaxSanity => stats != null ? stats.MaxSanity : 0f;
+    public float MaxSanity => stats != null ? stats.MaxSanity + maxSanityBonus : 0f;
 
     public SanityLevel CurrentLevel { get; private set; }
 
@@ -35,11 +36,26 @@ public class SanityController : MonoBehaviour
             return;
         }
 
-        currentSanity = stats.MaxSanity;
+        currentSanity = MaxSanity;
         UpdateSanityLevel();
 
         if (enableDebugLog)
             Debug.Log($"[Sanity] Initialized: {currentSanity:F1}/{MaxSanity:F1} | Level: {CurrentLevel}", this);
+    }
+
+    /// <summary>
+    /// Dipanggil oleh UpgradeManager saat Max Sanity upgrade dibeli.
+    /// Menerima bonus kumulatif total — bukan delta — agar aman di-apply ulang saat scene berganti.
+    /// </summary>
+    public void SetMaxSanityBonus(float bonus)
+    {
+        maxSanityBonus = Mathf.Max(0f, bonus);
+
+        // Clamp current sanity agar tidak melebihi max baru (jika bonus dikurangi)
+        currentSanity = Mathf.Min(currentSanity, MaxSanity);
+
+        Debug.Log($"[Sanity] Max Sanity bonus set: +{maxSanityBonus:F1} | Max: {MaxSanity:F1}", this);
+        OnSanityChanged?.Invoke(currentSanity, MaxSanity);
     }
 
     private void Update()
