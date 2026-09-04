@@ -1,0 +1,754 @@
+fileFormatVersion: 2
+guid: 360852fc92414d64da020dc9fe09c181
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8885324546204625393
+    second: RED lose_20260904144637_0
+  - first:
+      213: -6893563642132720256
+    second: RED lose_20260904144637_1
+  - first:
+      213: -3141086677908320199
+    second: RED lose_20260904144637_2
+  - first:
+      213: 2538399394606758327
+    second: RED lose_20260904144637_3
+  - first:
+      213: 6014476413300837389
+    second: RED lose_20260904144637_4
+  - first:
+      213: 5771690219000605640
+    second: RED lose_20260904144637_5
+  - first:
+      213: -2033118181541994112
+    second: RED lose_20260904144637_6
+  - first:
+      213: -4304387256757421818
+    second: RED lose_20260904144637_7
+  - first:
+      213: -7372800899079325001
+    second: RED lose_20260904144637_8
+  - first:
+      213: -7173176672416079511
+    second: RED lose_20260904144637_9
+  - first:
+      213: 5507719017088672931
+    second: RED lose_20260904144637_10
+  - first:
+      213: 4774349408629615837
+    second: RED lose_20260904144637_11
+  - first:
+      213: -7012871081956878123
+    second: RED lose_20260904144637_12
+  - first:
+      213: -4062654935706713138
+    second: RED lose_20260904144637_13
+  - first:
+      213: -3553373933316279752
+    second: RED lose_20260904144637_14
+  - first:
+      213: 3502277767100571529
+    second: RED lose_20260904144637_15
+  - first:
+      213: -2835655353285307220
+    second: RED lose_20260904144637_16
+  - first:
+      213: 6200381862693150107
+    second: RED lose_20260904144637_17
+  - first:
+      213: -1067937096138353581
+    second: RED lose_20260904144637_18
+  - first:
+      213: 4433330625489793966
+    second: RED lose_20260904144637_19
+  - first:
+      213: 7831980215138841840
+    second: RED lose_20260904144637_20
+  - first:
+      213: 1694793936918840896
+    second: RED lose_20260904144637_21
+  - first:
+      213: -8320019336770045588
+    second: RED lose_20260904144637_22
+  - first:
+      213: -5356348271150740682
+    second: RED lose_20260904144637_23
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: RED lose_20260904144637_0
+      rect:
+        serializedVersion: 2
+        x: 927
+        y: 541
+        width: 31
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f061a65d66cf0b480800000000000000
+      internalID: -8885324546204625393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RED lose_20260904144637_1
+      rect:
+        serializedVersion: 2
+        x: 953
+        y: 551
+        width: 31
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 085912224642550a0800000000000000
+      internalID: -6893563642132720256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RED lose_20260904144637_2
+      rect:
+        serializedVersion: 2
+        x: 1023
+        y: 559
+        width: 32
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93010920f4e9864d0800000000000000
+      internalID: -3141086677908320199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RED lose_20260904144637_3
+      rect:
+        serializedVersion: 2
+        x: 1046
+        y: 571
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b93a95ecc43a3320800000000000000
+      internalID: 2538399394606758327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RED lose_20260904144637_4
+      rect:
+        serializedVersion: 2
+        x: 1052
+        y: 540
+        width: 17
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0c03cc8e66b77350800000000000000
+      internalID: 6014476413300837389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RED lose_20260904144637_5
+      rect:
+        serializedVersion: 2
+        x: 1068
+        y: 565
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8cba029aca9291050800000000000000
+      internalID: 5771690219000605640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RED lose_20260904144637_6
+      rect:
+        serializedVersion: 2
+        x: 1071
+        y: 566
+        width: 27
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0812dca29c9e8c3e0800000000000000
+      internalID: -2033118181541994112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RED lose_20260904144637_7
+      rect:
+        serializedVersion: 2
+        x: 1072
+        y: 559
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6097149789eb344c0800000000000000
+      internalID: -4304387256757421818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RED lose_20260904144637_8
+      rect:
+        serializedVersion: 2
+        x: 916
+        y: 546
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ba32b225ac8ea990800000000000000
+      internalID: -7372800899079325001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RED lose_20260904144637_9
+      rect:
+        serializedVersion: 2
+        x: 1011
+        y: 546
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 961658152d1c37c90800000000000000
+      internalID: -7173176672416079511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RED lose_20260904144637_10
+      rect:
+        serializedVersion: 2
+        x: 1018
+        y: 555
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a4eb30d3495f6c40800000000000000
+      internalID: 5507719017088672931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RED lose_20260904144637_11
+      rect:
+        serializedVersion: 2
+        x: 1031
+        y: 551
+        width: 17
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ddce6f6dd75e14240800000000000000
+      internalID: 4774349408629615837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RED lose_20260904144637_12
+      rect:
+        serializedVersion: 2
+        x: 1034
+        y: 545
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d8d95028e64dae90800000000000000
+      internalID: -7012871081956878123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RED lose_20260904144637_13
+      rect:
+        serializedVersion: 2
+        x: 1046
+        y: 552
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec3c6306cdc8e97c0800000000000000
+      internalID: -4062654935706713138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RED lose_20260904144637_14
+      rect:
+        serializedVersion: 2
+        x: 1065
+        y: 550
+        width: 15
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 832fc86fb31efaec0800000000000000
+      internalID: -3553373933316279752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RED lose_20260904144637_15
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 169
+        width: 464
+        height: 374
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98f17c4c2179a9030800000000000000
+      internalID: 3502277767100571529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RED lose_20260904144637_16
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 533
+        width: 23
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca49ef9ea7ab5a8d0800000000000000
+      internalID: -2835655353285307220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RED lose_20260904144637_17
+      rect:
+        serializedVersion: 2
+        x: 1007
+        y: 531
+        width: 10
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9d999df37e2c0650800000000000000
+      internalID: 6200381862693150107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RED lose_20260904144637_18
+      rect:
+        serializedVersion: 2
+        x: 1022
+        y: 543
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35416368edced21f0800000000000000
+      internalID: -1067937096138353581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RED lose_20260904144637_19
+      rect:
+        serializedVersion: 2
+        x: 1038
+        y: 536
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea3fd2017ba568d30800000000000000
+      internalID: 4433330625489793966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RED lose_20260904144637_20
+      rect:
+        serializedVersion: 2
+        x: 1047
+        y: 543
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f4fc339288c0bc60800000000000000
+      internalID: 7831980215138841840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RED lose_20260904144637_21
+      rect:
+        serializedVersion: 2
+        x: 1077
+        y: 539
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04688813b1e158710800000000000000
+      internalID: 1694793936918840896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RED lose_20260904144637_22
+      rect:
+        serializedVersion: 2
+        x: 1031
+        y: 532
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c69b07b9e7a598c80800000000000000
+      internalID: -8320019336770045588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RED lose_20260904144637_23
+      rect:
+        serializedVersion: 2
+        x: 1070
+        y: 536
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63b48c460ad6aa5b0800000000000000
+      internalID: -5356348271150740682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      RED lose_20260904144637_0: -8885324546204625393
+      RED lose_20260904144637_1: -6893563642132720256
+      RED lose_20260904144637_10: 5507719017088672931
+      RED lose_20260904144637_11: 4774349408629615837
+      RED lose_20260904144637_12: -7012871081956878123
+      RED lose_20260904144637_13: -4062654935706713138
+      RED lose_20260904144637_14: -3553373933316279752
+      RED lose_20260904144637_15: 3502277767100571529
+      RED lose_20260904144637_16: -2835655353285307220
+      RED lose_20260904144637_17: 6200381862693150107
+      RED lose_20260904144637_18: -1067937096138353581
+      RED lose_20260904144637_19: 4433330625489793966
+      RED lose_20260904144637_2: -3141086677908320199
+      RED lose_20260904144637_20: 7831980215138841840
+      RED lose_20260904144637_21: 1694793936918840896
+      RED lose_20260904144637_22: -8320019336770045588
+      RED lose_20260904144637_23: -5356348271150740682
+      RED lose_20260904144637_3: 2538399394606758327
+      RED lose_20260904144637_4: 6014476413300837389
+      RED lose_20260904144637_5: 5771690219000605640
+      RED lose_20260904144637_6: -2033118181541994112
+      RED lose_20260904144637_7: -4304387256757421818
+      RED lose_20260904144637_8: -7372800899079325001
+      RED lose_20260904144637_9: -7173176672416079511
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

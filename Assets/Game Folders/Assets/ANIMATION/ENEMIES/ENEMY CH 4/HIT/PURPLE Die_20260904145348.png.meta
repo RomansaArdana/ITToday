@@ -1,0 +1,1664 @@
+fileFormatVersion: 2
+guid: 54c057b87b778414085498db00d9e92f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 344556376853853050
+    second: PURPLE Die_20260904145348_0
+  - first:
+      213: -5015098822062005724
+    second: PURPLE Die_20260904145348_1
+  - first:
+      213: -3052950204706536414
+    second: PURPLE Die_20260904145348_2
+  - first:
+      213: 466833210486932163
+    second: PURPLE Die_20260904145348_3
+  - first:
+      213: -7624878095064577081
+    second: PURPLE Die_20260904145348_4
+  - first:
+      213: -4942725954336003317
+    second: PURPLE Die_20260904145348_5
+  - first:
+      213: 4658699917551418924
+    second: PURPLE Die_20260904145348_6
+  - first:
+      213: -6114796629038015455
+    second: PURPLE Die_20260904145348_7
+  - first:
+      213: -4780731487606534436
+    second: PURPLE Die_20260904145348_8
+  - first:
+      213: 6238352492697606198
+    second: PURPLE Die_20260904145348_9
+  - first:
+      213: 7915470992572023066
+    second: PURPLE Die_20260904145348_10
+  - first:
+      213: -525078152166877317
+    second: PURPLE Die_20260904145348_11
+  - first:
+      213: 5758615955391216157
+    second: PURPLE Die_20260904145348_12
+  - first:
+      213: 8242386544275824762
+    second: PURPLE Die_20260904145348_13
+  - first:
+      213: -1762542498645010009
+    second: PURPLE Die_20260904145348_14
+  - first:
+      213: -9205486508902828582
+    second: PURPLE Die_20260904145348_15
+  - first:
+      213: 5117896704280253401
+    second: PURPLE Die_20260904145348_16
+  - first:
+      213: -8025526949288271463
+    second: PURPLE Die_20260904145348_17
+  - first:
+      213: -2567594420402172710
+    second: PURPLE Die_20260904145348_18
+  - first:
+      213: -6406442977497059939
+    second: PURPLE Die_20260904145348_19
+  - first:
+      213: -4913465047262925154
+    second: PURPLE Die_20260904145348_20
+  - first:
+      213: -3180031641532551351
+    second: PURPLE Die_20260904145348_21
+  - first:
+      213: 4657811368922208126
+    second: PURPLE Die_20260904145348_22
+  - first:
+      213: -2719392739486448880
+    second: PURPLE Die_20260904145348_23
+  - first:
+      213: -1736553351807556181
+    second: PURPLE Die_20260904145348_24
+  - first:
+      213: -4835127019145410933
+    second: PURPLE Die_20260904145348_25
+  - first:
+      213: 9046047574334394766
+    second: PURPLE Die_20260904145348_26
+  - first:
+      213: 2012411759537992045
+    second: PURPLE Die_20260904145348_27
+  - first:
+      213: 8975627367273956812
+    second: PURPLE Die_20260904145348_28
+  - first:
+      213: 5473971915110390010
+    second: PURPLE Die_20260904145348_29
+  - first:
+      213: -798858587685788244
+    second: PURPLE Die_20260904145348_30
+  - first:
+      213: -5918307899055751760
+    second: PURPLE Die_20260904145348_31
+  - first:
+      213: -2928614310086017391
+    second: PURPLE Die_20260904145348_32
+  - first:
+      213: 6811139967617414777
+    second: PURPLE Die_20260904145348_33
+  - first:
+      213: 3293069079999477429
+    second: PURPLE Die_20260904145348_34
+  - first:
+      213: 5220030528259480090
+    second: PURPLE Die_20260904145348_35
+  - first:
+      213: -4385098311724309092
+    second: PURPLE Die_20260904145348_36
+  - first:
+      213: 7432577436730065897
+    second: PURPLE Die_20260904145348_37
+  - first:
+      213: 8908694296811509566
+    second: PURPLE Die_20260904145348_38
+  - first:
+      213: 3722012941267501362
+    second: PURPLE Die_20260904145348_39
+  - first:
+      213: -7697333034490708188
+    second: PURPLE Die_20260904145348_40
+  - first:
+      213: -215741699202185407
+    second: PURPLE Die_20260904145348_41
+  - first:
+      213: 7629709547181709538
+    second: PURPLE Die_20260904145348_42
+  - first:
+      213: -1056102010677623546
+    second: PURPLE Die_20260904145348_43
+  - first:
+      213: 3052421812822461985
+    second: PURPLE Die_20260904145348_44
+  - first:
+      213: 5267562714710817320
+    second: PURPLE Die_20260904145348_45
+  - first:
+      213: 8781436713822935785
+    second: PURPLE Die_20260904145348_46
+  - first:
+      213: -1662745450941281380
+    second: PURPLE Die_20260904145348_47
+  - first:
+      213: 422054976307465547
+    second: PURPLE Die_20260904145348_48
+  - first:
+      213: 4618507673292157050
+    second: PURPLE Die_20260904145348_49
+  - first:
+      213: 7511899589754663401
+    second: PURPLE Die_20260904145348_50
+  - first:
+      213: 63870276211915196
+    second: PURPLE Die_20260904145348_51
+  - first:
+      213: -5180455224188220569
+    second: PURPLE Die_20260904145348_52
+  - first:
+      213: 4165645165147877569
+    second: PURPLE Die_20260904145348_53
+  - first:
+      213: 6854856366393560687
+    second: PURPLE Die_20260904145348_54
+  - first:
+      213: -850594203900572999
+    second: PURPLE Die_20260904145348_55
+  - first:
+      213: 9183689084499914094
+    second: PURPLE Die_20260904145348_56
+  - first:
+      213: -152930455948539531
+    second: PURPLE Die_20260904145348_57
+  - first:
+      213: -842892366724482958
+    second: PURPLE Die_20260904145348_58
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_0
+      rect:
+        serializedVersion: 2
+        x: 950
+        y: 828
+        width: 14
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a73387ff23c18c400800000000000000
+      internalID: 344556376853853050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_1
+      rect:
+        serializedVersion: 2
+        x: 961
+        y: 822
+        width: 27
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 422a385413ac66ab0800000000000000
+      internalID: -5015098822062005724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_2
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 806
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 224c28bc6fdb1a5d0800000000000000
+      internalID: -3052950204706536414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_3
+      rect:
+        serializedVersion: 2
+        x: 1053
+        y: 796
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c2cd60e4568a7600800000000000000
+      internalID: 466833210486932163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_4
+      rect:
+        serializedVersion: 2
+        x: 1059
+        y: 803
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cbc40855cdfe2690800000000000000
+      internalID: -7624878095064577081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_5
+      rect:
+        serializedVersion: 2
+        x: 1066
+        y: 773
+        width: 19
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0be2b5aee8e76bb0800000000000000
+      internalID: -4942725954336003317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_6
+      rect:
+        serializedVersion: 2
+        x: 1070
+        y: 796
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2e3bc464e607a040800000000000000
+      internalID: 4658699917551418924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_7
+      rect:
+        serializedVersion: 2
+        x: 1055
+        y: 788
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12cde6c0dd0e32ba0800000000000000
+      internalID: -6114796629038015455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_8
+      rect:
+        serializedVersion: 2
+        x: 1065
+        y: 784
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cde00ba9a0e67adb0800000000000000
+      internalID: -4780731487606534436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_9
+      rect:
+        serializedVersion: 2
+        x: 1087
+        y: 779
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 638d9e63a84139650800000000000000
+      internalID: 6238352492697606198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_10
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 778
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a110a260ee669dd60800000000000000
+      internalID: 7915470992572023066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_11
+      rect:
+        serializedVersion: 2
+        x: 1087
+        y: 769
+        width: 12
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7756ccd33c86b8f0800000000000000
+      internalID: -525078152166877317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_12
+      rect:
+        serializedVersion: 2
+        x: 1058
+        y: 755
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1a7df273b6baef40800000000000000
+      internalID: 5758615955391216157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_13
+      rect:
+        serializedVersion: 2
+        x: 1075
+        y: 748
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a70250954e6d26270800000000000000
+      internalID: 8242386544275824762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_14
+      rect:
+        serializedVersion: 2
+        x: 1081
+        y: 711
+        width: 33
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a91cb29fe03a87e0800000000000000
+      internalID: -1762542498645010009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_15
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 715
+        width: 18
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad5323cfaca8f3080800000000000000
+      internalID: -9205486508902828582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_16
+      rect:
+        serializedVersion: 2
+        x: 1112
+        y: 715
+        width: 14
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d354cfcfeb660740800000000000000
+      internalID: 5117896704280253401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_17
+      rect:
+        serializedVersion: 2
+        x: 1114
+        y: 739
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 991295cb2c99f9090800000000000000
+      internalID: -8025526949288271463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_18
+      rect:
+        serializedVersion: 2
+        x: 774
+        y: 676
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: adc47a47a721e5cd0800000000000000
+      internalID: -2567594420402172710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_19
+      rect:
+        serializedVersion: 2
+        x: 781
+        y: 663
+        width: 29
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9ded740e0eb717a0800000000000000
+      internalID: -6406442977497059939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_20
+      rect:
+        serializedVersion: 2
+        x: 806
+        y: 603
+        width: 90
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9e6899729ddfcbb0800000000000000
+      internalID: -4913465047262925154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_21
+      rect:
+        serializedVersion: 2
+        x: 979
+        y: 563
+        width: 68
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94f23ff02124ed3d0800000000000000
+      internalID: -3180031641532551351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_22
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 637
+        width: 35
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e77526b03ced3a040800000000000000
+      internalID: 4657811368922208126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_23
+      rect:
+        serializedVersion: 2
+        x: 1105
+        y: 682
+        width: 26
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 013422e16b6c24ad0800000000000000
+      internalID: -2719392739486448880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_24
+      rect:
+        serializedVersion: 2
+        x: 761
+        y: 636
+        width: 27
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba52ffb5de586e7e0800000000000000
+      internalID: -1736553351807556181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_25
+      rect:
+        serializedVersion: 2
+        x: 762
+        y: 656
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b86c1fbf79d26ecb0800000000000000
+      internalID: -4835127019145410933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_26
+      rect:
+        serializedVersion: 2
+        x: 790
+        y: 643
+        width: 12
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e815c7147540a8d70800000000000000
+      internalID: 9046047574334394766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_27
+      rect:
+        serializedVersion: 2
+        x: 763
+        y: 612
+        width: 21
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d61b41545d58deb10800000000000000
+      internalID: 2012411759537992045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_28
+      rect:
+        serializedVersion: 2
+        x: 781
+        y: 619
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc583ae1985df8c70800000000000000
+      internalID: 8975627367273956812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_29
+      rect:
+        serializedVersion: 2
+        x: 789
+        y: 622
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af89e96547477fb40800000000000000
+      internalID: 5473971915110390010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_30
+      rect:
+        serializedVersion: 2
+        x: 798
+        y: 613
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca5e737d852e9e4f0800000000000000
+      internalID: -798858587685788244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_31
+      rect:
+        serializedVersion: 2
+        x: 1016
+        y: 621
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0bdb4658252fddda0800000000000000
+      internalID: -5918307899055751760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_32
+      rect:
+        serializedVersion: 2
+        x: 1044
+        y: 621
+        width: 7
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19e723b2dc87b57d0800000000000000
+      internalID: -2928614310086017391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_33
+      rect:
+        serializedVersion: 2
+        x: 776
+        y: 607
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9763d4da6b7068e50800000000000000
+      internalID: 6811139967617414777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_34
+      rect:
+        serializedVersion: 2
+        x: 781
+        y: 591
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b6f03e71e453bd20800000000000000
+      internalID: 3293069079999477429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_35
+      rect:
+        serializedVersion: 2
+        x: 786
+        y: 610
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1ad999cb16417840800000000000000
+      internalID: 5220030528259480090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_36
+      rect:
+        serializedVersion: 2
+        x: 870
+        y: 559
+        width: 38
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c95e18891500523c0800000000000000
+      internalID: -4385098311724309092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_37
+      rect:
+        serializedVersion: 2
+        x: 797
+        y: 595
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e301e99cc1d52760800000000000000
+      internalID: 7432577436730065897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_38
+      rect:
+        serializedVersion: 2
+        x: 769
+        y: 551
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e379ffd334a02ab70800000000000000
+      internalID: 8908694296811509566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_39
+      rect:
+        serializedVersion: 2
+        x: 1042
+        y: 563
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23108adcc0f37a330800000000000000
+      internalID: 3722012941267501362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_40
+      rect:
+        serializedVersion: 2
+        x: 1121
+        y: 545
+        width: 49
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42f3d4923649d2590800000000000000
+      internalID: -7697333034490708188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_41
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 533
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14780df4118810df0800000000000000
+      internalID: -215741699202185407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_42
+      rect:
+        serializedVersion: 2
+        x: 763
+        y: 543
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e81c23c86c22e960800000000000000
+      internalID: 7629709547181709538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_43
+      rect:
+        serializedVersion: 2
+        x: 775
+        y: 533
+        width: 19
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6050cf611d8f751f0800000000000000
+      internalID: -1056102010677623546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_44
+      rect:
+        serializedVersion: 2
+        x: 834
+        y: 538
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12ecfe167716c5a20800000000000000
+      internalID: 3052421812822461985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_45
+      rect:
+        serializedVersion: 2
+        x: 1169
+        y: 538
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82a3e6a51642a1940800000000000000
+      internalID: 5267562714710817320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_46
+      rect:
+        serializedVersion: 2
+        x: 1175
+        y: 536
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ea5df84a2eedd970800000000000000
+      internalID: 8781436713822935785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_47
+      rect:
+        serializedVersion: 2
+        x: 667
+        y: 134
+        width: 525
+        height: 399
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9b8fbc62ddbce8e0800000000000000
+      internalID: -1662745450941281380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_48
+      rect:
+        serializedVersion: 2
+        x: 751
+        y: 528
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4d0e7ac3c07bd500800000000000000
+      internalID: 422054976307465547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_49
+      rect:
+        serializedVersion: 2
+        x: 757
+        y: 518
+        width: 21
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a70befa424c381040800000000000000
+      internalID: 4618507673292157050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_50
+      rect:
+        serializedVersion: 2
+        x: 769
+        y: 531
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e1babb80e0af3860800000000000000
+      internalID: 7511899589754663401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_51
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 530
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb931558da9e2e000800000000000000
+      internalID: 63870276211915196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_52
+      rect:
+        serializedVersion: 2
+        x: 1137
+        y: 530
+        width: 16
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76bc17bbb635b18b0800000000000000
+      internalID: -5180455224188220569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_53
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 492
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c076f805385fc930800000000000000
+      internalID: 4165645165147877569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_54
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 507
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6e8631fb87512f50800000000000000
+      internalID: 6854856366393560687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_55
+      rect:
+        serializedVersion: 2
+        x: 752
+        y: 514
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ba008404151234f0800000000000000
+      internalID: -850594203900572999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_56
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 516
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6def39a094037f70800000000000000
+      internalID: 9183689084499914094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_57
+      rect:
+        serializedVersion: 2
+        x: 1165
+        y: 517
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57949d18f8ea0edf0800000000000000
+      internalID: -152930455948539531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PURPLE Die_20260904145348_58
+      rect:
+        serializedVersion: 2
+        x: 1181
+        y: 508
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 278bf79bbd17d44f0800000000000000
+      internalID: -842892366724482958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      PURPLE Die_20260904145348_0: 344556376853853050
+      PURPLE Die_20260904145348_1: -5015098822062005724
+      PURPLE Die_20260904145348_10: 7915470992572023066
+      PURPLE Die_20260904145348_11: -525078152166877317
+      PURPLE Die_20260904145348_12: 5758615955391216157
+      PURPLE Die_20260904145348_13: 8242386544275824762
+      PURPLE Die_20260904145348_14: -1762542498645010009
+      PURPLE Die_20260904145348_15: -9205486508902828582
+      PURPLE Die_20260904145348_16: 5117896704280253401
+      PURPLE Die_20260904145348_17: -8025526949288271463
+      PURPLE Die_20260904145348_18: -2567594420402172710
+      PURPLE Die_20260904145348_19: -6406442977497059939
+      PURPLE Die_20260904145348_2: -3052950204706536414
+      PURPLE Die_20260904145348_20: -4913465047262925154
+      PURPLE Die_20260904145348_21: -3180031641532551351
+      PURPLE Die_20260904145348_22: 4657811368922208126
+      PURPLE Die_20260904145348_23: -2719392739486448880
+      PURPLE Die_20260904145348_24: -1736553351807556181
+      PURPLE Die_20260904145348_25: -4835127019145410933
+      PURPLE Die_20260904145348_26: 9046047574334394766
+      PURPLE Die_20260904145348_27: 2012411759537992045
+      PURPLE Die_20260904145348_28: 8975627367273956812
+      PURPLE Die_20260904145348_29: 5473971915110390010
+      PURPLE Die_20260904145348_3: 466833210486932163
+      PURPLE Die_20260904145348_30: -798858587685788244
+      PURPLE Die_20260904145348_31: -5918307899055751760
+      PURPLE Die_20260904145348_32: -2928614310086017391
+      PURPLE Die_20260904145348_33: 6811139967617414777
+      PURPLE Die_20260904145348_34: 3293069079999477429
+      PURPLE Die_20260904145348_35: 5220030528259480090
+      PURPLE Die_20260904145348_36: -4385098311724309092
+      PURPLE Die_20260904145348_37: 7432577436730065897
+      PURPLE Die_20260904145348_38: 8908694296811509566
+      PURPLE Die_20260904145348_39: 3722012941267501362
+      PURPLE Die_20260904145348_4: -7624878095064577081
+      PURPLE Die_20260904145348_40: -7697333034490708188
+      PURPLE Die_20260904145348_41: -215741699202185407
+      PURPLE Die_20260904145348_42: 7629709547181709538
+      PURPLE Die_20260904145348_43: -1056102010677623546
+      PURPLE Die_20260904145348_44: 3052421812822461985
+      PURPLE Die_20260904145348_45: 5267562714710817320
+      PURPLE Die_20260904145348_46: 8781436713822935785
+      PURPLE Die_20260904145348_47: -1662745450941281380
+      PURPLE Die_20260904145348_48: 422054976307465547
+      PURPLE Die_20260904145348_49: 4618507673292157050
+      PURPLE Die_20260904145348_5: -4942725954336003317
+      PURPLE Die_20260904145348_50: 7511899589754663401
+      PURPLE Die_20260904145348_51: 63870276211915196
+      PURPLE Die_20260904145348_52: -5180455224188220569
+      PURPLE Die_20260904145348_53: 4165645165147877569
+      PURPLE Die_20260904145348_54: 6854856366393560687
+      PURPLE Die_20260904145348_55: -850594203900572999
+      PURPLE Die_20260904145348_56: 9183689084499914094
+      PURPLE Die_20260904145348_57: -152930455948539531
+      PURPLE Die_20260904145348_58: -842892366724482958
+      PURPLE Die_20260904145348_6: 4658699917551418924
+      PURPLE Die_20260904145348_7: -6114796629038015455
+      PURPLE Die_20260904145348_8: -4780731487606534436
+      PURPLE Die_20260904145348_9: 6238352492697606198
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

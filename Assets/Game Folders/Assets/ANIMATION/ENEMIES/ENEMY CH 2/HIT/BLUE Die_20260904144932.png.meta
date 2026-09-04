@@ -1,0 +1,2418 @@
+fileFormatVersion: 2
+guid: e29c3d6c27f5b25439ba232b1f632108
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8641329075828186246
+    second: BLUE Die_20260904144932_0
+  - first:
+      213: -5061003537118490916
+    second: BLUE Die_20260904144932_1
+  - first:
+      213: -7789395366854584846
+    second: BLUE Die_20260904144932_2
+  - first:
+      213: 7015075056533827758
+    second: BLUE Die_20260904144932_3
+  - first:
+      213: 3509157478220516825
+    second: BLUE Die_20260904144932_4
+  - first:
+      213: -4875328247405677032
+    second: BLUE Die_20260904144932_5
+  - first:
+      213: 531539087235691204
+    second: BLUE Die_20260904144932_6
+  - first:
+      213: -7458078485947219792
+    second: BLUE Die_20260904144932_7
+  - first:
+      213: -4599397822976578516
+    second: BLUE Die_20260904144932_8
+  - first:
+      213: 5241795720178686781
+    second: BLUE Die_20260904144932_9
+  - first:
+      213: 1989902877847674287
+    second: BLUE Die_20260904144932_10
+  - first:
+      213: 4351201129769811047
+    second: BLUE Die_20260904144932_11
+  - first:
+      213: -6253949945012295628
+    second: BLUE Die_20260904144932_12
+  - first:
+      213: 4814783263182728338
+    second: BLUE Die_20260904144932_13
+  - first:
+      213: 5714188628593036358
+    second: BLUE Die_20260904144932_14
+  - first:
+      213: -7621883477509109710
+    second: BLUE Die_20260904144932_15
+  - first:
+      213: -4391957182057226687
+    second: BLUE Die_20260904144932_16
+  - first:
+      213: -6601475859858387691
+    second: BLUE Die_20260904144932_17
+  - first:
+      213: 6414743976738819314
+    second: BLUE Die_20260904144932_18
+  - first:
+      213: 9057424860486996367
+    second: BLUE Die_20260904144932_19
+  - first:
+      213: 1044061057739442421
+    second: BLUE Die_20260904144932_20
+  - first:
+      213: -5280969384361664871
+    second: BLUE Die_20260904144932_21
+  - first:
+      213: 6314255819035444896
+    second: BLUE Die_20260904144932_22
+  - first:
+      213: -2759767780727766636
+    second: BLUE Die_20260904144932_23
+  - first:
+      213: -4560742653148172791
+    second: BLUE Die_20260904144932_24
+  - first:
+      213: 8340264454504007811
+    second: BLUE Die_20260904144932_25
+  - first:
+      213: -7861623583638157647
+    second: BLUE Die_20260904144932_26
+  - first:
+      213: 1188522708505572125
+    second: BLUE Die_20260904144932_27
+  - first:
+      213: -4720105560867995280
+    second: BLUE Die_20260904144932_28
+  - first:
+      213: -7979176613437521389
+    second: BLUE Die_20260904144932_29
+  - first:
+      213: -7713517184402089739
+    second: BLUE Die_20260904144932_30
+  - first:
+      213: 3487563517546286147
+    second: BLUE Die_20260904144932_31
+  - first:
+      213: 6779346325265074855
+    second: BLUE Die_20260904144932_32
+  - first:
+      213: -7474914143904406595
+    second: BLUE Die_20260904144932_33
+  - first:
+      213: -8320151958205175485
+    second: BLUE Die_20260904144932_34
+  - first:
+      213: 6369076044748904319
+    second: BLUE Die_20260904144932_35
+  - first:
+      213: 1499454403223594898
+    second: BLUE Die_20260904144932_36
+  - first:
+      213: -18670276429464402
+    second: BLUE Die_20260904144932_37
+  - first:
+      213: 4966117210025166417
+    second: BLUE Die_20260904144932_38
+  - first:
+      213: -2404674248840425169
+    second: BLUE Die_20260904144932_39
+  - first:
+      213: -5806399695371420377
+    second: BLUE Die_20260904144932_40
+  - first:
+      213: -7462437152520605859
+    second: BLUE Die_20260904144932_41
+  - first:
+      213: -1493946622902529527
+    second: BLUE Die_20260904144932_42
+  - first:
+      213: -7041722989209396874
+    second: BLUE Die_20260904144932_43
+  - first:
+      213: -6897113437067610966
+    second: BLUE Die_20260904144932_44
+  - first:
+      213: 1440082840177074107
+    second: BLUE Die_20260904144932_45
+  - first:
+      213: 1089250338020400717
+    second: BLUE Die_20260904144932_46
+  - first:
+      213: -8155752846666328460
+    second: BLUE Die_20260904144932_47
+  - first:
+      213: 1674705395046215877
+    second: BLUE Die_20260904144932_48
+  - first:
+      213: -6951427861551876935
+    second: BLUE Die_20260904144932_49
+  - first:
+      213: 7223481492478189001
+    second: BLUE Die_20260904144932_50
+  - first:
+      213: 4045509074925463140
+    second: BLUE Die_20260904144932_51
+  - first:
+      213: -4891734761469720439
+    second: BLUE Die_20260904144932_52
+  - first:
+      213: -8384542818697924272
+    second: BLUE Die_20260904144932_53
+  - first:
+      213: 4639785197309593581
+    second: BLUE Die_20260904144932_54
+  - first:
+      213: -3057905625249605192
+    second: BLUE Die_20260904144932_55
+  - first:
+      213: -3619220410065187057
+    second: BLUE Die_20260904144932_56
+  - first:
+      213: 1159547403312497982
+    second: BLUE Die_20260904144932_57
+  - first:
+      213: -3242161590071962399
+    second: BLUE Die_20260904144932_58
+  - first:
+      213: 1182487405691986845
+    second: BLUE Die_20260904144932_59
+  - first:
+      213: 7827239740916166802
+    second: BLUE Die_20260904144932_60
+  - first:
+      213: 7464366861108940396
+    second: BLUE Die_20260904144932_61
+  - first:
+      213: 530400652215311318
+    second: BLUE Die_20260904144932_62
+  - first:
+      213: -8248324196602730728
+    second: BLUE Die_20260904144932_63
+  - first:
+      213: -7226736353226657308
+    second: BLUE Die_20260904144932_64
+  - first:
+      213: -3845570277718449537
+    second: BLUE Die_20260904144932_65
+  - first:
+      213: -3437831499428958350
+    second: BLUE Die_20260904144932_66
+  - first:
+      213: 6790456495420967817
+    second: BLUE Die_20260904144932_67
+  - first:
+      213: 8936081092764360029
+    second: BLUE Die_20260904144932_68
+  - first:
+      213: 3025187381773087552
+    second: BLUE Die_20260904144932_69
+  - first:
+      213: 6842429527823759585
+    second: BLUE Die_20260904144932_70
+  - first:
+      213: 605926791887983118
+    second: BLUE Die_20260904144932_71
+  - first:
+      213: -6881179410186563146
+    second: BLUE Die_20260904144932_72
+  - first:
+      213: -105489023917830419
+    second: BLUE Die_20260904144932_73
+  - first:
+      213: 870196583043844142
+    second: BLUE Die_20260904144932_74
+  - first:
+      213: -3965323344008418994
+    second: BLUE Die_20260904144932_75
+  - first:
+      213: 8353590521825867324
+    second: BLUE Die_20260904144932_76
+  - first:
+      213: -892756965452652517
+    second: BLUE Die_20260904144932_77
+  - first:
+      213: -9057706599246427267
+    second: BLUE Die_20260904144932_78
+  - first:
+      213: -7252186908732384813
+    second: BLUE Die_20260904144932_79
+  - first:
+      213: -4713182644610649929
+    second: BLUE Die_20260904144932_80
+  - first:
+      213: -7658967460181342061
+    second: BLUE Die_20260904144932_81
+  - first:
+      213: -3034994015131160884
+    second: BLUE Die_20260904144932_82
+  - first:
+      213: 314585354077343386
+    second: BLUE Die_20260904144932_83
+  - first:
+      213: -3599036528681341064
+    second: BLUE Die_20260904144932_84
+  - first:
+      213: -8672275484951770437
+    second: BLUE Die_20260904144932_85
+  - first:
+      213: 7354099924090167
+    second: BLUE Die_20260904144932_86
+  - first:
+      213: -2872094368197577718
+    second: BLUE Die_20260904144932_87
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_0
+      rect:
+        serializedVersion: 2
+        x: 1075
+        y: 692
+        width: 60
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a73a1004df4d31880800000000000000
+      internalID: -8641329075828186246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_1
+      rect:
+        serializedVersion: 2
+        x: 950
+        y: 630
+        width: 48
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cde8e0be814b3c9b0800000000000000
+      internalID: -5061003537118490916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_2
+      rect:
+        serializedVersion: 2
+        x: 973
+        y: 660
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f51f8f0f2286e390800000000000000
+      internalID: -7789395366854584846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_3
+      rect:
+        serializedVersion: 2
+        x: 857
+        y: 479
+        width: 18
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea0f661b89d8a5160800000000000000
+      internalID: 7015075056533827758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_4
+      rect:
+        serializedVersion: 2
+        x: 871
+        y: 523
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9dd4d36522803b030800000000000000
+      internalID: 3509157478220516825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_5
+      rect:
+        serializedVersion: 2
+        x: 876
+        y: 503
+        width: 21
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 816f4f12aca575cb0800000000000000
+      internalID: -4875328247405677032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_6
+      rect:
+        serializedVersion: 2
+        x: 879
+        y: 529
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c23beecbf7606700800000000000000
+      internalID: 531539087235691204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_7
+      rect:
+        serializedVersion: 2
+        x: 883
+        y: 543
+        width: 8
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b00222b1259f7890800000000000000
+      internalID: -7458078485947219792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_8
+      rect:
+        serializedVersion: 2
+        x: 888
+        y: 533
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2ca6c47c08ab20c0800000000000000
+      internalID: -4599397822976578516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_9
+      rect:
+        serializedVersion: 2
+        x: 889
+        y: 508
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3bd96e6f699eb840800000000000000
+      internalID: 5241795720178686781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_10
+      rect:
+        serializedVersion: 2
+        x: 891
+        y: 554
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fad53abdf1e8d9b10800000000000000
+      internalID: 1989902877847674287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_11
+      rect:
+        serializedVersion: 2
+        x: 893
+        y: 566
+        width: 15
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76c3536bf52926c30800000000000000
+      internalID: 4351201129769811047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_12
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 497
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 438e77ce8a18539a0800000000000000
+      internalID: -6253949945012295628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_13
+      rect:
+        serializedVersion: 2
+        x: 904
+        y: 556
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29ca0883edb81d240800000000000000
+      internalID: 4814783263182728338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_14
+      rect:
+        serializedVersion: 2
+        x: 909
+        y: 584
+        width: 18
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64c4dda5840ec4f40800000000000000
+      internalID: 5714188628593036358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_15
+      rect:
+        serializedVersion: 2
+        x: 910
+        y: 562
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23886a31c51a93690800000000000000
+      internalID: -7621883477509109710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_16
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 538
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14ed0c66632ac03c0800000000000000
+      internalID: -4391957182057226687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_17
+      rect:
+        serializedVersion: 2
+        x: 914
+        y: 504
+        width: 67
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51d03db7ea8d264a0800000000000000
+      internalID: -6601475859858387691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_18
+      rect:
+        serializedVersion: 2
+        x: 936
+        y: 595
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fc089af8afb50950800000000000000
+      internalID: 6414743976738819314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_19
+      rect:
+        serializedVersion: 2
+        x: 947
+        y: 442
+        width: 23
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f819e1d1cef62bd70800000000000000
+      internalID: 9057424860486996367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_20
+      rect:
+        serializedVersion: 2
+        x: 956
+        y: 371
+        width: 147
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f8c06610004d7e00800000000000000
+      internalID: 1044061057739442421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_21
+      rect:
+        serializedVersion: 2
+        x: 996
+        y: 505
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99ed86f135a36b6b0800000000000000
+      internalID: -5280969384361664871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_22
+      rect:
+        serializedVersion: 2
+        x: 1119
+        y: 458
+        width: 68
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a60d8a863eb0a750800000000000000
+      internalID: 6314255819035444896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_23
+      rect:
+        serializedVersion: 2
+        x: 1161
+        y: 569
+        width: 20
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 491472743d553b9d0800000000000000
+      internalID: -2759767780727766636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_24
+      rect:
+        serializedVersion: 2
+        x: 1162
+        y: 601
+        width: 69
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90e612788bcf4b0c0800000000000000
+      internalID: -4560742653148172791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_25
+      rect:
+        serializedVersion: 2
+        x: 1182
+        y: 515
+        width: 13
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 388478f25529eb370800000000000000
+      internalID: 8340264454504007811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_26
+      rect:
+        serializedVersion: 2
+        x: 1191
+        y: 537
+        width: 27
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b60a6bd007e5e290800000000000000
+      internalID: -7861623583638157647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_27
+      rect:
+        serializedVersion: 2
+        x: 1203
+        y: 512
+        width: 34
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d13b5f73b1b7e7010800000000000000
+      internalID: 1188522708505572125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_28
+      rect:
+        serializedVersion: 2
+        x: 1206
+        y: 547
+        width: 24
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0710e162001de7eb0800000000000000
+      internalID: -4720105560867995280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_29
+      rect:
+        serializedVersion: 2
+        x: 1210
+        y: 599
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 312c3f34525444190800000000000000
+      internalID: -7979176613437521389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_30
+      rect:
+        serializedVersion: 2
+        x: 1213
+        y: 531
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f897de1df414f490800000000000000
+      internalID: -7713517184402089739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_31
+      rect:
+        serializedVersion: 2
+        x: 1217
+        y: 537
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34c45f29a80566030800000000000000
+      internalID: 3487563517546286147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_32
+      rect:
+        serializedVersion: 2
+        x: 1225
+        y: 575
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7aa46c67093151e50800000000000000
+      internalID: 6779346325265074855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_33
+      rect:
+        serializedVersion: 2
+        x: 1226
+        y: 596
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db3e80e9035c34890800000000000000
+      internalID: -7474914143904406595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_34
+      rect:
+        serializedVersion: 2
+        x: 1227
+        y: 530
+        width: 7
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 349e8e540e1e88c80800000000000000
+      internalID: -8320151958205175485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_35
+      rect:
+        serializedVersion: 2
+        x: 1228
+        y: 585
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7755bafae0836850800000000000000
+      internalID: 6369076044748904319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_36
+      rect:
+        serializedVersion: 2
+        x: 1228
+        y: 491
+        width: 17
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 297a905d5d12fc410800000000000000
+      internalID: 1499454403223594898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_37
+      rect:
+        serializedVersion: 2
+        x: 1229
+        y: 557
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eac30958b7badbff0800000000000000
+      internalID: -18670276429464402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_38
+      rect:
+        serializedVersion: 2
+        x: 1239
+        y: 537
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15601887a413be440800000000000000
+      internalID: 4966117210025166417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_39
+      rect:
+        serializedVersion: 2
+        x: 1243
+        y: 510
+        width: 12
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f21565dd281e0aed0800000000000000
+      internalID: -2404674248840425169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_40
+      rect:
+        serializedVersion: 2
+        x: 1201
+        y: 471
+        width: 21
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72d337d9d368b6fa0800000000000000
+      internalID: -5806399695371420377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_41
+      rect:
+        serializedVersion: 2
+        x: 1245
+        y: 495
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5fe45d82f8107890800000000000000
+      internalID: -7462437152520605859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_42
+      rect:
+        serializedVersion: 2
+        x: 1246
+        y: 470
+        width: 15
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9021084367f644be0800000000000000
+      internalID: -1493946622902529527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_43
+      rect:
+        serializedVersion: 2
+        x: 843
+        y: 443
+        width: 24
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 679d87dff36c64e90800000000000000
+      internalID: -7041722989209396874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_44
+      rect:
+        serializedVersion: 2
+        x: 877
+        y: 482
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa4f2081fd78840a0800000000000000
+      internalID: -6897113437067610966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_45
+      rect:
+        serializedVersion: 2
+        x: 890
+        y: 456
+        width: 13
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbfd3e796b33cf310800000000000000
+      internalID: 1440082840177074107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_46
+      rect:
+        serializedVersion: 2
+        x: 1194
+        y: 484
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4e1e2d496bcd1f00800000000000000
+      internalID: 1089250338020400717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_47
+      rect:
+        serializedVersion: 2
+        x: 1197
+        y: 478
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 476929a3ff1f0de80800000000000000
+      internalID: -8155752846666328460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_48
+      rect:
+        serializedVersion: 2
+        x: 1235
+        y: 480
+        width: 14
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c0f82f0fafbd3710800000000000000
+      internalID: 1674705395046215877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_49
+      rect:
+        serializedVersion: 2
+        x: 865
+        y: 462
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b4727ea031978f90800000000000000
+      internalID: -6951427861551876935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_50
+      rect:
+        serializedVersion: 2
+        x: 873
+        y: 465
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9cd55c05526fe3460800000000000000
+      internalID: 7223481492478189001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_51
+      rect:
+        serializedVersion: 2
+        x: 1138
+        y: 466
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4662d82d119842830800000000000000
+      internalID: 4045509074925463140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_52
+      rect:
+        serializedVersion: 2
+        x: 1235
+        y: 468
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 988ca27e6211d1cb0800000000000000
+      internalID: -4891734761469720439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_53
+      rect:
+        serializedVersion: 2
+        x: 1236
+        y: 461
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0513577cabe14ab80800000000000000
+      internalID: -8384542818697924272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_54
+      rect:
+        serializedVersion: 2
+        x: 1251
+        y: 454
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de701c7ed04d36040800000000000000
+      internalID: 4639785197309593581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_55
+      rect:
+        serializedVersion: 2
+        x: 1198
+        y: 454
+        width: 31
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b9145a09032095d0800000000000000
+      internalID: -3057905625249605192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_56
+      rect:
+        serializedVersion: 2
+        x: 1236
+        y: 441
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0f88366632f5cdc0800000000000000
+      internalID: -3619220410065187057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_57
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 364
+        width: 19
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e350ba2483a871010800000000000000
+      internalID: 1159547403312497982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_58
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 394
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e4585726378103d0800000000000000
+      internalID: -3242161590071962399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_59
+      rect:
+        serializedVersion: 2
+        x: 824
+        y: 406
+        width: 19
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d93e4a7c70a096010800000000000000
+      internalID: 1182487405691986845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_60
+      rect:
+        serializedVersion: 2
+        x: 827
+        y: 393
+        width: 19
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 290f029e211ff9c60800000000000000
+      internalID: 7827239740916166802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_61
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 373
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6e889dbc12c69760800000000000000
+      internalID: 7464366861108940396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_62
+      rect:
+        serializedVersion: 2
+        x: 834
+        y: 381
+        width: 14
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6dbddef359c5c5700800000000000000
+      internalID: 530400652215311318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_63
+      rect:
+        serializedVersion: 2
+        x: 839
+        y: 428
+        width: 6
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8172c3d38d0188d80800000000000000
+      internalID: -8248324196602730728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_64
+      rect:
+        serializedVersion: 2
+        x: 843
+        y: 413
+        width: 12
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e1f58c539975bb90800000000000000
+      internalID: -7226736353226657308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_65
+      rect:
+        serializedVersion: 2
+        x: 845
+        y: 377
+        width: 22
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f72aac5053ac1aac0800000000000000
+      internalID: -3845570277718449537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_66
+      rect:
+        serializedVersion: 2
+        x: 852
+        y: 378
+        width: 77
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27f63e6377e5a40d0800000000000000
+      internalID: -3437831499428958350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_67
+      rect:
+        serializedVersion: 2
+        x: 977
+        y: 443
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98b8f48843c8c3e50800000000000000
+      internalID: 6790456495420967817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_68
+      rect:
+        serializedVersion: 2
+        x: 1129
+        y: 393
+        width: 92
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5ddd429866530c70800000000000000
+      internalID: 8936081092764360029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_69
+      rect:
+        serializedVersion: 2
+        x: 1196
+        y: 367
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 043349545ef9bf920800000000000000
+      internalID: 3025187381773087552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_70
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 366
+        width: 6
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e8349e176135fe50800000000000000
+      internalID: 6842429527823759585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_71
+      rect:
+        serializedVersion: 2
+        x: 1222
+        y: 415
+        width: 20
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e021066f43fa86800800000000000000
+      internalID: 605926791887983118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_72
+      rect:
+        serializedVersion: 2
+        x: 1224
+        y: 372
+        width: 17
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b11914d8c32180a0800000000000000
+      internalID: -6881179410186563146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_73
+      rect:
+        serializedVersion: 2
+        x: 1225
+        y: 403
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: deecca9aa4a398ef0800000000000000
+      internalID: -105489023917830419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_74
+      rect:
+        serializedVersion: 2
+        x: 1226
+        y: 387
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2846198e2f831c00800000000000000
+      internalID: 870196583043844142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_75
+      rect:
+        serializedVersion: 2
+        x: 1235
+        y: 394
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4960d48d6758f8c0800000000000000
+      internalID: -3965323344008418994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_76
+      rect:
+        serializedVersion: 2
+        x: 1236
+        y: 380
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c363084025aede370800000000000000
+      internalID: 8353590521825867324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_77
+      rect:
+        serializedVersion: 2
+        x: 1242
+        y: 371
+        width: 15
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b10607b154a4c93f0800000000000000
+      internalID: -892756965452652517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_78
+      rect:
+        serializedVersion: 2
+        x: 1243
+        y: 427
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7b843876df8c4280800000000000000
+      internalID: -9057706599246427267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_79
+      rect:
+        serializedVersion: 2
+        x: 1243
+        y: 394
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d994442e6e0b5b90800000000000000
+      internalID: -7252186908732384813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_80
+      rect:
+        serializedVersion: 2
+        x: 1245
+        y: 434
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b032723b59679eb0800000000000000
+      internalID: -4713182644610649929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_81
+      rect:
+        serializedVersion: 2
+        x: 1245
+        y: 411
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3988d958ca1e5b590800000000000000
+      internalID: -7658967460181342061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_82
+      rect:
+        serializedVersion: 2
+        x: 1249
+        y: 386
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cceaba8f50981e5d0800000000000000
+      internalID: -3034994015131160884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_83
+      rect:
+        serializedVersion: 2
+        x: 1251
+        y: 431
+        width: 11
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9e025976b1ad5400800000000000000
+      internalID: 314585354077343386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_84
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 124
+        width: 450
+        height: 246
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87f2b4e7857ad0ec0800000000000000
+      internalID: -3599036528681341064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_85
+      rect:
+        serializedVersion: 2
+        x: 831
+        y: 361
+        width: 21
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bba0f15e463e5a780800000000000000
+      internalID: -8672275484951770437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_86
+      rect:
+        serializedVersion: 2
+        x: 1228
+        y: 349
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73d3e91d3802a1000800000000000000
+      internalID: 7354099924090167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLUE Die_20260904144932_87
+      rect:
+        serializedVersion: 2
+        x: 1245
+        y: 351
+        width: 7
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a04fe2e93654428d0800000000000000
+      internalID: -2872094368197577718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      BLUE Die_20260904144932_0: -8641329075828186246
+      BLUE Die_20260904144932_1: -5061003537118490916
+      BLUE Die_20260904144932_10: 1989902877847674287
+      BLUE Die_20260904144932_11: 4351201129769811047
+      BLUE Die_20260904144932_12: -6253949945012295628
+      BLUE Die_20260904144932_13: 4814783263182728338
+      BLUE Die_20260904144932_14: 5714188628593036358
+      BLUE Die_20260904144932_15: -7621883477509109710
+      BLUE Die_20260904144932_16: -4391957182057226687
+      BLUE Die_20260904144932_17: -6601475859858387691
+      BLUE Die_20260904144932_18: 6414743976738819314
+      BLUE Die_20260904144932_19: 9057424860486996367
+      BLUE Die_20260904144932_2: -7789395366854584846
+      BLUE Die_20260904144932_20: 1044061057739442421
+      BLUE Die_20260904144932_21: -5280969384361664871
+      BLUE Die_20260904144932_22: 6314255819035444896
+      BLUE Die_20260904144932_23: -2759767780727766636
+      BLUE Die_20260904144932_24: -4560742653148172791
+      BLUE Die_20260904144932_25: 8340264454504007811
+      BLUE Die_20260904144932_26: -7861623583638157647
+      BLUE Die_20260904144932_27: 1188522708505572125
+      BLUE Die_20260904144932_28: -4720105560867995280
+      BLUE Die_20260904144932_29: -7979176613437521389
+      BLUE Die_20260904144932_3: 7015075056533827758
+      BLUE Die_20260904144932_30: -7713517184402089739
+      BLUE Die_20260904144932_31: 3487563517546286147
+      BLUE Die_20260904144932_32: 6779346325265074855
+      BLUE Die_20260904144932_33: -7474914143904406595
+      BLUE Die_20260904144932_34: -8320151958205175485
+      BLUE Die_20260904144932_35: 6369076044748904319
+      BLUE Die_20260904144932_36: 1499454403223594898
+      BLUE Die_20260904144932_37: -18670276429464402
+      BLUE Die_20260904144932_38: 4966117210025166417
+      BLUE Die_20260904144932_39: -2404674248840425169
+      BLUE Die_20260904144932_4: 3509157478220516825
+      BLUE Die_20260904144932_40: -5806399695371420377
+      BLUE Die_20260904144932_41: -7462437152520605859
+      BLUE Die_20260904144932_42: -1493946622902529527
+      BLUE Die_20260904144932_43: -7041722989209396874
+      BLUE Die_20260904144932_44: -6897113437067610966
+      BLUE Die_20260904144932_45: 1440082840177074107
+      BLUE Die_20260904144932_46: 1089250338020400717
+      BLUE Die_20260904144932_47: -8155752846666328460
+      BLUE Die_20260904144932_48: 1674705395046215877
+      BLUE Die_20260904144932_49: -6951427861551876935
+      BLUE Die_20260904144932_5: -4875328247405677032
+      BLUE Die_20260904144932_50: 7223481492478189001
+      BLUE Die_20260904144932_51: 4045509074925463140
+      BLUE Die_20260904144932_52: -4891734761469720439
+      BLUE Die_20260904144932_53: -8384542818697924272
+      BLUE Die_20260904144932_54: 4639785197309593581
+      BLUE Die_20260904144932_55: -3057905625249605192
+      BLUE Die_20260904144932_56: -3619220410065187057
+      BLUE Die_20260904144932_57: 1159547403312497982
+      BLUE Die_20260904144932_58: -3242161590071962399
+      BLUE Die_20260904144932_59: 1182487405691986845
+      BLUE Die_20260904144932_6: 531539087235691204
+      BLUE Die_20260904144932_60: 7827239740916166802
+      BLUE Die_20260904144932_61: 7464366861108940396
+      BLUE Die_20260904144932_62: 530400652215311318
+      BLUE Die_20260904144932_63: -8248324196602730728
+      BLUE Die_20260904144932_64: -7226736353226657308
+      BLUE Die_20260904144932_65: -3845570277718449537
+      BLUE Die_20260904144932_66: -3437831499428958350
+      BLUE Die_20260904144932_67: 6790456495420967817
+      BLUE Die_20260904144932_68: 8936081092764360029
+      BLUE Die_20260904144932_69: 3025187381773087552
+      BLUE Die_20260904144932_7: -7458078485947219792
+      BLUE Die_20260904144932_70: 6842429527823759585
+      BLUE Die_20260904144932_71: 605926791887983118
+      BLUE Die_20260904144932_72: -6881179410186563146
+      BLUE Die_20260904144932_73: -105489023917830419
+      BLUE Die_20260904144932_74: 870196583043844142
+      BLUE Die_20260904144932_75: -3965323344008418994
+      BLUE Die_20260904144932_76: 8353590521825867324
+      BLUE Die_20260904144932_77: -892756965452652517
+      BLUE Die_20260904144932_78: -9057706599246427267
+      BLUE Die_20260904144932_79: -7252186908732384813
+      BLUE Die_20260904144932_8: -4599397822976578516
+      BLUE Die_20260904144932_80: -4713182644610649929
+      BLUE Die_20260904144932_81: -7658967460181342061
+      BLUE Die_20260904144932_82: -3034994015131160884
+      BLUE Die_20260904144932_83: 314585354077343386
+      BLUE Die_20260904144932_84: -3599036528681341064
+      BLUE Die_20260904144932_85: -8672275484951770437
+      BLUE Die_20260904144932_86: 7354099924090167
+      BLUE Die_20260904144932_87: -2872094368197577718
+      BLUE Die_20260904144932_9: 5241795720178686781
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,3172 @@
+fileFormatVersion: 2
+guid: f58c5b17f14b0be49b166978d201a7b9
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3054688816549930871
+    second: CYAN Die_20260904145047_0
+  - first:
+      213: 3570095016628530953
+    second: CYAN Die_20260904145047_1
+  - first:
+      213: -1047148854967166183
+    second: CYAN Die_20260904145047_2
+  - first:
+      213: 2104712917619020720
+    second: CYAN Die_20260904145047_3
+  - first:
+      213: 4766153952609093455
+    second: CYAN Die_20260904145047_4
+  - first:
+      213: 2463707125521204718
+    second: CYAN Die_20260904145047_5
+  - first:
+      213: 7868359472311301290
+    second: CYAN Die_20260904145047_6
+  - first:
+      213: 8569319101641469265
+    second: CYAN Die_20260904145047_7
+  - first:
+      213: 1115981714860578130
+    second: CYAN Die_20260904145047_8
+  - first:
+      213: -368659803738647193
+    second: CYAN Die_20260904145047_9
+  - first:
+      213: -2863639303838378987
+    second: CYAN Die_20260904145047_10
+  - first:
+      213: -7346602419681289228
+    second: CYAN Die_20260904145047_11
+  - first:
+      213: 124513947686226875
+    second: CYAN Die_20260904145047_12
+  - first:
+      213: -2150785140834156116
+    second: CYAN Die_20260904145047_13
+  - first:
+      213: -3305958862956772965
+    second: CYAN Die_20260904145047_14
+  - first:
+      213: 9167843338655926858
+    second: CYAN Die_20260904145047_15
+  - first:
+      213: -602736160949720786
+    second: CYAN Die_20260904145047_16
+  - first:
+      213: 4487930911549235869
+    second: CYAN Die_20260904145047_17
+  - first:
+      213: 923665155066740134
+    second: CYAN Die_20260904145047_18
+  - first:
+      213: -350824814445271505
+    second: CYAN Die_20260904145047_19
+  - first:
+      213: 8579233347676111871
+    second: CYAN Die_20260904145047_20
+  - first:
+      213: 7366054365524147317
+    second: CYAN Die_20260904145047_21
+  - first:
+      213: 6378221433960131511
+    second: CYAN Die_20260904145047_22
+  - first:
+      213: -4715364056576794294
+    second: CYAN Die_20260904145047_23
+  - first:
+      213: 3710491569920355837
+    second: CYAN Die_20260904145047_24
+  - first:
+      213: 187367779807851349
+    second: CYAN Die_20260904145047_25
+  - first:
+      213: 6303802601067483175
+    second: CYAN Die_20260904145047_26
+  - first:
+      213: -1478893146071985916
+    second: CYAN Die_20260904145047_27
+  - first:
+      213: -5195520423105903144
+    second: CYAN Die_20260904145047_28
+  - first:
+      213: -1597781455245614914
+    second: CYAN Die_20260904145047_29
+  - first:
+      213: 1543547692573938834
+    second: CYAN Die_20260904145047_30
+  - first:
+      213: 4723085026192353540
+    second: CYAN Die_20260904145047_31
+  - first:
+      213: 9187793809564547661
+    second: CYAN Die_20260904145047_32
+  - first:
+      213: -4971811359358893405
+    second: CYAN Die_20260904145047_33
+  - first:
+      213: -4499247193584291891
+    second: CYAN Die_20260904145047_34
+  - first:
+      213: -2596759096153127012
+    second: CYAN Die_20260904145047_35
+  - first:
+      213: 6724954076400780349
+    second: CYAN Die_20260904145047_36
+  - first:
+      213: 8221357516485670986
+    second: CYAN Die_20260904145047_37
+  - first:
+      213: -7876699973664146385
+    second: CYAN Die_20260904145047_38
+  - first:
+      213: 8868922857197105237
+    second: CYAN Die_20260904145047_39
+  - first:
+      213: -6648953352487027042
+    second: CYAN Die_20260904145047_40
+  - first:
+      213: -317597978078390451
+    second: CYAN Die_20260904145047_41
+  - first:
+      213: 1987250715710550307
+    second: CYAN Die_20260904145047_42
+  - first:
+      213: 8298379387762871424
+    second: CYAN Die_20260904145047_43
+  - first:
+      213: -7586963052310525704
+    second: CYAN Die_20260904145047_44
+  - first:
+      213: -2172487233693363327
+    second: CYAN Die_20260904145047_45
+  - first:
+      213: 5924006743356881385
+    second: CYAN Die_20260904145047_46
+  - first:
+      213: 6242182446223077345
+    second: CYAN Die_20260904145047_47
+  - first:
+      213: 2541906910861947294
+    second: CYAN Die_20260904145047_48
+  - first:
+      213: 1074120560905643024
+    second: CYAN Die_20260904145047_49
+  - first:
+      213: 4743419862350879349
+    second: CYAN Die_20260904145047_50
+  - first:
+      213: -7360771856655967157
+    second: CYAN Die_20260904145047_51
+  - first:
+      213: 3671524059941714152
+    second: CYAN Die_20260904145047_52
+  - first:
+      213: 4655091663054389371
+    second: CYAN Die_20260904145047_53
+  - first:
+      213: -7544276536796550081
+    second: CYAN Die_20260904145047_54
+  - first:
+      213: 4669511278253333495
+    second: CYAN Die_20260904145047_55
+  - first:
+      213: 246596109166343498
+    second: CYAN Die_20260904145047_56
+  - first:
+      213: 3027606953352075038
+    second: CYAN Die_20260904145047_57
+  - first:
+      213: 6238756525766315909
+    second: CYAN Die_20260904145047_58
+  - first:
+      213: 241316637833813896
+    second: CYAN Die_20260904145047_59
+  - first:
+      213: 2200288165945377940
+    second: CYAN Die_20260904145047_60
+  - first:
+      213: -4409924649266328448
+    second: CYAN Die_20260904145047_61
+  - first:
+      213: 2756733275740710245
+    second: CYAN Die_20260904145047_62
+  - first:
+      213: -8700971701832302495
+    second: CYAN Die_20260904145047_63
+  - first:
+      213: -3093901970327285346
+    second: CYAN Die_20260904145047_64
+  - first:
+      213: 5758949823005608944
+    second: CYAN Die_20260904145047_65
+  - first:
+      213: 3217895318394140048
+    second: CYAN Die_20260904145047_66
+  - first:
+      213: 365190951385802490
+    second: CYAN Die_20260904145047_67
+  - first:
+      213: 6144961914415961774
+    second: CYAN Die_20260904145047_68
+  - first:
+      213: 1121712670599272745
+    second: CYAN Die_20260904145047_69
+  - first:
+      213: 2495661940821659126
+    second: CYAN Die_20260904145047_70
+  - first:
+      213: 4353321260182698902
+    second: CYAN Die_20260904145047_71
+  - first:
+      213: 7791187638970968681
+    second: CYAN Die_20260904145047_72
+  - first:
+      213: -7723938111944491713
+    second: CYAN Die_20260904145047_73
+  - first:
+      213: 2629769517563226045
+    second: CYAN Die_20260904145047_74
+  - first:
+      213: 5678916033774271918
+    second: CYAN Die_20260904145047_75
+  - first:
+      213: -6053223898972440352
+    second: CYAN Die_20260904145047_76
+  - first:
+      213: -1949586280751932973
+    second: CYAN Die_20260904145047_77
+  - first:
+      213: 2238546605173749719
+    second: CYAN Die_20260904145047_78
+  - first:
+      213: 7048818235319880831
+    second: CYAN Die_20260904145047_79
+  - first:
+      213: -1561526100132508528
+    second: CYAN Die_20260904145047_80
+  - first:
+      213: 8984807371834461047
+    second: CYAN Die_20260904145047_81
+  - first:
+      213: -6778023134278974399
+    second: CYAN Die_20260904145047_82
+  - first:
+      213: -7981258531184593296
+    second: CYAN Die_20260904145047_83
+  - first:
+      213: -880460464308677195
+    second: CYAN Die_20260904145047_84
+  - first:
+      213: -1917404824150860584
+    second: CYAN Die_20260904145047_85
+  - first:
+      213: -7244564747534958029
+    second: CYAN Die_20260904145047_86
+  - first:
+      213: 5458395616643280900
+    second: CYAN Die_20260904145047_87
+  - first:
+      213: -6735828632795541843
+    second: CYAN Die_20260904145047_88
+  - first:
+      213: -580681676843914189
+    second: CYAN Die_20260904145047_89
+  - first:
+      213: 5915217942658923298
+    second: CYAN Die_20260904145047_90
+  - first:
+      213: -1274108020774912627
+    second: CYAN Die_20260904145047_91
+  - first:
+      213: -465192584100584224
+    second: CYAN Die_20260904145047_92
+  - first:
+      213: -262011787298408861
+    second: CYAN Die_20260904145047_93
+  - first:
+      213: -8034525164447787775
+    second: CYAN Die_20260904145047_94
+  - first:
+      213: 488133236436276755
+    second: CYAN Die_20260904145047_95
+  - first:
+      213: 7084918642199963772
+    second: CYAN Die_20260904145047_96
+  - first:
+      213: -1281527791922748445
+    second: CYAN Die_20260904145047_97
+  - first:
+      213: 3935801551748390445
+    second: CYAN Die_20260904145047_98
+  - first:
+      213: 7333378507726251524
+    second: CYAN Die_20260904145047_99
+  - first:
+      213: -211381958200056778
+    second: CYAN Die_20260904145047_100
+  - first:
+      213: 7834734346090545335
+    second: CYAN Die_20260904145047_101
+  - first:
+      213: -3735312360785047022
+    second: CYAN Die_20260904145047_102
+  - first:
+      213: 854575017865906832
+    second: CYAN Die_20260904145047_103
+  - first:
+      213: -5236618004986115632
+    second: CYAN Die_20260904145047_104
+  - first:
+      213: -4894046502509515304
+    second: CYAN Die_20260904145047_105
+  - first:
+      213: -4013533455086711216
+    second: CYAN Die_20260904145047_106
+  - first:
+      213: -8739677480667622747
+    second: CYAN Die_20260904145047_107
+  - first:
+      213: -1710566463212232788
+    second: CYAN Die_20260904145047_108
+  - first:
+      213: -1909326664228983466
+    second: CYAN Die_20260904145047_109
+  - first:
+      213: 156392744875022874
+    second: CYAN Die_20260904145047_110
+  - first:
+      213: -6320156347062187050
+    second: CYAN Die_20260904145047_111
+  - first:
+      213: 462182800874892893
+    second: CYAN Die_20260904145047_112
+  - first:
+      213: 8861861547479346930
+    second: CYAN Die_20260904145047_113
+  - first:
+      213: -1504387455645185144
+    second: CYAN Die_20260904145047_114
+  - first:
+      213: 6314764777252582312
+    second: CYAN Die_20260904145047_115
+  - first:
+      213: -923807367300004134
+    second: CYAN Die_20260904145047_116
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_0
+      rect:
+        serializedVersion: 2
+        x: 1060
+        y: 687
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 988de2ea4b09b95d0800000000000000
+      internalID: -3054688816549930871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_1
+      rect:
+        serializedVersion: 2
+        x: 1071
+        y: 677
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90f2980a0868b8130800000000000000
+      internalID: 3570095016628530953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_2
+      rect:
+        serializedVersion: 2
+        x: 1081
+        y: 675
+        width: 10
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91b99b81aa7c771f0800000000000000
+      internalID: -1047148854967166183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_3
+      rect:
+        serializedVersion: 2
+        x: 1096
+        y: 664
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b39bd05f31753d10800000000000000
+      internalID: 2104712917619020720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_4
+      rect:
+        serializedVersion: 2
+        x: 1110
+        y: 663
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f47c61a84c7c42240800000000000000
+      internalID: 4766153952609093455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_5
+      rect:
+        serializedVersion: 2
+        x: 1112
+        y: 631
+        width: 27
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee54a4fc398d03220800000000000000
+      internalID: 2463707125521204718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_6
+      rect:
+        serializedVersion: 2
+        x: 1100
+        y: 655
+        width: 15
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa4f1307047023d60800000000000000
+      internalID: 7868359472311301290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_7
+      rect:
+        serializedVersion: 2
+        x: 1134
+        y: 647
+        width: 18
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15d2f4c12565ce670800000000000000
+      internalID: 8569319101641469265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_8
+      rect:
+        serializedVersion: 2
+        x: 1142
+        y: 618
+        width: 14
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 255981af473cc7f00800000000000000
+      internalID: 1115981714860578130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_9
+      rect:
+        serializedVersion: 2
+        x: 1148
+        y: 651
+        width: 21
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 765513b9cd142eaf0800000000000000
+      internalID: -368659803738647193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_10
+      rect:
+        serializedVersion: 2
+        x: 1156
+        y: 636
+        width: 18
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 514ddd1b93f4248d0800000000000000
+      internalID: -2863639303838378987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_11
+      rect:
+        serializedVersion: 2
+        x: 1170
+        y: 639
+        width: 30
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4fb1fd4f500ab0a90800000000000000
+      internalID: -7346602419681289228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_12
+      rect:
+        serializedVersion: 2
+        x: 1201
+        y: 630
+        width: 28
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbb4b6596cc5ab100800000000000000
+      internalID: 124513947686226875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_13
+      rect:
+        serializedVersion: 2
+        x: 1175
+        y: 632
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca1446c4f40e622e0800000000000000
+      internalID: -2150785140834156116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_14
+      rect:
+        serializedVersion: 2
+        x: 1189
+        y: 622
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b91486b0eefde12d0800000000000000
+      internalID: -3305958862956772965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_15
+      rect:
+        serializedVersion: 2
+        x: 1198
+        y: 638
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4a840571f8ba3f70800000000000000
+      internalID: 9167843338655926858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_16
+      rect:
+        serializedVersion: 2
+        x: 1232
+        y: 631
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e292f41b7a6a2a7f0800000000000000
+      internalID: -602736160949720786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_17
+      rect:
+        serializedVersion: 2
+        x: 1234
+        y: 593
+        width: 58
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d92236fc265584e30800000000000000
+      internalID: 4487930911549235869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_18
+      rect:
+        serializedVersion: 2
+        x: 1156
+        y: 606
+        width: 45
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6adb823909481dc00800000000000000
+      internalID: 923665155066740134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_19
+      rect:
+        serializedVersion: 2
+        x: 1204
+        y: 618
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f26e894a0be912bf0800000000000000
+      internalID: -350824814445271505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_20
+      rect:
+        serializedVersion: 2
+        x: 1219
+        y: 628
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff38b65664f8f0770800000000000000
+      internalID: 8579233347676111871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_21
+      rect:
+        serializedVersion: 2
+        x: 1219
+        y: 619
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57c384d1b6b793660800000000000000
+      internalID: 7366054365524147317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_22
+      rect:
+        serializedVersion: 2
+        x: 1156
+        y: 606
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7bbe9f5d99ef38850800000000000000
+      internalID: 6378221433960131511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_23
+      rect:
+        serializedVersion: 2
+        x: 1170
+        y: 581
+        width: 36
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a416815af59af8eb0800000000000000
+      internalID: -4715364056576794294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_24
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 609
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dfd2f2f7c605e7330800000000000000
+      internalID: 3710491569920355837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_25
+      rect:
+        serializedVersion: 2
+        x: 1201
+        y: 596
+        width: 21
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 553fcc5c00aa99200800000000000000
+      internalID: 187367779807851349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_26
+      rect:
+        serializedVersion: 2
+        x: 1221
+        y: 608
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7209fc2111b9b7750800000000000000
+      internalID: 6303802601067483175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_27
+      rect:
+        serializedVersion: 2
+        x: 1233
+        y: 611
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4019e97e48ae97be0800000000000000
+      internalID: -1478893146071985916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_28
+      rect:
+        serializedVersion: 2
+        x: 1124
+        y: 574
+        width: 17
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d54c75c3bdc5e7b0800000000000000
+      internalID: -5195520423105903144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_29
+      rect:
+        serializedVersion: 2
+        x: 1142
+        y: 587
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb0e06b5b3a83d9e0800000000000000
+      internalID: -1597781455245614914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_30
+      rect:
+        serializedVersion: 2
+        x: 1154
+        y: 592
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2945eb5c278cb6510800000000000000
+      internalID: 1543547692573938834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_31
+      rect:
+        serializedVersion: 2
+        x: 1163
+        y: 594
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 409692eaec4cb8140800000000000000
+      internalID: 4723085026192353540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_32
+      rect:
+        serializedVersion: 2
+        x: 1169
+        y: 588
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4ab0a07ac9918f70800000000000000
+      internalID: 9187793809564547661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_33
+      rect:
+        serializedVersion: 2
+        x: 1205
+        y: 585
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a2492319e3900bb0800000000000000
+      internalID: -4971811359358893405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_34
+      rect:
+        serializedVersion: 2
+        x: 1218
+        y: 588
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dcf2cb5f3867f81c0800000000000000
+      internalID: -4499247193584291891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_35
+      rect:
+        serializedVersion: 2
+        x: 1222
+        y: 594
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c97478a3c5576fbd0800000000000000
+      internalID: -2596759096153127012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_36
+      rect:
+        serializedVersion: 2
+        x: 1227
+        y: 573
+        width: 14
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d340fa62a16d35d50800000000000000
+      internalID: 6724954076400780349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_37
+      rect:
+        serializedVersion: 2
+        x: 1243
+        y: 586
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a48bd954a11281270800000000000000
+      internalID: 8221357516485670986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_38
+      rect:
+        serializedVersion: 2
+        x: 1250
+        y: 574
+        width: 27
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2c7b634b1750b290800000000000000
+      internalID: -7876699973664146385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_39
+      rect:
+        serializedVersion: 2
+        x: 1069
+        y: 526
+        width: 53
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 550739b595eb41b70800000000000000
+      internalID: 8868922857197105237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_40
+      rect:
+        serializedVersion: 2
+        x: 1151
+        y: 582
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9e3ed0572c2ab3a0800000000000000
+      internalID: -6648953352487027042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_41
+      rect:
+        serializedVersion: 2
+        x: 1163
+        y: 585
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d475147525aa79bf0800000000000000
+      internalID: -317597978078390451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_42
+      rect:
+        serializedVersion: 2
+        x: 1213
+        y: 578
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 321719d3ff1249b10800000000000000
+      internalID: 1987250715710550307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_43
+      rect:
+        serializedVersion: 2
+        x: 1241
+        y: 576
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08c87032614c92370800000000000000
+      internalID: 8298379387762871424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_44
+      rect:
+        serializedVersion: 2
+        x: 956
+        y: 557
+        width: 31
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f884072d41b5b690800000000000000
+      internalID: -7586963052310525704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_45
+      rect:
+        serializedVersion: 2
+        x: 976
+        y: 538
+        width: 52
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 183d2ac0f56c9d1e0800000000000000
+      internalID: -2172487233693363327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_46
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 490
+        width: 57
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e93ec01fbc463250800000000000000
+      internalID: 5924006743356881385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_47
+      rect:
+        serializedVersion: 2
+        x: 1143
+        y: 567
+        width: 10
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ef2e42ccdfa0a650800000000000000
+      internalID: 6242182446223077345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_48
+      rect:
+        serializedVersion: 2
+        x: 1153
+        y: 571
+        width: 12
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e91790a2edaa64320800000000000000
+      internalID: 2541906910861947294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_49
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 543
+        width: 34
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01469be85fa08ee00800000000000000
+      internalID: 1074120560905643024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_50
+      rect:
+        serializedVersion: 2
+        x: 1188
+        y: 573
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57ad4fbab3304d140800000000000000
+      internalID: 4743419862350879349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_51
+      rect:
+        serializedVersion: 2
+        x: 1192
+        y: 567
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4c1453def849d990800000000000000
+      internalID: -7360771856655967157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_52
+      rect:
+        serializedVersion: 2
+        x: 1205
+        y: 573
+        width: 12
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e830211eafd3f230800000000000000
+      internalID: 3671524059941714152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_53
+      rect:
+        serializedVersion: 2
+        x: 1222
+        y: 577
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b704d3d24353a9040800000000000000
+      internalID: 4655091663054389371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_54
+      rect:
+        serializedVersion: 2
+        x: 849
+        y: 484
+        width: 99
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3c6de806785d4790800000000000000
+      internalID: -7544276536796550081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_55
+      rect:
+        serializedVersion: 2
+        x: 929
+        y: 560
+        width: 18
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fb58f674cf6dc040800000000000000
+      internalID: 4669511278253333495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_56
+      rect:
+        serializedVersion: 2
+        x: 942
+        y: 565
+        width: 18
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a457ad1dad51c6300800000000000000
+      internalID: 246596109166343498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_57
+      rect:
+        serializedVersion: 2
+        x: 1164
+        y: 566
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e179d0eab78340a20800000000000000
+      internalID: 3027606953352075038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_58
+      rect:
+        serializedVersion: 2
+        x: 1210
+        y: 557
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58f837e7104849650800000000000000
+      internalID: 6238756525766315909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_59
+      rect:
+        serializedVersion: 2
+        x: 1224
+        y: 549
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88fd97c1434595300800000000000000
+      internalID: 241316637833813896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_60
+      rect:
+        serializedVersion: 2
+        x: 1242
+        y: 569
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4948ba6ed6ef88e10800000000000000
+      internalID: 2200288165945377940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_61
+      rect:
+        serializedVersion: 2
+        x: 942
+        y: 547
+        width: 11
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08ccd3275ecccc2c0800000000000000
+      internalID: -4409924649266328448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_62
+      rect:
+        serializedVersion: 2
+        x: 950
+        y: 552
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5652609fe42e14620800000000000000
+      internalID: 2756733275740710245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_63
+      rect:
+        serializedVersion: 2
+        x: 958
+        y: 551
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1604f8f3650ff3780800000000000000
+      internalID: -8700971701832302495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_64
+      rect:
+        serializedVersion: 2
+        x: 966
+        y: 550
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e91d2c8dc804015d0800000000000000
+      internalID: -3093901970327285346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_65
+      rect:
+        serializedVersion: 2
+        x: 1112
+        y: 557
+        width: 29
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0fb4c8f0a56ebef40800000000000000
+      internalID: 5758949823005608944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_66
+      rect:
+        serializedVersion: 2
+        x: 1151
+        y: 560
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09576413eb248ac20800000000000000
+      internalID: 3217895318394140048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_67
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 552
+        width: 19
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af6a9844c3b611500800000000000000
+      internalID: 365190951385802490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_68
+      rect:
+        serializedVersion: 2
+        x: 1171
+        y: 520
+        width: 47
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea65113cd4a474550800000000000000
+      internalID: 6144961914415961774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_69
+      rect:
+        serializedVersion: 2
+        x: 1188
+        y: 556
+        width: 18
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 929df171bbf119f00800000000000000
+      internalID: 1121712670599272745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_70
+      rect:
+        serializedVersion: 2
+        x: 952
+        y: 539
+        width: 22
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fd0326005f52a220800000000000000
+      internalID: 2495661940821659126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_71
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 538
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69b785a0f9a1a6c30800000000000000
+      internalID: 4353321260182698902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_72
+      rect:
+        serializedVersion: 2
+        x: 1128
+        y: 544
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96a674fc0ebdf1c60800000000000000
+      internalID: 7791187638970968681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_73
+      rect:
+        serializedVersion: 2
+        x: 1140
+        y: 542
+        width: 14
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3d727ad53f0fc490800000000000000
+      internalID: -7723938111944491713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_74
+      rect:
+        serializedVersion: 2
+        x: 1144
+        y: 537
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db7a18f6171de7420800000000000000
+      internalID: 2629769517563226045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_75
+      rect:
+        serializedVersion: 2
+        x: 1151
+        y: 538
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eadb2666b009fce40800000000000000
+      internalID: 5678916033774271918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_76
+      rect:
+        serializedVersion: 2
+        x: 1167
+        y: 530
+        width: 7
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e8b7db6fe0aefba0800000000000000
+      internalID: -6053223898972440352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_77
+      rect:
+        serializedVersion: 2
+        x: 932
+        y: 504
+        width: 13
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d95ec46b9da1f4e0800000000000000
+      internalID: -1949586280751932973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_78
+      rect:
+        serializedVersion: 2
+        x: 936
+        y: 525
+        width: 14
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d7b98ee64ae01f10800000000000000
+      internalID: 2238546605173749719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_79
+      rect:
+        serializedVersion: 2
+        x: 945
+        y: 512
+        width: 9
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7c898ab6de62d160800000000000000
+      internalID: 7048818235319880831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_80
+      rect:
+        serializedVersion: 2
+        x: 950
+        y: 522
+        width: 14
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09cc9160948545ae0800000000000000
+      internalID: -1561526100132508528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_81
+      rect:
+        serializedVersion: 2
+        x: 957
+        y: 513
+        width: 18
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77b018d73b270bc70800000000000000
+      internalID: 8984807371834461047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_82
+      rect:
+        serializedVersion: 2
+        x: 968
+        y: 486
+        width: 45
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1440ce1fedf9fe1a0800000000000000
+      internalID: -6778023134278974399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_83
+      rect:
+        serializedVersion: 2
+        x: 969
+        y: 530
+        width: 12
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 076bf2407afdc3190800000000000000
+      internalID: -7981258531184593296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_84
+      rect:
+        serializedVersion: 2
+        x: 970
+        y: 504
+        width: 14
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b51b126fd9f7c3f0800000000000000
+      internalID: -880460464308677195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_85
+      rect:
+        serializedVersion: 2
+        x: 983
+        y: 526
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8dc1ed5a8720465e0800000000000000
+      internalID: -1917404824150860584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_86
+      rect:
+        serializedVersion: 2
+        x: 988
+        y: 531
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3328cd6deb2267b90800000000000000
+      internalID: -7244564747534958029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_87
+      rect:
+        serializedVersion: 2
+        x: 1134
+        y: 522
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 400729db4ed10cb40800000000000000
+      internalID: 5458395616643280900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_88
+      rect:
+        serializedVersion: 2
+        x: 1153
+        y: 524
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dae0152eb878582a0800000000000000
+      internalID: -6735828632795541843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_89
+      rect:
+        serializedVersion: 2
+        x: 1161
+        y: 527
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33ce32c671101f7f0800000000000000
+      internalID: -580681676843914189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_90
+      rect:
+        serializedVersion: 2
+        x: 940
+        y: 509
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22bb331f063171250800000000000000
+      internalID: 5915217942658923298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_91
+      rect:
+        serializedVersion: 2
+        x: 948
+        y: 503
+        width: 18
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8d3c307185715ee0800000000000000
+      internalID: -1274108020774912627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_92
+      rect:
+        serializedVersion: 2
+        x: 1122
+        y: 478
+        width: 35
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e4e9883fcd4b89f0800000000000000
+      internalID: -465192584100584224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_93
+      rect:
+        serializedVersion: 2
+        x: 1167
+        y: 513
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 366fc1beaa52d5cf0800000000000000
+      internalID: -262011787298408861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_94
+      rect:
+        serializedVersion: 2
+        x: 941
+        y: 493
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10517228ee1af7090800000000000000
+      internalID: -8034525164447787775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_95
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 485
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31698d0a79236c600800000000000000
+      internalID: 488133236436276755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_96
+      rect:
+        serializedVersion: 2
+        x: 1065
+        y: 466
+        width: 34
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c782fd2b7ffa25260800000000000000
+      internalID: 7084918642199963772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_97
+      rect:
+        serializedVersion: 2
+        x: 907
+        y: 472
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e367a85349173ee0800000000000000
+      internalID: -1281527791922748445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_98
+      rect:
+        serializedVersion: 2
+        x: 925
+        y: 477
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2ed46698a6ce9630800000000000000
+      internalID: 3935801551748390445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_99
+      rect:
+        serializedVersion: 2
+        x: 928
+        y: 452
+        width: 37
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 406e18c16e465c560800000000000000
+      internalID: 7333378507726251524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_100
+      rect:
+        serializedVersion: 2
+        x: 950
+        y: 480
+        width: 14
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6342f8d9a35011df0800000000000000
+      internalID: -211381958200056778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_101
+      rect:
+        serializedVersion: 2
+        x: 962
+        y: 468
+        width: 18
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b08748a0619abc60800000000000000
+      internalID: 7834734346090545335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_102
+      rect:
+        serializedVersion: 2
+        x: 975
+        y: 468
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 212184ac231892cc0800000000000000
+      internalID: -3735312360785047022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_103
+      rect:
+        serializedVersion: 2
+        x: 988
+        y: 472
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09a02d5737f0cdb00800000000000000
+      internalID: 854575017865906832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_104
+      rect:
+        serializedVersion: 2
+        x: 1003
+        y: 476
+        width: 17
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d943645babc357b0800000000000000
+      internalID: -5236618004986115632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_105
+      rect:
+        serializedVersion: 2
+        x: 1018
+        y: 465
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8dd6dafb2aad41cb0800000000000000
+      internalID: -4894046502509515304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_106
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 479
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05e096356901d48c0800000000000000
+      internalID: -4013533455086711216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_107
+      rect:
+        serializedVersion: 2
+        x: 1104
+        y: 471
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a25359d2ad66b680800000000000000
+      internalID: -8739677480667622747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_108
+      rect:
+        serializedVersion: 2
+        x: 829
+        y: 216
+        width: 398
+        height: 251
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cafd98b5dd8d248e0800000000000000
+      internalID: -1710566463212232788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_109
+      rect:
+        serializedVersion: 2
+        x: 932
+        y: 454
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65d2372d385b085e0800000000000000
+      internalID: -1909326664228983466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_110
+      rect:
+        serializedVersion: 2
+        x: 965
+        y: 461
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1a59b37f5e9b2200800000000000000
+      internalID: 156392744875022874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_111
+      rect:
+        serializedVersion: 2
+        x: 981
+        y: 456
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6db8d68b94b4a48a0800000000000000
+      internalID: -6320156347062187050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_112
+      rect:
+        serializedVersion: 2
+        x: 998
+        y: 463
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5e61730fc00a6600800000000000000
+      internalID: 462182800874892893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_113
+      rect:
+        serializedVersion: 2
+        x: 1035
+        y: 460
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fe23321028abfa70800000000000000
+      internalID: 8861861547479346930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_114
+      rect:
+        serializedVersion: 2
+        x: 1053
+        y: 465
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88b07b564975f1be0800000000000000
+      internalID: -1504387455645185144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_115
+      rect:
+        serializedVersion: 2
+        x: 1086
+        y: 451
+        width: 20
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a3f94c9b1d82a750800000000000000
+      internalID: 6314764777252582312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CYAN Die_20260904145047_116
+      rect:
+        serializedVersion: 2
+        x: 1154
+        y: 452
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad6c13f081afd23f0800000000000000
+      internalID: -923807367300004134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      CYAN Die_20260904145047_0: -3054688816549930871
+      CYAN Die_20260904145047_1: 3570095016628530953
+      CYAN Die_20260904145047_10: -2863639303838378987
+      CYAN Die_20260904145047_100: -211381958200056778
+      CYAN Die_20260904145047_101: 7834734346090545335
+      CYAN Die_20260904145047_102: -3735312360785047022
+      CYAN Die_20260904145047_103: 854575017865906832
+      CYAN Die_20260904145047_104: -5236618004986115632
+      CYAN Die_20260904145047_105: -4894046502509515304
+      CYAN Die_20260904145047_106: -4013533455086711216
+      CYAN Die_20260904145047_107: -8739677480667622747
+      CYAN Die_20260904145047_108: -1710566463212232788
+      CYAN Die_20260904145047_109: -1909326664228983466
+      CYAN Die_20260904145047_11: -7346602419681289228
+      CYAN Die_20260904145047_110: 156392744875022874
+      CYAN Die_20260904145047_111: -6320156347062187050
+      CYAN Die_20260904145047_112: 462182800874892893
+      CYAN Die_20260904145047_113: 8861861547479346930
+      CYAN Die_20260904145047_114: -1504387455645185144
+      CYAN Die_20260904145047_115: 6314764777252582312
+      CYAN Die_20260904145047_116: -923807367300004134
+      CYAN Die_20260904145047_12: 124513947686226875
+      CYAN Die_20260904145047_13: -2150785140834156116
+      CYAN Die_20260904145047_14: -3305958862956772965
+      CYAN Die_20260904145047_15: 9167843338655926858
+      CYAN Die_20260904145047_16: -602736160949720786
+      CYAN Die_20260904145047_17: 4487930911549235869
+      CYAN Die_20260904145047_18: 923665155066740134
+      CYAN Die_20260904145047_19: -350824814445271505
+      CYAN Die_20260904145047_2: -1047148854967166183
+      CYAN Die_20260904145047_20: 8579233347676111871
+      CYAN Die_20260904145047_21: 7366054365524147317
+      CYAN Die_20260904145047_22: 6378221433960131511
+      CYAN Die_20260904145047_23: -4715364056576794294
+      CYAN Die_20260904145047_24: 3710491569920355837
+      CYAN Die_20260904145047_25: 187367779807851349
+      CYAN Die_20260904145047_26: 6303802601067483175
+      CYAN Die_20260904145047_27: -1478893146071985916
+      CYAN Die_20260904145047_28: -5195520423105903144
+      CYAN Die_20260904145047_29: -1597781455245614914
+      CYAN Die_20260904145047_3: 2104712917619020720
+      CYAN Die_20260904145047_30: 1543547692573938834
+      CYAN Die_20260904145047_31: 4723085026192353540
+      CYAN Die_20260904145047_32: 9187793809564547661
+      CYAN Die_20260904145047_33: -4971811359358893405
+      CYAN Die_20260904145047_34: -4499247193584291891
+      CYAN Die_20260904145047_35: -2596759096153127012
+      CYAN Die_20260904145047_36: 6724954076400780349
+      CYAN Die_20260904145047_37: 8221357516485670986
+      CYAN Die_20260904145047_38: -7876699973664146385
+      CYAN Die_20260904145047_39: 8868922857197105237
+      CYAN Die_20260904145047_4: 4766153952609093455
+      CYAN Die_20260904145047_40: -6648953352487027042
+      CYAN Die_20260904145047_41: -317597978078390451
+      CYAN Die_20260904145047_42: 1987250715710550307
+      CYAN Die_20260904145047_43: 8298379387762871424
+      CYAN Die_20260904145047_44: -7586963052310525704
+      CYAN Die_20260904145047_45: -2172487233693363327
+      CYAN Die_20260904145047_46: 5924006743356881385
+      CYAN Die_20260904145047_47: 6242182446223077345
+      CYAN Die_20260904145047_48: 2541906910861947294
+      CYAN Die_20260904145047_49: 1074120560905643024
+      CYAN Die_20260904145047_5: 2463707125521204718
+      CYAN Die_20260904145047_50: 4743419862350879349
+      CYAN Die_20260904145047_51: -7360771856655967157
+      CYAN Die_20260904145047_52: 3671524059941714152
+      CYAN Die_20260904145047_53: 4655091663054389371
+      CYAN Die_20260904145047_54: -7544276536796550081
+      CYAN Die_20260904145047_55: 4669511278253333495
+      CYAN Die_20260904145047_56: 246596109166343498
+      CYAN Die_20260904145047_57: 3027606953352075038
+      CYAN Die_20260904145047_58: 6238756525766315909
+      CYAN Die_20260904145047_59: 241316637833813896
+      CYAN Die_20260904145047_6: 7868359472311301290
+      CYAN Die_20260904145047_60: 2200288165945377940
+      CYAN Die_20260904145047_61: -4409924649266328448
+      CYAN Die_20260904145047_62: 2756733275740710245
+      CYAN Die_20260904145047_63: -8700971701832302495
+      CYAN Die_20260904145047_64: -3093901970327285346
+      CYAN Die_20260904145047_65: 5758949823005608944
+      CYAN Die_20260904145047_66: 3217895318394140048
+      CYAN Die_20260904145047_67: 365190951385802490
+      CYAN Die_20260904145047_68: 6144961914415961774
+      CYAN Die_20260904145047_69: 1121712670599272745
+      CYAN Die_20260904145047_7: 8569319101641469265
+      CYAN Die_20260904145047_70: 2495661940821659126
+      CYAN Die_20260904145047_71: 4353321260182698902
+      CYAN Die_20260904145047_72: 7791187638970968681
+      CYAN Die_20260904145047_73: -7723938111944491713
+      CYAN Die_20260904145047_74: 2629769517563226045
+      CYAN Die_20260904145047_75: 5678916033774271918
+      CYAN Die_20260904145047_76: -6053223898972440352
+      CYAN Die_20260904145047_77: -1949586280751932973
+      CYAN Die_20260904145047_78: 2238546605173749719
+      CYAN Die_20260904145047_79: 7048818235319880831
+      CYAN Die_20260904145047_8: 1115981714860578130
+      CYAN Die_20260904145047_80: -1561526100132508528
+      CYAN Die_20260904145047_81: 8984807371834461047
+      CYAN Die_20260904145047_82: -6778023134278974399
+      CYAN Die_20260904145047_83: -7981258531184593296
+      CYAN Die_20260904145047_84: -880460464308677195
+      CYAN Die_20260904145047_85: -1917404824150860584
+      CYAN Die_20260904145047_86: -7244564747534958029
+      CYAN Die_20260904145047_87: 5458395616643280900
+      CYAN Die_20260904145047_88: -6735828632795541843
+      CYAN Die_20260904145047_89: -580681676843914189
+      CYAN Die_20260904145047_9: -368659803738647193
+      CYAN Die_20260904145047_90: 5915217942658923298
+      CYAN Die_20260904145047_91: -1274108020774912627
+      CYAN Die_20260904145047_92: -465192584100584224
+      CYAN Die_20260904145047_93: -262011787298408861
+      CYAN Die_20260904145047_94: -8034525164447787775
+      CYAN Die_20260904145047_95: 488133236436276755
+      CYAN Die_20260904145047_96: 7084918642199963772
+      CYAN Die_20260904145047_97: -1281527791922748445
+      CYAN Die_20260904145047_98: 3935801551748390445
+      CYAN Die_20260904145047_99: 7333378507726251524
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
