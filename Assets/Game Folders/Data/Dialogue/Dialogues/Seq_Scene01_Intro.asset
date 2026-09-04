@@ -1,0 +1,107 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6add052c21c43bf41bb51c0c0ab645c8, type: 3}
+  m_Name: Seq_Scene01_Intro
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSequenceSO
+  sequenceId: 
+  nodes:
+  - speaker: {fileID: 11400000, guid: d3bd967f89970b347a3ce27b88cf8a2d, type: 2}
+    dialogueText: Halo?
+    expressionOverride: {fileID: 7183756925914522131, guid: cc148a10ca32d1244abf2b09e2ee8885, type: 3}
+    condition:
+      type: 0
+      storyFlag: 
+      comparison: 0
+      requiredChapter: 0
+    events: []
+  - speaker: {fileID: 11400000, guid: 1727147d3332f704ea685d03be657f39, type: 2}
+    dialogueText: ....
+    expressionOverride: {fileID: -8767658762658370944, guid: 55fe8061dc1dd224e85b8efd332ab202, type: 3}
+    condition:
+      type: 0
+      storyFlag: 
+      comparison: 0
+      requiredChapter: 0
+    events: []
+  - speaker: {fileID: 11400000, guid: 3ebdae62c75f00443b931544875bb3e9, type: 2}
+    dialogueText: Tidak ada jawaban untuk beberapa detik.)
+    expressionOverride: {fileID: 0}
+    condition:
+      type: 0
+      storyFlag: 
+      comparison: 0
+      requiredChapter: 0
+    events: []
+  - speaker: {fileID: 11400000, guid: 1727147d3332f704ea685d03be657f39, type: 2}
+    dialogueText: Apakah ini dengan Inara?
+    expressionOverride: {fileID: 0}
+    condition:
+      type: 0
+      storyFlag: 
+      comparison: 0
+      requiredChapter: 0
+    events: []
+  - speaker: {fileID: 11400000, guid: d3bd967f89970b347a3ce27b88cf8a2d, type: 2}
+    dialogueText: Iya. dengan saya sendiri.
+    expressionOverride: {fileID: 0}
+    condition:
+      type: 0
+      storyFlag: 
+      comparison: 0
+      requiredChapter: 0
+    events: []
+  - speaker: {fileID: 11400000, guid: 3ebdae62c75f00443b931544875bb3e9, type: 2}
+    dialogueText: "Kami dari rumah sakit\u2026"
+    expressionOverride: {fileID: 0}
+    condition:
+      type: 0
+      storyFlag: 
+      comparison: 0
+      requiredChapter: 0
+    events: []
+  - speaker: {fileID: 11400000, guid: 3ebdae62c75f00443b931544875bb3e9, type: 2}
+    dialogueText: Inara mulai memperhatikan percakapan itu dengan lebih serius
+    expressionOverride: {fileID: 0}
+    condition:
+      type: 0
+      storyFlag: 
+      comparison: 0
+      requiredChapter: 0
+    events: []
+  - speaker: {fileID: 11400000, guid: 1727147d3332f704ea685d03be657f39, type: 2}
+    dialogueText: Kami ingin menyampaikan kabar mengenai kakek Anda.
+    expressionOverride: {fileID: 0}
+    condition:
+      type: 0
+      storyFlag: 
+      comparison: 0
+      requiredChapter: 0
+    events: []
+  - speaker: {fileID: 11400000, guid: d3bd967f89970b347a3ce27b88cf8a2d, type: 2}
+    dialogueText: "\u2026Kakek?"
+    expressionOverride: {fileID: 0}
+    condition:
+      type: 0
+      storyFlag: 
+      comparison: 0
+      requiredChapter: 0
+    events: []
+  - speaker: {fileID: 11400000, guid: 1727147d3332f704ea685d03be657f39, type: 2}
+    dialogueText: "Maaf, kami sudah berusaha semaksimal mungkin\u2026"
+    expressionOverride: {fileID: 0}
+    condition:
+      type: 0
+      storyFlag: 
+      comparison: 0
+      requiredChapter: 0
+    events: []
+  completionEvents: []

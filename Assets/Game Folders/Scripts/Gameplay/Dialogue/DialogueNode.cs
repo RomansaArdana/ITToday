@@ -10,6 +10,9 @@ public class DialogueNode
     [TextArea(3, 6)]
     [SerializeField] private string dialogueText;
 
+    [Tooltip("Sprite ekspresi untuk node ini. Kosongkan = pakai Default Portrait karakter.")]
+    [SerializeField] private Sprite expressionOverride;
+
     [Header("Condition")]
     [SerializeField] private DialogueCondition condition = new DialogueCondition();
 
@@ -18,6 +21,7 @@ public class DialogueNode
 
     public DialogueCharacterSO Speaker => speaker;
     public string DialogueText => dialogueText;
+    public Sprite ExpressionOverride => expressionOverride;
     public DialogueCondition Condition => condition;
     public IReadOnlyList<DialogueEvent> Events => events;
 

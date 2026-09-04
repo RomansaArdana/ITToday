@@ -70,7 +70,7 @@ public class DialogueUI : MonoBehaviour
         DialogueCharacterSO character = node.Speaker;
 
         UpdateSpeaker(character);
-        UpdatePortrait(character);
+        UpdatePortrait(character, node.ExpressionOverride);
 
         if (dialogueText == null) return;
 
@@ -92,13 +92,16 @@ public class DialogueUI : MonoBehaviour
         speakerText.text = character != null ? character.DisplayName : string.Empty;
     }
 
-    private void UpdatePortrait(DialogueCharacterSO character)
+    private void UpdatePortrait(DialogueCharacterSO character, Sprite expressionOverride = null)
     {
         if (portraitImage == null) return;
 
-        Sprite portrait = character != null ? character.DefaultPortrait : null;
+        // Prioritas: expressionOverride > DefaultPortrait karakter
+        Sprite portrait = expressionOverride != null
+            ? expressionOverride
+            : (character != null ? character.DefaultPortrait : null);
 
-        portraitImage.sprite = portrait;
+        portraitImage.sprite  = portrait;
         portraitImage.enabled = portrait != null;
     }
 
