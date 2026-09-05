@@ -5,6 +5,7 @@ public class PlayerStatsSO : ScriptableObject
 {
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 4f;
+    [SerializeField] private float runSpeed = 6f;
     [SerializeField] private float acceleration = 20f;
     [SerializeField] private float deceleration = 25f;
 
@@ -33,6 +34,7 @@ public class PlayerStatsSO : ScriptableObject
     [SerializeField] private float interactionRange = 1.5f;
 
     public float MoveSpeed => moveSpeed;
+    public float RunSpeed => runSpeed;
     public float Acceleration => acceleration;
     public float Deceleration => deceleration;
 

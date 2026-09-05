@@ -11,6 +11,7 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
     [SerializeField] private InputActionReference crouchAction;
     [SerializeField] private InputActionReference attackAction;
     [SerializeField] private InputActionReference cloakAction;
+    [SerializeField] private InputActionReference runAction;
 
     public Vector2 MoveInput { get; private set; }
 
@@ -25,6 +26,7 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
     public bool CrouchHeld { get; private set; }
     public bool AttackHeld { get; private set; }
 
+    public bool RunHeld => runAction != null && runAction.action.IsPressed();
     public bool IsInteractHeld => interactAction != null && interactAction.action.IsPressed();
 
     private void OnEnable()
@@ -54,6 +56,7 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
         crouchAction?.action.Enable();
         attackAction?.action.Enable();
         cloakAction?.action.Enable();
+        runAction?.action.Enable();
     }
 
     private void DisableActions()
@@ -65,6 +68,7 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
         crouchAction?.action.Disable();
         attackAction?.action.Disable();
         cloakAction?.action.Disable();
+        runAction?.action.Disable();
     }
 
     private void SubscribeActions()
@@ -81,7 +85,8 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
             hideAction.action.canceled += OnHideCanceled;
         }
 
-        if (jumpAction != null) jumpAction.action.performed += OnJumpPerformed;
+        if (jumpAction != null)
+            jumpAction.action.performed += OnJumpPerformed;
 
         if (crouchAction != null)
         {
@@ -95,7 +100,8 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
             attackAction.action.canceled += OnAttackCanceled;
         }
 
-        if (cloakAction != null) cloakAction.action.performed += OnCloakPerformed;
+        if (cloakAction != null)
+            cloakAction.action.performed += OnCloakPerformed;
     }
 
     private void UnsubscribeActions()
@@ -112,7 +118,8 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
             hideAction.action.canceled -= OnHideCanceled;
         }
 
-        if (jumpAction != null) jumpAction.action.performed -= OnJumpPerformed;
+        if (jumpAction != null)
+            jumpAction.action.performed -= OnJumpPerformed;
 
         if (crouchAction != null)
         {
@@ -126,7 +133,8 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
             attackAction.action.canceled -= OnAttackCanceled;
         }
 
-        if (cloakAction != null) cloakAction.action.performed -= OnCloakPerformed;
+        if (cloakAction != null)
+            cloakAction.action.performed -= OnCloakPerformed;
     }
 
     private void OnInteractPerformed(InputAction.CallbackContext context) { InteractPressed = true; InteractHeld = true; }

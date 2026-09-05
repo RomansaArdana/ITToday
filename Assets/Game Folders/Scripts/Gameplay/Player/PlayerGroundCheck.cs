@@ -10,6 +10,9 @@ public class PlayerGroundCheck : MonoBehaviour
     [SerializeField] private float checkDistance = 0.12f;
     [SerializeField, Range(0.5f, 1f)] private float checkWidth = 0.85f;
 
+    [Header("References")]
+    [SerializeField] private PlayerAnimator playerAnimator;
+
     [Header("Debug")]
     [SerializeField] private bool showGizmo = true;
 
@@ -19,6 +22,7 @@ public class PlayerGroundCheck : MonoBehaviour
     {
         if (playerCollider == null) playerCollider = GetComponent<Collider2D>();
         if (groundLayer.value == 0) groundLayer = ~0;
+        if (playerAnimator == null) playerAnimator = GetComponent<PlayerAnimator>();
     }
 
     private void Update()
@@ -53,6 +57,9 @@ public class PlayerGroundCheck : MonoBehaviour
         }
 
         IsGrounded = hitGround;
+
+        // Kirim status grounded ke Animator agar transisi Idle/Jump berfungsi
+        if (playerAnimator != null) playerAnimator.SetGrounded(IsGrounded);
     }
 
     private void OnDrawGizmosSelected()

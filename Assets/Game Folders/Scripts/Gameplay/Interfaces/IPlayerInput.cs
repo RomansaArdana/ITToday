@@ -10,4 +10,5 @@ public interface IPlayerInput
     bool AttackHeld { get; }
     bool CloakPressed { get; }
     bool CrouchHeld { get; }
+    bool RunHeld { get; }
 }

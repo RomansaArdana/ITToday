@@ -5,6 +5,9 @@ public class PlayerLanternAttack : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GameObject lanternObject;
+    [SerializeField] private PlayerAnimator playerAnimator;
+    [SerializeField] private PlayerCloakOfInvisibility cloak;
+    [SerializeField] private PlayerMovement playerMovement;
 
     [Header("Attack")]
     [SerializeField] private float damageAmount = 1f;
@@ -17,9 +20,9 @@ public class PlayerLanternAttack : MonoBehaviour
     [SerializeField] private bool showAttackGizmo = true;
 
     private IPlayerInput input;
-
     private float cooldownTimer;
     private float baseAttackRadius;
+    private bool isAttacking;
 
     private void Awake()
     {
@@ -28,16 +31,18 @@ public class PlayerLanternAttack : MonoBehaviour
         if (input == null)
             Debug.LogError("[PlayerLanternAttack] IPlayerInput tidak ditemukan.", this);
 
-        if (lanternObject != null) lanternObject.SetActive(false);
+        playerAnimator ??= GetComponent<PlayerAnimator>();
+        cloak ??= GetComponent<PlayerCloakOfInvisibility>();
+        playerMovement ??= GetComponent<PlayerMovement>();
+
+        if (lanternObject != null)
+            lanternObject.SetActive(false);
 
         cooldownTimer = 0f;
         baseAttackRadius = attackRadius;
+        isAttacking = false;
     }
 
-    /// <summary>
-    /// Dipanggil oleh UpgradeManager saat Lantern AOE upgrade dibeli.
-    /// Menerima bonus total kumulatif (bukan delta) agar tidak menumpuk saat di-apply ulang.
-    /// </summary>
     public void SetAttackRadiusBonus(float bonusRadius)
     {
         attackRadius = baseAttackRadius + bonusRadius;
@@ -53,7 +58,8 @@ public class PlayerLanternAttack : MonoBehaviour
         UpdateCooldown();
         UpdateLanternVisual();
 
-        if (input.AttackPressed) TryAttack();
+        if (input.AttackPressed)
+            TryAttack();
     }
 
     private void UpdateCooldown()
@@ -62,25 +68,58 @@ public class PlayerLanternAttack : MonoBehaviour
 
         cooldownTimer -= Time.deltaTime;
 
-        if (cooldownTimer < 0f) cooldownTimer = 0f;
+        if (cooldownTimer < 0f)
+            cooldownTimer = 0f;
     }
 
     private void UpdateLanternVisual()
     {
         if (lanternObject == null) return;
+
         lanternObject.SetActive(input.AttackHeld);
     }
 
     private void TryAttack()
     {
+        if (isAttacking)
+            return;
+
         if (cooldownTimer > 0f)
         {
-            if (enableDebugLog) Debug.Log($"[Lantern] Cooldown {cooldownTimer:F2}s", this);
+            if (enableDebugLog)
+                Debug.Log($"[Lantern] Cooldown {cooldownTimer:F2}s", this);
+
             return;
         }
 
+        isAttacking = true;
+
+        if (playerAnimator != null)
+        {
+            playerAnimator.SetAttacking(true);
+            playerAnimator.TriggerAttack();
+        }
+
+        if (playerMovement != null)
+            playerMovement.SetMovementLocked(true);
+
+        if (cloak != null && cloak.IsCloaked)
+            cloak.ForceDeactivate();
+
         FireLantern();
+
         cooldownTimer = Mathf.Max(0f, attackCooldown);
+    }
+
+    public void EndAttack()
+    {
+        isAttacking = false;
+
+        if (playerAnimator != null)
+            playerAnimator.SetAttacking(false);
+
+        if (playerMovement != null)
+            playerMovement.SetMovementLocked(false);
     }
 
     private void FireLantern()
@@ -106,21 +145,28 @@ public class PlayerLanternAttack : MonoBehaviour
 
             if (target == null)
             {
-                if (enableDebugLog) Debug.Log($"[Lantern] No Target → {hit.name}", this);
+                if (enableDebugLog)
+                    Debug.Log($"[Lantern] No Target → {hit.name}", this);
+
                 continue;
             }
 
-            if (!targets.Add(target)) continue;
+            if (!targets.Add(target))
+                continue;
 
-            if (target.TryReceiveLanternHit(damageAmount)) successfulHits++;
+            if (target.TryReceiveLanternHit(damageAmount))
+                successfulHits++;
         }
 
-        if (enableDebugLog) Debug.Log($"[Lantern] Result → {successfulHits} hit", this);
+        if (enableDebugLog)
+            Debug.Log($"[Lantern] Result → {successfulHits} hit", this);
     }
 
     private Vector2 GetAttackOrigin()
     {
-        if (lanternObject != null) return lanternObject.transform.position;
+        if (lanternObject != null)
+            return lanternObject.transform.position;
+
         return transform.position;
     }
 
