@@ -9319,6 +9319,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6633693710186657264, guid: d7908851bc0662c4daa348a2a27428f3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6669750403708161100, guid: d7908851bc0662c4daa348a2a27428f3, type: 3}
+      propertyPath: enableDebugLog
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6895481413015824514, guid: d7908851bc0662c4daa348a2a27428f3, type: 3}
       propertyPath: respawnPoint
       value: 
@@ -9391,6 +9399,10 @@ PrefabInstance:
     - target: {fileID: 8394413401283783914, guid: f646eb6e3601adb49a00f2aec1e3a818, type: 3}
       propertyPath: m_Name
       value: Enemy_Purple
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394413401283783914, guid: f646eb6e3601adb49a00f2aec1e3a818, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9071958571269707417, guid: f646eb6e3601adb49a00f2aec1e3a818, type: 3}
       propertyPath: playerStealth
