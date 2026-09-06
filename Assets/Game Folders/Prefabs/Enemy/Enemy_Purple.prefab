@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 701575943872162498}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.25, z: 0}
+  m_LocalPosition: {x: -0.137, y: 0.318, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -87,7 +87,7 @@ Transform:
   m_GameObject: {fileID: 3940983034524377246}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0, z: 0}
+  m_LocalPosition: {x: 0.542, y: 0.843, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -160,7 +160,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.1462183, y: 1.2095845}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -170,7 +170,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 0.5}
+  m_Size: {x: 1.3795547, y: 1.776783}
   m_EdgeRadius: 0
 --- !u!114 &1273256170319379593
 MonoBehaviour:
@@ -202,6 +202,7 @@ GameObject:
   - component: {fileID: 7602286663560968498}
   - component: {fileID: 302640270306109654}
   - component: {fileID: 199769558742098969}
+  - component: {fileID: 8032885154526577379}
   m_Layer: 8
   m_Name: Body
   m_TagString: Untagged
@@ -273,7 +274,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 3625043607559282579, guid: 19fb86013d8c24d6cb8410c0aadf30fa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5bb2a4ae78d8bf74b8459abb8563b7fa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -317,18 +318,40 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.14509964, y: 1.2273077}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 0.5}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 5, y: 2.8125}
     newSize: {x: 1, y: 0.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 0.5}
+  m_Size: {x: 1.387187, y: 1.8309357}
   m_EdgeRadius: 0
+--- !u!95 &8032885154526577379
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7993483974177100330}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: de7be9b48d5e95f4c899ca728d94179a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8332084774795932066
 GameObject:
   m_ObjectHideFlags: 0
@@ -354,7 +377,7 @@ Transform:
   m_GameObject: {fileID: 8332084774795932066}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.25, z: 0}
+  m_LocalPosition: {x: -0.138, y: 0.3131, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -384,6 +407,7 @@ GameObject:
   - component: {fileID: 6298478828240378162}
   - component: {fileID: 1802378444399455361}
   - component: {fileID: 4842090878736744738}
+  - component: {fileID: -8922426603224086903}
   m_Layer: 8
   m_Name: Enemy_Purple
   m_TagString: Untagged
@@ -547,11 +571,10 @@ MonoBehaviour:
   stateController: {fileID: 7048654362312625786}
   behaviourController: {fileID: 3217723882103809654}
   rb: {fileID: 2424349410021082899}
+  animator: {fileID: 8032885154526577379}
   disableCollidersOnDeath: 1
   makeRigidbodyKinematicOnDeath: 1
-  fadeOutOnDeath: 1
-  fadeDuration: 0.8
-  destroyAfterFade: 1
+  fallbackDestroyDelay: 1.5
 --- !u!114 &3917785494855610344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -682,4 +705,20 @@ MonoBehaviour:
   flashAlpha: 0.8
   audioSource: {fileID: 0}
   jumpscareClip: {fileID: 0}
+  enableDebugLog: 0
+--- !u!114 &-8922426603224086903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8394413401283783914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f147b73c33591a4dba7ef33da2ddbde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAnimator
+  animator: {fileID: 8032885154526577379}
+  stateController: {fileID: 7048654362312625786}
+  enemyController: {fileID: 3085702116503374506}
   enableDebugLog: 0

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class EnemyStateController : MonoBehaviour
@@ -21,6 +22,8 @@ public class EnemyStateController : MonoBehaviour
     public bool IsDead => currentState == EnemyState.Dead;
     public bool CanBehave => currentState != EnemyState.Dead;
 
+    public event Action<EnemyState, EnemyState> OnStateChanged;
+
     public void SetState(EnemyState newState)
     {
         if (currentState == newState) return;
@@ -29,13 +32,11 @@ public class EnemyStateController : MonoBehaviour
         EnemyState previousState = currentState;
         currentState = newState;
 
-        OnStateChanged(previousState, newState);
+        NotifyStateChanged(previousState, newState);
     }
 
-    private void OnStateChanged(EnemyState previousState, EnemyState newState)
+    private void NotifyStateChanged(EnemyState previousState, EnemyState newState)
     {
-        // State transition hook.
-        // Akan digunakan untuk animation,
-        // VFX, audio, dan combat state nanti.
+        OnStateChanged?.Invoke(previousState, newState);
     }
 }
