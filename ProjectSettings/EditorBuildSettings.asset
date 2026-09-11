@@ -11,6 +11,27 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Game Folders/Scenes/Gameplay.unity
     guid: f280f7626cac45b48ace3a147758447f
+  - enabled: 1
+    path: Assets/Game Folders/Scenes/Story/01 Prologue_Graveyard.unity
+    guid: 02d9f592a35092446975710628223727
+  - enabled: 1
+    path: Assets/Game Folders/Scenes/Story/02 Limbo_Train.unity
+    guid: 57d1939bb8f674a4b9b7e11738796606
+  - enabled: 1
+    path: Assets/Game Folders/Scenes/Story/03 Chapter01_Hatred.unity
+    guid: a59f9e7842ff9c748a09d77259ede2ce
+  - enabled: 1
+    path: Assets/Game Folders/Scenes/Story/04 Chapter02_Regret.unity
+    guid: 99b40f27390c6d142ba45de85cdf33e7
+  - enabled: 1
+    path: Assets/Game Folders/Scenes/Story/05 Chapter03_Loneliness.unity
+    guid: 2d03c2bfcf752f940915fa0cc8903b9d
+  - enabled: 1
+    path: Assets/Game Folders/Scenes/Story/06 Chapter04_Fear.unity
+    guid: 6db3d728a91285e4eb1f158de0b485e3
+  - enabled: 1
+    path: Assets/Game Folders/Scenes/Story/07 Final_TheSelf.unity
+    guid: ce20ee86faba14b4384abe919dc0b2fc
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
