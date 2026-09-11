@@ -1,10 +1,22 @@
 fileFormatVersion: 2
-guid: dec1f59afb3697c489b2b31b3054f6a5
+guid: 28bd58578b4fab3458d11d3d340e312e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6554736390298987251
-    second: cursor_0
+      213: 1289793067613605143
+    second: top frame_0
+  - first:
+      213: -1109830743164807425
+    second: top frame_1
+  - first:
+      213: -8440826819842688140
+    second: top frame_2
+  - first:
+      213: 2628824072304332519
+    second: top frame_3
+  - first:
+      213: 8119624091094498283
+    second: top frame_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -24,7 +36,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 1
+  isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -57,7 +69,7 @@ TextureImporter:
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 7
+  textureType: 8
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -113,13 +125,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: cursor_0
+      name: top frame_0
       rect:
         serializedVersion: 2
-        x: 225
-        y: 198
-        width: 1085
-        height: 1000
+        x: 1262
+        y: 38
+        width: 153
+        height: 148
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +140,96 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3fae81cb40a17fa50800000000000000
-      internalID: 6554736390298987251
+      spriteID: 71dcedc16f346e110800000000000000
+      internalID: 1289793067613605143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: top frame_1
+      rect:
+        serializedVersion: 2
+        x: 1406
+        y: 9
+        width: 479
+        height: 216
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff69ad8b1d61990f0800000000000000
+      internalID: -1109830743164807425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: top frame_2
+      rect:
+        serializedVersion: 2
+        x: 1898
+        y: 38
+        width: 58
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47bbfa09ab82cda80800000000000000
+      internalID: -8440826819842688140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: top frame_3
+      rect:
+        serializedVersion: 2
+        x: 1970
+        y: 9
+        width: 479
+        height: 216
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ee02bec0957b7420800000000000000
+      internalID: 2628824072304332519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: top frame_4
+      rect:
+        serializedVersion: 2
+        x: 2441
+        y: 38
+        width: 153
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: beb346b5713bea070800000000000000
+      internalID: 8119624091094498283
       vertices: []
       indices: 
       edges: []
@@ -148,7 +248,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      cursor_0: 6554736390298987251
+      top frame_0: 1289793067613605143
+      top frame_1: -1109830743164807425
+      top frame_2: -8440826819842688140
+      top frame_3: 2628824072304332519
+      top frame_4: 8119624091094498283
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

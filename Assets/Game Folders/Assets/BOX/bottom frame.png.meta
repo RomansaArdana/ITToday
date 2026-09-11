@@ -1,10 +1,22 @@
 fileFormatVersion: 2
-guid: dec1f59afb3697c489b2b31b3054f6a5
+guid: a0bf50108f1a6ba4984e1a678b4f6897
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6554736390298987251
-    second: cursor_0
+      213: 8827168342569868755
+    second: bottom frame_0
+  - first:
+      213: 3226830023397491170
+    second: bottom frame_1
+  - first:
+      213: -1880198459092171578
+    second: bottom frame_2
+  - first:
+      213: 3978877742580684844
+    second: bottom frame_3
+  - first:
+      213: -2535629999831748134
+    second: bottom frame_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -24,7 +36,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 1
+  isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -57,7 +69,7 @@ TextureImporter:
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 7
+  textureType: 8
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -113,13 +125,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: cursor_0
+      name: bottom frame_0
       rect:
         serializedVersion: 2
-        x: 225
-        y: 198
-        width: 1085
-        height: 1000
+        x: 1262
+        y: 38
+        width: 153
+        height: 148
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +140,96 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3fae81cb40a17fa50800000000000000
-      internalID: 6554736390298987251
+      spriteID: 3dd5377d6d6608a70800000000000000
+      internalID: 8827168342569868755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bottom frame_1
+      rect:
+        serializedVersion: 2
+        x: 1406
+        y: 9
+        width: 479
+        height: 216
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e14c2f4fc008cc20800000000000000
+      internalID: 3226830023397491170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bottom frame_2
+      rect:
+        serializedVersion: 2
+        x: 1898
+        y: 38
+        width: 58
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c40392967138e5e0800000000000000
+      internalID: -1880198459092171578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bottom frame_3
+      rect:
+        serializedVersion: 2
+        x: 1970
+        y: 9
+        width: 479
+        height: 216
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c28da33d930d73730800000000000000
+      internalID: 3978877742580684844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bottom frame_4
+      rect:
+        serializedVersion: 2
+        x: 2441
+        y: 38
+        width: 153
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad1743213f1afccd0800000000000000
+      internalID: -2535629999831748134
       vertices: []
       indices: 
       edges: []
@@ -148,7 +248,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      cursor_0: 6554736390298987251
+      bottom frame_0: 8827168342569868755
+      bottom frame_1: 3226830023397491170
+      bottom frame_2: -1880198459092171578
+      bottom frame_3: 3978877742580684844
+      bottom frame_4: -2535629999831748134
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
