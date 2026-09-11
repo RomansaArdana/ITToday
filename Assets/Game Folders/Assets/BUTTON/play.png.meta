@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: cb31e08111f28e549884c69b9b363bb7
+guid: ea12558c06410554790b95e821488ac3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1541194891591685983
-    second: gerbong kereta_0
+      213: 3794550611322748858
+    second: play_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 128
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: gerbong kereta_0
+      name: play_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 5700
-        height: 2160
+        x: 225
+        y: 240
+        width: 1042
+        height: 1151
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1a8e70569639c9ae0800000000000000
-      internalID: -1541194891591685983
+      spriteID: abf32263da3f8a430800000000000000
+      internalID: 3794550611322748858
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      gerbong kereta_0: -1541194891591685983
+      play_0: 3794550611322748858
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
