@@ -2280,6 +2280,11 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.0541659, y: 0.30145693}
   m_EdgeRadius: 0
+--- !u!20 &533198565 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 9048132361861771677, guid: 05b7fa0e53bf9e24f81e9798915330a5, type: 3}
+  m_PrefabInstance: {fileID: 6365607197141500485}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &564456168
 GameObject:
   m_ObjectHideFlags: 0
@@ -3101,6 +3106,8 @@ Transform:
   - {fileID: 1256112740}
   - {fileID: 160877386}
   - {fileID: 1049398808}
+  - {fileID: 938032613}
+  - {fileID: 2137585153}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &720711922
@@ -3997,6 +4004,74 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 883364081}
   m_CullTransparentMesh: 1
+--- !u!1 &938032612
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 938032613}
+  - component: {fileID: 938032614}
+  m_Layer: 0
+  m_Name: Audio Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &938032613
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938032612}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 720711921}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &938032614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938032612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f0e23f69d7615e4ba95a0f992951b7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManager
+  musicSource: {fileID: 0}
+  sfxSource: {fileID: 0}
+  otherSfxSource: {fileID: 0}
+  music1: {fileID: 0}
+  music2: {fileID: 0}
+  buttonClickSFX: {fileID: 0}
+  jumpSFX: {fileID: 8300000, guid: d1c42931c8a0fbe49a980f47f830c814, type: 3}
+  footstep1SFX: {fileID: 0}
+  footstep2SFX: {fileID: 0}
+  dead1SFX: {fileID: 8300000, guid: 90ea5107ca5f5fd47bb034ecc73e7d06, type: 3}
+  dead2SFX: {fileID: 8300000, guid: e99dbedbd88c6d04d9a6779cb76ce781, type: 3}
+  attackSFX: {fileID: 8300000, guid: facc3e256120f9c4a911f003675a7211, type: 3}
+  hit1SFX: {fileID: 8300000, guid: 4ffd4f5897db4584481c50db1719ce09, type: 3}
+  hit2SFX: {fileID: 8300000, guid: db0940bac81e0e049bd8f211c776eb67, type: 3}
+  hit3SFX: {fileID: 8300000, guid: d291ac8761d7fc141a5aa9cc976b6cb0, type: 3}
+  crySFX: {fileID: 8300000, guid: 4ebc4dd2a8a9b6248b48d8b5f3f0873b, type: 3}
+  scene2CryingSFX: {fileID: 0}
+  allEvilInaraSFX: {fileID: 0}
+  endingSFX: {fileID: 0}
+  otherSfxClip: {fileID: 0}
+  playOtherSfxOnStart: 0
+  otherSfxVolume: 0.5
+  otherSfxVolumeStep: 0.1
+  mainMenuSceneName: Main Menu
 --- !u!1 &955303867
 GameObject:
   m_ObjectHideFlags: 0
@@ -8508,7 +8583,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8558263046549898525, guid: d7908851bc0662c4daa348a2a27428f3, type: 3}
   m_PrefabInstance: {fileID: 1450256245}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2017944194}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e9ccb289de4a87409424df12ee6f97c, type: 3}
@@ -8519,7 +8594,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5597169068426567719, guid: d7908851bc0662c4daa348a2a27428f3, type: 3}
   m_PrefabInstance: {fileID: 1450256245}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2017944194}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9fa1a01ae70a6fd43afbe723f6013fa1, type: 3}
@@ -8530,7 +8605,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 708214938168839777, guid: d7908851bc0662c4daa348a2a27428f3, type: 3}
   m_PrefabInstance: {fileID: 1450256245}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2017944194}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9fa8e2977fb66c499345565ebb508e6, type: 3}
@@ -8541,7 +8616,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3646885907657463267, guid: d7908851bc0662c4daa348a2a27428f3, type: 3}
   m_PrefabInstance: {fileID: 1450256245}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2017944194}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e7bd0fc43b2f5004eb9df14d9bef6e21, type: 3}
@@ -9006,6 +9081,11 @@ Transform:
   - {fileID: 507334561}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2017944194 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6633693710186657264, guid: d7908851bc0662c4daa348a2a27428f3, type: 3}
+  m_PrefabInstance: {fileID: 1450256245}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2042223277
 GameObject:
   m_ObjectHideFlags: 0
@@ -9391,6 +9471,98 @@ Transform:
   m_Children: []
   m_Father: {fileID: 255574405}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2137585152
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2137585153}
+  - component: {fileID: 2137585154}
+  - component: {fileID: 2137585155}
+  m_Layer: 0
+  m_Name: Cutscene Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2137585153
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2137585152}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 720711921}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!328 &2137585154
+VideoPlayer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2137585152}
+  m_Enabled: 1
+  m_VideoClip: {fileID: 32900000, guid: ab25c62db9be5ea419f8b743296be03c, type: 3}
+  m_TargetCameraAlpha: 1
+  m_TargetCamera3DLayout: 0
+  m_TargetCamera: {fileID: 533198565}
+  m_TargetTexture: {fileID: 0}
+  m_TimeReference: 0
+  m_TargetMaterialRenderer: {fileID: 0}
+  m_TargetMaterialProperty: <noninit>
+  m_RenderMode: 1
+  m_AspectRatio: 2
+  m_DataSource: 0
+  m_TimeUpdateMode: 2
+  m_PlaybackSpeed: 1
+  m_AudioOutputMode: 2
+  m_TargetAudioSources:
+  - {fileID: 0}
+  m_DirectAudioVolumes:
+  - 1
+  m_Url: 
+  m_EnabledAudioTracks: 01
+  m_DirectAudioMutes: 00
+  m_ControlledAudioTrackCount: 1
+  m_PlayOnAwake: 1
+  m_SkipOnDrop: 1
+  m_Looping: 0
+  m_WaitForFirstFrame: 1
+  m_FrameReadyEventEnabled: 0
+  m_VideoShaders: []
+--- !u!114 &2137585155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2137585152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ce9d2fe8e3b934478982e081c168bca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VideoSequencePlayer
+  videoClips:
+  - {fileID: 32900000, guid: ab25c62db9be5ea419f8b743296be03c, type: 3}
+  - {fileID: 32900000, guid: 4046f5858bcce8649b3bd0ece4e4589b, type: 3}
+  - {fileID: 32900000, guid: 6d15e0f7323efc849ac43ecba67c3998, type: 3}
+  - {fileID: 32900000, guid: 9ceca5922cf84ce4dbf384081684aa57, type: 3}
+  - {fileID: 32900000, guid: f427afda2cdf68b459e02ce8bcbce59e, type: 3}
+  nextSceneName: 02_1 Limbo_Train
+  skipKey: 32
+  skipDirectlyToNextScene: 0
+  uiCanvasToHide: {fileID: 1722553304}
+  playerToDisable: {fileID: 2017944194}
 --- !u!1001 &6365607197141500485
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -12,6 +12,8 @@ public class StoryManager : MonoBehaviour
 
     public int CurrentChapter => currentChapter;
 
+    public event System.Action<string> OnFlagSet;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -33,6 +35,7 @@ public class StoryManager : MonoBehaviour
     {
         if (string.IsNullOrEmpty(flag)) return;
         storyFlags.Add(flag);
+        OnFlagSet?.Invoke(flag);
     }
 
     public void RemoveFlag(string flag)

@@ -1,0 +1,128 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6add052c21c43bf41bb51c0c0ab645c8, type: 3}
+  m_Name: NPC_4_Train_Sequence
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSequenceSO
+  sequenceId: npc_1_train
+  nodes:
+  - speaker: {fileID: 11400000, guid: d3bd967f89970b347a3ce27b88cf8a2d, type: 2}
+    dialogueText: Pak, boleh saya bertanya?
+    expressionOverride: {fileID: 223627637099618448, guid: 6500d52933bd048499922e1b89647c8e, type: 3}
+    condition:
+      type: 0
+      storyFlag: 
+      comparison: 0
+      requiredChapter: 0
+    events: []
+  - speaker: {fileID: 11400000, guid: 527b7253e5ca955489c64f76c7efec59, type: 2}
+    dialogueText: Tentu saja, silahkan.
+    expressionOverride: {fileID: 6508987712515940887, guid: 649254f3bfaf531479a9856b02c09413, type: 3}
+    condition:
+      type: 0
+      storyFlag: 
+      comparison: 0
+      requiredChapter: 0
+    events: []
+  - speaker: {fileID: 11400000, guid: d3bd967f89970b347a3ce27b88cf8a2d, type: 2}
+    dialogueText: Bapak tahu kita ada di mana?
+    expressionOverride: {fileID: 223627637099618448, guid: 6500d52933bd048499922e1b89647c8e, type: 3}
+    condition:
+      type: 0
+      storyFlag: 
+      comparison: 0
+      requiredChapter: 0
+    events: []
+  - speaker: {fileID: 11400000, guid: 527b7253e5ca955489c64f76c7efec59, type: 2}
+    dialogueText: Tidak.
+    expressionOverride: {fileID: 8580352971482666360, guid: b9122e518dd9bec449c5de177d767ef2, type: 3}
+    condition:
+      type: 0
+      storyFlag: 
+      comparison: 0
+      requiredChapter: 0
+    events: []
+  - speaker: {fileID: 11400000, guid: 527b7253e5ca955489c64f76c7efec59, type: 2}
+    dialogueText: Tidak ada seorang pun yang tahu.
+    expressionOverride: {fileID: -8383666342748661558, guid: e029c4ab7fc904047b3877b8a04f0a16, type: 3}
+    condition:
+      type: 0
+      storyFlag: 
+      comparison: 0
+      requiredChapter: 0
+    events: []
+  - speaker: {fileID: 11400000, guid: 527b7253e5ca955489c64f76c7efec59, type: 2}
+    dialogueText: Awalnya aku pikir ini hanya mimpi.
+    expressionOverride: {fileID: -8383666342748661558, guid: e029c4ab7fc904047b3877b8a04f0a16, type: 3}
+    condition:
+      type: 0
+      storyFlag: 
+      comparison: 0
+      requiredChapter: 0
+    events: []
+  - speaker: {fileID: 11400000, guid: d3bd967f89970b347a3ce27b88cf8a2d, type: 2}
+    dialogueText: Bapak juga baru bangun di sini?
+    expressionOverride: {fileID: -4944894298416476600, guid: cb452091b90b1c04ab74e0b01f0aee65, type: 3}
+    condition:
+      type: 0
+      storyFlag: 
+      comparison: 0
+      requiredChapter: 0
+    events: []
+  - speaker: {fileID: 11400000, guid: 527b7253e5ca955489c64f76c7efec59, type: 2}
+    dialogueText: Yahh, tidak juga, aku sudah lumayan lama disini
+    expressionOverride: {fileID: 3936200948609718305, guid: 58b04d02e1ce26643add04424986b129, type: 3}
+    condition:
+      type: 0
+      storyFlag: 
+      comparison: 0
+      requiredChapter: 0
+    events: []
+  - speaker: {fileID: 11400000, guid: d3bd967f89970b347a3ce27b88cf8a2d, type: 2}
+    dialogueText: Lalu kenapa semua orang diam saja?
+    expressionOverride: {fileID: 223627637099618448, guid: 6500d52933bd048499922e1b89647c8e, type: 3}
+    condition:
+      type: 0
+      storyFlag: 
+      comparison: 0
+      requiredChapter: 0
+    events: []
+  - speaker: {fileID: 11400000, guid: 527b7253e5ca955489c64f76c7efec59, type: 2}
+    dialogueText: Mungkin karena mereka sudah tahu.
+    expressionOverride: {fileID: -929348601906150387, guid: d02c933a5232e8e4185cd859c47b623c, type: 3}
+    condition:
+      type: 0
+      storyFlag: 
+      comparison: 0
+      requiredChapter: 0
+    events: []
+  - speaker: {fileID: 11400000, guid: d3bd967f89970b347a3ce27b88cf8a2d, type: 2}
+    dialogueText: Tahu apa?
+    expressionOverride: {fileID: 5737514126605579083, guid: 8f1c6526591aa4843b0fc16f52092506, type: 3}
+    condition:
+      type: 0
+      storyFlag: 
+      comparison: 0
+      requiredChapter: 0
+    events: []
+  - speaker: {fileID: 11400000, guid: 3ebdae62c75f00443b931544875bb3e9, type: 2}
+    dialogueText: Pria tua itu tidak langsung menjawab.
+    expressionOverride: {fileID: 0}
+    condition:
+      type: 0
+      storyFlag: 
+      comparison: 0
+      requiredChapter: 0
+    events: []
+  completionEvents:
+  - type: 0
+    storyFlag: train_npc_1
+    chapter: 0

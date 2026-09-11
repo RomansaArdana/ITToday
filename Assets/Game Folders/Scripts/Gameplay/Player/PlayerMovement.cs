@@ -8,6 +8,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private PlayerStateController stateController;
     [SerializeField] private PlayerStealth stealth;
     [SerializeField] private PlayerAnimator playerAnimator;
+    [SerializeField] private PlayerGroundCheck groundCheck;
+
+    [Header("Footsteps")]
+    [SerializeField] private float walkFootstepInterval = 1f;
+    [SerializeField] private float runFootstepInterval = 0.7f;
+    private float footstepTimer;
 
     [Header("Facing")]
     [SerializeField] private bool facingRight = true;
@@ -28,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
         if (stateController == null) stateController = GetComponent<PlayerStateController>();
         if (stealth == null) stealth = GetComponent<PlayerStealth>();
         if (playerAnimator == null) playerAnimator = GetComponent<PlayerAnimator>();
+        if (groundCheck == null) groundCheck = GetComponent<PlayerGroundCheck>();
         ApplyFacing();
     }
 
@@ -65,6 +72,28 @@ public class PlayerMovement : MonoBehaviour
         rb.linearVelocity = new Vector2(currentVelocityX, rb.linearVelocity.y);
 
         UpdateAnimationSpeed(isRunning, movementMultiplier);
+
+        // ── Footstep SFX ──────────────────────────────────────────────
+        HandleFootsteps(hasMovementInput, isRunning);
+    }
+
+    private void HandleFootsteps(bool isMoving, bool isRunning)
+    {
+        // Hanya bunyi kalau bergerak dan menyentuh tanah
+        if (isMoving && groundCheck != null && groundCheck.IsGrounded && !movementLocked)
+        {
+            footstepTimer -= Time.fixedDeltaTime;
+            if (footstepTimer <= 0f)
+            {
+                AudioManager.Instance?.PlayFootstep();
+                footstepTimer = isRunning ? runFootstepInterval : walkFootstepInterval;
+            }
+        }
+        else
+        {
+            // Reset timer biar pas mulai jalan langsung bunyi
+            footstepTimer = 0f;
+        }
     }
 
     private void UpdateAnimationSpeed(bool isRunning, float movementMultiplier)
