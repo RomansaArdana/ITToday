@@ -89,6 +89,9 @@ public class PlayerDeathHandler : MonoBehaviour
 
         playerDeath.Die();
 
+        // ── SFX ───────────────────────────────────────────────────────────────
+        AudioManager.Instance?.PlayRandomDeath();
+
         if (!canRespawn)
         {
             Log("Attempt habis → GAME OVER");

@@ -1,0 +1,130 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6add052c21c43bf41bb51c0c0ab645c8, type: 3}
+  m_Name: NPC_1_Train_Sequence
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSequenceSO
+  sequenceId: npc_1_train
+  nodes:
+  - speaker: {fileID: 11400000, guid: d3bd967f89970b347a3ce27b88cf8a2d, type: 2}
+    dialogueText: "Permisi\u2026"
+    expressionOverride: {fileID: 5737514126605579083, guid: 8f1c6526591aa4843b0fc16f52092506, type: 3}
+    condition:
+      type: 0
+      storyFlag: 
+      comparison: 0
+      requiredChapter: 0
+    events: []
+  - speaker: {fileID: 11400000, guid: 737310d58d7dfb9418c238a6ff3db456, type: 2}
+    dialogueText: Ya?
+    expressionOverride: {fileID: -2562284749457044318, guid: 611167558d09bdf4c998244c0dc301e8, type: 3}
+    condition:
+      type: 0
+      storyFlag: 
+      comparison: 0
+      requiredChapter: 0
+    events: []
+  - speaker: {fileID: 11400000, guid: d3bd967f89970b347a3ce27b88cf8a2d, type: 2}
+    dialogueText: apakah saya boleh tau kni kereta apa dan kemana arah tujuannya
+      ?
+    expressionOverride: {fileID: 223627637099618448, guid: 6500d52933bd048499922e1b89647c8e, type: 3}
+    condition:
+      type: 0
+      storyFlag: 
+      comparison: 0
+      requiredChapter: 0
+    events: []
+  - speaker: {fileID: 11400000, guid: 737310d58d7dfb9418c238a6ff3db456, type: 2}
+    dialogueText: Aku juga tidak tahu
+    expressionOverride: {fileID: 8675867906145623229, guid: ff81ca5e000c0b645af22ea0a102ad85, type: 3}
+    condition:
+      type: 0
+      storyFlag: 
+      comparison: 0
+      requiredChapter: 0
+    events: []
+  - speaker: {fileID: 11400000, guid: d3bd967f89970b347a3ce27b88cf8a2d, type: 2}
+    dialogueText: Maksudnya bagaimana?
+    expressionOverride: {fileID: 223627637099618448, guid: 6500d52933bd048499922e1b89647c8e, type: 3}
+    condition:
+      type: 0
+      storyFlag: 
+      comparison: 0
+      requiredChapter: 0
+    events: []
+  - speaker: {fileID: 11400000, guid: 737310d58d7dfb9418c238a6ff3db456, type: 2}
+    dialogueText: Ketika aku membuka mata, aku sudah berada di sini.
+    expressionOverride: {fileID: 3453587238851151643, guid: acd5c015c251a60478ec7de95dbd7550, type: 3}
+    condition:
+      type: 0
+      storyFlag: 
+      comparison: 0
+      requiredChapter: 0
+    events: []
+  - speaker: {fileID: 11400000, guid: d3bd967f89970b347a3ce27b88cf8a2d, type: 2}
+    dialogueText: Tidak ada yang mengantar kalian sama sekali?
+    expressionOverride: {fileID: 223627637099618448, guid: 6500d52933bd048499922e1b89647c8e, type: 3}
+    condition:
+      type: 0
+      storyFlag: 
+      comparison: 0
+      requiredChapter: 0
+    events: []
+  - speaker: {fileID: 11400000, guid: 737310d58d7dfb9418c238a6ff3db456, type: 2}
+    dialogueText: Tidak,tidak ada sama sekali.
+    expressionOverride: {fileID: 3453587238851151643, guid: acd5c015c251a60478ec7de95dbd7550, type: 3}
+    condition:
+      type: 0
+      storyFlag: 
+      comparison: 0
+      requiredChapter: 0
+    events: []
+  - speaker: {fileID: 11400000, guid: 737310d58d7dfb9418c238a6ff3db456, type: 2}
+    dialogueText: Aku sudah mencoba bertanya kepada penumpang lain. Tidak ada yang
+      tahu dari mana kereta ini datang.
+    expressionOverride: {fileID: 3453587238851151643, guid: acd5c015c251a60478ec7de95dbd7550, type: 3}
+    condition:
+      type: 0
+      storyFlag: 
+      comparison: 0
+      requiredChapter: 0
+    events: []
+  - speaker: {fileID: 11400000, guid: 737310d58d7dfb9418c238a6ff3db456, type: 2}
+    dialogueText: "Katanya\u2026 kita akan tahu ketika kereta berhenti."
+    expressionOverride: {fileID: 3453587238851151643, guid: acd5c015c251a60478ec7de95dbd7550, type: 3}
+    condition:
+      type: 0
+      storyFlag: 
+      comparison: 0
+      requiredChapter: 0
+    events: []
+  - speaker: {fileID: 11400000, guid: d3bd967f89970b347a3ce27b88cf8a2d, type: 2}
+    dialogueText: "\u2018Kita\u2019?"
+    expressionOverride: {fileID: 223627637099618448, guid: 6500d52933bd048499922e1b89647c8e, type: 3}
+    condition:
+      type: 0
+      storyFlag: 
+      comparison: 0
+      requiredChapter: 0
+    events: []
+  - speaker: {fileID: 11400000, guid: 737310d58d7dfb9418c238a6ff3db456, type: 2}
+    dialogueText: Kalau memang masih ada tempat untuk kita pergi.
+    expressionOverride: {fileID: -2562284749457044318, guid: 611167558d09bdf4c998244c0dc301e8, type: 3}
+    condition:
+      type: 0
+      storyFlag: 
+      comparison: 0
+      requiredChapter: 0
+    events: []
+  completionEvents:
+  - type: 0
+    storyFlag: train_npc_1
+    chapter: 0

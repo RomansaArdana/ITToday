@@ -85,6 +85,9 @@ public class PlayerJump : MonoBehaviour
         velocity.y = jumpForce;
         rb.linearVelocity = velocity;
 
+        // ── SFX ───────────────────────────────────────────────────────────────
+        AudioManager.Instance?.PlaySFX("jump");
+
         if (enableDebugLog) Debug.Log("[PlayerJump] JUMP", this);
     }
 

@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6add052c21c43bf41bb51c0c0ab645c8, type: 3}
+  m_Name: NPC_2_Train_Sequence
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSequenceSO
+  sequenceId: npc_1_train
+  nodes:
+  - speaker: {fileID: 11400000, guid: c01f88dce34295042ac54d06e18cf6b7, type: 2}
+    dialogueText: ada apa kak?
+    expressionOverride: {fileID: -5486096369605667429, guid: 10b6eeba849cd9949a7d808584d306cf, type: 3}
+    condition:
+      type: 0
+      storyFlag: 
+      comparison: 0
+      requiredChapter: 0
+    events: []
+  - speaker: {fileID: 11400000, guid: d3bd967f89970b347a3ce27b88cf8a2d, type: 2}
+    dialogueText: apakah kamu mengetahui kemana kita akan pergi?
+    expressionOverride: {fileID: 5737514126605579083, guid: 8f1c6526591aa4843b0fc16f52092506, type: 3}
+    condition:
+      type: 0
+      storyFlag: 
+      comparison: 0
+      requiredChapter: 0
+    events: []
+  - speaker: {fileID: 11400000, guid: c01f88dce34295042ac54d06e18cf6b7, type: 2}
+    dialogueText: dia akan memberitahumu
+    expressionOverride: {fileID: -5654572625980309766, guid: ef10f1f7a9dc9ec4c9032f74357f1e4b, type: 3}
+    condition:
+      type: 0
+      storyFlag: 
+      comparison: 0
+      requiredChapter: 0
+    events: []
+  - speaker: {fileID: 11400000, guid: 3ebdae62c75f00443b931544875bb3e9, type: 2}
+    dialogueText: Inara semakin kebingungan
+    expressionOverride: {fileID: 0}
+    condition:
+      type: 0
+      storyFlag: 
+      comparison: 0
+      requiredChapter: 0
+    events: []
+  - speaker: {fileID: 11400000, guid: d3bd967f89970b347a3ce27b88cf8a2d, type: 2}
+    dialogueText: Dia siapa?
+    expressionOverride: {fileID: 223627637099618448, guid: 6500d52933bd048499922e1b89647c8e, type: 3}
+    condition:
+      type: 0
+      storyFlag: 
+      comparison: 0
+      requiredChapter: 0
+    events: []
+  - speaker: {fileID: 11400000, guid: 3ebdae62c75f00443b931544875bb3e9, type: 2}
+    dialogueText: anak kecil tersebut kembali memantulkan bola nya, enggan menjawab
+      pertanyaan Inara
+    expressionOverride: {fileID: 0}
+    condition:
+      type: 0
+      storyFlag: 
+      comparison: 0
+      requiredChapter: 0
+    events: []
+  completionEvents:
+  - type: 0
+    storyFlag: train_npc_1
+    chapter: 0

@@ -136,6 +136,9 @@ public class PlayerLanternAttack : MonoBehaviour
 
         isAttacking = true;
 
+        // ── SFX ───────────────────────────────────────────────────
+        AudioManager.Instance?.PlaySFX("attack");
+
         if (playerAnimator != null)
         {
             playerAnimator.SetAttacking(true);

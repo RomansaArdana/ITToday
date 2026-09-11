@@ -68,4 +68,13 @@ public class PlayerAnimator : MonoBehaviour
         if (animator == null) return;
         animator.SetTrigger(ParamSanityLost);
     }
+
+    // Dipanggil melalui Animation Event dari tab Animation pada frame di mana kaki menginjak tanah
+    public void PlayFootstepSound()
+    {
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayFootstep();
+        }
+    }
 }

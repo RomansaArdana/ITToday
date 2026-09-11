@@ -2789,6 +2789,7 @@ Transform:
   - {fileID: 1256112740}
   - {fileID: 160877386}
   - {fileID: 1049398808}
+  - {fileID: 2085241648}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &720711922
@@ -8698,6 +8699,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2070022596}
   m_CullTransparentMesh: 1
+--- !u!1 &2085241647
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2085241648}
+  - component: {fileID: 2085241649}
+  m_Layer: 0
+  m_Name: Audio Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2085241648
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085241647}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 720711921}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2085241649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085241647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f0e23f69d7615e4ba95a0f992951b7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManager
+  musicSource: {fileID: 0}
+  sfxSource: {fileID: 0}
+  music1: {fileID: 0}
+  music2: {fileID: 0}
+  attackSFX: {fileID: 8300000, guid: facc3e256120f9c4a911f003675a7211, type: 3}
+  hit1SFX: {fileID: 8300000, guid: 4ffd4f5897db4584481c50db1719ce09, type: 3}
+  hit2SFX: {fileID: 8300000, guid: db0940bac81e0e049bd8f211c776eb67, type: 3}
+  hit3SFX: {fileID: 8300000, guid: d291ac8761d7fc141a5aa9cc976b6cb0, type: 3}
+  jumpSFX: {fileID: 8300000, guid: d1c42931c8a0fbe49a980f47f830c814, type: 3}
+  dead1SFX: {fileID: 8300000, guid: 90ea5107ca5f5fd47bb034ecc73e7d06, type: 3}
+  dead2SFX: {fileID: 8300000, guid: e99dbedbd88c6d04d9a6779cb76ce781, type: 3}
+  crySFX: {fileID: 8300000, guid: 4ebc4dd2a8a9b6248b48d8b5f3f0873b, type: 3}
+  scene2CryingSFX: {fileID: 0}
+  allEvilInaraSFX: {fileID: 0}
+  endingSFX: {fileID: 0}
+  buttonClickSFX: {fileID: 0}
+  mainMenuSceneName: Main Menu
 --- !u!1 &2087991583
 GameObject:
   m_ObjectHideFlags: 0
