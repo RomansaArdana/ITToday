@@ -145,7 +145,11 @@ public class PlayerLanternAttack : MonoBehaviour
 
             if (target == null)
             {
-                if (enableDebugLog)
+                // Cek apakah ini hitbox boss Evil Inara
+                EvilInaraDamageReceiver bossTarget = hit.GetComponentInParent<EvilInaraDamageReceiver>();
+                if (bossTarget != null && bossTarget.TryReceiveLanternHit(damageAmount))
+                    successfulHits++;
+                else if (enableDebugLog)
                     Debug.Log($"[Lantern] No Target → {hit.name}", this);
 
                 continue;

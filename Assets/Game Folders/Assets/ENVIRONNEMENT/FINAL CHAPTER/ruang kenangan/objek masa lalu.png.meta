@@ -1,0 +1,910 @@
+fileFormatVersion: 2
+guid: 2552c1b3f6f483e40a02c06a8a09bba7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5223324336576211806
+    second: objek masa lalu_0
+  - first:
+      213: -65451778540949584
+    second: objek masa lalu_1
+  - first:
+      213: 5725662273201464089
+    second: objek masa lalu_2
+  - first:
+      213: 75792384280983285
+    second: objek masa lalu_3
+  - first:
+      213: 7382120519911239486
+    second: objek masa lalu_4
+  - first:
+      213: 4997734932991790096
+    second: objek masa lalu_5
+  - first:
+      213: -3142136011314425541
+    second: objek masa lalu_6
+  - first:
+      213: 7051018814148416199
+    second: objek masa lalu_7
+  - first:
+      213: -3273263355769503189
+    second: objek masa lalu_8
+  - first:
+      213: -2472412030734784163
+    second: objek masa lalu_9
+  - first:
+      213: 7675818270940005738
+    second: objek masa lalu_10
+  - first:
+      213: 315508212097098726
+    second: objek masa lalu_11
+  - first:
+      213: -7170244390571667185
+    second: objek masa lalu_12
+  - first:
+      213: 6447661736132470259
+    second: objek masa lalu_13
+  - first:
+      213: -8426390578464329024
+    second: objek masa lalu_14
+  - first:
+      213: -5808191472226827609
+    second: objek masa lalu_15
+  - first:
+      213: 8468721374004546594
+    second: objek masa lalu_16
+  - first:
+      213: 5703156747780640179
+    second: objek masa lalu_17
+  - first:
+      213: 5095256301721369354
+    second: objek masa lalu_18
+  - first:
+      213: 6402867659596579669
+    second: objek masa lalu_19
+  - first:
+      213: -569492041274831182
+    second: objek masa lalu_20
+  - first:
+      213: -6903698612792950373
+    second: objek masa lalu_21
+  - first:
+      213: -1699663312717605707
+    second: objek masa lalu_22
+  - first:
+      213: -830186940938344541
+    second: objek masa lalu_23
+  - first:
+      213: 9159452760629645656
+    second: objek masa lalu_24
+  - first:
+      213: 5395954697624701881
+    second: objek masa lalu_25
+  - first:
+      213: 3972257758194826264
+    second: objek masa lalu_26
+  - first:
+      213: -1158524862041992928
+    second: objek masa lalu_27
+  - first:
+      213: 7738964786747613837
+    second: objek masa lalu_28
+  - first:
+      213: 455312608250425370
+    second: objek masa lalu_29
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: objek masa lalu_0
+      rect:
+        serializedVersion: 2
+        x: 1074
+        y: 296
+        width: 501
+        height: 613
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a4d8b3b0360387b0800000000000000
+      internalID: -5223324336576211806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objek masa lalu_1
+      rect:
+        serializedVersion: 2
+        x: 1278
+        y: 895
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0bf262644f7771ff0800000000000000
+      internalID: -65451778540949584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objek masa lalu_2
+      rect:
+        serializedVersion: 2
+        x: 1347
+        y: 891
+        width: 33
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 913670a6083a57f40800000000000000
+      internalID: 5725662273201464089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objek masa lalu_3
+      rect:
+        serializedVersion: 2
+        x: 1347
+        y: 891
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f67fbd95c44d0100800000000000000
+      internalID: 75792384280983285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objek masa lalu_4
+      rect:
+        serializedVersion: 2
+        x: 1352
+        y: 890
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3f6e6e208f827660800000000000000
+      internalID: 7382120519911239486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objek masa lalu_5
+      rect:
+        serializedVersion: 2
+        x: 1360
+        y: 887
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01c498241758b5540800000000000000
+      internalID: 4997734932991790096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objek masa lalu_6
+      rect:
+        serializedVersion: 2
+        x: 1385
+        y: 891
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3114a902f3e464d0800000000000000
+      internalID: -3142136011314425541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objek masa lalu_7
+      rect:
+        serializedVersion: 2
+        x: 1390
+        y: 888
+        width: 18
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c299e9e0404ad160800000000000000
+      internalID: 7051018814148416199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objek masa lalu_8
+      rect:
+        serializedVersion: 2
+        x: 1408
+        y: 894
+        width: 28
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b224e0702580392d0800000000000000
+      internalID: -3273263355769503189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objek masa lalu_9
+      rect:
+        serializedVersion: 2
+        x: 1097
+        y: 723
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d59a6a18b5a30bdd0800000000000000
+      internalID: -2472412030734784163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objek masa lalu_10
+      rect:
+        serializedVersion: 2
+        x: 1551
+        y: 695
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6505d79c0cf58a60800000000000000
+      internalID: 7675818270940005738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objek masa lalu_11
+      rect:
+        serializedVersion: 2
+        x: 1593
+        y: 296
+        width: 254
+        height: 503
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e324c91c09e06400800000000000000
+      internalID: 315508212097098726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objek masa lalu_12
+      rect:
+        serializedVersion: 2
+        x: 1576
+        y: 713
+        width: 13
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f011d3367bc2e7c90800000000000000
+      internalID: -7170244390571667185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objek masa lalu_13
+      rect:
+        serializedVersion: 2
+        x: 2029
+        y: 296
+        width: 256
+        height: 419
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f5ed061032ba7950800000000000000
+      internalID: 6447661736132470259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objek masa lalu_14
+      rect:
+        serializedVersion: 2
+        x: 1095
+        y: 703
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c27fefe9627f0b80800000000000000
+      internalID: -8426390578464329024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objek masa lalu_15
+      rect:
+        serializedVersion: 2
+        x: 1572
+        y: 702
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a2877e01a8256fa0800000000000000
+      internalID: -5808191472226827609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objek masa lalu_16
+      rect:
+        serializedVersion: 2
+        x: 1566
+        y: 688
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22c8c4f6831f68570800000000000000
+      internalID: 8468721374004546594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objek masa lalu_17
+      rect:
+        serializedVersion: 2
+        x: 1574
+        y: 679
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3bd46d178dea52f40800000000000000
+      internalID: 5703156747780640179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objek masa lalu_18
+      rect:
+        serializedVersion: 2
+        x: 1580
+        y: 691
+        width: 13
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0b3caf4c9cf5b640800000000000000
+      internalID: 5095256301721369354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objek masa lalu_19
+      rect:
+        serializedVersion: 2
+        x: 1095
+        y: 676
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 553471a663e8bd850800000000000000
+      internalID: 6402867659596579669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objek masa lalu_20
+      rect:
+        serializedVersion: 2
+        x: 1570
+        y: 671
+        width: 6
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2bec6697102c818f0800000000000000
+      internalID: -569492041274831182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objek masa lalu_21
+      rect:
+        serializedVersion: 2
+        x: 1576
+        y: 659
+        width: 11
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b918e1460b22130a0800000000000000
+      internalID: -6903698612792950373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objek masa lalu_22
+      rect:
+        serializedVersion: 2
+        x: 1094
+        y: 661
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b414b7e8359968e0800000000000000
+      internalID: -1699663312717605707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objek masa lalu_23
+      rect:
+        serializedVersion: 2
+        x: 1567
+        y: 654
+        width: 10
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a7a33030659a74f0800000000000000
+      internalID: -830186940938344541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objek masa lalu_24
+      rect:
+        serializedVersion: 2
+        x: 1585
+        y: 667
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8511d46c1c9ec1f70800000000000000
+      internalID: 9159452760629645656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objek masa lalu_25
+      rect:
+        serializedVersion: 2
+        x: 2534
+        y: 629
+        width: 97
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9bb4500653842ea40800000000000000
+      internalID: 5395954697624701881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objek masa lalu_26
+      rect:
+        serializedVersion: 2
+        x: 1097
+        y: 655
+        width: 6
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81cfd79926b402730800000000000000
+      internalID: 3972257758194826264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objek masa lalu_27
+      rect:
+        serializedVersion: 2
+        x: 1574
+        y: 634
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 021578ea6c71cefe0800000000000000
+      internalID: -1158524862041992928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objek masa lalu_28
+      rect:
+        serializedVersion: 2
+        x: 1097
+        y: 618
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8229538873566b60800000000000000
+      internalID: 7738964786747613837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objek masa lalu_29
+      rect:
+        serializedVersion: 2
+        x: 2446
+        y: 296
+        width: 249
+        height: 282
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a10f584a768915600800000000000000
+      internalID: 455312608250425370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      objek masa lalu_0: -5223324336576211806
+      objek masa lalu_1: -65451778540949584
+      objek masa lalu_10: 7675818270940005738
+      objek masa lalu_11: 315508212097098726
+      objek masa lalu_12: -7170244390571667185
+      objek masa lalu_13: 6447661736132470259
+      objek masa lalu_14: -8426390578464329024
+      objek masa lalu_15: -5808191472226827609
+      objek masa lalu_16: 8468721374004546594
+      objek masa lalu_17: 5703156747780640179
+      objek masa lalu_18: 5095256301721369354
+      objek masa lalu_19: 6402867659596579669
+      objek masa lalu_2: 5725662273201464089
+      objek masa lalu_20: -569492041274831182
+      objek masa lalu_21: -6903698612792950373
+      objek masa lalu_22: -1699663312717605707
+      objek masa lalu_23: -830186940938344541
+      objek masa lalu_24: 9159452760629645656
+      objek masa lalu_25: 5395954697624701881
+      objek masa lalu_26: 3972257758194826264
+      objek masa lalu_27: -1158524862041992928
+      objek masa lalu_28: 7738964786747613837
+      objek masa lalu_29: 455312608250425370
+      objek masa lalu_3: 75792384280983285
+      objek masa lalu_4: 7382120519911239486
+      objek masa lalu_5: 4997734932991790096
+      objek masa lalu_6: -3142136011314425541
+      objek masa lalu_7: 7051018814148416199
+      objek masa lalu_8: -3273263355769503189
+      objek masa lalu_9: -2472412030734784163
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

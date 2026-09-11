@@ -1,0 +1,92 @@
+======================================================
+         DOKUMENTASI SCRIPT PROJECT ITToday
+======================================================
+Deskripsi: 
+File ini berisi ringkasan fungsionalitas dari semua script 
+yang ada di dalam folder "Scripts" pada project ini. 
+Project ini merupakan game 2D/3D petualangan/platformer 
+dengan elemen stealth, sanity (kesehatan mental), puzzle, dan shop.
+
+------------------------------------------------------
+1. FOLDER: Audio
+------------------------------------------------------
+- Mengatur sistem efek suara (SFX) dan musik latar (BGM).
+
+------------------------------------------------------
+2. FOLDER: Camera
+------------------------------------------------------
+- Mengatur pergerakan kamera, seperti mengikuti pergerakan player.
+
+------------------------------------------------------
+3. FOLDER: Core / General
+------------------------------------------------------
+- Kumpulan script inti yang mengatur state global game, alur permainan, transisi scene, dan Game Over (seperti GameOverManager.cs).
+
+------------------------------------------------------
+4. FOLDER: Gameplay
+------------------------------------------------------
+a. Checkpoint & Respawn
+   - Mengatur titik simpan (checkpoint) dan mengembalikan player ke titik tersebut ketika mati.
+
+b. Collectibles
+   - Script untuk item-item yang tersebar di map dan bisa diambil.
+
+c. Dialogue
+   - DialogueManager.cs: Memproses teks percakapan antara player dengan NPC beserta UI-nya.
+
+d. Enemy (Sistem Musuh)
+   - EnemyStateController.cs & EnemyState.cs: Menggunakan sistem State Machine (FSM) untuk mengatur AI musuh (Patrol, Chase, Attack).
+   - EnemyStatsSO.cs: Menyimpan data statistik musuh (Scriptable Object).
+   - EnemyReference: Menyimpan berbagai referensi perilaku untuk musuh berdasarkan tipe/warna (Blue, Cyan, Purple, Red).
+
+e. Interaction (Sistem Interaksi)
+   - InteractableBase, NPCInteractable, ObjectInteractable: Base script agar player bisa mendeteksi dan berinteraksi dengan benda atau NPC.
+
+f. Interfaces
+   - Kontrak blueprint (berawalan huruf "I") agar code lebih rapi. Contoh:
+     - IDamageable.cs (bisa menerima damage)
+     - IHideable.cs (tempat untuk bersembunyi)
+     - IInteractable.cs (bisa berinteraksi)
+     - ISanity.cs (berhubungan dengan sanity/kewarasan)
+
+g. Inventory
+   - InventoryManager.cs: Mengelola penyimpanan item milik player.
+
+h. Memory
+   - MemorySO.cs, MemoryInteractable.cs: Sistem koleksi memori yang berhubungan dengan jalan cerita.
+
+i. Player (Sistem Karakter Utama)
+   - PlayerController.cs & PlayerMovement.cs: Input dan pergerakan utama.
+   - Aksi Platformer: PlayerJump, PlayerCrouch, PlayerGroundCheck.
+   - Mekanik Spesifik: PlayerStealth (sembunyi), PlayerCloakOfInvisibility (jubah gaib), PlayerLanternAttack (serangan lentera).
+   - State & Status: PlayerStateController, PlayerStatsSO, PlayerLife, PlayerDeath, PlayerRespawn.
+
+j. Puzzle (Teka-Teki Rintangan)
+   - Mekanik Teka-Teki Lingkungan: DraggableObject (benda yang bisa ditarik), Lever (tuas), FlickeringLight.
+   - Mekanik Rintangan: WaterHazard, WaterDrainPuzzle, ThornsDestroyer, TimedFloatingBridge, ShadowRaycastChecker.
+
+k. Sanity (Sistem Kewarasan)
+   - SanityController, SanityLevel: Mengurus nilai kewarasan player (bisa naik/turun layaknya HP).
+   - Efek Visual & UI: SanityBarUI, SanityScreenEffect.
+
+l. Shop (Toko & Upgrade)
+   - UI & Interaksi: ShopkeeperInteractable, ShopUI.
+   - Sistem Transaksi & Upgrade: TokenManager (uang), UpgradeManager, UpgradeDataSO, UpgradeType.
+
+m. Story
+   - StoryManager.cs: Mengatur alur (progress) cerita dari permainan.
+
+------------------------------------------------------
+5. FOLDER: Main Menu
+------------------------------------------------------
+- Kumpulan script untuk navigasi halaman User Interface (UI) di luar gameplay utama.
+- CanvasManager, MenuCanvasManager: Pengatur utama layar.
+- Halaman UI: InfoPage, LevelPage, MenuPage, SettingPage.
+
+======================================================
+Catatan Developer:
+Arsitektur project ini sudah sangat terstruktur (Clean Code):
+1. Memakai State Machine Pattern (State & StateController) pada Player dan Enemy.
+2. Memakai Interface (IInteractable, IDamageable) sehingga script saling lepas (decoupled).
+3. Memakai Scriptable Objects (*SO.cs) untuk menyimpan data (Stat, Memory, Upgrade) sehingga menghemat memori.
+======================================================

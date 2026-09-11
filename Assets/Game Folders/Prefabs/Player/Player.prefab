@@ -139,10 +139,11 @@ Transform:
   m_GameObject: {fileID: 4837768959394461059}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.58, y: 1.84, z: 0}
+  m_LocalPosition: {x: 1.9, y: 2.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3159985546600185775}
   - {fileID: 8528367659239816615}
   m_Father: {fileID: 2472150287959503671}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -172,11 +173,10 @@ Transform:
   m_GameObject: {fileID: 5350780427859156117}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.75, y: 0, z: 0}
+  m_LocalPosition: {x: -1.23, y: 0.13, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 3159985546600185775}
+  m_Children: []
   m_Father: {fileID: 5459939452620216200}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3367972184350969197
@@ -195,8 +195,8 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 0.9245283, g: 0.69810295, b: 0.14391243, a: 1}
+  m_Intensity: 5
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -5181,6 +5181,7 @@ GameObject:
   - component: {fileID: 8558263046549898525}
   - component: {fileID: 2488807359007838028}
   - component: {fileID: 3550441425361031586}
+  - component: {fileID: 4717886108126919599}
   - component: {fileID: 474359623196411163}
   m_Layer: 6
   m_Name: Player
@@ -5642,6 +5643,27 @@ MonoBehaviour:
   ceilingCheckMargin: 0.05
   ceilingCheckWidth: 0.8
   showGizmo: 1
+--- !u!114 &4717886108126919599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6633693710186657264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 923bd0f2cd68dbe49a50f5755097a5cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossChanceController
+  playerLife: {fileID: 8342906990555732861}
+  playerDeathHandler: {fileID: 6669750403708161100}
+  playerAnimator: {fileID: 474359623196411163}
+  invulnerabilityDuration: 2
+  maxChances: 3
+  enableScreenShake: 1
+  shakeDuration: 0.3
+  shakeMagnitude: 0.25
+  enableDebugLog: 0
 --- !u!114 &474359623196411163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5681,11 +5703,11 @@ Transform:
   m_GameObject: {fileID: 6706159648604690603}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.59000003, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8528367659239816615}
+  m_Father: {fileID: 5459939452620216200}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &1529318708954437647
 CircleCollider2D:
