@@ -1300,7 +1300,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8453481970903652736, guid: ec49a1eb2a0521a478622bd452822e81, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2016212002}
   m_SourcePrefab: {fileID: 100100000, guid: ec49a1eb2a0521a478622bd452822e81, type: 3}
 --- !u!1 &240752473
 GameObject:
@@ -1520,6 +1523,11 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &284816275 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2115685989690126808, guid: 87e4e4699e0880042ad05f7940b8c9a0, type: 3}
+  m_PrefabInstance: {fileID: 584439191}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &296803888
 GameObject:
   m_ObjectHideFlags: 0
@@ -2366,6 +2374,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 569152208}
   m_CullTransparentMesh: 1
+--- !u!1 &572818645 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7515755238594326342, guid: b52385c90a5835245be1e21e2d1d3765, type: 3}
+  m_PrefabInstance: {fileID: 2051899436}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &584439191
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2380,7 +2393,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3082885318764409261, guid: 87e4e4699e0880042ad05f7940b8c9a0, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3082885318764409261, guid: 87e4e4699e0880042ad05f7940b8c9a0, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7953208062599453074, guid: 87e4e4699e0880042ad05f7940b8c9a0, type: 3}
       propertyPath: m_LocalScale.x
@@ -2433,7 +2450,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2115685989690126808, guid: 87e4e4699e0880042ad05f7940b8c9a0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 881041916}
   m_SourcePrefab: {fileID: 100100000, guid: 87e4e4699e0880042ad05f7940b8c9a0, type: 3}
 --- !u!1 &585908484
 GameObject:
@@ -2963,6 +2983,7 @@ Transform:
   - {fileID: 160877386}
   - {fileID: 1049398808}
   - {fileID: 2035016633}
+  - {fileID: 876482658}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &720711922
@@ -3642,11 +3663,96 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 871269697}
   m_CullTransparentMesh: 1
+--- !u!1 &876482657
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 876482658}
+  - component: {fileID: 876482659}
+  m_Layer: 0
+  m_Name: TrainQuestManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &876482658
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876482657}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 720711921}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &876482659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876482657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f53738ed67c29b94785169f26664a1f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TrainQuestManager
+  requiredFlags:
+  - train_npc_1
+  - train_npc_2
+  - train_npc_3
+  - train_npc_4
+  OnAllNPCsInteracted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 876482659}
+        m_TargetAssemblyTypeName: TrainQuestManager, Assembly-CSharp
+        m_MethodName: LoadNextScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 02_2 Limbo_Station
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &881041914 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7953208062599453074, guid: 87e4e4699e0880042ad05f7940b8c9a0, type: 3}
   m_PrefabInstance: {fileID: 584439191}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &881041916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 284816275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a24b9e8d9fc58ec44abec782aaaa1a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
+  interactionEnabled: 1
+  dialogues:
+  - sequence: {fileID: 11400000, guid: 508bb0b21b93b5e4485336b95325a461, type: 2}
+    condition:
+      type: 0
+      storyFlag: 
+      comparison: 0
+      requiredChapter: 0
+  enableDebugLog: 0
 --- !u!1 &883364081
 GameObject:
   m_ObjectHideFlags: 0
@@ -4269,7 +4375,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 0}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -4301,8 +4407,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 629.1245, y: 216}
-  m_SizeDelta: {x: 200, y: 200}
+  m_AnchoredPosition: {x: 601, y: 306}
+  m_SizeDelta: {x: 400, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1023238118
 GameObject:
@@ -5057,7 +5163,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3904020040247650452, guid: ac46a26e77cf54b42988ad405f9af426, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1999443535}
   m_SourcePrefab: {fileID: 100100000, guid: ac46a26e77cf54b42988ad405f9af426, type: 3}
 --- !u!1 &1230731645
 GameObject:
@@ -5136,6 +5245,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1230731645}
   m_CullTransparentMesh: 1
+--- !u!1 &1231253705 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8453481970903652736, guid: ec49a1eb2a0521a478622bd452822e81, type: 3}
+  m_PrefabInstance: {fileID: 236345717}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1254393120
 GameObject:
   m_ObjectHideFlags: 0
@@ -5947,6 +6061,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1408720324}
   m_CullTransparentMesh: 1
+--- !u!1 &1412094486 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3904020040247650452, guid: ac46a26e77cf54b42988ad405f9af426, type: 3}
+  m_PrefabInstance: {fileID: 1200524208}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1445677714
 GameObject:
   m_ObjectHideFlags: 0
@@ -6725,6 +6844,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7485355954789253169, guid: b52385c90a5835245be1e21e2d1d3765, type: 3}
   m_PrefabInstance: {fileID: 2051899436}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1612709776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 572818645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a24b9e8d9fc58ec44abec782aaaa1a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
+  interactionEnabled: 1
+  dialogues:
+  - sequence: {fileID: 11400000, guid: 409b1d3d1efa20c4f9e864c45debaaf0, type: 2}
+    condition:
+      type: 0
+      storyFlag: 
+      comparison: 0
+      requiredChapter: 0
+  enableDebugLog: 0
 --- !u!1 &1624111455
 GameObject:
   m_ObjectHideFlags: 0
@@ -8743,6 +8883,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4497876387510726903, guid: ac46a26e77cf54b42988ad405f9af426, type: 3}
   m_PrefabInstance: {fileID: 1200524208}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1999443535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1412094486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a24b9e8d9fc58ec44abec782aaaa1a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
+  interactionEnabled: 1
+  dialogues:
+  - sequence: {fileID: 11400000, guid: fce950c8227befd4ba57aefd80af3c9b, type: 2}
+    condition:
+      type: 0
+      storyFlag: 
+      comparison: 0
+      requiredChapter: 0
+  enableDebugLog: 0
 --- !u!1 &2006210672
 GameObject:
   m_ObjectHideFlags: 0
@@ -8790,6 +8951,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8310885494873308650, guid: ec49a1eb2a0521a478622bd452822e81, type: 3}
   m_PrefabInstance: {fileID: 236345717}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2016212002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231253705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a24b9e8d9fc58ec44abec782aaaa1a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
+  interactionEnabled: 1
+  dialogues:
+  - sequence: {fileID: 11400000, guid: 5bd5eb34e3094f74ea505f21d5fc7bfe, type: 2}
+    condition:
+      type: 0
+      storyFlag: 
+      comparison: 0
+      requiredChapter: 0
+  enableDebugLog: 0
 --- !u!1 &2035016632
 GameObject:
   m_ObjectHideFlags: 0
@@ -9062,7 +9244,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7515755238594326342, guid: b52385c90a5835245be1e21e2d1d3765, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1612709776}
   m_SourcePrefab: {fileID: 100100000, guid: b52385c90a5835245be1e21e2d1d3765, type: 3}
 --- !u!1 &2070022596
 GameObject:

@@ -18,8 +18,26 @@ EditorBuildSettings:
     path: Assets/Game Folders/Scenes/Story/02_1 Limbo_Train.unity
     guid: 57d1939bb8f674a4b9b7e11738796606
   - enabled: 1
+    path: Assets/Game Folders/Scenes/Story/02_2 Limbo_Station.unity
+    guid: 6f05d90270a2f7048b131c698dd02046
+  - enabled: 1
     path: Assets/Game Folders/Scenes/Story/03_1 Chapter01_Hatred.unity
     guid: a59f9e7842ff9c748a09d77259ede2ce
+  - enabled: 1
+    path: Assets/Game Folders/Scenes/Story/03_2 Chapter01_Hatred.unity
+    guid: 291ac18528a96b24e91d03c01c57809a
+  - enabled: 1
+    path: Assets/Game Folders/Scenes/Story/03_3 Chapter01_Hatred.unity
+    guid: 83908b2c6e2e1c64db065868681f7f75
+  - enabled: 1
+    path: Assets/Game Folders/Scenes/Story/03_4 Chapter01_Hatred.unity
+    guid: 100404263fd02cc4e8775b06bf2d8167
+  - enabled: 1
+    path: Assets/Game Folders/Scenes/Story/03_5 Chapter01_Hatred.unity
+    guid: 2d2861818d63d7c409e0d1e7c8079198
+  - enabled: 1
+    path: Assets/Game Folders/Scenes/Story/03_6 Chapter01_Second Journey.unity
+    guid: 3b5797ebc5c08924bae2a9934bc3443b
   - enabled: 1
     path: Assets/Game Folders/Scenes/Story/04 Chapter02_Regret.unity
     guid: 99b40f27390c6d142ba45de85cdf33e7

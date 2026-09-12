@@ -71,5 +71,5 @@ MonoBehaviour:
     events: []
   completionEvents:
   - type: 0
-    storyFlag: train_npc_1
+    storyFlag: train_npc_2
     chapter: 0

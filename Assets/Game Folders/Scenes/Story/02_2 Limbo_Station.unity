@@ -8745,20 +8745,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   musicSource: {fileID: 0}
   sfxSource: {fileID: 0}
+  otherSfxSource: {fileID: 0}
   music1: {fileID: 0}
   music2: {fileID: 0}
+  buttonClickSFX: {fileID: 0}
+  jumpSFX: {fileID: 8300000, guid: d1c42931c8a0fbe49a980f47f830c814, type: 3}
+  footstep1SFX: {fileID: 8300000, guid: 3e6516f9003f62040a2730656f34a8fb, type: 3}
+  footstep2SFX: {fileID: 0}
+  dead1SFX: {fileID: 8300000, guid: 90ea5107ca5f5fd47bb034ecc73e7d06, type: 3}
+  dead2SFX: {fileID: 8300000, guid: e99dbedbd88c6d04d9a6779cb76ce781, type: 3}
   attackSFX: {fileID: 8300000, guid: facc3e256120f9c4a911f003675a7211, type: 3}
   hit1SFX: {fileID: 8300000, guid: 4ffd4f5897db4584481c50db1719ce09, type: 3}
   hit2SFX: {fileID: 8300000, guid: db0940bac81e0e049bd8f211c776eb67, type: 3}
   hit3SFX: {fileID: 8300000, guid: d291ac8761d7fc141a5aa9cc976b6cb0, type: 3}
-  jumpSFX: {fileID: 8300000, guid: d1c42931c8a0fbe49a980f47f830c814, type: 3}
-  dead1SFX: {fileID: 8300000, guid: 90ea5107ca5f5fd47bb034ecc73e7d06, type: 3}
-  dead2SFX: {fileID: 8300000, guid: e99dbedbd88c6d04d9a6779cb76ce781, type: 3}
   crySFX: {fileID: 8300000, guid: 4ebc4dd2a8a9b6248b48d8b5f3f0873b, type: 3}
   scene2CryingSFX: {fileID: 0}
   allEvilInaraSFX: {fileID: 0}
   endingSFX: {fileID: 0}
-  buttonClickSFX: {fileID: 0}
+  otherSfxClip: {fileID: 0}
+  playOtherSfxOnStart: 0
+  otherSfxVolume: 0.5
+  otherSfxVolumeStep: 0.1
   mainMenuSceneName: Main Menu
 --- !u!1 &2087991583
 GameObject:
